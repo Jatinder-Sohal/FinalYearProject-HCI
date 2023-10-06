@@ -1,0 +1,10 @@
+Week 1 (2/10/23)
+-Completed first draft of Project plan and have sent to supervisor to get his opionion on my plan.
+-In this plan discussed some technologies like javafx, django, springboot, react but need to do more research to cut this down in my final draft
+-Have completed some basic HCI reading for my abstract description learning about why usability is so important and some basic rules.
+
+
+Week 1 (06/10/23)
+-Have completed a good foundation reading of HCI learning about the balance of functionality and usability, accessibility issues, basic colour theory and a few HCI principals.
+-I have also reasearched and decided the technologies I will be using: Javafx, bootsrap and Springboot
+-Tommorow I am going to begin setting up the html to run a page - will use visual studio live coding extension
