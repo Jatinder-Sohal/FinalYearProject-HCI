@@ -6,14 +6,19 @@
 <meta charset="ISO-8859-1">
 <title>Finance Tracker</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+<style>
+  body {
+    background-image: url('Background.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="money_logo.jpg" alt="Money Logo" width="50" height="50">
-    </a>
+    <a class="navbar-brand" href="#">Finance Tracker</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,10 +45,12 @@
           </ul>
         </li>       
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
+      <span class="navbar-text">
+        <button type="button" class="btn btn-outline-info">Need help?</button>
+        
+      </span>
+      
     </div>
   </div>
 </nav>
