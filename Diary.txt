@@ -1,10 +1,30 @@
 Week 1 (2/10/23)
--Completed first draft of Project plan and have sent to supervisor to get his opionion on my plan.
--In this plan discussed some technologies like javafx, django, springboot, react but need to do more research to cut this down in my final draft
--Have completed some basic HCI reading for my abstract description learning about why usability is so important and some basic rules.
+Completed:	-first draft of Project plan and have sent to supervisor to get his opionion on my plan.
+		-In this plan discussed some technologies like javafx, django, springboot, react 
+		-Have completed some basic HCI reading for my abstract description learning about why usability is so important and some basic rules.
 
+Problems: 	-Tough to cover such a massive subject and convert this into a few paraghraphs
+		-Many types of technology that have their own advanatages and my knowledge is especially great for any of them
+
+Future: 	-do more research to cut down technologies to what I am actually going to use for the interfaces
+		-Continue reading about HCI and add to paragraphs for final draft
 
 Week 1 (06/10/23)
--Have completed a good foundation reading of HCI learning about the balance of functionality and usability, accessibility issues, basic colour theory and a few HCI principals.
--I have also reasearched and decided the technologies I will be using: Javafx, bootsrap and Springboot
--Tommorow I am going to begin setting up the html to run a page - will use visual studio live coding extension
+Completed:	-Good foundation reading of HCI learning about the balance of functionality and usability, accessibility issues, basic colour theory 						 and a few HCI principals.
+		-Reasearched and decided the technologies I will be using: Javafx, bootsrap and Springboot
+
+Problems	-It was tough to decide the technologies and I still might have to change them if I can't learn or adapt to using them fast enough
+		-Had to add more to nearly all aspects to my report due to feedback from supervisor
+
+Future:		-Begin setting up the html to run a page - will use visual studio live coding extension
+		-Start adding in libraries that will allow me to create elements
+
+Week 2 (11/10/23)
+Completed:	-Created home page for first UI adding navigation bar, background image, fitting colour schemes, buttons and text to direct the user
+		-Set up framework springboot to add some basic functionality to the website and allow it to communicate with the database
+
+Problems  	-Haven't adapated elements for minimizing yet and so some remain fixed while others move	
+		-Tough to create a design that looks good for everyone after getting feedback. Some like one design and others prefer another.
+
+Future:		-Get feedback from supervisor at next meeting
+		-Add some functionality to home page and begin working on another page for the first user interface
