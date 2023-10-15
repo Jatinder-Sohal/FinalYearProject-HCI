@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+img {
+    margin-right: 10px;
+}
+
+body {
+    background-image: linear-gradient(#3498db, #f2f2f2);
+    height:100vh
+}
+
+h1 {
+    font-size: 80px;
+    font-family: Georgia
+}

@@ -9,5 +9,8 @@ public class HomeController {
 	public String home() {
 		return "home.jsp";
 	}
-
+	@RequestMapping("EnterData")
+	public String enter() {
+		return "enterData.jsp";
+	}
 }
