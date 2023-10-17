@@ -1,14 +1,42 @@
-@charset "ISO-8859-1";
-img {
-    margin-right: 10px;
-}
-
 body {
-    background-image: linear-gradient(#3498db, #f2f2f2);
-    height:100vh
+    background-color: #30E3CA;
+    background-size: cover;
+}
+h2 {
+    color: black;
+    text-align: center;
+}
+table {
+    float: middle;
+    max-width: 70%; 
+    margin: 0 auto;
+    margin-top: 7%;
+}
+.col{
+    max-width: 80%;
+}
+.bg-custom-2 {
+    color: #40514E;
+    background-color: #40514E;
+  
 }
 
-h1 {
-    font-size: 80px;
-    font-family: Georgia
+.form-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
 }
+input {
+    width: 30%;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+
+
