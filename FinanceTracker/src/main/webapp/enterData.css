@@ -1,25 +1,6 @@
-body {
-    background-color: rgb(255, 199, 199);
-    background-size: cover;
-}
-h2 {
-    color: black;
-    text-align: center;
-}
-table {
-    max-width: 70%;
-    margin: 0 auto;
-    position: absolute;
-    top: 20%;
-    left: 15%;
-}
-.col{
-    max-width: 80%;
-}
-.bg-custom-2 {
+.navbar-custom {
     color: #8785A2;
     background-color: #8785A2;
-  
 }
 .btn-outline-info{
     border-color: #F6F6F6;
@@ -31,6 +12,10 @@ table {
     border-color: #F6F6F6;
 }
 
+body {
+    background-color: rgb(255, 199, 199);
+    background-size: cover;
+}
 .form-container {
     position: absolute;
     top: 45%;
@@ -41,6 +26,20 @@ table {
     height: 70%;
     padding: 30px;
     border-radius: 10px;
+}
+h2 {
+    color: black;
+    text-align: center;
+}
+table {
+    max-width: 70%;
+    margin: 0 auto;
+}
+.table-and-buttons {
+    margin-top: 50px;
+}
+.col{
+    max-width: 80%;
 }
 input {
     width: 30%;
@@ -54,20 +53,22 @@ input {
     fill:#333333; 
     transition: 0.2s; 
     cursor: pointer; 
+    transform: scale(1.2);
 }
 #AddRow {
     position: absolute;
-    top: 85%;
     left: 25%;
 }
 #DeleteRow {
     position: absolute;
-    top: 85%;
     left: 50%;
 }
 #Restart{
     position: absolute;
-    top: 85%;
     left: 75%;
 }
+.buttons{
+    margin-top: 10px; 
+}
+
 
