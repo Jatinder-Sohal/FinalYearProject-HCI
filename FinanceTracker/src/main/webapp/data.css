@@ -11,31 +11,6 @@
     background-color: #F9F7F7;
     border-color: #F9F7F7;
 }
-.expence-table{
-    width: 60%;
-    height: 60%;
-    padding-top: 10%;
-}
-.row {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.custom-header {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    font-weight: bold;
-    padding: 2%;
-    border-radius: 10px;
-    border: 2px solid #ccc;
-    margin-left: 30%;
-    background-color: #F9F7F7;
-}
-.field {
-    font-family: sans-serif;
-    font-size: 20px; 
-}
 .sidebar {
     width: 15%; 
     background-color: #DBE2EF; 
@@ -57,7 +32,45 @@
     text-align: center;
 }
 .sheet-list {
-    list-style: none; 
+    list-style: none;
 }
+.sheet-item{
+    display: flex; 
+    align-items: baseline;
+    position: relative;
+    left: -30%;
+}
+
+.expence-table{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 60%;
+    padding-top: 10%;
+    margin-left: 20%;
+}
+.rows {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 2%;    
+}
+.custom-header {
+    display: flex;
+    font-weight: bold;
+    padding: 2%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border: 2px solid #ccc;
+    background-color: #F9F7F7;
+}
+.field {
+    font-family: sans-serif;
+    font-size: 20px; 
+    border-color: black;
+    width: 30%;
+    margin-left: 5%;
+}
+
 
 
