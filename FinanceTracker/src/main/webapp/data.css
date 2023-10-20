@@ -1,0 +1,25 @@
+.navbar-custom {
+    color: #8785A2;
+    background-color: #8785A2;
+}
+.expence-table{
+    width: 70%;
+    height: 60%;
+    background-color: rgb(255, 199, 199);
+    display: flex;
+}
+.row {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+.field {
+    font-size: 20px; 
+}
