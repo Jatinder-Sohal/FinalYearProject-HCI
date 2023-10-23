@@ -51,3 +51,14 @@ Problems:	-Couldn't add a good title to the page, spent a lot of time experiment
 Future: 	-Add some basic functionality to enter data page
 		-Being working on other pages
 		-Implement researched accessibility if I have time and also carry on research on different rules.
+
+Week 4 (22/10/23)
+Completed:	-Refactored design of enter data page as I wasn't happy with the design, espically the boostrap items and so redid the code using vanilla html and css.
+		-Added extra features like sidebar content, more buttons for the table and improve colour scheme.
+
+Problems:	-Pushed back implementation of accessbility even more and development of other pages
+		-Haven't added functionality to the page as will be quite time consuming and just added dummy data to the table - not sure if I will be penalised for this.
+
+Future:		-Finally begin others pages and finishing up with this application
+		-Start a bit of the write up about this implementation and how I used HCI rules
+		-Implement accessiblity features (might do after finishing application)
