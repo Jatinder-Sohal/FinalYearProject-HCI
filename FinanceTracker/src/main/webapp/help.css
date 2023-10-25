@@ -36,6 +36,11 @@ svg{
     position: relative;
     left: -4%;
 }
+svg:hover{
+    transition: 0.2s; 
+    cursor: pointer; 
+    transform: scale(1.2);
+}
 .contact{
     margin-top: 3%;
 }
@@ -43,4 +48,14 @@ svg{
     display: flex;
     justify-content: center;
     margin-top: 3%;
+}
+.btn-primary{
+    background-color: #394867;
+    border-color: #394867;
+    width: 50%;
+}
+.btn-primary:hover{
+    fill: #212A3E;
+    background-color: #212A3E;
+    border-color: #212A3E;
 }
