@@ -16,8 +16,9 @@ h1 {
     margin-top: 1.5%;
 }
 .btn-primary:hover,
+.btn.btn-primary:active,
 .btn-primary{
-    width: 9%;
+    width: 9.5%;
     margin-top: 1.5%;
     color: #ffffff;
     background-color: rgb(255, 46, 99);
@@ -25,4 +26,27 @@ h1 {
 }
 svg{
     margin-left: 5%;
+}
+.col{
+    height: 500px;;
+}
+.bg-custom-1 {
+    height: 50%;
+    max-Width: '18rem';
+    color: rgb(8, 217, 214);
+    background-color: rgb(8, 217, 214);
+    border-color: rgb(8, 217, 214);
+    
+}
+.card-title,
+.card-text,
+.card-header {
+    color: rgb(37, 42, 52);
+}
+.row{
+    max-width: 50%;
+}
+.d-flex{
+    margin-top: 5%;
+
 }
