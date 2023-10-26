@@ -1,8 +1,11 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import ExpenceTable from "../components/ExpenceTable";
+
 import Pencil from '../images/Pencil.png';
 import Save from '../images/Save.png';
+
 
 function EnterData(){
     return <div>
@@ -19,6 +22,7 @@ function EnterData(){
                 <img src={Save} alt="Your Icon Alt Text" height="32" width="32"/>  
             </button>
         </div>
+        <ExpenceTable />
     </div>
 }
 
