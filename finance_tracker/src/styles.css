@@ -1,0 +1,28 @@
+.navbar-custom {
+    color: rgb(37, 42, 52);
+    background-color: rgb(37, 42, 52);
+}
+body {
+    background-image: url('./images/Background.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-position: 90%, 0%;
+}
+h1 {
+    font-size: 80px;
+    font-family: Georgia;
+}
+#topWord{
+    margin-top: 1.5%;
+}
+.btn-primary:hover,
+.btn-primary{
+    width: 9%;
+    margin-top: 1.5%;
+    color: #ffffff;
+    background-color: rgb(255, 46, 99);
+    border-color: rgb(255, 46, 99);
+}
+svg{
+    margin-left: 5%;
+}
