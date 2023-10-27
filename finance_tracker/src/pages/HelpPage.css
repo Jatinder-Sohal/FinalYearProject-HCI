@@ -18,18 +18,29 @@ body{
     text-align: center;
     margin-top: 4%;
 }
-h2{
+h1{
     font-family: sans-serif;
     font-weight: bold;
     font-size: 2.5rem;
+    color: #394867;
+}
+h2{
+    font-size: 20px;
+    color: #394867;
+}
+h3{
+    color: #394867;
 }
 .search{
-    height: 10%;
-    width: 30%;
+    height: 100px;
+    width: 45%;
     margin-top: 2%;
     border: black solid;
     border-radius: 50px;
     padding: 0 60px 0 20px;
+    font-size: large;
+    margin-top: 2%;
+    border-radius: 50px;
     font-size: large;
 }
 svg{
@@ -44,21 +55,23 @@ svg:hover{
 .contact{
     margin-top: 3%;
 }
-.card{
-    border: black solid;
-    border-radius: 50px;
-}
 .custom-row {
     display: flex;
     justify-content: center;
     margin-top: 3%;
+}
+.card-title{
+    font-size: 1.5rem;
+    color: #394867;
 }
 .btn-primary{
     background-color: #394867;
     border-color: #394867;
     width: 50%;
 }
-.btn-primary:hover{
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus{
     fill: #212A3E;
     background-color: #212A3E;
     border-color: #212A3E;
