@@ -44,6 +44,10 @@ svg:hover{
 .contact{
     margin-top: 3%;
 }
+.card{
+    border: black solid;
+    border-radius: 50px;
+}
 .custom-row {
     display: flex;
     justify-content: center;
