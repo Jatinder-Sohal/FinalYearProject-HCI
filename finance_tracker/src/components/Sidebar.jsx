@@ -6,7 +6,7 @@ function sidebar(){
     return (
         <div class="sidebar">
         <div class="sidebar-content">
-            <h2>Your sheets</h2>
+            <h1>Your sheets</h1>
             <ul class="sheet-list">
                 <li class="sheet-item">Sheet 1</li>
                 <li class="sheet-item">December 2021</li>

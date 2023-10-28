@@ -39,12 +39,13 @@
     position: relative;
     left: -30%;
 }
-h2{
+h1{
     font-family: sans-serif;
     color: #112D4E;
     font-weight: bold;
+    font-size: 1.875rem;
 }
-h3{
+h2{
     font-size: 1.7rem;
 }
 #pencil{

@@ -12,14 +12,14 @@ function EnterData(){
         <Navbar />
         <Sidebar />
         <div className="heading">
-            <h2 className="sheet-heading" >Novemeber sheet</h2>
-            <img id="pencil" src={Pencil} alt="Your Icon Alt Text" height="32" width="32"/>
-            <h3> 21/10/23</h3>
+            <h1 className="sheet-heading" >Novemeber sheet</h1>
+            <img id="pencil" src={Pencil} alt="Icon of pencil, to change title" height="32" width="32"/>
+            <h2> 21/10/23</h2>
         </div>
         <div className="save">
             <button className="btn btn-primary button-save" type="submit">
                 <span className="text">Save sheet</span>
-                <img src={Save} alt="Your Icon Alt Text" height="32" width="32"/>  
+                <img src={Save} alt="Save button" height="32" width="32"/>  
             </button>
         </div>
         <ExpenceTable />
