@@ -1,0 +1,135 @@
+.navbar-custom {
+    color: #3F72AF;
+    background-color: #3F72AF;
+}
+.btn-outline-info{
+    border-color: #F9F7F7;
+    color: #F9F7F7; 
+}
+.btn-outline-info:hover{
+    fill: #F9F7F7;
+    background-color: #F9F7F7;
+    border-color: #F9F7F7;
+}
+
+.sidebar {
+    width: 15%; 
+    background-color: #DBE2EF; 
+    color: black; 
+    position: fixed;
+    height: 100%;
+    font-family: sans-serif;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content:baseline
+}
+.sidebar-content{
+    padding: 5%;
+}
+.sheet-list {
+    list-style: none;
+}
+.sheet-item{
+    padding: 10px;
+    border-bottom: 1px solid #ccc; 
+    text-align: center;
+    display: flex; 
+    align-items: baseline;
+    position: relative;
+    left: -30%;
+}
+h1{
+    font-family: sans-serif;
+    color: #112D4E;
+    font-weight: bold;
+    font-size: 1.875rem;
+}
+h2{
+    font-size: 1.7rem;
+}
+#pencil{
+    margin-top: 0.2%;
+}
+
+.button-save{
+    margin-top: 2.2%;
+    margin-left: 10%;
+    width: 15%;
+    color:white;
+    background-color: #112D4E;
+    border-color: #112D4E;
+}
+.button-save:hover{
+    color:white;
+    background-color: #112D4E;
+    border-color: #112D4E;
+}
+.save{
+    text-align: center;
+}
+.button-table{
+    margin-top: 2%;
+    margin-left: 75%;
+    width: 15%;
+}
+
+
+.heading{
+    margin-top: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 20%;
+    margin-left: 18%;
+    margin-top: 1%;
+}
+.expence-table{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 60%;
+    padding-top: 1.5%;
+    margin-left: 25%;
+}
+.rows {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 2%;    
+}
+.custom-header {
+    display: flex;
+    font-weight: bold;
+    padding: 2%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border: 2px solid #ccc;
+    background-color: #F9F7F7;
+}
+.field {
+    font-family: sans-serif;
+    font-size: 20px; 
+    border-color: black;
+    width: 30%;
+    margin-left: 5%;
+}
+input{
+    width: 80%;
+    border: none;
+    outline: none;
+}
+.text {
+    margin-right: 10px; 
+}
+input:hover{
+    outline: 2px solid #112D4E;
+}
+input::placeholder {
+    color: #000;
+  }
+.table-icons:hover, 
+.button-hover:hover {
+    transition: 0.2s; 
+    cursor: pointer; 
+    transform: scale(1.2);
+}
