@@ -1,0 +1,26 @@
+.navbar-custom {
+    color: #3F72AF;
+    background-color: #3F72AF;
+}
+.btn-outline-info{
+    border-color: #F9F7F7;
+    color: #F9F7F7; 
+}
+.btn-outline-info:hover{
+    fill: #F9F7F7;
+    background-color: #F9F7F7;
+    border-color: #F9F7F7;
+}
+.custom-container{
+    display: flex; 
+    margin-top: 5%;
+    max-width: 80%;
+    margin-left: 10%;
+}
+.carousel-indicators{
+    bottom: -20px;
+}
+h2{
+    margin-right: 2%;
+    width: 110%;
+}
