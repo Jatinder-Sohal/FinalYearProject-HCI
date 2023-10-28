@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 //import App from "./App"
 //import './styles.css';
-import HelpPage from "./pages/HelpPage";
-import './pages/HelpPage.css';
+import DisplayData from "./pages/DisplayData";
+import './pages/DisplayData.css';
 
 
-ReactDOM.render(<HelpPage />, document.getElementById("root"));
+ReactDOM.render(<DisplayData />, document.getElementById("root"));
 
