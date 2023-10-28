@@ -1,5 +1,6 @@
-body{
+.page2-container{
     background-color: #F1F6F9;
+    height: 100vh;
 }
 .navbar-custom {
     color: #394867;
@@ -14,21 +15,21 @@ body{
     background-color: #F9F7F7;
     border-color: #F9F7F7;
 }
-.custom-header{
+.page2-header{
     text-align: center;
     margin-top: 4%;
 }
-h1{
+.page2-h1{
     font-family: sans-serif;
     font-weight: bold;
     font-size: 2.5rem;
     color: #394867;
 }
-h2{
+.page2-title{
     font-size: 20px;
     color: #394867;
 }
-h3{
+.page2-h3{
     color: #394867;
 }
 .search{
@@ -43,11 +44,11 @@ h3{
     border-radius: 50px;
     font-size: large;
 }
-svg{
+.search-button{
     position: relative;
     left: -4%;
 }
-svg:hover{
+.search-button:hover{
     transition: 0.2s; 
     cursor: pointer; 
     transform: scale(1.2);
@@ -55,23 +56,23 @@ svg:hover{
 .contact{
     margin-top: 3%;
 }
-.custom-row {
+.page2-row {
     display: flex;
     justify-content: center;
     margin-top: 3%;
 }
-.card-title{
+.page2-title{
     font-size: 1.5rem;
     color: #394867;
 }
-.btn-primary{
+.page2-button{
     background-color: #394867;
     border-color: #394867;
     width: 50%;
 }
 
-.btn.btn-primary:hover,
-.btn.btn-primary:focus{
+.page2-button:hover,
+.page2-button:focus{
     fill: #212A3E;
     background-color: #212A3E;
     border-color: #212A3E;
