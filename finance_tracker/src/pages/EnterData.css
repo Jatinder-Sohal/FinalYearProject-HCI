@@ -1,15 +1,18 @@
-.navbar-custom {
+.navbar-enter {
     color: #3F72AF;
     background-color: #3F72AF;
 }
-.btn-outline-info{
+.custom-enter{
     border-color: #F9F7F7;
     color: #F9F7F7; 
 }
-.btn-outline-info:hover{
+.custom-enter:hover{
     fill: #F9F7F7;
     background-color: #F9F7F7;
     border-color: #F9F7F7;
+}
+.page3-container{
+    background-color: white;
 }
 
 .sidebar {
@@ -39,13 +42,13 @@
     position: relative;
     left: -30%;
 }
-h1{
+.sheet-heading{
     font-family: sans-serif;
     color: #112D4E;
     font-weight: bold;
-    font-size: 1.875rem;
+    font-size: 2rem;
 }
-h2{
+.page3-h2{
     font-size: 1.7rem;
 }
 #pencil{
@@ -65,7 +68,7 @@ h2{
     background-color: #112D4E;
     border-color: #112D4E;
 }
-.save{
+.save-sheet{
     text-align: center;
 }
 .button-table{
@@ -113,7 +116,7 @@ h2{
     width: 30%;
     margin-left: 5%;
 }
-input{
+.table-input{
     width: 80%;
     border: none;
     outline: none;
@@ -121,10 +124,10 @@ input{
 .text {
     margin-right: 10px; 
 }
-input:hover{
+.table-input:hover{
     outline: 2px solid #112D4E;
 }
-input::placeholder {
+.table-input::placeholder {
     color: #000;
   }
 .table-icons:hover, 

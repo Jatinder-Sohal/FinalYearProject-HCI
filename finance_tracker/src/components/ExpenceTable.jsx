@@ -19,38 +19,38 @@ function ExpenceTable(){
             <div className="field">Delete?</div>
         </div>
         <div className="rows">
-            <div className="field"><input type="text" placeholder="Food" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£200" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£300" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£100" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="Food" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£200" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£300" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£100" aria-label="User Input for expence sheet"></input></div>
             <div className="field"><img className="button-hover" src={Bin} alt="Delete" height="32" width="32" aria-label="User Input for expence sheet" /></div>
         </div>
         <div className="rows">
-            <div className="field"><input type="text" placeholder="Fuel" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£60" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£150" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£90" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="Fuel" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£60" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£150" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£90" aria-label="User Input for expence sheet"></input></div>
             <div className="field"><img className="button-hover" src={Bin} alt="Delete" height="32" width="32" aria-label="User Input for expence sheet" /></div>
         </div>
         <div className="rows">
-            <div className="field"><input type="text" placeholder="Rent" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£1500" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£1200" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="-£300" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="Rent" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£1500" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£1200" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="-£300" aria-label="User Input for expence sheet"></input></div>
             <div className="field"><img className="button-hover" src={Bin} alt="Delete" height="32" width="32" aria-label="User Input for expence sheet" /></div>
         </div>
         <div className="rows">
-            <div className="field"><input type="text" placeholder="Games" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£30" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£100" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£70" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="Games" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£30" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£100" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input type="text" className="table-input" placeholder="£70" aria-label="User Input for expence sheet"></input></div>
             <div className="field"><img className="button-hover" src={Bin} alt="Delete" height="32" width="32" aria-label="User Input for expence sheet" /></div>
         </div>
         <div className="rows">
-            <div className="field"><input type="text" placeholder="Bills" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£2000" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="£1500" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" placeholder="-£500" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input className="table-input" type="text" placeholder="Bills" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input className="table-input"type="text" placeholder="£2000" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input className="table-input" type="text" placeholder="£1500" aria-label="User Input for expence sheet"></input></div>
+            <div className="field"><input className="table-input" type="text" placeholder="-£500" aria-label="User Input for expence sheet"></input></div>
             <div className="field"><img className="button-hover" src={Bin} alt="Delete" height="32" width="32" aria-label="User Input for expence sheet" /></div>
         </div>
     </div>

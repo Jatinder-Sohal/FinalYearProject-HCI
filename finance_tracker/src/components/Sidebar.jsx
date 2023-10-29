@@ -4,15 +4,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function sidebar(){
     return (
-        <div class="sidebar">
-        <div class="sidebar-content">
-            <h1>Your sheets</h1>
-            <ul class="sheet-list">
-                <li class="sheet-item">Sheet 1</li>
-                <li class="sheet-item">December 2021</li>
-                <li class="sheet-item">Sheet 2</li>
-                <li class="sheet-item">Feburary 2022</li>
-                <li class="sheet-item">October 2023</li>
+        <div className="sidebar">
+        <div className="sidebar-content">
+            <h1 className="sheet-heading">Your sheets</h1>
+            <ul className="sheet-list">
+                <li className="sheet-item">Sheet 1</li>
+                <li className="sheet-item">December 2021</li>
+                <li className="sheet-item">Sheet 2</li>
+                <li className="sheet-item">Feburary 2022</li>
+                <li className="sheet-item">October 2023</li>
             </ul>
         </div>
         </div>   

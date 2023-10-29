@@ -1,12 +1,10 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function InfoCards(){
     return (
         <div className="d-flex justify-content-center align-items-center">
-          <div className="row">
-            <div className="col">
+          <div className="row page1-row">
+            <div className="col page1-col">
               <div className="card bg-custom-1 mb-2">
                 <div className="card-header"><h5 className="card-title">How to use</h5></div>
                 <div className="card-body">
@@ -14,7 +12,7 @@ function InfoCards(){
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col page1-col">
               <div className="card bg-custom-1 mb-3">
                 <div className="card-header"><h5 className="card-title">Benefits?</h5></div>
                 <div className="card-body">
@@ -22,7 +20,7 @@ function InfoCards(){
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col page1-col">
               <div className="card bg-custom-1 mb-3">
                 <div className="card-header"><h5 className="card-title">I entered a wrong value</h5></div>
                 <div className="card-body">

@@ -1,22 +1,32 @@
-.navbar-custom {
+.navbar-home {
     color: rgb(37, 42, 52);
     background-color: rgb(37, 42, 52);
 }
-body {
+.custom-home{
+    border-color: rgb(8, 217, 214);
+    color:  rgb(8, 217, 214);
+}
+.help_text{
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
+}
+.page1-container {
     background-image: url('./images/Background.jpg');
     height: 100vh;
     background-size: cover;
     background-position: 90%, 0%;
 }
-h1 {
+
+.page1-h1{
     font-size: 80px;
     font-family: Georgia;
 }
 #topWord{
     margin-top: 1.5%;
 }
-.btn-primary:hover,
+.btn.btn-primary:hover,
 .btn.btn-primary:active,
+.btn.btn-primary:focus,
 .btn-primary{
     width: 9.5%;
     margin-top: 1.5%;
@@ -24,29 +34,28 @@ h1 {
     background-color: rgb(255, 46, 99);
     border-color: rgb(255, 46, 99);
 }
-svg{
-    margin-left: 5%;
+#arrow{
+    margin-left: 7%;
 }
-.col{
-    height: 500px;;
+.page1-col{
+    height: 420px;
 }
 .bg-custom-1 {
     height: 50%;
     max-Width: '18rem';
-    color: rgb(8, 217, 214);
     background-color: rgb(8, 217, 214);
     border-color: rgb(8, 217, 214);
-    
 }
-.card-title,
-.card-text,
-.card-header {
+.page1-title,
+.page1-text,
+.page1-header {
     color: rgb(37, 42, 52);
+    margin: 0;
 }
-.row{
+.page1-row{
     max-width: 50%;
+
 }
 .d-flex{
     margin-top: 5%;
-
 }

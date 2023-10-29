@@ -1,11 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//import App from "./App"
-//import './styles.css';
 
-import EnterData from "./pages/EnterData"
-import './pages/EnterData.css';
+import HelpPage from "./pages/HelpPage";
+import EnterData from "./pages/EnterData";
+import DisplayData from "./pages/DisplayData";
+import App from "./App";
 
-ReactDOM.render(<EnterData />, document.getElementById("root"));
 
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <App />,
+    },
+    {
+        path: "Enter",
+        element: <EnterData />,
+    },
+    {
+        path: "Help",
+        element: <HelpPage />,
+    },
+    {
+        path: "Display",
+        element: <DisplayData />,
+    },
+]);
+ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+);    
