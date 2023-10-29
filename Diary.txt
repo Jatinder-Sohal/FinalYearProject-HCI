@@ -62,3 +62,27 @@ Problems:	-Pushed back implementation of accessbility even more and development 
 Future:		-Finally begin others pages and finishing up with this application
 		-Start a bit of the write up about this implementation and how I used HCI rules
 		-Implement accessiblity features (might do after finishing application)
+
+Week 5 (25/10/23)
+Completed:  	-Finished help page and started display data page
+		-Found how to use WAVE accessiblity tool and have been planning on how to organise pages to include more hci principals
+
+Problems:	-My friend got feedback from his meeting, in which he was reprimanded for using html which is what I have used.
+		-Falling behind in schedule and need to start report
+
+Future:		-Learn react
+		-Need to convert all my html code to react code, so that I am able to get all available marks for complexity
+		-Need to finish last page of application
+		-Start report
+
+Week 5 (29/10/23)
+Completed: 	-Learnt react in a short space of time
+		-Finished converting code to react 
+		-Finished last page of application
+
+Problems:	-Didnt realise css pages overlapped, had to spent huge amounts of time fixing that
+		-My whole timeline is a mess right now
+
+Future:		-Start 2nd UI
+		-Learn swing language
+		-Make good progress on report
