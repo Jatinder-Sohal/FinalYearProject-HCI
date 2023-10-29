@@ -1,12 +1,12 @@
-.navbar-custom {
+.navbar-enter {
     color: #3F72AF;
     background-color: #3F72AF;
 }
-.btn-outline-info{
+.custom-enter{
     border-color: #F9F7F7;
     color: #F9F7F7; 
 }
-.btn-outline-info:hover{
+.custom-enter:hover{
     fill: #F9F7F7;
     background-color: #F9F7F7;
     border-color: #F9F7F7;
@@ -68,7 +68,7 @@
     background-color: #112D4E;
     border-color: #112D4E;
 }
-.save{
+.save-sheet{
     text-align: center;
 }
 .button-table{

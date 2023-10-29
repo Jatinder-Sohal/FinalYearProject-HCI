@@ -7,7 +7,7 @@ function DisplayData() {
   return (
     <div className="page4-container">
         <Navbar />
-        <h1 className="title">Some Recommendations on How to Cut Costs</h1>
+        <h1 className="display-title">Some Recommendations on How to Cut Costs</h1>
         <div className="custom-container">
         <Carousel />
         </div>

@@ -1,6 +1,14 @@
-.navbar-custom {
+.navbar-home {
     color: rgb(37, 42, 52);
     background-color: rgb(37, 42, 52);
+}
+.custom-home{
+    border-color: rgb(8, 217, 214);
+    color:  rgb(8, 217, 214);
+}
+.help_text{
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
 }
 .page1-container {
     background-image: url('./images/Background.jpg');
@@ -35,10 +43,8 @@
 .bg-custom-1 {
     height: 50%;
     max-Width: '18rem';
-    color: rgb(8, 217, 214);
     background-color: rgb(8, 217, 214);
     border-color: rgb(8, 217, 214);
-    
 }
 .page1-title,
 .page1-text,

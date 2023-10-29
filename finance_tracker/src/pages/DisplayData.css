@@ -1,4 +1,4 @@
-.navbar-custom {
+.navbar-display {
     color: #52616B;
     background-color: #52616B;
 }
@@ -7,11 +7,11 @@
     background-image: linear-gradient(315deg, #fde7f9 0%, #aacaef 74%);
     height: 100vh;
 }
-.btn-outline-info{
+.custom-display{
     border-color: #F9F7F7;
     color: #F9F7F7; 
 }
-.btn-outline-info:hover{
+.custom-display:hover{
     fill: #F9F7F7;
     background-color: #F9F7F7;
     border-color: #F9F7F7;
@@ -26,14 +26,14 @@
 .carousel-indicators{
     bottom: -20px;
 }
-title{
+.display-title{
     text-align: center;
     margin-top: 2%;
     font-size: 2.6rem;
     font-weight: bold;
 }
 .content {
-    margin-top: -27%;
+    margin-top: -25%;
     margin-left: 7%;
     font-size: larger;
     padding: 20px;

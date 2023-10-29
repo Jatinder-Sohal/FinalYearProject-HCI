@@ -1,20 +1,23 @@
+
 .page2-container{
     background-color: #F1F6F9;
     height: 100vh;
 }
-.navbar-custom {
+.navbar-help{
     color: #394867;
     background-color: #394867;
 }
-.btn-outline-info{
+.custom-helps{
     border-color: #F9F7F7;
     color: #F9F7F7; 
+
 }
-.btn-outline-info:hover{
+.custom-helps:hover{
     fill: #F9F7F7;
     background-color: #F9F7F7;
     border-color: #F9F7F7;
 }
+
 .page2-header{
     text-align: center;
     margin-top: 4%;

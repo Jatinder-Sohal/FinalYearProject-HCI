@@ -17,8 +17,8 @@ function EnterData(){
             <img id="pencil" src={Pencil} alt="Icon of pencil, to change title" height="32" width="32"/>
             <h2 className="page3-h2"> 21/10/23</h2>
         </div>
-        <div className="save">
-            <button className="btn btn-primary button-save" type="submit">
+        <div className="save-sheet">
+            <button className="btn button-save" type="submit">
                 <span className="text">Save sheet</span>
                 <img src={Save} alt="Save button" height="32" width="32"/>  
             </button>
