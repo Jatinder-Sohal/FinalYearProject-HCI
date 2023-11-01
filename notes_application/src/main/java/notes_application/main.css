@@ -1,0 +1,6 @@
+#titleBox{
+  -fx-background-color: #FF5733;
+  -fx-border-color: gray; 
+  -fx-border-radius: 10; 
+  -fx-background-radius: 10;
+}
