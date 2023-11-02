@@ -1,18 +1,22 @@
 #titleBox{
-  -fx-background-color: #FF5733;
+  -fx-background-color: #FF165D;
   -fx-border-color: gray; 
   -fx-border-radius: 10; 
   -fx-background-radius: 10;
 }
-#list,
-#list1,
-#list2{
+#ToDo,
+#Development,
+#Completed,
+#Unable{
   -fx-border-color: black;
   -fx-border-radius: 10; 
   -fx-background-radius: 10;
 }
-#ToDo{
-  -fx-background-color: #FF5733;
+#ToDoTitle,
+#DevelopmentTitle,
+#CompletedTitle,
+#UnableTitle{
+  -fx-background-color: #FF165D;
   -fx-border-radius: 10; 
   -fx-background-radius: 10;
-  }
+}
