@@ -2,11 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <GridPane depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="929.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
@@ -22,9 +25,9 @@
     <RowConstraints maxHeight="268.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label fx:id="titleBox" alignment="CENTER" contentDisplay="CENTER" prefHeight="170.0" prefWidth="522.0" text="Project Plan" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="2">
+      <Label fx:id="titleBox" alignment="CENTER" contentDisplay="CENTER" prefHeight="170.0" prefWidth="661.0" text="Project Plan" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="2">
          <font>
-            <Font name="SansSerif Bold" size="67.0" />
+            <Font name="SansSerif Bold" size="96.0" />
          </font>
          <GridPane.margin>
             <Insets left="140.0" />
@@ -44,7 +47,7 @@
                <children>
                   <Label alignment="CENTER" prefHeight="68.0" prefWidth="129.0" text="To Do" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="SansSerif Bold" size="18.0" />
+                        <Font name="SansSerif Bold" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -87,7 +90,7 @@
                <children>
                   <Label alignment="CENTER" prefHeight="56.0" prefWidth="173.0" text="In Development" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="SansSerif Bold" size="18.0" />
+                        <Font name="SansSerif Bold" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -106,7 +109,7 @@
                <children>
                   <Label alignment="CENTER" prefHeight="68.0" prefWidth="129.0" text="Completed" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="SansSerif Bold" size="18.0" />
+                        <Font name="SansSerif Bold" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -125,7 +128,7 @@
                <children>
                   <Label alignment="CENTER" prefHeight="68.0" prefWidth="129.0" text="Unable" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="SansSerif Bold" size="18.0" />
+                        <Font name="SansSerif Bold" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -144,8 +147,103 @@
                <opaqueInsets>
                   <Insets left="1.0" />
                </opaqueInsets>
+               <children>
+                  <Label prefHeight="58.0" prefWidth="46.0" text="Undo" wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="35.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
             </HBox>
          </top>
       </BorderPane>
+      <BorderPane fx:id="Icons" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="496.0" prefWidth="94.0" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="50.0" />
+         </GridPane.margin>
+         <top>
+            <ImageView fitHeight="50.0" fitWidth="50.0" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@plus-circle-svgrepo-com.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets top="20.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </top>
+         <center>
+            <ImageView fitHeight="50.0" fitWidth="50.0" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@back-reply-svgrepo-com.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets bottom="170.0" top="50.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </center>
+      </BorderPane>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="161.0" prefWidth="322.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.columnSpan="2">
+         <GridPane.margin>
+            <Insets left="515.0" />
+         </GridPane.margin>
+      </BorderPane>
+      <Circle fill="#c4e2fc" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.columnSpan="2">
+         <GridPane.margin>
+            <Insets bottom="150.0" left="645.0" />
+         </GridPane.margin>
+      </Circle>
+      <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" text="01" GridPane.columnIndex="1" GridPane.columnSpan="2">
+         <GridPane.margin>
+            <Insets bottom="150.0" left="660.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="161.0" prefWidth="322.0" style="-fx-border-color: black;" GridPane.columnIndex="2" GridPane.columnSpan="2">
+         <GridPane.margin>
+            <Insets left="200.0" />
+         </GridPane.margin>
+      </BorderPane>
+      <Circle fill="#ffdc41" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3">
+         <GridPane.margin>
+            <Insets bottom="150.0" left="30.0" />
+         </GridPane.margin>
+      </Circle>
+      <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" text="02" GridPane.columnIndex="3">
+         <font>
+            <Font size="29.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="150.0" left="45.0" />
+         </GridPane.margin>
+      </Label>
+      <Label prefHeight="58.0" prefWidth="46.0" text="Add Card" wrapText="true" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="265.0" left="80.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="56.0" fitWidth="55.0" GridPane.rowIndex="1">
+         <image>
+            <Image url="@help-svgrepo-com.png" />
+         </image>
+         <GridPane.margin>
+            <Insets bottom="-220.0" left="70.0" />
+         </GridPane.margin>
+      </ImageView>
+      <Label prefHeight="58.0" prefWidth="46.0" text="Need help" wrapText="true" GridPane.rowIndex="1">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-340.0" left="80.0" />
+         </GridPane.margin>
+      </Label>
    </children>
 </GridPane>
