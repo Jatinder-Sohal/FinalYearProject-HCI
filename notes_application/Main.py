@@ -28,23 +28,27 @@ def create_navbar():
     dropdown.place(relx=0.93, rely=0.05, anchor=tk.CENTER)
 
 
-def create_list(title):
-    card_frame = ctk.CTkFrame(root, height=700, width=275, fg_color='white', corner_radius=10)
-    card_frame.place(x=200, y=100)
+def create_list(title, placementx, colour):
+    list_frame = ctk.CTkFrame(root, height=700, width=275, fg_color='white', corner_radius=10)
+    list_frame.place(x=placementx, y=100)
     #NOTE - stops content affecting size of frame
-    card_frame.pack_propagate(False)
+    list_frame.pack_propagate(False)
 
-    border_frame = ctk.CTkFrame(card_frame, fg_color='grey', height=5)
+    border_frame = ctk.CTkFrame(list_frame, fg_color=colour, height=5)
     border_frame.pack(side="top", fill="x")
 
-    title_label = ctk.CTkLabel(card_frame, text=title,font=("Arial Bold", 25))
+    title_label = ctk.CTkLabel(list_frame, text=title,font=("Arial Bold", 25))
     title_label.pack(pady=(6, 20))
+
+    container = ctk.CTkFrame(list_frame, fg_color='white')
+    container.pack(fill="both", expand=True)
+    list_frame.container = container
     
-    return card_frame
+    return list_frame
 
 
 def create_card(list_frame, card_title, card_content):
-    card = ctk.CTkFrame(list_frame, width=250, height=100, corner_radius=10)  
+    card = ctk.CTkFrame(list_frame.container, width=250, height=100, corner_radius=10)  
     card.pack(padx=10, pady=10, fill='x', expand=False)  
 
     title = ctk.CTkLabel(card, text=card_title, font=("Arial", 20), anchor="w", width=200)
@@ -58,10 +62,13 @@ def create_card(list_frame, card_title, card_content):
 
 
 create_navbar()
-list = create_list("To-do")
+To_Do = create_list("To-do", 100, 'grey')
+Progress = create_list("In progress", 420, 'orange')
+Finished = create_list("Finished", 740, 'green')
+Unable = create_list("Unable", 1060, 'red')
 
-create_card(list, "Card Title", "This is the content of the card. testing extra chars")
-create_card(list, "Card Title", "This is the content of the card. testing extra chars")
+create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars")
+create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars")
 
 
 
