@@ -47,15 +47,30 @@ def create_list(title, placementx, colour):
     return list_frame
 
 
-def create_card(list_frame, card_title, card_content):
+def create_card(list_frame, card_title, card_content, priority):
     card = ctk.CTkFrame(list_frame.container, width=250, height=100, corner_radius=10)  
-    card.pack(padx=10, pady=10, fill='x', expand=False)  
+    card.pack(pady=5, fill='x', expand=False)  
 
-    title = ctk.CTkLabel(card, text=card_title, font=("Arial", 20), anchor="w", width=200)
-    title.pack(side='top', fill='x', padx=25, pady=(2, 5))
+    header_frame = ctk.CTkFrame(card, width=10)
+    header_frame.pack(fill='x', expand=False, pady=2)
+
+    title_label = ctk.CTkLabel(header_frame, text=card_title, anchor="w", font=("Arial", 20))
+    title_label.pack(side='left', padx=5)
+
+    priority_dot = ctk.CTkLabel(header_frame, text="•", text_color=priority, font=("Arial", 40))
+    priority_dot.pack(side='right', padx=10)
+
 
     content = ctk.CTkLabel(card, text=card_content, font=("Arial", 16), wraplength=230) 
     content.pack(fill='x', padx=5, pady=2)
+
+    move_left_button = ctk.CTkButton(card, text="<- Move left", font=("Arial Bold", 15), width=50 )
+    move_left_button.pack(side='left', padx=10, pady=10)
+
+    move_right_button = ctk.CTkButton(card, text="Move right ->", font=("Arial Bold", 15), width=50)
+    move_right_button.pack(side='right', padx=5, pady=10)
+
+    
 
     return card
 
@@ -65,12 +80,14 @@ create_navbar()
 To_Do = create_list("To-do", 100, 'grey')
 Progress = create_list("In progress", 420, 'orange')
 Finished = create_list("Finished", 740, 'green')
-Unable = create_list("Unable", 1060, 'red')
+On_Hold = create_list("On Hold", 1060, 'red')
 
-create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars")
-create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars")
-
-
+create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars", "red")
+create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars", "orange")
+create_card(Progress, "Card Title", "This is the content of the card. testing extra chars", "green")
+create_card(Finished, "Card Title", "This is the content of the card. testing extra chars", "orange")
+create_card(Finished, "Card Title", "This is the content of the card. testing extra chars", "red")
+create_card(On_Hold, "Card Title", "This is the content of the card. testing extra chars", "green")
 
 
 root.mainloop()
