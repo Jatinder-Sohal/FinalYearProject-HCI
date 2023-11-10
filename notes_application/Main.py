@@ -7,7 +7,7 @@ ctk.set_appearance_mode("light")
 
 root = ctk.CTk()
 root.title("Project planning")
-root.geometry("1400x900+300+50")
+root.geometry("1400x960+250+20")
 root.configure(bg_color="#F9F7F7")
 
 
@@ -30,7 +30,7 @@ def create_navbar():
 
 
 def create_list(title, placementx, colour):
-    list_frame = ctk.CTkFrame(root, height=700, width=275, fg_color='white', corner_radius=10)
+    list_frame = ctk.CTkFrame(root, height=800, width=275, fg_color='white', corner_radius=10)
     list_frame.place(x=placementx, y=100)
     #NOTE - stops content affecting size of frame
     list_frame.pack_propagate(False)
@@ -65,7 +65,7 @@ def create_card(list_frame, card_title, card_content, priority):
 
     checked_state = tk.BooleanVar(value=True)
     i = 0
-    while (i < random.randint(1, 2)):
+    while (i < random.randint(0, 2)):
         sub_task_frame = ctk.CTkFrame(card, fg_color='gainsboro')
         sub_task_frame.pack(side='top', expand=True, pady=2)
         sub_task_label = ctk.CTkLabel(sub_task_frame, text="task " +str(i) + ": start task", width=45, anchor="w", font=("Arial", 16))
@@ -82,6 +82,14 @@ def create_card(list_frame, card_title, card_content, priority):
     sub_task_label.pack(side='left', padx=42)
     checkbox = ctk.CTkCheckBox(sub_task_frame,  width=40, text="")
     checkbox.pack(side='right', padx=21)
+
+    progress_var = tk.DoubleVar(value=0)
+    
+    progress_var.set(i/(i+1) * 100) 
+    progress_frame = ctk.CTkFrame(card)
+    progress_frame.pack(pady=(5, 0))
+    progress_bar = ttk.Progressbar(progress_frame, orient='horizontal', length=170, mode='determinate', variable=progress_var, maximum=100)
+    progress_bar.pack(fill='x', padx=5)
 
     move_left_button = ctk.CTkButton(card, text="<- Move left", font=("Arial Bold", 15), width=50 )
     move_left_button.pack(side='left', padx=10, pady=10)
