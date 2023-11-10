@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import tkinter as tk
 import tkinter.ttk as ttk
+import random
 
 ctk.set_appearance_mode("light")
 
@@ -52,25 +53,41 @@ def create_card(list_frame, card_title, card_content, priority):
     card.pack(pady=5, fill='x', expand=False)  
 
     header_frame = ctk.CTkFrame(card, width=10)
-    header_frame.pack(fill='x', expand=False, pady=2)
+    header_frame.pack(side='top', expand=False, pady=2)
 
-    title_label = ctk.CTkLabel(header_frame, text=card_title, anchor="w", font=("Arial", 20))
+    title_label = ctk.CTkLabel(header_frame, text=card_title, width=225, anchor="w", font=("Arial", 20))
     title_label.pack(side='left', padx=5)
 
     priority_dot = ctk.CTkLabel(header_frame, text="•", text_color=priority, font=("Arial", 40))
     priority_dot.pack(side='right', padx=10)
 
+    
 
-    content = ctk.CTkLabel(card, text=card_content, font=("Arial", 16), wraplength=230) 
-    content.pack(fill='x', padx=5, pady=2)
+    checked_state = tk.BooleanVar(value=True)
+    i = 0
+    while (i < random.randint(1, 2)):
+        sub_task_frame = ctk.CTkFrame(card, fg_color='gainsboro')
+        sub_task_frame.pack(side='top', expand=True, pady=2)
+        sub_task_label = ctk.CTkLabel(sub_task_frame, text="task " +str(i) + ": start task", width=45, anchor="w", font=("Arial", 16))
+        sub_task_label.pack(side='left', padx=35)
+        
+        checkbutton =  ctk.CTkCheckBox(sub_task_frame, width=40, text="", variable=checked_state)
+        checkbutton.pack(side='right', padx=15, pady=5)
+        i = i + 1
+
+    #Unchecked box   
+    sub_task_frame = ctk.CTkFrame(card, fg_color='gainsboro')
+    sub_task_frame.pack(side='top', expand=True, pady=2)
+    sub_task_label = ctk.CTkLabel(sub_task_frame, text="task " +str(i) + ": do task", width=45, anchor="w", font=("Arial", 16))
+    sub_task_label.pack(side='left', padx=42)
+    checkbox = ctk.CTkCheckBox(sub_task_frame,  width=40, text="")
+    checkbox.pack(side='right', padx=21)
 
     move_left_button = ctk.CTkButton(card, text="<- Move left", font=("Arial Bold", 15), width=50 )
     move_left_button.pack(side='left', padx=10, pady=10)
 
     move_right_button = ctk.CTkButton(card, text="Move right ->", font=("Arial Bold", 15), width=50)
-    move_right_button.pack(side='right', padx=5, pady=10)
-
-    
+    move_right_button.pack(side='right', padx=5, pady=10)  
 
     return card
 
@@ -80,9 +97,10 @@ create_navbar()
 To_Do = create_list("To-do", 100, 'grey')
 Progress = create_list("In progress", 420, 'orange')
 Finished = create_list("Finished", 740, 'green')
-On_Hold = create_list("On Hold", 1060, 'red')
+On_Hold = create_list("On Hold", 1060, 'pink')
 
 create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars", "red")
+create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars", "orange")
 create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars", "orange")
 create_card(Progress, "Card Title", "This is the content of the card. testing extra chars", "green")
 create_card(Finished, "Card Title", "This is the content of the card. testing extra chars", "orange")
