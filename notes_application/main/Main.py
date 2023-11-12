@@ -15,7 +15,7 @@ root.configure(bg_color="#F9F7F7")
 
 
 
-def create_navbar():
+def create_navbar(root):
     navbar = tk.Frame(root, height=75, bg='white') 
     navbar.pack(side=tk.TOP, fill=tk.X)
 
@@ -38,26 +38,29 @@ def create_navbar():
     search_entry.place(relx=0.91, rely=0.05, anchor=tk.CENTER)
     ToolTip(search_entry, msg="Search for a setting here")
     
-    search_image = Image.open("./magnifier-left-svgrepo-com.png")
-    search_image = search_image.resize((19, 19), Image.ANTIALIAS)  
-    search_image = ImageTk.PhotoImage(search_image)
+    search_image = Image.open("../resources/magnifier-left-svgrepo-com.png")
+    search_image = search_image.resize((19, 19), Image.ANTIALIAS)
+    root.search_image = ImageTk.PhotoImage(search_image)
 
-    search_image_label = tk.Label(root, image=search_image)
-    search_image_label.image = search_image  
+    
+    search_image_label = tk.Label(root, image=root.search_image)
+    search_image_label.image = root.search_image
     search_image_label.place(relx = 0.98, rely=0.05, anchor = tk.CENTER)
     ToolTip(search_image_label, msg="Click to search")
+
+    return navbar
 
 def create_top_bar(root):
     top_bar = tk.Frame(root, bg='white') 
     top_bar.place(relx = 0.13, rely = 0.05, anchor = tk.CENTER)
     
-    add_img = Image.open("./add-circle-svgrepo-com.png")
+    add_img = Image.open("../resources/add-circle-svgrepo-com.png")
     add_photo = ctk.CTkImage(add_img)
     
-    undo_img = Image.open("./undo-svgrepo-com.png")
+    undo_img = Image.open("../resources/undo-svgrepo-com.png")
     undo_photo = ctk.CTkImage(undo_img)
 
-    redo_img = Image.open("./redo-svgrepo-com.png")
+    redo_img = Image.open("../resources/redo-svgrepo-com.png")
     redo_photo = ctk.CTkImage(redo_img)
 
     undo_button = ctk.CTkButton(top_bar, text="Add card", image=add_photo, width=100, height=30, font=("Arial", 18))
@@ -152,7 +155,7 @@ def create_card(list_frame, card_title, card_content, priority):
 
 
 
-create_navbar()
+create_navbar(root)
 create_top_bar(root)
 
 To_Do = create_list("To-do", 100, 'grey')
