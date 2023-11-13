@@ -81,7 +81,7 @@ def create_top_bar(root):
     
 
 
-def create_list(title, placementx, colour):
+def create_list(title, placementx, colour, root):
     list_frame = ctk.CTkFrame(root, height=800, width=275, fg_color='white', corner_radius=10)
     list_frame.place(x=placementx, y=100)
     #NOTE - stops content affecting size of frame
@@ -151,17 +151,18 @@ def create_card(list_frame, card_title, card_content, priority):
     move_right_button = ctk.CTkButton(card, text="Move right ->", font=("Arial Bold", 15), width=50)
     move_right_button.pack(side='right', padx=5, pady=10)  
     ToolTip(move_right_button, msg="Click to move card to the right list")
-    return card
+    
+    return card, move_left_button, move_right_button, checkbox
 
 
 
 create_navbar(root)
 create_top_bar(root)
 
-To_Do = create_list("To-do", 100, 'grey')
-Progress = create_list("In progress", 420, 'orange')
-Finished = create_list("Finished", 740, 'green')
-On_Hold = create_list("On Hold", 1060, 'pink')
+To_Do = create_list("To-do", 100, 'grey', root)
+Progress = create_list("In progress", 420, 'orange', root)
+Finished = create_list("Finished", 740, 'green', root)
+On_Hold = create_list("On Hold", 1060, 'pink', root)
 
 create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars", "red")
 create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars", "orange")
