@@ -76,10 +76,6 @@ def create_top_bar(root):
     redo_button.pack(side=tk.LEFT)
     ToolTip(redo_button, msg="Click this button to redo any changes")
 
-    
-
-    
-
 
 def create_list(title, placementx, colour, root):
     list_frame = ctk.CTkFrame(root, height=800, width=275, fg_color='white', corner_radius=10)
@@ -98,6 +94,18 @@ def create_list(title, placementx, colour, root):
     list_frame.container = container
     
     return list_frame
+
+
+def create_card_data(title, content, priority):
+    return {
+        'title': title,
+        'content': content,
+        'priority': priority
+    }
+
+def create_and_place_cards(list_frame, cards):
+    for card_data in cards:
+        create_card(list_frame, card_data['title'], card_data['content'], card_data['priority'])
 
 
 def create_card(list_frame, card_title, card_content, priority):
@@ -154,7 +162,23 @@ def create_card(list_frame, card_title, card_content, priority):
     
     return card, move_left_button, move_right_button, checkbox
 
+to_do_cards = [
+    create_card_data("Card Title 1", "Content 1", "red"),
+    create_card_data("Card Title 2", "Content 2", "orange"),
+]
 
+progress_cards = [
+    create_card_data("Card Title 3", "Content 3", "green"),
+]
+
+finished_cards = [
+    create_card_data("Card Title 4", "Content 4", "orange"),
+    create_card_data("Card Title 5", "Content 5", "red"),
+]
+
+on_hold_cards = [
+    create_card_data("Card Title 6", "Content 6", "green"),
+]
 
 create_navbar(root)
 create_top_bar(root)
@@ -164,13 +188,9 @@ Progress = create_list("In progress", 420, 'orange', root)
 Finished = create_list("Finished", 740, 'green', root)
 On_Hold = create_list("On Hold", 1060, 'pink', root)
 
-create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars", "red")
-create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars", "orange")
-create_card(To_Do, "Card Title", "This is the content of the card. testing extra chars", "orange")
-create_card(Progress, "Card Title", "This is the content of the card. testing extra chars", "green")
-create_card(Finished, "Card Title", "This is the content of the card. testing extra chars", "orange")
-create_card(Finished, "Card Title", "This is the content of the card. testing extra chars", "red")
-create_card(On_Hold, "Card Title", "This is the content of the card. testing extra chars", "green")
-
+create_and_place_cards(To_Do, to_do_cards)
+create_and_place_cards(Progress, progress_cards)
+create_and_place_cards(Finished, finished_cards)
+create_and_place_cards(On_Hold, on_hold_cards)
 
 root.mainloop()
