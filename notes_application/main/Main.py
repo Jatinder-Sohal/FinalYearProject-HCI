@@ -10,7 +10,7 @@ ctk.set_appearance_mode("light")
 
 
 class Navbar:
-    def create_navbar(root):
+    def create_Navbar(root):
         navbar = tk.Frame(root, height=75, bg='white') 
         navbar.pack(side=tk.TOP, fill=tk.X)
 
@@ -98,9 +98,17 @@ class Cards:
             'priority': priority
         }
 
+    def sync_ui():
+        Cards.create_and_place_cards(To_Do, to_do_cards)
+        Cards.create_and_place_cards(Progress, progress_cards)
+        Cards.create_and_place_cards(Finished, finished_cards)
+        Cards.create_and_place_cards(On_Hold, on_hold_cards)
+
+
     def create_and_place_cards(list_frame, cards):
         for card_data in cards:
             Cards.create_card(list_frame, card_data['title'], card_data['content'], card_data['priority'])
+
 
 
     def create_card(list_frame, card_title, card_content, priority):
@@ -149,51 +157,37 @@ class Cards:
 
         move_left_button = ctk.CTkButton(card, text="<- Move left", font=("Arial Bold", 15), width=50 )
         move_left_button.pack(side='left', padx=10, pady=10)
-        ToolTip(move_left_button, msg="Click to move card to the left list")
+
 
         move_right_button = ctk.CTkButton(card, text="Move right ->", font=("Arial Bold", 15), width=50)
         move_right_button.pack(side='right', padx=5, pady=10)  
-        ToolTip(move_right_button, msg="Click to move card to the right list")
+
         
         return card, move_left_button, move_right_button, checkbox
 
 class SetUp:
-    def init():
-        to_do_cards = [
-            Cards.create_card_data("Card Title 1", "Content 1", "red"),
-            Cards.create_card_data("Card Title 2", "Content 2", "orange"),
-        ]
-
-        progress_cards = [
-            Cards.create_card_data("Card Title 3", "Content 3", "green"),
-        ]
-
-        finished_cards = [
-            Cards.create_card_data("Card Title 4", "Content 4", "orange"),
-            Cards.create_card_data("Card Title 5", "Content 5", "red"),
-        ]
-
-        on_hold_cards = [
-            Cards.create_card_data("Card Title 6", "Content 6", "green"),
-        ]
-
-        Navbar.create_navbar(root)
+    def __init__(self):
+        Navbar.create_Navbar(root)
         Navbar.create_top_bar(root)
 
-        To_Do = Lists.create_list("To-do", 100, 'grey', root)
-        Progress = Lists.create_list("In progress", 420, 'orange', root)
-        Finished = Lists.create_list("Finished", 740, 'green', root)
-        On_Hold = Lists.create_list("On Hold", 1060, 'pink', root)
+        Cards.sync_ui()
 
-        Cards.create_and_place_cards(To_Do, to_do_cards)
-        Cards.create_and_place_cards(Progress, progress_cards)
-        Cards.create_and_place_cards(Finished, finished_cards)
-        Cards.create_and_place_cards(On_Hold, on_hold_cards)
 
 if __name__ == "__main__":
     root = ctk.CTk()
     root.title("Project planning")
     root.geometry("1400x960+250+20")
     root.configure(bg_color="#F9F7F7")
-    SetUp.init()
+
+    to_do_cards = [Cards.create_card_data("Card Title 1", "Content 1", "red"), Cards.create_card_data("Card Title 2", "Content 2", "orange")]
+    progress_cards = [Cards.create_card_data("Card Title 3", "Content 3", "green")]
+    finished_cards = [Cards.create_card_data("Card Title 4", "Content 4", "orange"), Cards.create_card_data("Card Title 5", "Content 5", "red")]
+    on_hold_cards = [Cards.create_card_data("Card Title 6", "Content 6", "green")]
+
+
+    To_Do = Lists.create_list("To-do", 100, 'grey', root)
+    Progress = Lists.create_list("In progress", 420, 'orange', root)
+    Finished = Lists.create_list("Finished", 740, 'green', root)
+    On_Hold = Lists.create_list("On Hold", 1060, 'pink', root)
+    SetUp()
     root.mainloop()
