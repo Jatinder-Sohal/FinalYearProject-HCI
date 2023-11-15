@@ -91,11 +91,12 @@ class Lists:
         return list_frame
 
 class Cards:
-    def create_card_data(title, content, priority):
+    def create_card_data(title, content, priority, tasks):
         return {
             'title': title,
             'content': content,
-            'priority': priority
+            'priority': priority,
+            'tasks': tasks
         }
     def move_card(card, from_list, to_list):
         from_list.remove(card)
@@ -121,7 +122,7 @@ class Cards:
 
     def create_and_place_cards(list_frame, cards):
         for card_data in cards:
-            card, move_left_button, move_right_button, checkbox = Cards.create_card(list_frame, card_data['title'], card_data['content'], card_data['priority'])
+            card, move_left_button, move_right_button, checkbox = Cards.create_card(list_frame, card_data['title'], card_data['content'], card_data['priority'], card_data['tasks'])
             #NOTE - Lambda lets me use small function in one line
             if list_frame == To_Do:
                 move_left_button.pack_forget()
@@ -139,7 +140,7 @@ class Cards:
                 move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, on_hold_cards, finished_cards))
 
 
-    def create_card(list_frame, card_title, card_content, priority):
+    def create_card(list_frame, card_title, card_content, priority, tasks):
         card = ctk.CTkFrame(list_frame.container, width=250, height=100, corner_radius=10)  
         card.pack(pady=5, fill='x', expand=False)  
 
@@ -157,7 +158,7 @@ class Cards:
 
         checked_state = tk.BooleanVar(value=True)
         i = 0
-        while (i < random.randint(0, 2)):
+        while (i < tasks):
             sub_task_frame = ctk.CTkFrame(card, fg_color='gainsboro')
             sub_task_frame.pack(side='top', expand=True, pady=2)
             sub_task_label = ctk.CTkLabel(sub_task_frame, text="task " +str(i) + ": start task", width=45, anchor="w", font=("Arial", 16))
@@ -183,11 +184,15 @@ class Cards:
         progress_bar = ttk.Progressbar(progress_frame, orient='horizontal', length=170, mode='determinate', variable=progress_var, maximum=100)
         progress_bar.pack(fill='x', padx=5)
 
-        move_left_button = ctk.CTkButton(card, text="<- Move left", font=("Arial Bold", 15), width=90 )
-        move_left_button.pack(side='left', padx=10, pady=10, anchor='center')
 
+        left_img = Image.open("../resources/left-svgrepo-com.png")
+        left_photo = ctk.CTkImage(left_img)
+        move_left_button = ctk.CTkButton(card, text="Move left ", image=left_photo, width=10, height=30, font=("Arial Bold", 15))
+        move_left_button.pack(side='left', padx=8, pady=10, anchor='center')
 
-        move_right_button = ctk.CTkButton(card, text="Move right ->", font=("Arial Bold", 15), width=100)
+        right_img = Image.open("../resources/right-3-svgrepo-com.png")
+        right_photo = ctk.CTkImage(right_img)
+        move_right_button = ctk.CTkButton(card, text="Move right", image=right_photo, font=("Arial Bold", 15), width=100, compound=tk.RIGHT)
         move_right_button.pack(side='right', padx=10, pady=10, anchor='center')  
 
         
@@ -207,10 +212,13 @@ if __name__ == "__main__":
     root.geometry("1400x960+250+20")
     root.configure(bg_color="#F9F7F7")
 
-    to_do_cards = [Cards.create_card_data("Card Title 1", "Content 1", "red"), Cards.create_card_data("Card Title 2", "Content 2", "orange")]
-    progress_cards = [Cards.create_card_data("Card Title 3", "Content 3", "green")]
-    finished_cards = [Cards.create_card_data("Card Title 4", "Content 4", "orange"), Cards.create_card_data("Card Title 5", "Content 5", "red")]
-    on_hold_cards = [Cards.create_card_data("Card Title 6", "Content 6", "green")]
+
+
+
+    to_do_cards = [Cards.create_card_data("Card Title 1", "Content 1", "red", 0), Cards.create_card_data("Card Title 2", "Content 2", "orange", 2)]
+    progress_cards = [Cards.create_card_data("Card Title 3", "Content 3", "green", 2)]
+    finished_cards = [Cards.create_card_data("Card Title 4", "Content 4", "orange", 1), Cards.create_card_data("Card Title 5", "Content 5", "red", 0)]
+    on_hold_cards = [Cards.create_card_data("Card Title 6", "Content 6", "green", 1)]
 
 
     To_Do = Lists.create_list("To-do", 100, 'grey', root)
