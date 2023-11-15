@@ -1,7 +1,6 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 import customtkinter as ctk
-import random
 from PIL import Image, ImageTk
 from tktooltip import ToolTip
 
@@ -58,9 +57,9 @@ class Navbar:
         redo_img = Image.open("../resources/redo-svgrepo-com.png")
         redo_photo = ctk.CTkImage(redo_img)
 
-        undo_button = ctk.CTkButton(top_bar, text="Add card", image=add_photo, width=100, height=30, font=("Arial", 18))
-        undo_button.pack(side=tk.LEFT)
-        ToolTip(undo_button, msg="Click this button to undo any changes")
+        add_card_button = ctk.CTkButton(top_bar, text="Add card", image=add_photo, width=100, height=30, font=("Arial", 18), command=Cards.open_add_card_window)
+        add_card_button.pack(side=tk.LEFT)
+        ToolTip(add_card_button, msg="Click this button to add a new card")
 
 
         undo_button = ctk.CTkButton(top_bar, text="Undo", image=undo_photo, width=100, height=30, font=("Arial", 18))
@@ -184,7 +183,6 @@ class Cards:
         progress_bar = ttk.Progressbar(progress_frame, orient='horizontal', length=170, mode='determinate', variable=progress_var, maximum=100)
         progress_bar.pack(fill='x', padx=5)
 
-
         left_img = Image.open("../resources/left-svgrepo-com.png")
         left_photo = ctk.CTkImage(left_img)
         move_left_button = ctk.CTkButton(card, text="Move left ", image=left_photo, width=10, height=30, font=("Arial Bold", 15))
@@ -193,10 +191,28 @@ class Cards:
         right_img = Image.open("../resources/right-3-svgrepo-com.png")
         right_photo = ctk.CTkImage(right_img)
         move_right_button = ctk.CTkButton(card, text="Move right", image=right_photo, font=("Arial Bold", 15), width=100, compound=tk.RIGHT)
-        move_right_button.pack(side='right', padx=10, pady=10, anchor='center')  
-
+        move_right_button.pack(side='right', padx=10, pady=10, anchor='center')
         
         return card, move_left_button, move_right_button, checkbox
+
+
+        
+    def open_add_card_window():
+        add_card_window = tk.Toplevel(root)
+        add_card_window.title("Add New Card")
+        add_card_window.geometry("1000x450+250+20")
+
+        title_label = tk.Label(add_card_window, text="Title:")
+        title_label.pack()
+        title_entry = tk.Entry(add_card_window, width=20)
+        title_entry.pack()
+
+        #new_card = Cards.create_card_data(title, content, priority, tasks)
+
+        #to_do_cards.append(new_card)
+        Cards.sync_ui()
+        window.destroy()
+    
 
 class SetUp:
     def __init__(self):
