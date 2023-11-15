@@ -10,7 +10,7 @@ ctk.set_appearance_mode("light")
 
 
 class Navbar:
-    def create_Navbar(root):
+    def create_navbar(root):
         navbar = tk.Frame(root, height=75, bg='white') 
         navbar.pack(side=tk.TOP, fill=tk.X)
 
@@ -97,8 +97,22 @@ class Cards:
             'content': content,
             'priority': priority
         }
-
+    def move_card(card, from_list, to_list):
+        from_list.remove(card)
+        to_list.append(card)
+        Cards.sync_ui()
+        
     def sync_ui():
+        #Code from https://stackoverflow.com/questions/15781802/python-tkinter-clearing-a-frame
+        for widget in To_Do.container.winfo_children():
+            widget.destroy()
+        for widget in Progress.container.winfo_children():
+            widget.destroy()
+        for widget in Finished.container.winfo_children():
+            widget.destroy()
+        for widget in On_Hold.container.winfo_children():
+            widget.destroy()
+            
         Cards.create_and_place_cards(To_Do, to_do_cards)
         Cards.create_and_place_cards(Progress, progress_cards)
         Cards.create_and_place_cards(Finished, finished_cards)
@@ -107,8 +121,10 @@ class Cards:
 
     def create_and_place_cards(list_frame, cards):
         for card_data in cards:
-            Cards.create_card(list_frame, card_data['title'], card_data['content'], card_data['priority'])
-
+            card, move_left_button, move_right_button, checkbox = Cards.create_card(list_frame, card_data['title'], card_data['content'], card_data['priority'])
+            #NOTE - Lambda lets me use small function in one line
+            if list_frame == To_Do:
+                move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, to_do_cards, progress_cards))
 
 
     def create_card(list_frame, card_title, card_content, priority):
@@ -167,7 +183,7 @@ class Cards:
 
 class SetUp:
     def __init__(self):
-        Navbar.create_Navbar(root)
+        Navbar.create_navbar(root)
         Navbar.create_top_bar(root)
 
         Cards.sync_ui()
