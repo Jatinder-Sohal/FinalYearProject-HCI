@@ -124,7 +124,19 @@ class Cards:
             card, move_left_button, move_right_button, checkbox = Cards.create_card(list_frame, card_data['title'], card_data['content'], card_data['priority'])
             #NOTE - Lambda lets me use small function in one line
             if list_frame == To_Do:
+                move_left_button.pack_forget()
+                move_right_button.pack(side='top', padx=10, pady=10, anchor='center')
                 move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, to_do_cards, progress_cards))
+            elif list_frame == Progress:
+                move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, progress_cards, to_do_cards))
+                move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, progress_cards, finished_cards))
+            elif list_frame == Finished:
+                move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, finished_cards, progress_cards))
+                move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, finished_cards, on_hold_cards))
+            elif list_frame == On_Hold:
+                move_right_button.pack_forget()
+                move_left_button.pack(side='top', padx=10, pady=10, anchor='center')
+                move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, on_hold_cards, finished_cards))
 
 
     def create_card(list_frame, card_title, card_content, priority):
@@ -171,12 +183,12 @@ class Cards:
         progress_bar = ttk.Progressbar(progress_frame, orient='horizontal', length=170, mode='determinate', variable=progress_var, maximum=100)
         progress_bar.pack(fill='x', padx=5)
 
-        move_left_button = ctk.CTkButton(card, text="<- Move left", font=("Arial Bold", 15), width=50 )
-        move_left_button.pack(side='left', padx=10, pady=10)
+        move_left_button = ctk.CTkButton(card, text="<- Move left", font=("Arial Bold", 15), width=90 )
+        move_left_button.pack(side='left', padx=10, pady=10, anchor='center')
 
 
-        move_right_button = ctk.CTkButton(card, text="Move right ->", font=("Arial Bold", 15), width=50)
-        move_right_button.pack(side='right', padx=5, pady=10)  
+        move_right_button = ctk.CTkButton(card, text="Move right ->", font=("Arial Bold", 15), width=100)
+        move_right_button.pack(side='right', padx=10, pady=10, anchor='center')  
 
         
         return card, move_left_button, move_right_button, checkbox
