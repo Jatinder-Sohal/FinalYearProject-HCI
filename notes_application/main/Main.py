@@ -195,24 +195,48 @@ class Cards:
         
         return card, move_left_button, move_right_button, checkbox
 
+    def add_card(title, content, priority, tasks, window):
+        new_card = Cards.create_card_data(title, content, priority, int(tasks))
+        to_do_cards.append(new_card)
+        Cards.sync_ui()
+        window.destroy()    
+    
 
         
     def open_add_card_window():
         add_card_window = tk.Toplevel(root)
         add_card_window.title("Add New Card")
-        add_card_window.geometry("1000x450+250+20")
+        add_card_window.geometry("1000x450+400+300")
 
-        title_label = tk.Label(add_card_window, text="Title:")
-        title_label.pack()
-        title_entry = tk.Entry(add_card_window, width=20)
-        title_entry.pack()
+        title_label = tk.Label(add_card_window, text="Title:", font=("Arial Bold", 23))
+        title_label.pack(pady=1)
+        title_entry = ctk.CTkEntry(add_card_window, width=200, height=30, font=("Arial Bold", 20))
+        title_entry.pack(pady=7)
 
-        #new_card = Cards.create_card_data(title, content, priority, tasks)
 
-        #to_do_cards.append(new_card)
-        Cards.sync_ui()
-        window.destroy()
-    
+        content_label = tk.Label(add_card_window, text="Content:", font=("Arial Bold", 23))
+        content_label.pack()
+        content_entry = ctk.CTkEntry(add_card_window, width=200, height=30, font=("Arial Bold", 20))
+        content_entry.pack(pady=3)
+
+        priority_label = tk.Label(add_card_window, text="Priority:", font=("Arial Bold", 23))
+        priority_label.pack(pady=3)
+        priority_choices = ['red', 'orange', 'green']
+        priority_dropdown = ctk.CTkOptionMenu(add_card_window, values=priority_choices, width=100, fg_color="black", button_color='black', font=("Arial", 18))
+        priority_dropdown.pack(pady=1)
+
+
+        taskNumber_label = ctk.CTkLabel(add_card_window, text="Number of Tasks:", font=("Arial Bold", 23))
+        taskNumber_label.pack(pady=9)
+        taskNumber_entry = ctk.CTkEntry(add_card_window, width=200, height=30, font=("Arial Bold", 20))
+        taskNumber_entry.pack()
+
+        # Submit button
+        submit_button = ctk.CTkButton(add_card_window, text="Add Card", font=("Arial Bold", 23), command=lambda: Cards.add_card(title_entry.get(), content_entry.get(), priority_dropdown.get(), taskNumber_entry.get(), add_card_window))
+        submit_button.pack(pady=30)
+
+
+
 
 class SetUp:
     def __init__(self):
