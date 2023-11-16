@@ -189,8 +189,9 @@ class Cards:
         
         return card, move_left_button, move_right_button
 
-    def add_card(title, content, priority, tasks, window):
-        new_card = Cards.create_card_data(title, content, priority, int(tasks))
+    def add_card(title, subtasks_list, priority, window):
+        subtasks = subtasks_list.split('\n')
+        new_card = Cards.create_card_data(title, subtasks, priority, len(subtasks)-2)
         to_do_cards.append(new_card)
         Cards.sync_ui()
         window.destroy()    
@@ -208,10 +209,12 @@ class Cards:
         title_entry.pack(pady=7)
 
 
-        content_label = tk.Label(add_card_window, text="Content:", font=("Arial Bold", 23))
-        content_label.pack()
-        content_entry = ctk.CTkEntry(add_card_window, width=200, height=30, font=("Arial Bold", 20))
-        content_entry.pack(pady=3)
+        
+        subtasks_label = tk.Label(add_card_window, text="Subtasks (one per line):", font=("Arial Bold", 23))
+        subtasks_label.pack()
+        subtasks_text = tk.Text(add_card_window, height=5, width=20,  borderwidth=1, relief="solid")
+        subtasks_text.pack()
+
 
         priority_label = tk.Label(add_card_window, text="Priority:", font=("Arial Bold", 23))
         priority_label.pack(pady=3)
@@ -220,14 +223,47 @@ class Cards:
         priority_dropdown.pack(pady=1)
 
 
-        taskNumber_label = ctk.CTkLabel(add_card_window, text="Number of Tasks:", font=("Arial Bold", 23))
-        taskNumber_label.pack(pady=9)
-        taskNumber_entry = ctk.CTkEntry(add_card_window, width=200, height=30, font=("Arial Bold", 20))
-        taskNumber_entry.pack()
-
         # Submit button
-        submit_button = ctk.CTkButton(add_card_window, text="Add Card", font=("Arial Bold", 23), command=lambda: Cards.add_card(title_entry.get(), content_entry.get(), priority_dropdown.get(), taskNumber_entry.get(), add_card_window))
+        submit_button = ctk.CTkButton(add_card_window, text="Add Card", font=("Arial Bold", 23), command=lambda: Cards.add_card(title_entry.get(), subtasks_text.get("1.0", tk.END), priority_dropdown.get(), add_card_window))
         submit_button.pack(pady=30)
+
+
+
+
+class SetUp:
+    def __init__(self):
+        Navbar.create_navbar(root)
+        Navbar.create_top_bar(root)
+
+        Cards.sync_ui()
+
+
+if __name__ == "__main__":
+    root = ctk.CTk()
+    root.title("Project planning")
+    root.geometry("1400x960+250+20")
+    root.configure(bg_color="#F9F7F7")
+
+
+
+
+    to_do_cards = [Cards.create_card_data("Card Title 1", ["Content 1"], "red", 0), Cards.create_card_data("Card Title 2", ["Subtask 1", "Subtask 2", "Subtask 4"], "orange", 2)]
+    progress_cards = [Cards.create_card_data("Card Title 3", ["Subtask 1", "Subtask 2", "Subtask 2"], "green", 2)]
+    finished_cards = [Cards.create_card_data("Card Title 4", ["Subtask 1", "Subtask 2"], "orange", 1), Cards.create_card_data("Card Title 5", ["Content 1"], "red", 0)]
+    on_hold_cards = [Cards.create_card_data("Card Title 6", ["Subtask 1", "Subtask 2"], "green", 1)]
+
+
+    To_Do = Lists.create_list("To-do", 100, 'grey', root)
+    Progress = Lists.create_list("In progress", 420, 'orange', root)
+    Finished = Lists.create_list("Finished", 740, 'green', root)
+    On_Hold = Lists.create_list("On Hold", 1060, 'pink', root)
+    SetUp()
+    root.mainloop()
+
+     
+
+
+        
 
 
 
