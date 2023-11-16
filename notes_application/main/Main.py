@@ -121,7 +121,7 @@ class Cards:
 
     def create_and_place_cards(list_frame, cards):
         for card_data in cards:
-            card, move_left_button, move_right_button, checkbox = Cards.create_card(list_frame, card_data['title'], card_data['content'], card_data['priority'], card_data['tasks'])
+            card, move_left_button, move_right_button = Cards.create_card(list_frame, card_data['title'], card_data['content'], card_data['priority'], card_data['tasks'])
             #NOTE - Lambda lets me use small function in one line
             if list_frame == To_Do:
                 move_left_button.pack_forget()
@@ -154,26 +154,20 @@ class Cards:
         ToolTip(priority_dot, msg="Indicites importance: Red being the most, green the least")
 
         
-
-        checked_state = tk.BooleanVar(value=True)
         i = 0
-        while (i < tasks):
+        while (i <= tasks):
+            task = card_content[i] 
             sub_task_frame = ctk.CTkFrame(card, fg_color='gainsboro')
             sub_task_frame.pack(side='top', expand=True, pady=2)
-            sub_task_label = ctk.CTkLabel(sub_task_frame, text="task " +str(i) + ": start task", width=45, anchor="w", font=("Arial", 16))
+            sub_task_label = ctk.CTkLabel(sub_task_frame, text="Task " +str(i+1)+": "+task, width=45, anchor="w", font=("Arial", 16))
             sub_task_label.pack(side='left', padx=35)
-            
+
+            checked_state = tk.BooleanVar(value=True)
+            if (i==tasks):
+                checked_state = tk.BooleanVar(value=False)  
             checkbutton =  ctk.CTkCheckBox(sub_task_frame, width=40, text="", variable=checked_state)
             checkbutton.pack(side='right', padx=15, pady=5)
-            i = i + 1
-
-        #Unchecked box   
-        sub_task_frame = ctk.CTkFrame(card, fg_color='gainsboro')
-        sub_task_frame.pack(side='top', expand=True, pady=2)
-        sub_task_label = ctk.CTkLabel(sub_task_frame, text="task " +str(i) + ": do task", width=45, anchor="w", font=("Arial", 16))
-        sub_task_label.pack(side='left', padx=42)
-        checkbox = ctk.CTkCheckBox(sub_task_frame,  width=40, text="")
-        checkbox.pack(side='right', padx=21)
+            i = i + 1   
 
         progress_var = tk.DoubleVar(value=0)
         
@@ -193,7 +187,7 @@ class Cards:
         move_right_button = ctk.CTkButton(card, text="Move right", image=right_photo, font=("Arial Bold", 15), width=100, compound=tk.RIGHT)
         move_right_button.pack(side='right', padx=10, pady=10, anchor='center')
         
-        return card, move_left_button, move_right_button, checkbox
+        return card, move_left_button, move_right_button
 
     def add_card(title, content, priority, tasks, window):
         new_card = Cards.create_card_data(title, content, priority, int(tasks))
@@ -255,10 +249,10 @@ if __name__ == "__main__":
 
 
 
-    to_do_cards = [Cards.create_card_data("Card Title 1", "Content 1", "red", 0), Cards.create_card_data("Card Title 2", "Content 2", "orange", 2)]
-    progress_cards = [Cards.create_card_data("Card Title 3", "Content 3", "green", 2)]
-    finished_cards = [Cards.create_card_data("Card Title 4", "Content 4", "orange", 1), Cards.create_card_data("Card Title 5", "Content 5", "red", 0)]
-    on_hold_cards = [Cards.create_card_data("Card Title 6", "Content 6", "green", 1)]
+    to_do_cards = [Cards.create_card_data("Card Title 1", ["Content 1"], "red", 0), Cards.create_card_data("Card Title 2", ["Subtask 1", "Subtask 2", "Subtask 4"], "orange", 2)]
+    progress_cards = [Cards.create_card_data("Card Title 3", ["Subtask 1", "Subtask 2", "Subtask 2"], "green", 2)]
+    finished_cards = [Cards.create_card_data("Card Title 4", ["Subtask 1", "Subtask 2"], "orange", 1), Cards.create_card_data("Card Title 5", ["Content 1"], "red", 0)]
+    on_hold_cards = [Cards.create_card_data("Card Title 6", ["Subtask 1", "Subtask 2"], "green", 1)]
 
 
     To_Do = Lists.create_list("To-do", 100, 'grey', root)
