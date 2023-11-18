@@ -72,23 +72,50 @@ class Navbar:
 
 class Lists:
     def create_list(title, placementx, colour, root):
-        list_frame = ctk.CTkFrame(root, height=800, width=275, fg_color='white', corner_radius=10)
+        list_frame = ctk.CTkFrame(root, height=800, width=285, fg_color='white', corner_radius=10)
         list_frame.place(x=placementx, y=100)
-        #NOTE - stops content affecting size of frame
         list_frame.pack_propagate(False)
 
-        border_frame = ctk.CTkFrame(list_frame, fg_color=colour, height=5)
-        border_frame.pack(side="top", fill="x")
 
-        title_label = ctk.CTkLabel(list_frame, text=title,font=("Arial Bold", 25))
+        header_frame = ctk.CTkFrame(list_frame, fg_color='white')
+        header_frame.pack(side='top', fill='x')
+
+        border_frame = ctk.CTkFrame(header_frame, fg_color=colour, height=5)
+        border_frame.pack(side='top', fill='x')
+
+        title_label = ctk.CTkLabel(header_frame, text=title, font=("Arial Bold", 25))
         title_label.pack(pady=(6, 20))
 
-        container = ctk.CTkFrame(list_frame, fg_color='white')
-        container.pack(fill="both", expand=True)
-        list_frame.container = container
-        
-        return list_frame
 
+        canvas = tk.Canvas(list_frame, bg='white', highlightthickness=0, width=255)  # Width is less to accommodate scrollbar
+        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+
+        scrollbar = ttk.Scrollbar(list_frame, orient='vertical', command=canvas.yview)
+        scrollbar.pack(side=tk.RIGHT, fill='y')
+
+
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+    
+        container = ctk.CTkFrame(canvas, fg_color='white')
+        window_id = canvas.create_window((0, 0), window=container, anchor='nw')
+
+
+        def on_frame_configure(event):
+            canvas.configure(scrollregion=canvas.bbox("all"))
+
+        container.bind('<Configure>', on_frame_configure)
+
+
+        canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox('all')))
+
+        return container
+
+
+
+
+    
 class Cards:
     def create_card_data(title, content, priority, tasks):
         return {
@@ -104,13 +131,13 @@ class Cards:
         
     def sync_ui():
         #Code from https://stackoverflow.com/questions/15781802/python-tkinter-clearing-a-frame
-        for widget in To_Do.container.winfo_children():
+        for widget in To_Do.winfo_children():
             widget.destroy()
-        for widget in Progress.container.winfo_children():
+        for widget in Progress.winfo_children():
             widget.destroy()
-        for widget in Finished.container.winfo_children():
+        for widget in Finished.winfo_children():
             widget.destroy()
-        for widget in On_Hold.container.winfo_children():
+        for widget in On_Hold.winfo_children():
             widget.destroy()
             
         Cards.create_and_place_cards(To_Do, to_do_cards)
@@ -140,7 +167,7 @@ class Cards:
 
 
     def create_card(list_frame, card_title, card_content, priority, tasks):
-        card = ctk.CTkFrame(list_frame.container, width=250, height=100, corner_radius=10)  
+        card = ctk.CTkFrame(list_frame, width=250, height=100, corner_radius=10)  
         card.pack(pady=5, fill='x', expand=False)  
 
         header_frame = ctk.CTkFrame(card, width=10)
@@ -208,7 +235,6 @@ class Cards:
         title_entry = ctk.CTkEntry(add_card_window, width=200, height=30, font=("Arial Bold", 20))
         title_entry.pack(pady=7)
 
-
         
         subtasks_label = tk.Label(add_card_window, text="Subtasks (one per line):", font=("Arial Bold", 23))
         subtasks_label.pack()
@@ -258,42 +284,4 @@ if __name__ == "__main__":
     Finished = Lists.create_list("Finished", 740, 'green', root)
     On_Hold = Lists.create_list("On Hold", 1060, 'pink', root)
     SetUp()
-    root.mainloop()
-
-     
-
-
-        
-
-
-
-
-class SetUp:
-    def __init__(self):
-        Navbar.create_navbar(root)
-        Navbar.create_top_bar(root)
-
-        Cards.sync_ui()
-
-
-if __name__ == "__main__":
-    root = ctk.CTk()
-    root.title("Project planning")
-    root.geometry("1400x960+250+20")
-    root.configure(bg_color="#F9F7F7")
-
-
-
-
-    to_do_cards = [Cards.create_card_data("Card Title 1", ["Content 1"], "red", 0), Cards.create_card_data("Card Title 2", ["Subtask 1", "Subtask 2", "Subtask 4"], "orange", 2)]
-    progress_cards = [Cards.create_card_data("Card Title 3", ["Subtask 1", "Subtask 2", "Subtask 2"], "green", 2)]
-    finished_cards = [Cards.create_card_data("Card Title 4", ["Subtask 1", "Subtask 2"], "orange", 1), Cards.create_card_data("Card Title 5", ["Content 1"], "red", 0)]
-    on_hold_cards = [Cards.create_card_data("Card Title 6", ["Subtask 1", "Subtask 2"], "green", 1)]
-
-
-    To_Do = Lists.create_list("To-do", 100, 'grey', root)
-    Progress = Lists.create_list("In progress", 420, 'orange', root)
-    Finished = Lists.create_list("Finished", 740, 'green', root)
-    On_Hold = Lists.create_list("On Hold", 1060, 'pink', root)
-    SetUp()
-    root.mainloop()
+    root.mainloop() 
