@@ -235,30 +235,33 @@ class new_card:
         
     def open_add_card_window():
         add_card_window = tk.Toplevel(root)
-        add_card_window.title("Add New Card")
-        add_card_window.geometry("1000x450+400+300")
+        add_card_window.title("New Card Window")
+        add_card_window.geometry("400x600+800+200")
 
-        title_label = tk.Label(add_card_window, text="Title:", font=("Arial Bold", 23))
-        title_label.pack(pady=1)
+        header = tk.Label(add_card_window, text="Add new card", font=("Arial Bold", 27), bg="lightblue", width=30, pady=20)
+        header.pack()
+
+        title_label = tk.Label(add_card_window, text="Title:", font=("Arial Bold", 22))
+        title_label.pack(pady=(20,0))
         title_entry = ctk.CTkEntry(add_card_window, width=200, height=30, font=("Arial Bold", 20))
-        title_entry.pack(pady=7)
+        title_entry.pack(pady=(5,10))
 
         
-        subtasks_label = tk.Label(add_card_window, text="Subtasks (one per line):", font=("Arial Bold", 23))
+        subtasks_label = tk.Label(add_card_window, text="Subtasks (one per line):", font=("Arial Bold", 22))
         subtasks_label.pack()
-        subtasks_text = tk.Text(add_card_window, height=5, width=20,  borderwidth=1, relief="solid")
+        subtasks_text = tk.Text(add_card_window, height=5, width=25, font=("Arial Bold", 18), borderwidth=1, relief="solid")
         subtasks_text.pack()
 
 
-        priority_label = tk.Label(add_card_window, text="Priority:", font=("Arial Bold", 23))
+        priority_label = tk.Label(add_card_window, text="Priority:", font=("Arial Bold", 22))
         priority_label.pack(pady=3)
         priority_choices = ['red', 'orange', 'green']
-        priority_dropdown = ctk.CTkOptionMenu(add_card_window, values=priority_choices, width=100, fg_color="black", button_color='black', font=("Arial", 18))
+        priority_dropdown = ctk.CTkOptionMenu(add_card_window, values=priority_choices, width=150, fg_color="white", button_color='royal blue', font=("Arial", 18))
+        priority_dropdown.configure(text_color='black')
         priority_dropdown.pack(pady=1)
 
 
-        # Submit button
-        submit_button = ctk.CTkButton(add_card_window, text="Add Card", font=("Arial Bold", 23), command=lambda: new_card.add_card(title_entry.get(), subtasks_text.get("1.0", tk.END), priority_dropdown.get(), add_card_window))
+        submit_button = ctk.CTkButton(add_card_window, text="Add Card", font=("Arial Bold", 22),fg_color='royal blue', command=lambda: new_card.add_card(title_entry.get(), subtasks_text.get("1.0", tk.END), priority_dropdown.get(), add_card_window))
         submit_button.pack(pady=30)
 
 
