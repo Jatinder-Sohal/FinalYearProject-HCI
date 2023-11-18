@@ -57,7 +57,7 @@ class Navbar:
         redo_img = Image.open("../resources/redo-svgrepo-com.png")
         redo_photo = ctk.CTkImage(redo_img)
 
-        add_card_button = ctk.CTkButton(top_bar, text="Add card", image=add_photo, width=100, height=30, font=("Arial", 18), command=Cards.open_add_card_window)
+        add_card_button = ctk.CTkButton(top_bar, text="Add card", image=add_photo, width=100, height=30, font=("Arial", 18), command=new_card.open_add_card_window)
         add_card_button.pack(side=tk.LEFT)
         ToolTip(add_card_button, msg="Click this button to add a new card")
 
@@ -86,11 +86,15 @@ class Lists:
         title_label = ctk.CTkLabel(header_frame, text=title, font=("Arial Bold", 25))
         title_label.pack(pady=(6, 20))
 
+        return Lists.scrollbar(list_frame)
 
+
+    def scrollbar(list_frame):
         canvas = tk.Canvas(list_frame, bg='white', highlightthickness=0, width=255)  # Width is less to accommodate scrollbar
         canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
 
+        ###Using code from the internet to create this: https://stackoverflow.com/questions/16188420/tkinter-scrollbar-for-frame
         scrollbar = ttk.Scrollbar(list_frame, orient='vertical', command=canvas.yview)
         scrollbar.pack(side=tk.RIGHT, fill='y')
 
@@ -197,8 +201,11 @@ class Cards:
             i = i + 1   
 
         progress_var = tk.DoubleVar(value=0)
-        
-        progress_var.set(i/(i+1) * 100) 
+        if (i==1):
+            progress_var.set(0)
+        else:
+            progress_var.set(i/(i+1) * 100)
+ 
         progress_frame = ctk.CTkFrame(card)
         progress_frame.pack(pady=(5, 0))
         progress_bar = ttk.Progressbar(progress_frame, orient='horizontal', length=170, mode='determinate', variable=progress_var, maximum=100)
@@ -216,6 +223,8 @@ class Cards:
         
         return card, move_left_button, move_right_button
 
+
+class new_card:
     def add_card(title, subtasks_list, priority, window):
         subtasks = subtasks_list.split('\n')
         new_card = Cards.create_card_data(title, subtasks, priority, len(subtasks)-2)
@@ -223,7 +232,6 @@ class Cards:
         Cards.sync_ui()
         window.destroy()    
     
-
         
     def open_add_card_window():
         add_card_window = tk.Toplevel(root)
@@ -250,7 +258,7 @@ class Cards:
 
 
         # Submit button
-        submit_button = ctk.CTkButton(add_card_window, text="Add Card", font=("Arial Bold", 23), command=lambda: Cards.add_card(title_entry.get(), subtasks_text.get("1.0", tk.END), priority_dropdown.get(), add_card_window))
+        submit_button = ctk.CTkButton(add_card_window, text="Add Card", font=("Arial Bold", 23), command=lambda: new_card.add_card(title_entry.get(), subtasks_text.get("1.0", tk.END), priority_dropdown.get(), add_card_window))
         submit_button.pack(pady=30)
 
 
@@ -271,8 +279,6 @@ if __name__ == "__main__":
     root.configure(bg_color="#F9F7F7")
 
 
-
-
     to_do_cards = [Cards.create_card_data("Card Title 1", ["Content 1"], "red", 0), Cards.create_card_data("Card Title 2", ["Subtask 1", "Subtask 2", "Subtask 4"], "orange", 2)]
     progress_cards = [Cards.create_card_data("Card Title 3", ["Subtask 1", "Subtask 2", "Subtask 2"], "green", 2)]
     finished_cards = [Cards.create_card_data("Card Title 4", ["Subtask 1", "Subtask 2"], "orange", 1), Cards.create_card_data("Card Title 5", ["Content 1"], "red", 0)]
@@ -284,4 +290,5 @@ if __name__ == "__main__":
     Finished = Lists.create_list("Finished", 740, 'green', root)
     On_Hold = Lists.create_list("On Hold", 1060, 'pink', root)
     SetUp()
+    
     root.mainloop() 
