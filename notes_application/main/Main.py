@@ -141,25 +141,33 @@ class Cards:
 
     def create_and_place_cards(list_frame, cards):
         for card_data in cards:
-            card, move_left_button, move_right_button = Cards.create_card(list_frame, card_data['title'], card_data['content'], card_data['priority'], card_data['tasks'])
             #NOTE - Lambda lets me use small function in one line
             if list_frame == To_Do:
+                card, move_left_button, move_right_button = Cards.create_card(list_frame, to_do_cards, card_data)
                 move_left_button.pack_forget()
                 move_right_button.pack(side='top', padx=10, pady=10, anchor='center')
                 move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, to_do_cards, progress_cards))
             elif list_frame == Progress:
+                card, move_left_button, move_right_button = Cards.create_card(list_frame, progress_cards, card_data)
                 move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, progress_cards, to_do_cards))
                 move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, progress_cards, finished_cards))
             elif list_frame == Finished:
+                card, move_left_button, move_right_button = Cards.create_card(list_frame, finished_cards, card_data)
                 move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, finished_cards, progress_cards))
                 move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, finished_cards, on_hold_cards))
             elif list_frame == On_Hold:
+                card, move_left_button, move_right_button = Cards.create_card(list_frame, on_hold_cards, card_data)
                 move_right_button.pack_forget()
                 move_left_button.pack(side='top', padx=10, pady=10, anchor='center')
                 move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, on_hold_cards, finished_cards))
 
 
-    def create_card(list_frame, card_title, card_content, priority, tasks):
+    def create_card(list_frame, cards_list, card_data):
+        card_title = card_data['title']
+        card_content = card_data['content']
+        priority = card_data['priority']
+        tasks = card_data['tasks']
+      
         card = ctk.CTkFrame(list_frame, height=100, corner_radius=10)  
         card.pack(pady=5, fill='x', expand=False)  
 
@@ -170,16 +178,20 @@ class Cards:
         priority_dot.pack(side='left', padx=10)
         ToolTip(priority_dot, msg="Indicites importance: Red being the most, green the least")
         
-        title_label = ctk.CTkLabel(header_frame, text=card_title, width=160, anchor="w", font=("Arial", 20))
+        title_label = ctk.CTkLabel(header_frame, text=card_title, width=180, anchor="w", font=("Arial", 20))
         title_label.pack(side='left')          
 
+        def delete_card():
+            cards_list.remove(card_data)  
+            card.destroy()
+            Cards.sync_ui()
+   
+        bin_button = ctk.CTkButton(header_frame, text="", image=bin_photo, width=5, command=delete_card)
+        bin_button.image = bin_photo  
+        bin_button.pack(side='right', padx=10)
+        ToolTip(bin_button, msg="This will DELETE the card")
 
-        bin_icon = ctk.CTkButton(header_frame, text="", image=bin_photo, width=5)
-        bin_icon.image = bin_photo  
-        bin_icon.pack(side='right', padx=10)
-
-
-        
+     
         i = 0
         while (i <= tasks):
             task = card_content[i] 
@@ -218,7 +230,8 @@ class Cards:
         
         return card, move_left_button, move_right_button
 
-     
+    
+        
 
 
 class new_card:
