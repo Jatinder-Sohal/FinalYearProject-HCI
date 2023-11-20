@@ -7,7 +7,6 @@ from tktooltip import ToolTip
 ctk.set_appearance_mode("light")
 
 
-
 class Navbar:
     def create_navbar(root):
         navbar = tk.Frame(root, height=75, bg='white') 
@@ -93,31 +92,21 @@ class Lists:
         canvas = tk.Canvas(list_frame, bg='white', highlightthickness=0, width=255)  # Width is less to accommodate scrollbar
         canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-
         ###Using code from the internet to create this: https://stackoverflow.com/questions/16188420/tkinter-scrollbar-for-frame
         scrollbar = ttk.Scrollbar(list_frame, orient='vertical', command=canvas.yview)
         scrollbar.pack(side=tk.RIGHT, fill='y')
 
-
         canvas.configure(yscrollcommand=scrollbar.set)
-
-    
         container = ctk.CTkFrame(canvas, fg_color='white')
         window_id = canvas.create_window((0, 0), window=container, anchor='nw')
-
 
         def on_frame_configure(event):
             canvas.configure(scrollregion=canvas.bbox("all"))
 
         container.bind('<Configure>', on_frame_configure)
-
-
         canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox('all')))
 
         return container
-
-
-
 
     
 class Cards:
@@ -171,18 +160,24 @@ class Cards:
 
 
     def create_card(list_frame, card_title, card_content, priority, tasks):
-        card = ctk.CTkFrame(list_frame, width=250, height=100, corner_radius=10)  
+        card = ctk.CTkFrame(list_frame, height=100, corner_radius=10)  
         card.pack(pady=5, fill='x', expand=False)  
 
-        header_frame = ctk.CTkFrame(card, width=10)
-        header_frame.pack(side='top', expand=False, pady=2)
-
-        title_label = ctk.CTkLabel(header_frame, text=card_title, width=225, anchor="w", font=("Arial", 20))
-        title_label.pack(side='left', padx=5)
+        header_frame = ctk.CTkFrame(card)
+        header_frame.pack(side='top', fill="x", expand=False, pady=2)
 
         priority_dot = ctk.CTkLabel(header_frame, text="•", text_color=priority, font=("Arial", 40))
-        priority_dot.pack(side='right', padx=10)
+        priority_dot.pack(side='left', padx=10)
         ToolTip(priority_dot, msg="Indicites importance: Red being the most, green the least")
+        
+        title_label = ctk.CTkLabel(header_frame, text=card_title, width=160, anchor="w", font=("Arial", 20))
+        title_label.pack(side='left')          
+
+
+        bin_icon = ctk.CTkButton(header_frame, text="", image=bin_photo, width=5)
+        bin_icon.image = bin_photo  
+        bin_icon.pack(side='right', padx=10)
+
 
         
         i = 0
@@ -223,6 +218,8 @@ class Cards:
         
         return card, move_left_button, move_right_button
 
+     
+
 
 class new_card:
     def add_card(title, subtasks_list, priority, window):
@@ -236,33 +233,33 @@ class new_card:
     def open_add_card_window():
         add_card_window = tk.Toplevel(root)
         add_card_window.title("New Card Window")
-        add_card_window.geometry("400x600+800+200")
+        add_card_window.geometry("700x600+600+200")
 
-        header = tk.Label(add_card_window, text="Add new card", font=("Arial Bold", 27), bg="lightblue", width=30, pady=20)
-        header.pack()
+        header = tk.Label(add_card_window, text="Add new card", font=("Arial Bold", 27),width=30, pady=20)
+        header.place(relx = 0.3, rely = 0.10, anchor = tk.CENTER)
 
-        title_label = tk.Label(add_card_window, text="Title:", font=("Arial Bold", 22))
-        title_label.pack(pady=(20,0))
-        title_entry = ctk.CTkEntry(add_card_window, width=200, height=30, font=("Arial Bold", 20))
-        title_entry.pack(pady=(5,10))
+        title_label = tk.Label(add_card_window, text="Title:", font=("Arial", 22))
+        title_label.place(relx = 0.18, rely = 0.2, anchor = tk.CENTER)
+        title_entry = ctk.CTkEntry(add_card_window, width=200, height=50, font=("Arial ", 20))
+        title_entry.place(relx = 0.28, rely = 0.3, anchor = tk.CENTER)
 
         
-        subtasks_label = tk.Label(add_card_window, text="Subtasks (one per line):", font=("Arial Bold", 22))
-        subtasks_label.pack()
-        subtasks_text = tk.Text(add_card_window, height=5, width=25, font=("Arial Bold", 18), borderwidth=1, relief="solid")
-        subtasks_text.pack()
+        subtasks_label = tk.Label(add_card_window, text="Subtasks (one per line):", font=("Arial", 22))
+        subtasks_label.place(relx = 0.35, rely = 0.4, anchor = tk.CENTER)
+        subtasks_text = tk.Text(add_card_window, height=3, width=25, font=("Arial", 18), borderwidth=1, relief="solid")
+        subtasks_text.place(relx = 0.37, rely = 0.52, anchor = tk.CENTER)
 
 
-        priority_label = tk.Label(add_card_window, text="Priority:", font=("Arial Bold", 22))
-        priority_label.pack(pady=3)
+        priority_label = tk.Label(add_card_window, text="Priority:", font=("Arial", 22))
+        priority_label.place(relx = 0.20, rely = 0.66, anchor = tk.CENTER)
         priority_choices = ['red', 'orange', 'green']
         priority_dropdown = ctk.CTkOptionMenu(add_card_window, values=priority_choices, width=150, fg_color="white", button_color='royal blue', font=("Arial", 18))
         priority_dropdown.configure(text_color='black')
-        priority_dropdown.pack(pady=1)
+        priority_dropdown.place(relx = 0.24, rely = 0.74, anchor = tk.CENTER)
 
 
         submit_button = ctk.CTkButton(add_card_window, text="Add Card", font=("Arial Bold", 22),fg_color='royal blue', command=lambda: new_card.add_card(title_entry.get(), subtasks_text.get("1.0", tk.END), priority_dropdown.get(), add_card_window))
-        submit_button.pack(pady=30)
+        submit_button.place(relx = 0.23, rely = 0.87, anchor = tk.CENTER)
 
 
 
@@ -281,7 +278,9 @@ if __name__ == "__main__":
     root.geometry("1400x960+250+20")
     root.configure(bg_color="#F9F7F7")
 
-
+    bin_img = Image.open("../resources/bin-svgrepo-com.png")
+    bin_photo = ctk.CTkImage(bin_img)
+    
     to_do_cards = [Cards.create_card_data("Card Title 1", ["Content 1"], "red", 0), Cards.create_card_data("Card Title 2", ["Subtask 1", "Subtask 2", "Subtask 4"], "orange", 2)]
     progress_cards = [Cards.create_card_data("Card Title 3", ["Subtask 1", "Subtask 2", "Subtask 2"], "green", 2)]
     finished_cards = [Cards.create_card_data("Card Title 4", ["Subtask 1", "Subtask 2"], "orange", 1), Cards.create_card_data("Card Title 5", ["Content 1"], "red", 0)]
