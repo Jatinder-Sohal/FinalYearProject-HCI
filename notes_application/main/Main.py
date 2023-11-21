@@ -9,18 +9,18 @@ ctk.set_appearance_mode("light")
 
 class Navbar:
     def create_navbar(root):
-        navbar = tk.Frame(root, height=75, bg='white') 
+        navbar = tk.Frame(root, height=75, bg='#F9F7F7') 
         navbar.pack(side=tk.TOP, fill=tk.X)
 
-        label = tk.Label(root, text = "Project board", bg='white', font=("Arial", 22))
+        label = tk.Label(root, text = "Project board", bg='#F9F7F7', font=("Arial", 22))
         label.place(relx = 0.5, rely = 0.05, anchor = tk.CENTER)
 
-        button = ctk.CTkButton(root, text="Share", fg_color="black",text_color="white", font=("Arial", 18), hover_color="grey", width=80, height=30)                    
+        button = ctk.CTkButton(root, text="Share", fg_color="#3F72AF",text_color="white", font=("Arial", 18), hover_color="grey", width=80, height=30)                    
         button.place(relx=0.71, rely=0.05, anchor=tk.CENTER)
         ToolTip(button, msg="Click to share board with others")
 
         options = ["PNG", "JPG", "Image"]
-        dropdown = ctk.CTkOptionMenu(root, values=options, width=100, fg_color="black", button_color='black',font=("Arial", 18))
+        dropdown = ctk.CTkOptionMenu(root, values=options, width=100, text_color="white", fg_color="#3F72AF", button_color='#112D4E',font=("Arial", 18))
         dropdown.pack(pady=20)
         dropdown.set("Export")
         dropdown.place(relx=0.781, rely=0.05, anchor=tk.CENTER)
@@ -36,7 +36,7 @@ class Navbar:
         root.search_image = ImageTk.PhotoImage(search_image)
 
         
-        search_image_label = tk.Label(root, image=root.search_image)
+        search_image_label = tk.Label(root, image=root.search_image, bg="white")
         search_image_label.image = root.search_image
         search_image_label.place(relx = 0.98, rely=0.05, anchor = tk.CENTER)
         ToolTip(search_image_label, msg="Click to search")
@@ -56,16 +56,16 @@ class Navbar:
         redo_img = Image.open("../resources/redo-svgrepo-com.png")
         redo_photo = ctk.CTkImage(redo_img)
 
-        add_card_button = ctk.CTkButton(top_bar, text="Add card", image=add_photo, width=100, height=30, font=("Arial", 18), command=new_card.open_add_card_window)
+        add_card_button = ctk.CTkButton(top_bar, text="Add card", hover_color="grey", image=add_photo, width=100, height=30, font=("Arial", 18), text_color="white", command=new_card.open_add_card_window, fg_color="#3F72AF")
         add_card_button.pack(side=tk.LEFT)
         ToolTip(add_card_button, msg="Click this button to add a new card")
 
 
-        undo_button = ctk.CTkButton(top_bar, text="Undo", image=undo_photo, width=100, height=30, font=("Arial", 18))
+        undo_button = ctk.CTkButton(top_bar, text="Undo", image=undo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF")
         undo_button.pack(side=tk.LEFT, padx=10)
         ToolTip(undo_button, msg="Click this button to undo any changes")
 
-        redo_button = ctk.CTkButton(top_bar, text="Redo", image=redo_photo, width=100, height=30, font=("Arial", 18))
+        redo_button = ctk.CTkButton(top_bar, text="Redo", image=redo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF")
         redo_button.pack(side=tk.LEFT)
         ToolTip(redo_button, msg="Click this button to redo any changes")
 
@@ -141,7 +141,6 @@ class Cards:
 
     def create_and_place_cards(list_frame, cards):
         for card_data in cards:
-            #NOTE - Lambda lets me use small function in one line
             if list_frame == To_Do:
                 card, move_left_button, move_right_button = Cards.create_card(list_frame, to_do_cards, card_data)
                 move_left_button.pack_forget()
@@ -186,7 +185,7 @@ class Cards:
             card.destroy()
             Cards.sync_ui()
    
-        bin_button = ctk.CTkButton(header_frame, text="", image=bin_photo, width=5, command=delete_card)
+        bin_button = ctk.CTkButton(header_frame, text="", fg_color="orange", hover_color="orange3", image=bin_photo, width=5, command=delete_card)
         bin_button.image = bin_photo  
         bin_button.pack(side='right', padx=10)
         ToolTip(bin_button, msg="This will DELETE the card")
@@ -289,7 +288,7 @@ if __name__ == "__main__":
     root = ctk.CTk()
     root.title("Project planning")
     root.geometry("1400x960+250+20")
-    root.configure(bg_color="#F9F7F7")
+    root.configure(fg_color="#DBE2EF")
 
     bin_img = Image.open("../resources/bin-svgrepo-com.png")
     bin_photo = ctk.CTkImage(bin_img)
