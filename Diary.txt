@@ -86,3 +86,64 @@ Problems:	-Didnt realise css pages overlapped, had to spent huge amounts of time
 Future:		-Start 2nd UI
 		-Learn swing language
 		-Make good progress on report
+
+
+Week 6 (31/10/23)
+Completed: 	-Research online about different java guis and found javafx to be more appropriate
+		-Set up development enviroment
+		-Started early development
+
+Problems:	-Don't have access to last years javafx videos, had to do research to learn how to set it up
+
+Future:		-Start development of lists and cards
+		-Need to add text boxes and icons
+		-Research what hci from notes can be applied to interface
+
+
+Week 6 (5/11/23)
+Completed:	-Added lists to main and set up css so that it dosent overlap title boxes
+		-Add styling to all elements
+		-Added textboxes
+
+Problems:	-Trying to get list to not overlap the title of boxes was difficult
+		-Struggling to make a usable design following prototype using javafx
+
+Future		-Countinue development adding help tipes and icons to icon box
+		-Start working out how interaction will happen and how to add cards
+
+
+
+
+Week 7 (9/11/23)
+Completed: 	-Decided to switch language to tkinter as javafx was very inflexible and I didnt like the look of my UI
+		-Added several elements: Navbar, lists, 2 cards and buttons to move between lsits
+
+Problems:	-Had to learn tkinter while implementing this UI
+		-A lot of problems where height and width were being controlled by another variable 
+
+Future:		-Add way to track visibility of system status
+		-Add options to add cards, undo and redo and being testing
+
+
+Week 7 (12/11/23)
+Completed:	-Added checkboxes and progress bar to the cards
+		-Added some extra menu options and icons to these
+		-Started testing elements
+
+Problems:	-Was having problems inputting images and changing their sizes
+		-Had to change what elements returned to test elements
+
+Future: 	-Go to supervisor meeting and show uis and report
+		-Continue testing and report
+
+		
+Week 8 (16/11/23)
+Completed	-Started adding a lot of functionality to my ui as advised from my supervisor
+		-Added moving between lists, adding new card, and options to manually control checkboxes
+
+Problems	-Have to spend a large amount of time on UI's
+		-Tests are going to have to be redone
+
+Future		-Continue adding functionality
+		-Go back to old ui and add functionality to that as well and test it
+		-Keep writing report
