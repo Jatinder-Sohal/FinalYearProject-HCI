@@ -4,70 +4,12 @@ import customtkinter as ctk
 from PIL import Image, ImageTk
 from tktooltip import ToolTip
 
+from navbar import Navbar
+
 ctk.set_appearance_mode("light")
 
 
-class Navbar:
-    def create_navbar(root):
-        navbar = tk.Frame(root, height=75, bg='#F9F7F7') 
-        navbar.pack(side=tk.TOP, fill=tk.X)
 
-        label = tk.Label(root, text = "Project board", bg='#F9F7F7', font=("Arial", 22))
-        label.place(relx = 0.5, rely = 0.05, anchor = tk.CENTER)
-
-        button = ctk.CTkButton(root, text="Share", fg_color="#3F72AF",text_color="white", font=("Arial", 18), hover_color="grey", width=80, height=30)                    
-        button.place(relx=0.71, rely=0.05, anchor=tk.CENTER)
-        ToolTip(button, msg="Click to share board with others")
-
-        options = ["PNG", "JPG", "Image"]
-        dropdown = ctk.CTkOptionMenu(root, values=options, width=100, text_color="white", fg_color="#3F72AF", button_color='#112D4E',font=("Arial", 18))
-        dropdown.pack(pady=20)
-        dropdown.set("Export")
-        dropdown.place(relx=0.781, rely=0.05, anchor=tk.CENTER)
-        ToolTip(dropdown, msg="Click to export board as an image")
-
-
-        search_entry = ctk.CTkEntry(root, width=235, placeholder_text="search", font=("Arial", 18))
-        search_entry.place(relx=0.91, rely=0.05, anchor=tk.CENTER)
-        ToolTip(search_entry, msg="Search for a setting here")
-        
-        search_image = Image.open("../resources/magnifier-left-svgrepo-com.png")
-        search_image = search_image.resize((19, 19), Image.ANTIALIAS)
-        root.search_image = ImageTk.PhotoImage(search_image)
-
-        
-        search_image_label = tk.Label(root, image=root.search_image, bg="white")
-        search_image_label.image = root.search_image
-        search_image_label.place(relx = 0.98, rely=0.05, anchor = tk.CENTER)
-        ToolTip(search_image_label, msg="Click to search")
-
-        return navbar
-
-    def create_top_bar(root):
-        top_bar = tk.Frame(root, bg='white') 
-        top_bar.place(relx = 0.13, rely = 0.05, anchor = tk.CENTER)
-        
-        add_img = Image.open("../resources/add-circle-svgrepo-com.png")
-        add_photo = ctk.CTkImage(add_img)
-        
-        undo_img = Image.open("../resources/undo-svgrepo-com.png")
-        undo_photo = ctk.CTkImage(undo_img)
-
-        redo_img = Image.open("../resources/redo-svgrepo-com.png")
-        redo_photo = ctk.CTkImage(redo_img)
-
-        add_card_button = ctk.CTkButton(top_bar, text="Add card", hover_color="grey", image=add_photo, width=100, height=30, font=("Arial", 18), text_color="white", command=new_card.open_add_card_window, fg_color="#3F72AF")
-        add_card_button.pack(side=tk.LEFT)
-        ToolTip(add_card_button, msg="Click this button to add a new card")
-
-
-        undo_button = ctk.CTkButton(top_bar, text="Undo", image=undo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF")
-        undo_button.pack(side=tk.LEFT, padx=10)
-        ToolTip(undo_button, msg="Click this button to undo any changes")
-
-        redo_button = ctk.CTkButton(top_bar, text="Redo", image=redo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF")
-        redo_button.pack(side=tk.LEFT)
-        ToolTip(redo_button, msg="Click this button to redo any changes")
 
 class Lists:
     def create_list(title, placementx, colour, root):
@@ -273,15 +215,7 @@ class new_card:
         submit_button = ctk.CTkButton(add_card_window, text="Add Card", font=("Arial Bold", 22),fg_color='royal blue', command=lambda: new_card.add_card(title_entry.get(), subtasks_text.get("1.0", tk.END), priority_dropdown.get(), add_card_window))
         submit_button.place(relx = 0.23, rely = 0.87, anchor = tk.CENTER)
 
-
-
-
-class SetUp:
-    def __init__(self):
-        Navbar.create_navbar(root)
-        Navbar.create_top_bar(root)
-
-        Cards.sync_ui()
+        
 
 
 if __name__ == "__main__":
@@ -289,6 +223,8 @@ if __name__ == "__main__":
     root.title("Project planning")
     root.geometry("1400x960+250+20")
     root.configure(fg_color="#DBE2EF")
+
+    navbar = Navbar(root, new_card.open_add_card_window)
 
     bin_img = Image.open("../resources/bin-svgrepo-com.png")
     bin_photo = ctk.CTkImage(bin_img)
@@ -303,6 +239,6 @@ if __name__ == "__main__":
     Progress = Lists.create_list("In progress", 420, 'orange', root)
     Finished = Lists.create_list("Finished", 740, 'green', root)
     On_Hold = Lists.create_list("On Hold", 1060, 'pink', root)
-    SetUp()
+    Cards.sync_ui()
     
     root.mainloop() 
