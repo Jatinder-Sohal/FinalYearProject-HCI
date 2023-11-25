@@ -34,10 +34,21 @@ class TestCreateCard(unittest.TestCase):
         self.assertGreater(self.card.winfo_height(), 100)
         self.assertEqual(self.card.winfo_width(), 272)
         
-    def testButtonExists(self):
+    def testMoveButtonsExists(self):
         self.root.update_idletasks()
         self.assertIsNotNone(self.move_left_button)
         self.assertIsNotNone(self.move_right_button)
+        
+    def testDeleteButtonExists(self):
+        self.root.update_idletasks()
+        delete_button = next((child for child in self.card.winfo_children() if isinstance(child, ctk.CTkButton)), None)
+        self.assertIsNotNone(delete_button)
+
+    def testSubtasksDisplay(self):
+        self.root.update_idletasks()
+        sub_task_labels = [child for child in self.card.winfo_children() if isinstance(child, ctk.CTkFrame)]
+        self.assertEqual(1, len(self.context.to_do_cards[0]["content"]))
+
 
 
     def tearDown(self):
