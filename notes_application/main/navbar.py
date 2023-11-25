@@ -10,7 +10,7 @@ class Navbar:
         self.root = root
         self.open_add_card_window = open_add_card_window
         self.create_navbar()
-        self.create_top_bar()
+        self.top_bar = self.create_top_bar()
 
         
     def create_navbar(self):
@@ -73,3 +73,5 @@ class Navbar:
         redo_button = ctk.CTkButton(top_bar, text="Redo", image=redo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF")
         redo_button.pack(side=tk.LEFT)
         ToolTip(redo_button, msg="Click this button to redo any changes")
+
+        return top_bar

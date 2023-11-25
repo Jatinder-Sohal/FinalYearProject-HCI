@@ -1,10 +1,12 @@
 import sys
 sys.path.insert(1, '../main')
-
 import unittest
 import tkinter as tk
+import customtkinter as ctk
 from tkinter import Image, PhotoImage
 from navbar import Navbar
+
+
 
 def fake_function():
     pass
@@ -34,11 +36,19 @@ class TestNavbar(unittest.TestCase):
         expected_bg = '#F9F7F7'  
         navbar_bg = self.navbar.cget('bg')  
         self.assertEqual(navbar_bg, expected_bg)
-        
 
+    def testButtonsExist(self):
+        self.root.update_idletasks()
+        top_bar = self.navbar_object.top_bar  
+        children = top_bar.winfo_children()  
+      
+        expected_buttons = ["Add card", "Undo", "Redo"] 
+        #Used resources online to make this - not my code
+        for button_name in expected_buttons:
+            self.assertTrue(any(button.cget("text") == button_name for button in children if isinstance(button, ctk.CTkButton)), f"Button '{button_name}' not found in Navbar")
+               
     def tearDown(self):
         self.root.destroy()
-
 
 
 if __name__ == '__main__':
