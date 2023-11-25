@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 from tktooltip import ToolTip
 
 from navbar import Navbar
+from cards import Cards
 
 ctk.set_appearance_mode("light")
 
@@ -51,136 +52,13 @@ class Lists:
         return container
 
     
-class Cards:
-    def create_card_data(title, content, priority, tasks):
-        return {
-            'title': title,
-            'content': content,
-            'priority': priority,
-            'tasks': tasks
-        }
-    def move_card(card, from_list, to_list):
-        from_list.remove(card)
-        to_list.append(card)
-        Cards.sync_ui()
-        
-    def sync_ui():
-        #Code from https://stackoverflow.com/questions/15781802/python-tkinter-clearing-a-frame
-        for widget in To_Do.winfo_children():
-            widget.destroy()
-        for widget in Progress.winfo_children():
-            widget.destroy()
-        for widget in Finished.winfo_children():
-            widget.destroy()
-        for widget in On_Hold.winfo_children():
-            widget.destroy()
-            
-        Cards.create_and_place_cards(To_Do, to_do_cards)
-        Cards.create_and_place_cards(Progress, progress_cards)
-        Cards.create_and_place_cards(Finished, finished_cards)
-        Cards.create_and_place_cards(On_Hold, on_hold_cards)
-
-
-    def create_and_place_cards(list_frame, cards):
-        for card_data in cards:
-            if list_frame == To_Do:
-                card, move_left_button, move_right_button = Cards.create_card(list_frame, to_do_cards, card_data)
-                move_left_button.pack_forget()
-                move_right_button.pack(side='top', padx=10, pady=10, anchor='center')
-                move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, to_do_cards, progress_cards))
-            elif list_frame == Progress:
-                card, move_left_button, move_right_button = Cards.create_card(list_frame, progress_cards, card_data)
-                move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, progress_cards, to_do_cards))
-                move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, progress_cards, finished_cards))
-            elif list_frame == Finished:
-                card, move_left_button, move_right_button = Cards.create_card(list_frame, finished_cards, card_data)
-                move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, finished_cards, progress_cards))
-                move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, finished_cards, on_hold_cards))
-            elif list_frame == On_Hold:
-                card, move_left_button, move_right_button = Cards.create_card(list_frame, on_hold_cards, card_data)
-                move_right_button.pack_forget()
-                move_left_button.pack(side='top', padx=10, pady=10, anchor='center')
-                move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, on_hold_cards, finished_cards))
-
-
-    def create_card(list_frame, cards_list, card_data):
-        card_title = card_data['title']
-        card_content = card_data['content']
-        priority = card_data['priority']
-        tasks = card_data['tasks']
-      
-        card = ctk.CTkFrame(list_frame, height=100, corner_radius=10)  
-        card.pack(pady=5, fill='x', expand=False)  
-
-        header_frame = ctk.CTkFrame(card)
-        header_frame.pack(side='top', fill="x", expand=False, pady=2)
-
-        priority_dot = ctk.CTkLabel(header_frame, text="•", text_color=priority, font=("Arial", 40))
-        priority_dot.pack(side='left', padx=10)
-        ToolTip(priority_dot, msg="Indicites importance: Red being the most, green the least")
-        
-        title_label = ctk.CTkLabel(header_frame, text=card_title, width=180, anchor="w", font=("Arial", 20))
-        title_label.pack(side='left')          
-
-        def delete_card():
-            cards_list.remove(card_data)  
-            card.destroy()
-            Cards.sync_ui()
-   
-        bin_button = ctk.CTkButton(header_frame, text="", fg_color="orange", hover_color="orange3", image=bin_photo, width=5, command=delete_card)
-        bin_button.image = bin_photo  
-        bin_button.pack(side='right', padx=10)
-        ToolTip(bin_button, msg="This will DELETE the card")
-
-     
-        i = 0
-        while (i <= tasks):
-            task = card_content[i] 
-            sub_task_frame = ctk.CTkFrame(card, fg_color='gainsboro')
-            sub_task_frame.pack(side='top', expand=True, pady=2)
-            sub_task_label = ctk.CTkLabel(sub_task_frame, text="Task " +str(i+1)+": "+task, width=45, anchor="w", font=("Arial", 16))
-            sub_task_label.pack(side='left', padx=35)
-
-            checked_state = tk.BooleanVar(value=True)
-            if (i==tasks):
-                checked_state = tk.BooleanVar(value=False)  
-            checkbutton =  ctk.CTkCheckBox(sub_task_frame, width=40, text="", variable=checked_state)
-            checkbutton.pack(side='right', padx=15, pady=5)
-            i = i + 1   
-
-        progress_var = tk.DoubleVar(value=0)
-        if (i==1):
-            progress_var.set(0)
-        else:
-            progress_var.set(i/(i+1) * 100)
- 
-        progress_frame = ctk.CTkFrame(card)
-        progress_frame.pack(pady=(5, 0))
-        progress_bar = ttk.Progressbar(progress_frame, orient='horizontal', length=170, mode='determinate', variable=progress_var, maximum=100)
-        progress_bar.pack(fill='x', padx=5)
-
-        left_img = Image.open("../resources/left-svgrepo-com.png")
-        left_photo = ctk.CTkImage(left_img)
-        move_left_button = ctk.CTkButton(card, text="Move left ", image=left_photo, width=10, height=30, font=("Arial Bold", 15))
-        move_left_button.pack(side='left', padx=8, pady=10, anchor='center')
-
-        right_img = Image.open("../resources/right-3-svgrepo-com.png")
-        right_photo = ctk.CTkImage(right_img)
-        move_right_button = ctk.CTkButton(card, text="Move right", image=right_photo, font=("Arial Bold", 15), width=100, compound=tk.RIGHT)
-        move_right_button.pack(side='right', padx=10, pady=10, anchor='center')
-        
-        return card, move_left_button, move_right_button
-
-    
-        
-
 
 class new_card:
     def add_card(title, subtasks_list, priority, window):
         subtasks = subtasks_list.split('\n')
         new_card = Cards.create_card_data(title, subtasks, priority, len(subtasks)-2)
         to_do_cards.append(new_card)
-        Cards.sync_ui()
+        Cards.sync_ui(context)
         window.destroy()    
     
         
@@ -216,7 +94,16 @@ class new_card:
         submit_button.place(relx = 0.23, rely = 0.87, anchor = tk.CENTER)
 
         
-
+class CardContext:
+    def __init__(self, to_do, progress, finished, on_hold, to_do_cards, progress_cards, finished_cards, on_hold_cards):
+        self.To_Do = to_do
+        self.Progress = progress
+        self.Finished = finished
+        self.On_Hold = on_hold
+        self.to_do_cards = to_do_cards
+        self.progress_cards = progress_cards
+        self.finished_cards = finished_cards
+        self.on_hold_cards = on_hold_cards
 
 if __name__ == "__main__":
     root = ctk.CTk()
@@ -226,8 +113,7 @@ if __name__ == "__main__":
 
     navbar = Navbar(root, new_card.open_add_card_window)
 
-    bin_img = Image.open("../resources/bin-svgrepo-com.png")
-    bin_photo = ctk.CTkImage(bin_img)
+
     
     to_do_cards = [Cards.create_card_data("Card Title 1", ["Content 1"], "red", 0), Cards.create_card_data("Card Title 2", ["Subtask 1", "Subtask 2", "Subtask 4"], "orange", 2)]
     progress_cards = [Cards.create_card_data("Card Title 3", ["Subtask 1", "Subtask 2", "Subtask 2"], "green", 2)]
@@ -239,6 +125,9 @@ if __name__ == "__main__":
     Progress = Lists.create_list("In progress", 420, 'orange', root)
     Finished = Lists.create_list("Finished", 740, 'green', root)
     On_Hold = Lists.create_list("On Hold", 1060, 'pink', root)
-    Cards.sync_ui()
+
+    context = CardContext(To_Do, Progress, Finished, On_Hold, to_do_cards, progress_cards, finished_cards, on_hold_cards)
+    Cards.sync_ui(context)
+
     
     root.mainloop() 

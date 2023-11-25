@@ -1,77 +1,77 @@
 Week 2 (2/10/23)
-Completed:	-first draft of Project plan and have sent to supervisor to get his opionion on my plan.
-		-In this plan discussed some technologies like javafx, django, springboot, react 
-		-Have completed some basic HCI reading for my abstract description learning about why usability is so important and some basic rules.
+Completed:	-first draft of Project plan and have sent to supervisor to get his opinion on my plan.
+		-In this plan discussed some technologies like JavaFX, Django, spring boot, react 
+	-Have completed some basic HCI reading for my abstract description learning about why usability is so important and some basic rules.           
 
-Problems: 	-Tough to cover such a massive subject and convert this into a few paraghraphs
-		-Many types of technology that have their own advanatages and my knowledge is especially great for any of them
+Problems: 	-Tough to cover such a massive subject and convert this into a few paragraphs
+-Many types of technology that have their own advantages and my knowledge is especially great for any of them
 
 Future: 	-do more research to cut down technologies to what I am actually going to use for the interfaces
 		-Continue reading about HCI and add to paragraphs for final draft
 
 Week 2 (06/10/23)
-Completed:	-Good foundation reading of HCI learning about the balance of functionality and usability, accessibility issues, basic colour theory 						 and a few HCI principals.
-		-Reasearched and decided the technologies I will be using: Javafx, bootsrap and Springboot
+Completed:	-Good foundation reading of HCI learning about the balance of functionality and usability, accessibility issues, basic colour theory and a few HCI principals.
+-Researched and decided the technologies I will be using: Javafx, bootsrap and Springboot
 
 Problems	-It was tough to decide the technologies and I still might have to change them if I can't learn or adapt to using them fast enough
-		-Had to add more to nearly all aspects to my report due to feedback from supervisor
+-Had to add more to nearly all aspects to my report due to feedback from supervisor
 
-Future:		-Begin setting up the html to run a page - will use visual studio live coding extension
+Future:	-Begin setting up the html to run a page - will use visual studio live coding extension
 		-Start adding in libraries that will allow me to create elements
 
 Week 3 (11/10/23)
 Completed:	-Created home page for first UI adding navigation bar, background image, fitting colour schemes, buttons and text to direct the user
-		-Set up framework springboot to add some basic functionality to the website and allow it to communicate with the database
+-Set up framework spring boot to add some basic functionality to the website and allow it to communicate with the database
 
-Problems  	-Haven't adapated elements for minimizing yet and so some remain fixed while others move	
-		-Tough to create a design that looks good for everyone after getting feedback. Some like one design and others prefer another.
+Problems 	-Haven't adapted elements for minimizing yet and so some remain fixed while others move.	
+-Tough to create a design that looks good for everyone after getting feedback. Some like one design and others prefer another.
 
 Future:		-Get feedback from supervisor at next meeting
-		-Add some functionality to home page and begin working on another page for the first user interface
-		-Read up on accessibilty from books and articles online
+-Add some functionality to home page and begin working on another page for the first user interface
+		-Read up on accessibility from books and articles online
 
 Week 3 (15/10/23)
 Completed:  	-Nearly finished fixing elements for the bug discussed in problems.
 		-Fixed indentation of css and jsp file
 		-Completed sketch of enter data page using canva
 
-Problems	-Discovered bug in home page where minimizing dosent affect all elements the same and some are off screen. 
-		-Sketched elements will be tough to create, for example a pie chart that updates when entering data - may need to redo sketch 
+Problems	-Discovered bug in home page where minimizing doesn’t affect all elements the same and some are off screen. 
+-Sketched elements will be tough to create, for example a pie chart that updates when entering data - may need to redo sketch 
 
-Future: 	-Set up enterData page and begin coding. Need to add: table, colour scheme, title, navbar again.
+Future: 	-Set up enterData page and begin coding. Need to add table, colour scheme, title, navbar again.
 		-Add navigation link from home page to enter data page
 
 Week 4 (18/10/23)
 Completed:	-Nearly finished enter data page adding features which were described last week
-		-Read some basic features about accessibiltiy e.g Image annotations, logos, page readers etc
+-Read some basic features about accessibility e.g Image annotations, logos, page readers etc
 
-Problems:	-Couldn't add a good title to the page, spent a lot of time experimenting with different fonts and sizes - looks very amteruish 
-		-Not sure if I need to do tdd or create a uml as it says one thing on moodle but other people are saying we doont.
+Problems:	-Couldn't add a good title to the page, spent a lot of time experimenting with different fonts and sizes - looks very amateurish 
+-Not sure if I need to do tdd or create a uml as it says one thing on Moodle but other people are saying we don’t.
 
-Future: 	-Add some basic functionality to enter data page
+Future:	 	-Add some basic functionality to enter data page
 		-Being working on other pages
-		-Implement researched accessibility if I have time and also carry on research on different rules.
+-Implement researched accessibility if I have time and also carry on research on different rules.
 
 Week 4 (22/10/23)
-Completed:	-Refactored design of enter data page as I wasn't happy with the design, espically the boostrap items and so redid the code using vanilla html and css.
-		-Added extra features like sidebar content, more buttons for the table and improve colour scheme.
+Completed:	-Refactored design of enter data page as I wasn't happy with the design, especially the bootstrap items and so redid the code using vanilla html and css.
+-Added extra features like sidebar content, more buttons for the table and improve colour scheme.
 
-Problems:	-Pushed back implementation of accessbility even more and development of other pages
-		-Haven't added functionality to the page as will be quite time consuming and just added dummy data to the table - not sure if I will be penalised for this.
+Problems:	-Pushed back implementation of accessibility even more and development of other pages
+-Haven't added functionality to the page as will be quite time consuming and just added dummy data to the table - not sure if I will be penalised for this.
 
-Future:		-Finally begin others pages and finishing up with this application
+Future:		-Finally begin other pages and finishing up with this application
 		-Start a bit of the write up about this implementation and how I used HCI rules
-		-Implement accessiblity features (might do after finishing application)
+		-Implement accessibility features (might do after finishing application)
 
 Week 5 (25/10/23)
 Completed:  	-Finished help page and started display data page
-		-Found how to use WAVE accessiblity tool and have been planning on how to organise pages to include more hci principals
+-Found how to use WAVE accessibility tool and have been planning on how to organise pages to include more hci principals
 
 Problems:	-My friend got feedback from his meeting, in which he was reprimanded for using html which is what I have used.
 		-Falling behind in schedule and need to start report
 
 Future:		-Learn react
-		-Need to convert all my html code to react code, so that I am able to get all available marks for complexity
+-Need to convert all my html code to react code, so that I am able to get all available marks for complexity
 		-Need to finish last page of application
 		-Start report
 
@@ -80,7 +80,7 @@ Completed: 	-Learnt react in a short space of time
 		-Finished converting code to react 
 		-Finished last page of application
 
-Problems:	-Didnt realise css pages overlapped, had to spent huge amounts of time fixing that
+Problems:	-Didn’t realise css pages overlapped, had to spent huge amounts of time fixing that
 		-My whole timeline is a mess right now
 
 Future:		-Start 2nd UI
@@ -89,37 +89,37 @@ Future:		-Start 2nd UI
 
 
 Week 6 (31/10/23)
-Completed: 	-Research online about different java guis and found javafx to be more appropriate
-		-Set up development enviroment
+Completed: 	-Research online about different java GUIs and found JavaFX to be more appropriate
+		-Set up development environment
 		-Started early development
 
-Problems:	-Don't have access to last years javafx videos, had to do research to learn how to set it up
+Problems:	-Don't have access to last year’s javafx videos, had to do research to learn how to set it up
 
 Future:		-Start development of lists and cards
 		-Need to add text boxes and icons
-		-Research what hci from notes can be applied to interface
+		-Research what HCI from notes can be applied to interface
 
 
 Week 6 (5/11/23)
-Completed:	-Added lists to main and set up css so that it dosent overlap title boxes
+Completed:	-Added lists to main and set up css so that it doesn’t overlap title boxes
 		-Add styling to all elements
 		-Added textboxes
 
 Problems:	-Trying to get list to not overlap the title of boxes was difficult
 		-Struggling to make a usable design following prototype using javafx
 
-Future		-Countinue development adding help tipes and icons to icon box
+Future		-Continue development adding help tips and icons to icon box
 		-Start working out how interaction will happen and how to add cards
 
 
 
 
 Week 7 (9/11/23)
-Completed: 	-Decided to switch language to tkinter as javafx was very inflexible and I didnt like the look of my UI
-		-Added several elements: Navbar, lists, 2 cards and buttons to move between lsits
+Completed: 	-Decided to switch language to tkinter as javafx was very inflexible and I didn’t like the look of my UI
+		-Added several elements: Navbar, lists, 2 cards and buttons to move between lists
 
 Problems:	-Had to learn tkinter while implementing this UI
-		-A lot of problems where height and width were being controlled by another variable 
+-A lot of problems where height and width were being controlled by another variable 
 
 Future:		-Add way to track visibility of system status
 		-Add options to add cards, undo and redo and being testing
@@ -133,17 +133,17 @@ Completed:	-Added checkboxes and progress bar to the cards
 Problems:	-Was having problems inputting images and changing their sizes
 		-Had to change what elements returned to test elements
 
-Future: 	-Go to supervisor meeting and show uis and report
+Future: 		-Go to supervisor meeting and show uis and report
 		-Continue testing and report
 
 		
 Week 8 (16/11/23)
-Completed	-Started adding a lot of functionality to my ui as advised from my supervisor
-		-Added moving between lists, adding new card, and options to manually control checkboxes
+Completed	-Started adding a lot of functionality to my ui as advised from my supervisor.
+-Added moving between lists, adding new card, and options to manually control checkboxes
 
 Problems	-Have to spend a large amount of time on UI's
 		-Tests are going to have to be redone
 
-Future		-Continue adding functionality
+Future		-Continue adding functionality.
 		-Go back to old ui and add functionality to that as well and test it
 		-Keep writing report
