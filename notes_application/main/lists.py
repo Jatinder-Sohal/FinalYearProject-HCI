@@ -19,7 +19,8 @@ class Lists:
         title_label = ctk.CTkLabel(header_frame, text=title, font=("Arial Bold", 25))
         title_label.pack(pady=(6, 20))
 
-        return Lists.scrollbar(list_frame)
+        container, canvas, scrollbar = Lists.scrollbar(list_frame)
+        return container, canvas, scrollbar
 
 
     def scrollbar(list_frame):
@@ -40,4 +41,4 @@ class Lists:
         container.bind('<Configure>', on_frame_configure)
         canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox('all')))
 
-        return container
+        return container, canvas, scrollbar
