@@ -4,7 +4,7 @@ import customtkinter as ctk
 from PIL import Image, ImageTk
 from tktooltip import ToolTip
 from history import Action
-
+from tkinter import messagebox
 
 class Cards:
     def create_card_data(title, content, priority, tasks):
@@ -79,8 +79,10 @@ class Cards:
         title_label.pack(side='left')          
 
         def delete_card():
-            cards_list.remove(card_data)  
-            card.destroy()
+            response = messagebox.askyesno("Delete Confirmation", "Are you sure you want to delete this card?")
+            if response:
+                cards_list.remove(card_data)  
+                card.destroy()
 
         bin_img = Image.open("../resources/bin-svgrepo-com.png")
         bin_photo = ctk.CTkImage(bin_img)

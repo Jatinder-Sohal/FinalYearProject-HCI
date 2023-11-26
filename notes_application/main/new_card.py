@@ -3,6 +3,7 @@ import tkinter.ttk as ttk
 import customtkinter as ctk
 
 from cards import Cards
+from history import Action
 
 class New_Card:
     def __init__(self, root, context):
@@ -15,6 +16,8 @@ class New_Card:
         new_card = Cards.create_card_data(title, subtasks, priority, len(subtasks)-2)
         self.to_do_cards.append(new_card)
         Cards.sync_ui(self.context)
+
+        self.context.action_history.record_action(Action(new_card, self.to_do_cards, None, action_type="add"))
         window.destroy()    
     
         
