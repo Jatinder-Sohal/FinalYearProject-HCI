@@ -8,6 +8,7 @@ from navbar import Navbar
 from cards import Cards
 from lists import Lists
 from new_card import New_Card
+from history import ActionHistory
 
 ctk.set_appearance_mode("light")
            
@@ -40,9 +41,10 @@ if __name__ == "__main__":
     On_Hold, *_ = Lists.create_list("On Hold", 1060, 'pink', root)
 
     context = CardContext(To_Do, Progress, Finished, On_Hold, to_do_cards, progress_cards, finished_cards, on_hold_cards)
+    context.action_history = ActionHistory()
     Cards.sync_ui(context)
 
     card_add = New_Card(root, context)
-    navbar = Navbar(root, card_add.open_add_card_window)
+    navbar = Navbar(root, card_add.open_add_card_window, context)
   
     root.mainloop() 

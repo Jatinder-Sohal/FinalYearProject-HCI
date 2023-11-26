@@ -3,7 +3,7 @@ import tkinter.ttk as ttk
 import customtkinter as ctk
 from PIL import Image, ImageTk
 from tktooltip import ToolTip
-
+from history import Action
 
 
 class Cards:
@@ -18,6 +18,7 @@ class Cards:
         from_list.remove(card)
         to_list.append(card)
         Cards.sync_ui(context)
+        context.action_history.record_action(Action(card, from_list, to_list))
         
     def sync_ui(context):
         #Code from https://stackoverflow.com/questions/15781802/python-tkinter-clearing-a-frame
