@@ -17,7 +17,7 @@ class New_Card:
             messagebox.showerror("Input Error", "Please fill in all fields.")
             return 
 
-        
+
         subtasks = subtasks_list.split('\n')
         new_card = Cards.create_card_data(title, subtasks, priority, len(subtasks)-2)
         self.to_do_cards.append(new_card)
