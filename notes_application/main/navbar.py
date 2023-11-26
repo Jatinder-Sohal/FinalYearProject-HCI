@@ -86,7 +86,7 @@ class Navbar:
 
 
     def show_help_window(self):
-            # Create a top-level window for the help information
+            #Created a top-level window for the help information
             help_window = tk.Toplevel(self.root)
             help_window.title("Help and Support")
             help_window.geometry("600x500+630+140") 
@@ -95,5 +95,17 @@ class Navbar:
             contact_info_label = tk.Label(help_window, text="Contact Information", font=("Arial Bold", 22))
             contact_info_label.pack(pady=10)
 
-
+            contact_details = """
+            Email: ProjectPlanningHelp@gmail.com
+            
+            Phone: +449848436078
+            
+            Twitter: @ProjectPlanningUK
+            
+            Facebook: @ProjectPlanningUK
+            """
+            contact_text = tk.Text(help_window, height=10, bg="gainsboro", width=150, font=("Arial Bold", 22))
+            contact_text.insert("end", contact_details)
+            contact_text.config(state="disabled")  
+            contact_text.place(relx=1.88, rely=0.5, anchor="center")
         
