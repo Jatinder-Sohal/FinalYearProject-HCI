@@ -71,7 +71,7 @@ class Navbar:
         undo_button.pack(side=tk.LEFT, padx=10)
         ToolTip(undo_button, msg="Click this button to undo any changes")
 
-        redo_button = ctk.CTkButton(top_bar, text="Redo", image=redo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF")
+        redo_button = ctk.CTkButton(top_bar, text="Redo", image=redo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF", command=lambda: self.context.action_history.redo(self.context))
         redo_button.pack(side=tk.LEFT)
         ToolTip(redo_button, msg="Click this button to redo any changes")
 
