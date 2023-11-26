@@ -21,7 +21,7 @@ class Navbar:
         label = tk.Label(self.root, text = "Project board", bg='#F9F7F7', font=("Arial", 22))
         label.place(relx = 0.5, rely = 0.05, anchor = tk.CENTER)
 
-        button = ctk.CTkButton(self.root, text="Share", fg_color="#3F72AF",text_color="white", font=("Arial", 18), hover_color="grey", width=80, height=30)                    
+        button = ctk.CTkButton(self.root, text="Need help?", fg_color="#3F72AF",text_color="white", font=("Arial", 18), hover_color="grey", width=80, height=30)                    
         button.place(relx=0.71, rely=0.05, anchor=tk.CENTER)
         ToolTip(button, msg="Click to share board with others")
 

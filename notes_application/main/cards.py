@@ -77,11 +77,11 @@ class Cards:
         priority_dot.pack(side='left', padx=10)
         ToolTip(priority_dot, msg="Indicites importance: Red being the most, green the least")
         
-        title_label = ctk.CTkLabel(header_frame, text=card_title, width=180, anchor="w", font=("Arial", 20))
+        title_label = ctk.CTkLabel(header_frame, text=card_title, width=180, anchor="w", font=("Arial", 22), wraplength=180)
         title_label.pack(side='left')          
 
         def delete_card():
-            response = messagebox.askyesno("Delete Confirmation", "Are you sure you want to delete this card?")
+            response = messagebox.askyesno("Delete Confirmation (CANNOT UNDO)", "Are you sure you want to delete this card?")
             if response:
                 cards_list.remove(card_data)  
                 card.destroy()
@@ -98,20 +98,29 @@ class Cards:
             task = card_content[i] 
             sub_task_frame = ctk.CTkFrame(card, fg_color='gainsboro')
             sub_task_frame.pack(side='top', expand=True, pady=2)
-            sub_task_label = ctk.CTkLabel(sub_task_frame, text="Task " +str(i+1)+": "+task, width=45, anchor="w", font=("Arial", 16))
-            sub_task_label.pack(side='left', padx=35)
+            
+            task_height = 0
+            if (len(task) >= 11):
+                task_height=2
+                
+            sub_task_label = tk.Text(sub_task_frame, height=task_height, width=14, font=("Arial", 14), borderwidth=0, highlightthickness=0, wrap="word", bg='gainsboro')  
+            sub_task_label.insert("end", "Task " +str(i+1)+": "+task)
+            sub_task_label.pack(side='left', padx=(15, 10), pady = 5) 
+            sub_task_label.configure(state="disabled", inactiveselectbackground=sub_task_label.cget("selectbackground"))
 
             checked_state = tk.BooleanVar(value=True)
             if (i==tasks):
                 checked_state = tk.BooleanVar(value=False)  
             checkbutton =  ctk.CTkCheckBox(sub_task_frame, width=40, text="", variable=checked_state)
-            checkbutton.pack(side='right', padx=15, pady=5)
+            checkbutton.pack(side='right', padx=15, pady=1)
             i = i + 1   
+
 
         progress_var = tk.DoubleVar(value=0)
         if (i==1):
             progress_var.set(0)
         else:
+            i=i-1
             progress_var.set(i/(i+1) * 100)
  
         progress_frame = ctk.CTkFrame(card)
