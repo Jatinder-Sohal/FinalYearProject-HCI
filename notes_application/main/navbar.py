@@ -6,11 +6,12 @@ from tktooltip import ToolTip
 
 
 class Navbar:
-    def __init__(self, root, open_add_card_window):
+    def __init__(self, root, open_add_card_window, context):
         self.root = root
         self.open_add_card_window = open_add_card_window
         self.create_navbar()
         self.top_bar = self.create_top_bar()
+        self.context = context
 
         
     def create_navbar(self):
@@ -66,11 +67,11 @@ class Navbar:
         ToolTip(add_card_button, msg="Click this button to add a new card")
 
 
-        undo_button = ctk.CTkButton(top_bar, text="Undo", image=undo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF")
+        undo_button = ctk.CTkButton(top_bar, text="Undo", image=undo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF", command=lambda: self.context.action_history.undo(self.context))
         undo_button.pack(side=tk.LEFT, padx=10)
         ToolTip(undo_button, msg="Click this button to undo any changes")
 
-        redo_button = ctk.CTkButton(top_bar, text="Redo", image=redo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF")
+        redo_button = ctk.CTkButton(top_bar, text="Redo", image=redo_photo, hover_color="grey", text_color="white", width=100, height=30, font=("Arial", 18), fg_color="#3F72AF", command=lambda: self.context.action_history.redo(self.context))
         redo_button.pack(side=tk.LEFT)
         ToolTip(redo_button, msg="Click this button to redo any changes")
 
