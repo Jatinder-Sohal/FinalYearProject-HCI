@@ -33,12 +33,14 @@ class ActionHistory:
         self.redo_history.clear()
 
     def undo(self, context):
-        Action = self.undo_history.pop()
-        Action.undo(context)
-        self.redo_history.append(Action)
+        if self.undo_history:
+            Action = self.undo_history.pop()
+            Action.undo(context)
+            self.redo_history.append(Action)
 
     def redo(self, context):
-        Action = self.redo_history.pop()
-        Action.redo(context)
-        self.undo_history.append(Action)
+        if self.redo_history:
+            Action = self.redo_history.pop()
+            Action.redo(context)
+            self.undo_history.append(Action)
            

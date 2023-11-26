@@ -31,10 +31,10 @@ if __name__ == "__main__":
     root.configure(fg_color="#DBE2EF")
 
  
-    to_do_cards = [Cards.create_card_data("Card Title 1", ["Content 1"], "red", 0), Cards.create_card_data("Card Title 2", ["Subtask 1", "Subtask 2", "Subtask 4"], "orange", 2)]
-    progress_cards = [Cards.create_card_data("Card Title 3", ["Subtask 1", "Subtask 2", "Subtask 2"], "green", 2)]
-    finished_cards = [Cards.create_card_data("Card Title 4", ["Subtask 1", "Subtask 2"], "orange", 1), Cards.create_card_data("Card Title 5", ["Content 1"], "red", 0)]
-    on_hold_cards = [Cards.create_card_data("Card Title 6", ["Subtask 1", "Subtask 2"], "green", 1)]
+    to_do_cards = [Cards.create_card_data("Get new picture", ["Image of paper"], "orange", 0), Cards.create_card_data("Fix errors", ["Images not loading", "Text small", "Colour not right"], "red", 2)]
+    progress_cards = [Cards.create_card_data("Add to navbar", ["Dropdown", "Home", "Data page"], "green", 2)]
+    finished_cards = [Cards.create_card_data("Set up", ["Choose language", "Research"], "orange", 1), Cards.create_card_data("Go to meeting", ["26/11/23"], "red", 0)]
+    on_hold_cards = [Cards.create_card_data("Allow multiple editors", ["Database", "Web server"], "green", 1)]
     To_Do, *_ = Lists.create_list("To-do", 100, 'grey', root)
     Progress, *_ = Lists.create_list("In progress", 420, 'orange', root)
     Finished, *_ = Lists.create_list("Finished", 740, 'green', root)

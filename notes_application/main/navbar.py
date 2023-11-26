@@ -21,9 +21,9 @@ class Navbar:
         label = tk.Label(self.root, text = "Project board", bg='#F9F7F7', font=("Arial", 22))
         label.place(relx = 0.5, rely = 0.05, anchor = tk.CENTER)
 
-        button = ctk.CTkButton(self.root, text="Share", fg_color="#3F72AF",text_color="white", font=("Arial", 18), hover_color="grey", width=80, height=30)                    
-        button.place(relx=0.71, rely=0.05, anchor=tk.CENTER)
-        ToolTip(button, msg="Click to share board with others")
+        help_button = ctk.CTkButton(self.root, text="Need help?", fg_color="#3F72AF",text_color="white", font=("Arial", 18), hover_color="grey", width=80, height=30)                    
+        help_button.place(relx=0.7, rely=0.05, anchor=tk.CENTER)
+        ToolTip(help_button, msg="Click to share board with others")
 
         options = ["PNG", "JPG", "Image"]
         dropdown = ctk.CTkOptionMenu(self.root, values=options, width=100, text_color="white", fg_color="#3F72AF", button_color='#112D4E',font=("Arial", 18))
