@@ -5,7 +5,7 @@ import tkinter as tk
 import customtkinter as ctk
 from tkinter import Image, PhotoImage
 from navbar import Navbar
-
+from Main import CardContext
 
 
 def fake_function():
@@ -15,7 +15,7 @@ class TestNavbar(unittest.TestCase):
     def setUp(self):
         self.root = tk.Tk()
         self.root.geometry("1400x960")
-        self.navbar_object = Navbar(self.root, fake_function)  
+        self.navbar_object = Navbar(self.root, fake_function, context = CardContext("test", "test","test","test","test","test","test","test"))  
         self.navbar = self.navbar_object.create_navbar()  
         self.root.update_idletasks()
    
