@@ -16,7 +16,7 @@ class TestNewCardButton(unittest.TestCase):
         to_do_cards = [Cards.create_card_data("Card Title 1", ["Content 1"], "red", 0), Cards.create_card_data("Card Title 2", ["Subtask 1", "Subtask 2", "Subtask 4"], "orange", 2)]
         To_Do, *_  = Lists.create_list("To-do", 100, 'grey', self.root)
   
-        action_history = ActionHistory()
+
         self.context = CardContext(To_Do, To_Do, To_Do, To_Do, to_do_cards, to_do_cards, to_do_cards, to_do_cards)
         self.context.action_history = ActionHistory()
         self.new_card = New_Card(self.root, self.context)
