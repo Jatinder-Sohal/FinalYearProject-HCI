@@ -1,22 +1,38 @@
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import React, { useState } from 'react';
+import binIcon from '../images/Bin.png'; 
 
-function sidebar(){
+function Sidebar() {
+    const initialSheets = ['Sheet 1', 'December 2021', 'Sheet 2', 'February 2022', 'October 2023'];
+    const [sheets, setSheets] = useState(initialSheets);
+
+    function removeSheet(sheetBeingRemoved) {
+        setSheets(sheets.filter(function(sheet) {
+            return sheet !== sheetBeingRemoved;
+        }));
+    }
+
     return (
         <div className="sidebar">
-        <div className="sidebar-content">
-            <h1 className="sheet-heading">Your sheets</h1>
-            <ul className="sheet-list">
-                <li className="sheet-item">Sheet 1</li>
-                <li className="sheet-item">December 2021</li>
-                <li className="sheet-item">Sheet 2</li>
-                <li className="sheet-item">Feburary 2022</li>
-                <li className="sheet-item">October 2023</li>
-            </ul>
-        </div>
+            <div className="sidebar-content">
+                <h1 className="sheet-heading">Your sheets</h1>
+                <ul className="sheet-list">
+                    {sheets.map(function(sheet, index) {
+                        return (
+                            <li key={index} className="sheet-item">
+                                {sheet}
+                                <img 
+                                    src={binIcon} 
+                                    alt="Delete sheet in sidebar" 
+                                    className="sheet-delete" 
+                                    onClick={() => removeSheet(sheet)} 
+                                />
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
         </div>   
     );
 }
 
-export default sidebar;
+export default Sidebar;
