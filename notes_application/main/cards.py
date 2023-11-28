@@ -124,12 +124,12 @@ class Cards:
 
         left_img = Image.open("../resources/left-svgrepo-com.png")
         left_photo = ctk.CTkImage(left_img)
-        move_left_button = ctk.CTkButton(card, text="Move left ", image=left_photo, width=10, height=30, font=("Arial Bold", 15))
+        move_left_button = ctk.CTkButton(card, text="Move left ", fg_color="#3F72AF", hover_color="grey", text_color="white", image=left_photo, width=10, height=30, font=("Arial Bold", 15))
         move_left_button.pack(side='left', padx=8, pady=10, anchor='center')
 
         right_img = Image.open("../resources/right-3-svgrepo-com.png")
         right_photo = ctk.CTkImage(right_img)
-        move_right_button = ctk.CTkButton(card, text="Move right", image=right_photo, font=("Arial Bold", 15), width=100, compound=tk.RIGHT)
+        move_right_button = ctk.CTkButton(card, text="Move right", fg_color="#3F72AF", hover_color="grey", text_color="white", image=right_photo, font=("Arial Bold", 15), width=100, compound=tk.RIGHT)
         move_right_button.pack(side='right', padx=10, pady=10, anchor='center')
         
         return card, move_left_button, move_right_button
