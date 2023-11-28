@@ -14,7 +14,7 @@ function Sidebar() {
     return (
         <div className="sidebar">
             <div className="sidebar-content">
-                <h1 className="sheet-heading">Your sheets</h1>
+                <h1 className="sidebar-heading">Your sheets</h1>
                 <ul className="sheet-list">
                     {sheets.map(function(sheet, index) {
                         return (
