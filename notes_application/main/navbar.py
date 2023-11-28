@@ -12,6 +12,7 @@ class Navbar:
         self.create_navbar()
         self.top_bar = self.create_top_bar()
         self.context = context
+        self.help_window_open = False 
 
         
     def create_navbar(self):
@@ -86,7 +87,7 @@ class Navbar:
 
 
     def show_help_window(self):
-            #Created a top-level window for the help information
+            self.help_window_open = True
             help_window = tk.Toplevel(self.root)
             help_window.title("Help and Support")
             help_window.geometry("600x500+630+140") 

@@ -80,15 +80,9 @@ class Cards:
         title_label = ctk.CTkLabel(header_frame, text=card_title, width=180, anchor="w", font=("Arial", 22), wraplength=180)
         title_label.pack(side='left')          
 
-        def delete_card():
-            response = messagebox.askyesno("Delete Confirmation (CANNOT UNDO)", "Are you sure you want to delete this card?")
-            if response:
-                cards_list.remove(card_data)  
-                card.destroy()
-
         bin_img = Image.open("../resources/bin-svgrepo-com.png")
         bin_photo = ctk.CTkImage(bin_img)
-        bin_button = ctk.CTkButton(header_frame, text="", fg_color="orange", hover_color="orange3", image=bin_photo, width=5, command=delete_card)
+        bin_button = ctk.CTkButton(header_frame, text="", fg_color="orange", hover_color="orange3", image=bin_photo, width=5, command=lambda: Cards.delete_card(card, card_data, cards_list))
         bin_button.image = bin_photo  
         bin_button.pack(side='right', padx=10)
         ToolTip(bin_button, msg="This will DELETE the card")
@@ -139,5 +133,12 @@ class Cards:
         move_right_button.pack(side='right', padx=10, pady=10, anchor='center')
         
         return card, move_left_button, move_right_button
+
+
+    def delete_card(card, card_data, cards_list):
+        response = messagebox.askyesno("Delete Confirmation (CANNOT UNDO)", "Are you sure you want to delete this card?")
+        if response:
+            cards_list.remove(card_data)  
+            card.destroy()
 
     

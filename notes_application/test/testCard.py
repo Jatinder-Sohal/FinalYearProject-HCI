@@ -2,6 +2,7 @@ import sys
 sys.path.insert(1, '../main')
 
 import unittest
+from unittest.mock import patch
 import tkinter as tk
 import customtkinter as ctk
 from cards import Cards
@@ -39,17 +40,18 @@ class TestCreateCard(unittest.TestCase):
         self.assertIsNotNone(self.move_left_button)
         self.assertIsNotNone(self.move_right_button)
         
-    def testDeleteButtonExists(self):
+        
+    def testDeleteButtonWorks(self):
+        card_data = Cards.create_card_data("Test Card", ["Task 1"], "red", 0)
+        self.context.to_do_cards.append(card_data)
+        card, _, _ = Cards.create_card(self.list_frame, self.context.to_do_cards, card_data)
         self.root.update_idletasks()
-        delete_button = next((child for child in self.card.winfo_children() if isinstance(child, ctk.CTkButton)), None)
-        self.assertIsNotNone(delete_button)
-
-    def testSubtasksDisplay(self):
-        self.root.update_idletasks()
-        sub_task_labels = [child for child in self.card.winfo_children() if isinstance(child, ctk.CTkFrame)]
-        self.assertEqual(1, len(self.context.to_do_cards[0]["content"]))
-
-
+        
+        with patch('tkinter.messagebox.askyesno', return_value=True):
+            Cards.delete_card(card, card_data, self.context.to_do_cards)
+            
+        self.assertNotIn(card_data, self.context.to_do_cards)
+    
 
     def tearDown(self):
         self.root.after(500)  

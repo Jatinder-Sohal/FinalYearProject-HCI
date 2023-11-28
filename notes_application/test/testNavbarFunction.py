@@ -8,6 +8,7 @@ from lists import Lists
 from Main import CardContext
 from new_card import New_Card
 from history import Action, ActionHistory
+from navbar import Navbar
 
 class TestNavbarFunction(unittest.TestCase):
     def setUp(self):
@@ -18,6 +19,8 @@ class TestNavbarFunction(unittest.TestCase):
 
         self.context = CardContext(self.to_do_list, self.to_do_list, self.to_do_list, self.to_do_list, self.to_do_cards, self.to_do_cards, self.to_do_cards, self.to_do_cards)
         self.context.action_history = self.action_history
+
+        self.navbar = Navbar(self.root, None, None)
 
     def testUndoAdd(self):
         new_card_data = Cards.create_card_data("Test Card", ["Task 1", "Task 2"], "red", 1)
@@ -35,7 +38,12 @@ class TestNavbarFunction(unittest.TestCase):
         self.context.action_history.record_action(Action(new_card_data, self.to_do_cards, None, action_type="add"))
 
         self.context.action_history.redo(self.context)
-        self.assertIn(new_card_data, self.to_do_cards)     
+        self.assertIn(new_card_data, self.to_do_cards)
+
+    def testHelpButton(self):
+        self.navbar.show_help_window()
+        self.assertTrue(self.navbar.help_window_open)
+
 
     def tearDown(self):
         self.root.destroy()

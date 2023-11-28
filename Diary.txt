@@ -147,3 +147,61 @@ Problems	-Have to spend a large amount of time on UI's
 Future		-Continue adding functionality.
 		-Go back to old ui and add functionality to that as well and test it
 		-Keep writing report
+
+
+Week 8 (18/11/23)
+Completed	-Added a scrollbar to each list so that multiple cars can be viewed
+		-Refeactored code using oop principles
+		-Changed design of code
+
+
+Problems	-Struggling making scrollbar, had to use internet to create code - has been referenced
+		-Could not decide on colour scheme
+
+Future		-Refactor classes into their own files
+		-Test this UI throughly before moving onto old one
+		-Finish report to send to supervisor late next week
+
+Week 9 (22/11/23)
+Completed  	-Added delete button to card, realised it was missing
+		-Changed colour scheme again
+		-Fixed old tests
+
+Problems 	-Had to change structure of tests a lot due to putting navbar into its own class
+		-Unable to change some hover colours
+		-Still got some sections of report to do
+
+Future 		-Keep testing
+		-Send report to supervisor on friday
+		-Test all the extra functionality I added
+
+
+Week 9 (25/11/23)
+Completed	-Refactored the main classes into their own files using oop principles
+		-And some tests for the layout of the ui
+		-Sent report to supervisor
+
+Problems:	-Took a lot of work to refactor requiring a lot of varaible name changes and errors
+		-Testing also required me to change what methods to return
+
+Future:		-Work on feedback from supervisor early next week
+		-Start powerpoint
+		-Finish testing and change buttons of move right and left
+
+Week 10 (28/11/23)
+Completed 	-Throughly tested all classes for interface 2
+		-Add extra functionality like undo, redo and help window when button pressed
+		-Refactored old tests that broke with new changes
+
+Problems:	-Had a lot with tests, required a lot of refactoring and change of return values
+		-Undo and redo took a lot of effort to get working - bugs with undo doing redo job
+		-Subtasks where moving checkboxs around when long text added
+
+Future:		-Comment all my code 
+		-Move on to interface 1 - extra functionality and testing
+		-Write up powerpoint
+		-Add imporovments to report which were suggested by my supervisor today
+
+
+
+
