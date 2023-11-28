@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import binIcon from '../images/Bin.png'; 
 
 function Sidebar() {
-    const initialSheets = ['Sheet 1', 'December 2021', 'Sheet 2', 'February 2022', 'October 2023'];
+    const initialSheets = ['Sheet 1', 'December 2021', 'Sheet 2', 'February 2022', 'October 2023', 'Sheet 2', 'January 2023', 'December 2022'];
     const [sheets, setSheets] = useState(initialSheets);
 
     function removeSheet(sheetBeingRemoved) {

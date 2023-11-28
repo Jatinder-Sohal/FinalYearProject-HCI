@@ -33,14 +33,28 @@
 .sheet-list {
     list-style: none;
 }
-.sheet-item{
-    padding: 10px;
-    border-bottom: 1px solid #ccc; 
+.sheet-item {
+    width: 120%;
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
     text-align: center;
-    display: flex; 
-    align-items: baseline;
+    display: flex;
+    align-items: center; 
     position: relative;
-    left: -30%;
+    left: -20%;
+}
+
+.sheet-delete {
+    width: 30px;
+    height: 30px;
+    margin-left: auto; 
+    cursor: pointer;   
+}
+.sheet-delete:hover {
+    transition: 0.2s; 
+    content: url('../images/Bin-red.png'); 
+    transform: scale(1.2);
+    
 }
 .sheet-heading{
     font-family: sans-serif;
@@ -48,11 +62,13 @@
     font-weight: bold;
     font-size: 2rem;
 }
+
 .page3-h2{
     font-size: 1.7rem;
 }
 #pencil{
-    margin-top: 0.2%;
+    margin-top: 0.6%;
+    margin-left: 0.4%;
 }
 
 .button-save{
