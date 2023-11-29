@@ -3,7 +3,7 @@ import {useState} from "react";
 import Bin from '../images/Bin.png';
 
 
-function ExpenseTable(){
+function ExpenseTable({deleteTitle}){
     const initialExpenses = [
         {id: 1, category: "Food", amount: "£200", lastAmount: "£300", difference: "£100"},
         {id: 2, category: "Fuel", amount: "£60", lastAmount: "£150", difference: "£90"},
@@ -31,6 +31,7 @@ function ExpenseTable(){
     };
     const deleteExpenseTable = () => {
         setExpenses([]);
+        deleteTitle('Enter name');
     };
 
     return(

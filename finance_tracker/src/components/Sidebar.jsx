@@ -1,14 +1,14 @@
 import React from 'react';
 import binIcon from '../images/Bin.png'; 
 
-function Sidebar({sheets, RemoveSheet}) {
+function Sidebar({sheets, RemoveSheet, OnSheetClick }) {
     return (
         <div className="sidebar">
             <div className="sidebar-content">
                 <h1 className="sidebar-heading">Your sheets</h1>
                 <ul className="sidebar-list">
                     {sheets.map((sheet, index) => (
-                        <li key={index} className="sidebar-item">
+                        <li key={index} className="sidebar-item" onClick={() => OnSheetClick(sheet)}>
                             {sheet}
                             <img 
                                 src={binIcon} 

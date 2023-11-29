@@ -20,13 +20,18 @@ function EnterData() {
     const removeSheet = (sheetBeingRemoved) => {
         setSheets(sheets.filter(sheet => sheet !== sheetBeingRemoved));
     };
+    const [currentName, setSheetName] = useState('November sheet');
+
+    const changeSheetName= (sheetName) => {
+        setSheetName(sheetName);
+    };
 
     return (
         <div className="page3-container">
             <Navbar />
-            <Sidebar sheets={sheets} RemoveSheet={removeSheet} />
-            <SheetHeading AddSheet={addSheet} />
-            <ExpenseTable />
+            <Sidebar sheets={sheets} RemoveSheet={removeSheet}  OnSheetClick={changeSheetName} />
+            <SheetHeading AddSheet={addSheet} currentName={currentName} />
+            <ExpenseTable deleteTitle={changeSheetName} />
         </div>
     );
 }
