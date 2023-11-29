@@ -4,13 +4,16 @@ import Bin from '../images/Bin.png';
 
 
 function ExpenceTable(){
-    const [expenses] = useState([
+    const [expenses, setExpenses] = useState([
         {id: 1, category: "Food", amount: "£200", lastAmount: "£300", difference: "£100"},
         {id: 2, category: "Fuel", amount: "£60", lastAmount: "£150", difference: "£90"},
         {id: 3, category: "Rent", amount: "£1500", lastAmount: "£1200", difference: "-£300"},
         {id: 4, category: "Games", amount: "£30", lastAmount: "£100", difference: "£70"},
         {id: 5, category: "Bills", amount: "£2000", lastAmount: "£1500", difference: "-£500"},
     ]);
+    const deleteExpense = (expenseId) => {
+        setExpenses(expenses.filter(expense => expense.id !== expenseId));
+    };
     return(
     <div>
       <div className="button-table">
@@ -41,7 +44,7 @@ function ExpenceTable(){
                             <input type="text" className="table-input" placeholder={expense.difference} />
                         </div>
                         <div className="field">
-                            <img src={Bin} alt="Delete" className="icon-hover" height="32" width="32" />
+                            <img src={Bin} alt="Delete" className="button-hover" onClick={() => deleteExpense(expense.id)} height="32" width="32" />
                         </div>
                     </div>
         ))}
