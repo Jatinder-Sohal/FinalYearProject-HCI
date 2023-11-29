@@ -80,3 +80,27 @@
     background-color: #212A3E;
     border-color: #212A3E;
 }
+
+
+.chat-box {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+  }
+   
+  .chat-content {
+    padding-top: 10px;
+  }
