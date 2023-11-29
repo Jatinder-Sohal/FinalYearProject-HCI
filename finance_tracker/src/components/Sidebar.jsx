@@ -6,14 +6,14 @@ function Sidebar({sheets, RemoveSheet}) {
         <div className="sidebar">
             <div className="sidebar-content">
                 <h1 className="sidebar-heading">Your sheets</h1>
-                <ul className="sheet-list">
+                <ul className="sidebar-list">
                     {sheets.map((sheet, index) => (
-                        <li key={index} className="sheet-item">
+                        <li key={index} className="sidebar-item">
                             {sheet}
                             <img 
                                 src={binIcon} 
                                 alt="Delete sheet" 
-                                className="sheet-delete"
+                                className="sidebar-sheet-delete"
                                 onClick={() => RemoveSheet(sheet)} 
                             />
                         </li>

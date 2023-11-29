@@ -19,8 +19,8 @@
     width: 15%; 
     background-color: #DBE2EF; 
     color: black; 
-    position: fixed;
-    height: 100%;
+    position: absolute;
+    height: 110%;
     font-family: sans-serif;
     display: flex; 
     flex-direction: column; 
@@ -30,10 +30,10 @@
 .sidebar-content{
     padding: 5%;
 }
-.sheet-list {
+.sidebar-list {
     list-style: none;
 }
-.sheet-item {
+.sidebar-item {
     width: 120%;
     padding: 12px;
     border-bottom: 1px solid #ccc;
@@ -43,14 +43,13 @@
     position: relative;
     left: -20%;
 }
-
-.sheet-delete {
+.sidebar-sheet-delete {
     width: 30px;
     height: 30px;
     margin-left: auto; 
     cursor: pointer;   
 }
-.sheet-delete:hover {
+.sidebar-sheet-delete:hover {
     transition: 0.2s; 
     content: url('../images/Bin-red.png'); 
     transform: scale(1.2);
