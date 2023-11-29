@@ -1,22 +1,36 @@
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import React from 'react';
+import binIcon from '../images/Bin.png'; 
 
-function sidebar(){
+/* USed for event propagation
+https://stackoverflow.com/questions/38619981/how-can-i-prevent-event-bubbling-in-nested-react-components-on-click#:~:text=class%20List%20extends%20React.Component%20,li
+*/
+
+function Sidebar({ sheets, RemoveSheet, OnSheetClick }) {
+    const handleDeleteClick = (event, sheet) => {
+        event.stopPropagation(); 
+        RemoveSheet(sheet);
+    };
+
     return (
         <div className="sidebar">
-        <div className="sidebar-content">
-            <h1 className="sheet-heading">Your sheets</h1>
-            <ul className="sheet-list">
-                <li className="sheet-item">Sheet 1</li>
-                <li className="sheet-item">December 2021</li>
-                <li className="sheet-item">Sheet 2</li>
-                <li className="sheet-item">Feburary 2022</li>
-                <li className="sheet-item">October 2023</li>
-            </ul>
-        </div>
+            <div className="sidebar-content">
+                <h1 className="sidebar-heading">Your sheets</h1>
+                <ul className="sidebar-list">
+                    {sheets.map((sheet, index) => (
+                        <li key={index} className="sidebar-item" onClick={() => OnSheetClick(sheet)}>
+                            {sheet}
+                            <img 
+                                src={binIcon} 
+                                alt="Delete sheet" 
+                                className="sidebar-sheet-delete"
+                                onClick={(event) => handleDeleteClick(event, sheet)}
+                            />
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>   
     );
 }
 
-export default sidebar;
+export default Sidebar;
