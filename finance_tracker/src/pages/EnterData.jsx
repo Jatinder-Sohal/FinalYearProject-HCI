@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import ExpenceTable from "../components/ExpenceTable";
+import ExpenseTable from "../components/ExpenseTable";
 import SheetHeading from "../components/SheetHeading";
 
 import './EnterData.css';
@@ -26,7 +26,7 @@ function EnterData() {
             <Navbar />
             <Sidebar sheets={sheets} RemoveSheet={removeSheet} />
             <SheetHeading AddSheet={addSheet} />
-            <ExpenceTable />
+            <ExpenseTable />
         </div>
     );
 }

@@ -14,7 +14,7 @@ function SheetHeading({AddSheet}) {
     return (
         <div>
             <div className="heading">
-                <input className="sheet-heading" value={sheetName} onChange={(e) => setSheetName(e.target.value)} type="text" placeholder="November sheet" aria-label="User Input for expence sheet"></input>
+                <input className="sheet-heading" value={sheetName} onChange={(e) => setSheetName(e.target.value)} type="text" placeholder="November sheet" aria-label="User Input for expense sheet"></input>
                 <img id="pencil" src={Pencil} alt="Icon of pencil, to change title" height="32" width="32"/>
                 <h2 className="page3-h2"> 29/11/23</h2>
             </div>

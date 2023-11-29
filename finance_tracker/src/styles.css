@@ -24,7 +24,7 @@
 #topWord{
     margin-top: 1.5%;
 }
-.btn.btn-primary:hover,
+
 .btn.btn-primary:active,
 .btn.btn-primary:focus,
 .btn-primary{
@@ -34,6 +34,11 @@
     background-color: rgb(255, 46, 99);
     border-color: rgb(255, 46, 99);
 }
+.btn.btn-primary:hover{
+    background-color: rgb(153, 1, 39);
+    border-color: rgb(153, 1, 39);
+}
+
 #arrow{
     margin-left: 7%;
 }
