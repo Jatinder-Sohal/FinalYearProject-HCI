@@ -1,8 +1,16 @@
 import React from "react";
+import {useState} from "react";
 import Bin from '../images/Bin.png';
 
 
 function ExpenceTable(){
+    const [expenses] = useState([
+        {id: 1, category: "Food", amount: "£200", lastAmount: "£300", difference: "£100"},
+        {id: 2, category: "Fuel", amount: "£60", lastAmount: "£150", difference: "£90"},
+        {id: 3, category: "Rent", amount: "£1500", lastAmount: "£1200", difference: "-£300"},
+        {id: 4, category: "Games", amount: "£30", lastAmount: "£100", difference: "£70"},
+        {id: 5, category: "Bills", amount: "£2000", lastAmount: "£1500", difference: "-£500"},
+    ]);
     return(
     <div>
       <div className="button-table">
@@ -18,41 +26,25 @@ function ExpenceTable(){
             <div className="field">Difference</div>
             <div className="field">Delete?</div>
         </div>
-        <div className="rows">
-            <div className="field"><input type="text" className="table-input" placeholder="Food" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£200" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£300" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£100" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><img className="button-hover" src={Bin} alt="Delete" height="32" width="32" aria-label="User Input for expence sheet" /></div>
-        </div>
-        <div className="rows">
-            <div className="field"><input type="text" className="table-input" placeholder="Fuel" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£60" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£150" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£90" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><img className="button-hover" src={Bin} alt="Delete" height="32" width="32" aria-label="User Input for expence sheet" /></div>
-        </div>
-        <div className="rows">
-            <div className="field"><input type="text" className="table-input" placeholder="Rent" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£1500" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£1200" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="-£300" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><img className="button-hover" src={Bin} alt="Delete" height="32" width="32" aria-label="User Input for expence sheet" /></div>
-        </div>
-        <div className="rows">
-            <div className="field"><input type="text" className="table-input" placeholder="Games" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£30" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£100" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input type="text" className="table-input" placeholder="£70" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><img className="button-hover" src={Bin} alt="Delete" height="32" width="32" aria-label="User Input for expence sheet" /></div>
-        </div>
-        <div className="rows">
-            <div className="field"><input className="table-input" type="text" placeholder="Bills" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input className="table-input"type="text" placeholder="£2000" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input className="table-input" type="text" placeholder="£1500" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><input className="table-input" type="text" placeholder="-£500" aria-label="User Input for expence sheet"></input></div>
-            <div className="field"><img className="button-hover" src={Bin} alt="Delete" height="32" width="32" aria-label="User Input for expence sheet" /></div>
-        </div>
+        {expenses.map(expense => (
+                    <div key={expense.id} className="rows">
+                        <div className="field">
+                            <input type="text" className="table-input" placeholder={expense.category} />
+                        </div>
+                        <div className="field">
+                            <input type="text" className="table-input" placeholder={expense.amount} />
+                        </div>
+                        <div className="field">
+                            <input type="text" className="table-input" placeholder={expense.lastAmount} />
+                        </div>
+                        <div className="field">
+                            <input type="text" className="table-input" placeholder={expense.difference} />
+                        </div>
+                        <div className="field">
+                            <img src={Bin} alt="Delete" className="icon-hover" height="32" width="32" />
+                        </div>
+                    </div>
+        ))}
     </div>
     </div>
     );
