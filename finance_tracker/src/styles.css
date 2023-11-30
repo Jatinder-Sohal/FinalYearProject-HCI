@@ -7,6 +7,9 @@
     color:  rgb(8, 217, 214);
 }
 .help-text{
+    display: flex;
+    justify-content: space-between;
+    
     width: 8.8%;
     margin-bottom: 0.5%;
     margin-top: 0.5%;
