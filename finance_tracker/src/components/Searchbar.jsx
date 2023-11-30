@@ -14,8 +14,10 @@ function Searchbar() {
     const handleSendMessage = () => {
         const updatedMessages = [...messages, { text: newMessage, sender: "sent" }];
         setMessagesAndColour(updatedMessages);
-        setMessagesAndColour([...updatedMessages, { text: "Got it! We'll get back to you on this", sender: "received" }]);
-        setNewMessageText("");        
+        setNewMessageText("");  
+        setTimeout(() => {
+            setMessagesAndColour([...updatedMessages, { text: "Got it! We'll get back to you on this", sender: "received" }]);
+        }, 1000);      
     };
     return (
         <div className="page2-header">
