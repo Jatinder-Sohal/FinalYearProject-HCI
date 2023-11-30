@@ -13,11 +13,20 @@ function Searchbar() {
             {isChatOpen && (
                 <div className="chat-box ">
                     <div className="chat-header">
-                        <span>Live Chat</span>
+                        <span className="chat-title">Customer Support</span>
                         <button onClick={closeChat} className="close-chat">X</button>
                     </div>
                     <div className="chat-content">
-                        <p>Agent: Please enter your query.</p>
+                        <div className="message received">
+                            <p>Hi! I'm your financial tracker virtual assistant.</p>
+                        </div>
+                        <div className="message received">
+                            <p>Got it! We'll get back to you on this</p>
+                        </div>
+                    </div>
+                    <div className="chat-footer">
+                        <input type="text" placeholder="Type a message here..." className="chat-input" />
+                        <button className="send-button">Send</button>
                     </div>
                 </div>
             )}
