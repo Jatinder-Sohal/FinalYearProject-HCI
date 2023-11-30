@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Searchbar from "../components/Searchbar";
+import HelpCards from "../components/HelpCards";
 import './HelpPage.css';
 
 function HelpPage(){
     return (
     <div className="page2-container">
         <Navbar />
-        <Searchbar />
+        <HelpCards />
     </div>
     );
 }

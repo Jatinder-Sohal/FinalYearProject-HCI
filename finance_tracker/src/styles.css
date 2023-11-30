@@ -6,7 +6,8 @@
     border-color: rgb(8, 217, 214);
     color:  rgb(8, 217, 214);
 }
-.help_text{
+.help-text{
+    width: 8.8%;
     margin-bottom: 0.5%;
     margin-top: 0.5%;
 }
