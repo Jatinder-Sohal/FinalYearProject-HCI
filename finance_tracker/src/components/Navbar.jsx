@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useLocation } from "react-router-dom";
-
+import SettingImage from '../images/settings-svgrepo-com.png';
 
 
 function Navbar(){
@@ -57,7 +57,8 @@ function Navbar(){
             </ul>
           </li>       
         </ul> 
-        <span className="help_text">
+        <span className="help-text">
+          <img src={SettingImage} className="setting-size" alt="Settings" />
           <a href="Help" type="button" className={buttonClass}>Need help?</a>        
         </span>    
       </div>
