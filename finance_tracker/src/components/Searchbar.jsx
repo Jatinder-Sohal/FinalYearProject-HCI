@@ -5,9 +5,18 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function Searchbar() {
     const [isChatOpen, setChatOpen] = useState(false);
-
+    const [messages, setMessagesAndColour] = useState([
+        { text: "Hi! I'm your financial tracker virtual assistant.", sender: "received" }
+    ]);
+    const [newMessage, setNewMessageText] = useState("")
     const openChat = () => setChatOpen(true);
     const closeChat = () => setChatOpen(false);
+    const handleSendMessage = () => {
+        const updatedMessages = [...messages, { text: newMessage, sender: "sent" }];
+        setMessagesAndColour(updatedMessages);
+        setMessagesAndColour([...updatedMessages, { text: "Got it! We'll get back to you on this", sender: "received" }]);
+        setNewMessageText("");        
+    };
     return (
         <div className="page2-header">
             {isChatOpen && (
@@ -17,16 +26,15 @@ function Searchbar() {
                         <button onClick={closeChat} className="close-chat">X</button>
                     </div>
                     <div className="chat-content">
-                        <div className="message received">
-                            <p>Hi! I'm your financial tracker virtual assistant.</p>
-                        </div>
-                        <div className="message received">
-                            <p>Got it! We'll get back to you on this</p>
-                        </div>
+                        {messages.map((message, index) => (
+                            <div key={index} className={`message ${message.sender}`}>
+                                <p>{message.text}</p>
+                            </div>
+                        ))}
                     </div>
                     <div className="chat-footer">
-                        <input type="text" placeholder="Type a message here..." className="chat-input" />
-                        <button className="send-button">Send</button>
+                        <input type="text"  placeholder="Type a message here..." className="chat-input" value={newMessage} onChange={(e) => setNewMessageText(e.target.value)}/>
+                        <button onClick={handleSendMessage} className="send-button">Send</button>
                     </div>
                 </div>
             )}
