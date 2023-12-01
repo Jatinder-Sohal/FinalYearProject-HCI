@@ -25,14 +25,16 @@
 .page2-h1{
     font-family: sans-serif;
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 2.5em;
     color: #394867;
 }
+
 .page2-title{
-    font-size: 20px;
+    font-size: 1.5em;
     color: #394867;
 }
 .page2-h3{
+    font-size: 1.7em;
     color: #394867;
 }
 .search{
@@ -64,10 +66,7 @@
     justify-content: center;
     margin-top: 3%;
 }
-.page2-title{
-    font-size: 1.5rem;
-    color: #394867;
-}
+
 .page2-button{
     background-color: #394867;
     border-color: #394867;

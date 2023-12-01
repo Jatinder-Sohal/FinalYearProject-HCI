@@ -1,11 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
 import SettingImage from '../images/settings-svgrepo-com.png';
+import SettingImageBlue from '../images/settings-svgrepo-com-Blue.png';
 import './SettingsMenu.css';
+import { useLocation } from "react-router-dom";
 
 function SettingsMenu() {
-const [isTextEnlarged, setTextEnlarged] = useState(false);
+  const location = useLocation();
+  if (location.pathname === "/") {
+    SettingImage = SettingImageBlue
+  }
 
+  const [isTextEnlarged, setTextEnlarged] = useState(false);
   const toggleTextSize = () => {
     setTextEnlarged(!isTextEnlarged);
     document.body.classList.toggle('enlarge-text');

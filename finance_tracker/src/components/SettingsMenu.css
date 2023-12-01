@@ -48,13 +48,16 @@
     padding: 8px 0; 
     
   }
-
 .settings-container:hover .settings-dropdown{
     display: block; 
     
 }
 
-
 .enlarge-text {
     font-size: 1.2em; 
-  }
+
+}
+.enlarge-text .custom-container {
+    width: 50%; 
+    height: 50%;    
+}
