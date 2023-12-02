@@ -37,8 +37,8 @@ class New_Card:
 
         title_label = tk.Label(add_card_window, text="Title:", font=("Arial", 22))
         title_label.place(relx = 0.18, rely = 0.2, anchor = tk.CENTER)
-        title_entry = ctk.CTkEntry(add_card_window, width=200, height=50, font=("Arial ", 20))
-        title_entry.place(relx = 0.28, rely = 0.3, anchor = tk.CENTER)
+        title_entry = tk.Entry(add_card_window, width=23,  font=("Arial ", 19), borderwidth=1, relief="solid")
+        title_entry.place(relx = 0.37, rely = 0.3, anchor = tk.CENTER)
 
         
         subtasks_label = tk.Label(add_card_window, text="Subtasks (one per line):", font=("Arial", 22))

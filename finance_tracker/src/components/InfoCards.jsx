@@ -2,6 +2,7 @@ import React from "react";
 
 function InfoCards(){
     return (
+      <div className="contain">
         <div className="d-flex justify-content-center align-items-center">
           <div className="row page1-row">
             <div className="col page1-col">
@@ -29,6 +30,7 @@ function InfoCards(){
               </div>
             </div>
           </div>
+        </div>
         </div>
       );
     }
