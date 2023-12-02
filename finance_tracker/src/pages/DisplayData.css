@@ -29,7 +29,7 @@
 .display-title{
     text-align: center;
     margin-top: 2%;
-    font-size: 2.6rem;
+    font-size: 2.6em;
     font-weight: bold;
 }
 .content {
@@ -42,5 +42,8 @@
     border-radius: 10px;
 }
 
-
+.page4-container.enlarged-text .custom-container {
+    width: 60%;
+    height: 60%;
+  }
 

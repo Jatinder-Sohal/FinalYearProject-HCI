@@ -34,7 +34,7 @@ class Navbar:
 
 
         options = ["PNG", "JPG", "Image"]
-        dropdown = ctk.CTkOptionMenu(self.root, values=options, width=100, height=30, text_color="white", fg_color="#3F72AF", button_color='#112D4E',font=("Arial", 18))
+        dropdown = ctk.CTkOptionMenu(self.root, values=options, width=100, height=30, text_color="white", fg_color="#3F72AF", button_color='#3F72AF',font=("Arial", 18))
         dropdown.pack(pady=20)
         dropdown.set("Export")
         dropdown.place(relx=0.781, rely=0.05, anchor=tk.CENTER)

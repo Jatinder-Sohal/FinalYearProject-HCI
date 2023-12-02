@@ -7,6 +7,9 @@
     color:  rgb(8, 217, 214);
 }
 .help-text{
+    display: flex;
+    justify-content: space-between;
+    
     width: 8.8%;
     margin-bottom: 0.5%;
     margin-top: 0.5%;
@@ -19,8 +22,11 @@
 }
 
 .page1-h1{
-    font-size: 80px;
+    font-size: 5em;
     font-family: Georgia;
+}
+.page1-h2{
+    font-size: 2em;
 }
 #topWord{
     margin-top: 1.5%;
@@ -44,7 +50,7 @@
     margin-left: 7%;
 }
 .page1-col{
-    height: 420px;
+    height: 480px;
 }
 .bg-custom-1 {
     height: 50%;
@@ -64,4 +70,11 @@
 }
 .d-flex{
     margin-top: 5%;
+}
+.custom1-card{
+    font-size: 1.02em;
+}
+.contain{
+    max-height: 40%;
+    overflow: hidden;
 }
