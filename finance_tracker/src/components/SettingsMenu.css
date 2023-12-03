@@ -55,9 +55,17 @@
 
 .enlarge-text {
     font-size: 1.2em; 
-
 }
 .enlarge-text .custom-container {
     width: 50%; 
     height: 50%;    
+}
+.background-contrast .page1-container,
+.background-contrast .navbar-home{
+    background-image: none;
+    background-color: black;
+}
+.text-contrast .page1-h2, 
+.text-contrast .page1-h1{
+    color: white;
 }

@@ -16,6 +16,12 @@ function SettingsMenu() {
     setTextEnlarged(!isTextEnlarged);
     document.body.classList.toggle('enlarge-text');
   };
+  const [isContrastOn, setContrastOn] = useState(false);
+  const toggleConstrast = () => {
+    setContrastOn(!isContrastOn);
+    document.body.classList.toggle('text-contrast');
+    document.body.classList.toggle('background-contrast');
+  };
   return (
     <div className="settings-container">
       <img src={SettingImage} className="setting-size" alt="Settings" />      
@@ -23,7 +29,7 @@ function SettingsMenu() {
             <h3 className="dropdown-title">Accessibility Settings</h3>
             <h4>Visual Impairment</h4>   
                 <label>
-                    <input type="checkbox" className='checkbox' /> High Contrast Mode
+                    <input type="checkbox" className='checkbox' checked={isContrastOn} onChange={toggleConstrast}  /> High Contrast Mode
                 </label>
                 <label>
                     <input type="checkbox" className='checkbox' checked={isTextEnlarged} onChange={toggleTextSize} /> Enlarge Text
