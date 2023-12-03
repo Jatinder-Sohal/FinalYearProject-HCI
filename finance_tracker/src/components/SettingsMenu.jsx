@@ -19,11 +19,14 @@ function SettingsMenu() {
   const [isContrastOn, setContrastOn] = useState(false);
   const toggleConstrast = () => {
     setContrastOn(!isContrastOn);
-    document.body.classList.toggle('text-contrast');
-    document.body.classList.toggle('background-contrast');
-    document.body.classList.toggle('background-contrast-enter');
-    document.body.classList.toggle('background-contrast-help');
+    document.body.classList.toggle('contrast');
   };
+  const [isTritanopiaOn, setTritanopiaOn] = useState(false);
+  const toggleTritanopia = () => {
+    setTritanopiaOn(!isTritanopiaOn);
+    document.body.classList.toggle('tritanopia');
+  };
+
   return (
     <div className="settings-container">
       <img src={SettingImage} className="setting-size" alt="Settings" />      
@@ -38,11 +41,12 @@ function SettingsMenu() {
                 </label>
                 <h4>Color Blindness</h4>
                 <label>
-                    <input type="checkbox" className='checkbox' /> Deuteranopia (Green-Blind)
+                    <input type="checkbox" className='checkbox' checked={isTritanopiaOn} onChange={toggleTritanopia} /> Tritanopia (Blue-Blind)
                 </label>
                 <label>
                     <input type="checkbox" className='checkbox' /> Protanopia (Red-Blind)
                 </label>
+                
                 <h4>Audio Impairment</h4>
                 <label>
                     <input type="checkbox" className='checkbox' /> Screen Reader

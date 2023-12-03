@@ -6,6 +6,9 @@
     border-color: rgb(8, 217, 214);
     color:  rgb(8, 217, 214);
 }
+.custom-home:hover{  
+    background-color:  rgb(8, 217, 214);
+}
 .help-text{
     display: flex;
     justify-content: space-between;
