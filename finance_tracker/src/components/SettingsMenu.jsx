@@ -21,6 +21,8 @@ function SettingsMenu() {
     setContrastOn(!isContrastOn);
     document.body.classList.toggle('text-contrast');
     document.body.classList.toggle('background-contrast');
+    document.body.classList.toggle('background-contrast-enter');
+    document.body.classList.toggle('background-contrast-help');
   };
   return (
     <div className="settings-container">

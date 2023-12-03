@@ -61,11 +61,22 @@
     height: 50%;    
 }
 .background-contrast .page1-container,
-.background-contrast .navbar-home{
+.background-contrast .navbar-home,
+.background-contrast .page4-container,
+.background-contrast .navbar-display{
     background-image: none;
     background-color: black;
 }
+
 .text-contrast .page1-h2, 
-.text-contrast .page1-h1{
+.text-contrast .page1-h1,
+.text-contrast .display-title,
+.text-contrast .content{
     color: white;
+}
+.background-contrast-enter .navbar-enter{
+    background-color: #112D4E;
+}
+.background-contrast-help .page2-container{
+    background-color: white;
 }
