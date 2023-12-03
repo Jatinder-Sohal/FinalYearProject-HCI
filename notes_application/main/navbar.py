@@ -11,7 +11,7 @@ class Navbar:
         self.root = root
         self.open_add_card_window = open_add_card_window
         self.context = context
-        #The 2 methods
+        #The 2 methods of the class
         self.create_navbar()
         self.top_bar = self.create_top_bar()
         #Created for testing
@@ -34,7 +34,7 @@ class Navbar:
         ToolTip(help_button, msg="Click this button to get information")
 
 
-        #Export dropdown
+        #Export dropdown, sets export as original value.
         options = ["PNG", "JPG", "Image"]
         dropdown = ctk.CTkOptionMenu(self.root, values=options, width=100, height=30, text_color="white", fg_color="#3F72AF", button_color='#3F72AF',font=("Arial", 18))
         dropdown.pack(pady=20)
@@ -42,7 +42,7 @@ class Navbar:
         dropdown.place(relx=0.781, rely=0.05, anchor=tk.CENTER)
         ToolTip(dropdown, msg="Click to export board as an image")
 
-        #Search bar
+        #Search bar placed in top right
         search_entry = ctk.CTkEntry(self.root, width=235, placeholder_text="search", font=("Arial", 18))
         search_entry.place(relx=0.91, rely=0.05, anchor=tk.CENTER)
         ToolTip(search_entry, msg="Search for a setting here")
