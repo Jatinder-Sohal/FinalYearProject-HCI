@@ -1,0 +1,173 @@
+.navbar-enter {
+    color: #3F72AF;
+    background-color: #3F72AF;
+}
+.custom-enter{
+    border-color: #F9F7F7;
+    color: #F9F7F7; 
+}
+.custom-enter:hover{
+    fill: #F9F7F7;
+    background-color: #F9F7F7;
+    border-color: #F9F7F7;
+}
+.page3-container{
+    background-color: white;
+}
+
+.sidebar {
+    width: 15%; 
+    background-color: #DBE2EF; 
+    color: black; 
+    position: absolute;
+    height: 110%;
+    font-family: sans-serif;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content:baseline
+}
+.sidebar-content{
+    padding: 5%;
+}
+.sidebar-list {
+    list-style: none;
+}
+.sidebar-item {
+    width: 120%;
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    display: flex;
+    align-items: center; 
+    position: relative;
+    left: -20%;
+    cursor: pointer;
+}
+.sidebar-sheet-delete {
+    width: 30px;
+    height: 30px;
+    margin-left: auto; 
+    cursor: pointer;   
+}
+.sidebar-sheet-delete:hover {
+    transition: 0.2s; 
+    content: url('../images/Bin-red.png'); 
+    transform: scale(1.2);
+    
+}
+.sidebar-heading{
+    font-family: sans-serif;
+    color: #112D4E;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.page3-h2{
+    font-size: 1.7rem;
+}
+#pencil{
+    margin-top: 3%;
+
+}
+.sheet-heading{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 35px; 
+    border-color: #112D4E;
+    width: 75%;
+    border: none;
+    outline: none;
+}
+.sheet-heading:hover{
+    outline: 2px solid #112D4E;
+}
+.sheet-heading::placeholder {
+    color: #112D4E;
+}
+
+
+
+.button-save{
+    margin-top: 2.2%;
+    margin-left: 10%;
+    width: 15%;
+    color:white;
+    background-color: #112D4E;
+    border-color: #112D4E;
+}
+.button-save:hover{
+    color:white;
+    background-color: #112D4E;
+    border-color: #112D4E;
+}
+.save-sheet{
+    text-align: center;
+}
+.button-table{
+    margin-top: 2%;
+    margin-left: 75%;
+    width: 15%;
+}
+.save-icon{
+    margin-left: 5%;
+}
+
+.heading{
+    margin-top: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 20%;
+    margin-left: 18%;
+    margin-top: 1%;
+}
+.expense-table{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 60%;
+    padding-top: 1.5%;
+    margin-left: 25%;
+}
+.rows {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 2%;    
+}
+.custom-header {
+    display: flex;
+    font-weight: bold;
+    padding: 2%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border: 2px solid #ccc;
+    background-color: #F9F7F7;
+}
+
+.field {
+    font-family: sans-serif;
+    font-size: 20px; 
+    border-color: black;
+    width: 30%;
+    margin-left: 5%;
+}
+.table-input{
+    width: 80%;
+    border: none;
+    outline: none;
+    margin-right: 10px; 
+}
+
+.table-input:hover{
+    outline: 2px solid #112D4E;
+}
+.table-input::placeholder {
+    color: #000;
+  }
+.table-icons:hover, 
+.button-hover:hover {
+    transition: 0.2s; 
+    cursor: pointer; 
+    transform: scale(1.2);
+}
