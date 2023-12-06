@@ -16,7 +16,7 @@ test('If elements exist', () => {
   expect(financialHeader).toBeInTheDocument();
   expect(trackerHeader).toBeInTheDocument();
 
-  const button = screen.getByRole('button', { name: /Get Started/i });
-  expect(button).toBeInTheDocument();  
+  const getStarted = screen.getByRole('button', { name: /Get Started/i });
+  expect(getStarted).toBeInTheDocument();  
 });
 

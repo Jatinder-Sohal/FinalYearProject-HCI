@@ -15,13 +15,13 @@ function Carousel(){
             </div>
             <div className="carousel-inner">
               <div className="carousel-item active">
-                <img src={Pie_chart} className="d-block w-100" alt="" />
+                <img src={Pie_chart} className="d-block w-100" alt="Pie chart" />
               </div>
               <div className="carousel-item">
-                <img src={Bar_graph} className="d-block w-100" alt="" />
+                <img src={Bar_graph} className="d-block w-100" alt="Bar graph" />
               </div>
               <div className="carousel-item">
-                <img src={Line_graph} className="d-block w-100" alt="" />
+                <img src={Line_graph} className="d-block w-100" alt="Line graph" />
               </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

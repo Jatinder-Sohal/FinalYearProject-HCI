@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 
-test('Home navbar highlighted', () => {
+test('Default highlighting', () => {
     render(<MemoryRouter><Navbar /></MemoryRouter>);
 
     const homeLink = screen.getByText(/Home/i);
@@ -12,14 +12,26 @@ test('Home navbar highlighted', () => {
     expect(homeLink.classList.contains('active')).toBe(true);
       
 });
-test('Home navbar not highlighted', () => {
+
+test('Hightlighting on different page', () => {
+    render(<MemoryRouter initialEntries={['/Enter']}><Navbar /></MemoryRouter>);
+  
+    const HomeLink = screen.getByText(/Home/i);
+    expect(HomeLink.classList.contains('nav-link')).toBe(true);
+    expect(HomeLink.classList.contains('active')).toBe(false);
+
+    const enterLink = screen.getByText(/Enter/i);
+    expect(enterLink.classList.contains('nav-link')).toBe(true);
+    expect(enterLink.classList.contains('active')).toBe(true);
+});
+
+test('Testing navbar functionality', () => {
     render(<MemoryRouter initialEntries={['/Help']}><Navbar /></MemoryRouter>);
   
     const navbar = screen.getByRole('navigation');
-    expect(navbar.classList.contains('navbar', 'navbar-expand-lg', 'navbar-custom')).toBe(true);
-  
-    const nonHomeLink = screen.getByText(/Home/i);
-    expect(nonHomeLink.classList.contains('nav-link')).toBe(true);
-    expect(nonHomeLink.classList.contains('active')).toBe(false);
+    expect(navbar.classList.contains('navbar-help', 'custom-helps')).toBe(true);
+    
 });
   
+
+
