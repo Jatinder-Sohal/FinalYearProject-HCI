@@ -81,7 +81,8 @@
     background-color: white;
 }
 
-.tritanopia .bg-custom-1{
+.tritanopia .bg-custom-1,
+.tritanopia .custom-home:hover{
     background-color: #BE9FE1;
     border-color: #BE9FE1;
 }
@@ -89,10 +90,25 @@
     border-color: #BE9FE1;
     color:  #BE9FE1;
 }
-.tritanopia .custom-home:hover{
-    background-color: #BE9FE1;
-    border-color: #BE9FE1;
-}
-.tritanopia .navbar-enter{
+
+.tritanopia .navbar-enter,
+.tritanopia .button-save:hover,
+.tritanopia .navbar-help,
+.tritanopia .page2-button{
     background-color: black;
+}
+.tritanopia .sidebar{
+    background-color: #FFE3E1;
+    border-color: #FFE3E1;
+}
+.tritanopia .button-save{
+    background-color: #393E46;
+    border-color: #393E46;
+}
+.tritanopia .page4-container{
+    background-color: #cdc1ff;
+    background-image: linear-gradient(316deg, #cdc1ff 0%, #e5d9f2 74%);
+}
+.tritanopia .page2-h1{
+    color: black;
 }
