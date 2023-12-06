@@ -1,10 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom'; 
 
-import GetStarted from './GetStarted';
+import GetStarted from '../components/GetStarted';
 
-test('renders GetStarted component', () => {
+test('if get start elements exsist', () => {
   render(<GetStarted />);
   
   expect(screen.getByRole('button', { name: /Get Started/i })).toBeInTheDocument();
@@ -14,4 +14,7 @@ test('renders GetStarted component', () => {
 
   expect(financialHeader).toBeInTheDocument();
   expect(trackerHeader).toBeInTheDocument();
+
+  const button = screen.getByRole('button', { name: /Get Started/i });
+  expect(button).toBeInTheDocument();  
 });

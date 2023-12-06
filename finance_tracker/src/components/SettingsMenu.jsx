@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SettingImage from '../images/settings-svgrepo-com.png';
 import SettingImageBlue from '../images/settings-svgrepo-com-Blue.png';
 import './SettingsMenu.css';
@@ -7,9 +7,15 @@ import { useLocation } from "react-router-dom";
 
 function SettingsMenu() {
   const location = useLocation();
-  if (location.pathname === "/") {
-    SettingImage = SettingImageBlue
-  }
+  const [currentSettingImage, setCurrentSettingImage] = useState(SettingImage);
+
+  useEffect(() => {
+    if (location.pathname == '/') {
+      setCurrentSettingImage(SettingImageBlue);
+    } else {
+      setCurrentSettingImage(SettingImage);
+    }
+  }, [location.pathname]);
 
   const [isTextEnlarged, setTextEnlarged] = useState(false);
   const toggleTextSize = () => {
@@ -29,7 +35,7 @@ function SettingsMenu() {
 
   return (
     <div className="settings-container">
-      <img src={SettingImage} className="setting-size" alt="Settings" />      
+      <img src={currentSettingImage} className="setting-size" alt="Settings" />    
         <div className="settings-dropdown">
             <h3 className="dropdown-title">Accessibility Settings</h3>
             <h4>Visual Impairment</h4>   
