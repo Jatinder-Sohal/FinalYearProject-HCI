@@ -203,5 +203,18 @@ Future:		-Comment all my code
 		-Add imporovments to report which were suggested by my supervisor today
 
 
+Week 10 (03/12/23)
+Completed 	-Submitted powerpoint and recorded videos of both my interface for it
+		-Commented my 2nd interface
+		-Added a lot of functionality to my 1st (now gone back to it after finishing with 2nd)
+
+Problems:	-I have an intermediate level in react, so tough to add some complex functionality and had to fake parts
+		-Had a lot of spacing problems causing scrollbars to appear - used overflow in css to fix
+		-Need to fix report mistakes still and sent to supervisor asap
+
+Future: 	-Start testing 1st ui
+		-Tag releases
+		-Send report to supervisor asap and revise ppt for presentations on wednesday
+
 
 
