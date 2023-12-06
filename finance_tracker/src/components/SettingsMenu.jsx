@@ -31,6 +31,7 @@ function SettingsMenu() {
   const toggleTritanopia = () => {
     setTritanopiaOn(!isTritanopiaOn);
     document.body.classList.toggle('tritanopia');
+    setCurrentSettingImage(SettingImage);
   };
 
   return (
