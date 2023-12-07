@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 import GetStarted from '../components/GetStarted';
 import { MemoryRouter } from 'react-router-dom';
 
-test('If elements exist', () => {
+test('Home elements exist', () => {
   render(<GetStarted />);
   
   expect(screen.getByRole('button', { name: /Get Started/i })).toBeInTheDocument();
