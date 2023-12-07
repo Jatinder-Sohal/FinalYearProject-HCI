@@ -3,11 +3,18 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Carousel from '../components/Carousel';
 import '@testing-library/jest-dom';
 
+/**
+ * Testing if carousel images load and default is pie chart
+ */
 test('Carousel images loading', () => {
     render(<Carousel />);
   
     expect(screen.getByAltText('Pie chart')).toHaveAttribute('src', 'Pie_chart.png');
 });
+
+/**
+ * Testing if control buttons switch images
+ */
 test('Carousel controls work', () => {
     render(<Carousel />);
     
@@ -15,6 +22,10 @@ test('Carousel controls work', () => {
     expect(screen.getByAltText('Bar graph')).toHaveAttribute('src', 'Bar_graph.png');
 
 });
+
+/**
+ * Testing if carousel indicators change on slide change
+ */
 test('Carousel indicators', () => {
     render(<Carousel />);
     
