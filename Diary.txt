@@ -217,4 +217,16 @@ Future: 	-Start testing 1st ui
 		-Send report to supervisor asap and revise ppt for presentations on wednesday
 
 
+Week 11 (07/12/23)
+Completed: 	-Tested all UIs
+		-Sent report to supervisor 4 days ago 
+		-Filmed video for report and done presentation
+
+Problems	-Had a lot of speaking errors when filming video 
+		-Components were fustrating to debug when testing
+		-Couldn't add 100% support for colour blindness
+
+Future:		-Complete documentation
+		-Tag last release
+		-Add more references to report
 
