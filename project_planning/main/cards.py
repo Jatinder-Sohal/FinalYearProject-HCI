@@ -6,10 +6,34 @@ from tktooltip import ToolTip
 from history import Action
 from tkinter import messagebox
 
-#Class which creates cards that will be stored inside lists
+
 class Cards:
-    #Method which creates a dictionary with representing the cards data
+    """
+    Class for creating and managing cards that will be stored inside lists
+
+    Methods:
+    - create_card_data: Create a dictionary representing card data.
+    - move_card: Move a card from one list to another and sync the UI.
+    - sync_ui: Sync the UI by recreating card widgets.
+    - create_and_place_cards: Create and place cards in the appropriate lists.
+    - create_card: Create a single card and initialize its data and elements.
+    - delete_card: Delete a card after confirmation from the user.
+    """
+
+
     def create_card_data(title, content, priority, tasks):
+        """
+        Create a dictionary representing card data.
+
+        Parameters:
+        - title: Title of the card.
+        - content: List of content for the card.
+        - priority: Priority color of the card.
+        - tasks: Number of tasks in the card.
+
+        Returns:
+        A dictionary containing card data.
+        """
         return {
             'title': title,
             'content': content,
@@ -17,8 +41,18 @@ class Cards:
             'tasks': tasks
         }
     
-    #Moves cards from one list to another and then syncs the UI
     def move_card(card, from_list, to_list, context, is_undo_action=False):
+        """
+        Move a card from one list to another and sync the UI.
+
+        Parameters:
+        - card: The card to be moved.
+        - from_list: List from which the card is moved.
+        - to_list: List to which the card is moved.
+        - context: The CardContext instance.
+        - is_undo_action: Boolean tells whether a move is an undo action.
+
+        """
         from_list.remove(card)
         to_list.append(card)
         Cards.sync_ui(context)
@@ -27,9 +61,15 @@ class Cards:
         if not is_undo_action:
             context.action_history.record_action(Action(card, from_list, to_list))
 
-    #Syncs the UI by deleting every widgit inside all lists and then recreating them    
+      
     def sync_ui(context):
-        #Destorys all widgits
+        """
+        Sync the UI by deleting every widget inside all lists and then recreating them.
+        
+        Parameters:
+        - context: The CardContext instance.
+        """
+        #Destroys all widgets
         #Code from https://stackoverflow.com/questions/15781802/python-tkinter-clearing-a-frame
         for widget in context.To_Do.winfo_children():
             widget.destroy()
@@ -47,17 +87,25 @@ class Cards:
         Cards.create_and_place_cards(context.On_Hold, context.on_hold_cards, context)
 
 
-    #Method initialses all cards and places them inside the correct lists. Also adds functionality to move left and right buttons for those cards.
+    
     def create_and_place_cards(list_frame, cards, context):
+        """
+        Create and place cards in the correct lists.
+
+        Parameters:
+        - list_frame: Frame representing the list.
+        - cards: List of card data dictionaries.
+        - context: The CardContext instance.
+        """
         #Need to check which list to place the card in
         for card_data in cards:
-            #If To.do remove left button and intialise right button to move to in progress list
+            #If To.do remove left button and initialize right button to move to in-progress list
             if list_frame == context.To_Do:
                 card, move_left_button, move_right_button = Cards.create_card(list_frame, context.to_do_cards, card_data)
                 move_left_button.pack_forget()
                 move_right_button.pack(side='top', padx=10, pady=10, anchor='center')
                 move_right_button.configure(command=lambda card=card_data: Cards.move_card(card, context.to_do_cards, context.progress_cards, context))
-            #If progress intialise left button moving to To-Do and right button to moving to done
+            #If progress initialize left button moving to To-Do and right button to moving to done
             elif list_frame == context.Progress:
                 card, move_left_button, move_right_button = Cards.create_card(list_frame, context.progress_cards, card_data)
                 move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, context.progress_cards, context.to_do_cards, context))
@@ -73,8 +121,20 @@ class Cards:
                 move_left_button.pack(side='top', padx=10, pady=10, anchor='center')
                 move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, context.on_hold_cards, context.finished_cards, context))
 
-    #Method which creates the singular card and initalises all its data and elements
+    
     def create_card(list_frame, cards_list, card_data):
+        """
+        Create a single card and initialize its data and elements.
+
+        Parameters:
+        - list_frame: Frame representing the list.
+        - cards_list: List containing card data dictionaries.
+        - card_data: Dictionary representing card data.
+
+        Returns:
+        The cards elements
+        """
+        
         #Getting the cards data from its dictionary
         card_title = card_data['title']
         card_content = card_data['content']
@@ -91,13 +151,13 @@ class Cards:
         #Adding a dot to indicate important
         priority_dot = ctk.CTkLabel(header_frame, text="•", text_color=priority, font=("Arial", 40))
         priority_dot.pack(side='left', padx=10)
-        ToolTip(priority_dot, msg="Indicites importance: Red being the most, green the least")
+        ToolTip(priority_dot, msg="Indicates importance: Red being the most, green the least")
 
         #Title of card
         title_label = ctk.CTkLabel(header_frame, text=card_title, width=180, anchor="w", font=("Arial", 22), wraplength=180)
         title_label.pack(side='left')          
 
-        #Delete icon with a hover effect, added to right of header. Added onclick event which calls last function
+        #Delete icon with a hover effect, added to the right of header. Added onclick event which calls last function
         bin_img = Image.open("../resources/bin-svgrepo-com.png")
         bin_photo = ctk.CTkImage(bin_img)
         bin_button = ctk.CTkButton(header_frame, text="", fg_color="orange", hover_color="orange3", image=bin_photo, width=5, command=lambda: Cards.delete_card(card, card_data, cards_list))
@@ -105,19 +165,19 @@ class Cards:
         bin_button.pack(side='right', padx=10)
         ToolTip(bin_button, msg="This will DELETE the card")
 
-        #Loop which goes over each subtasks and adds to card with a progress box 
+        #Loop which goes over each subtask and adds to card with a progress box 
         i = 0
         while (i <= tasks):
             task = card_content[i] 
             sub_task_frame = ctk.CTkFrame(card, fg_color='gainsboro')
             sub_task_frame.pack(side='top', expand=True, pady=2)
 
-            #If subtask if a certain character limit, split onto 2 lines
+            #If subtask is a certain character limit, split onto 2 lines
             task_height = 0
             if (len(task) >= 11):
                 task_height=2
 
-            #Adding tasks with a label e.g task 1: or task 5: etc    
+            #Adding tasks with a label e.g., task 1: or task 5: etc    
             sub_task_label = tk.Text(sub_task_frame, height=task_height, width=14, font=("Arial", 14), borderwidth=0, highlightthickness=0, wrap="word", bg='gainsboro')  
             sub_task_label.insert("end", "Task " +str(i+1)+": "+task)
             sub_task_label.pack(side='left', padx=(15, 10), pady = 5)
@@ -133,14 +193,14 @@ class Cards:
 
         #Adding a progress bar to card
         progress_var = tk.DoubleVar(value=0)
-        #If one task, will not be ticked - so should be empty. Else set using equation
+        #If one task, will not be ticked - so should be empty. Else set using the equation
         if (i==1):
             progress_var.set(0)
         else:
             i=i-1
             progress_var.set(i/(i+1) * 100)
 
-        #Placing progress bar on bottom of card
+        #Placing the progress bar on the bottom of the card
         progress_frame = ctk.CTkFrame(card)
         progress_frame.pack(pady=(5, 0))
         progress_bar = ttk.Progressbar(progress_frame, orient='horizontal', length=170, mode='determinate', variable=progress_var, maximum=100)
@@ -160,12 +220,18 @@ class Cards:
         return card, move_left_button, move_right_button
 
 
-    #Delete function which loads a message box and depending on result removes card
+    
     def delete_card(card, card_data, cards_list):
+        """
+        Delete a card after confirmation from the user.
+
+        Parameters:
+        - card: The card to be deleted.
+        - card_data: Dictionary representing card data.
+        - cards_list: The list containing card data dictionaries.
+        """
         response = messagebox.askyesno("Delete Confirmation (CANNOT UNDO)", "Are you sure you want to delete this card?")
-        #Destroy card and remove from list - this avoids use of sync as we destroy widgit here
+        #Destroy card and remove from list - this avoids use of sync as we destroy widget here
         if response:
             cards_list.remove(card_data)  
             card.destroy()
-
-    

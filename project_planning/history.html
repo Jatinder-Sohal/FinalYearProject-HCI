@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module history</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">history</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/kali/PROJECT/project_planning/main/history.py">/home/kali/PROJECT/project_planning/main/history.py</a></td></tr></table>
+    <p><span class="code">Module&nbsp;containing&nbsp;classes&nbsp;for&nbsp;managing&nbsp;actions&nbsp;and&nbsp;history&nbsp;in&nbsp;the&nbsp;application.</span></p>
+<p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="history.html#Action">Action</a>
+</dt><dt class="heading-text"><a href="history.html#ActionHistory">ActionHistory</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Action">class <strong>Action</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Action">Action</a>(card,&nbsp;from_list,&nbsp;to_list,&nbsp;action_type='movement')<br>
+&nbsp;<br>
+Class&nbsp;which&nbsp;represents&nbsp;an&nbsp;action&nbsp;that&nbsp;can&nbsp;be&nbsp;undone&nbsp;and&nbsp;redone&nbsp;and&nbsp;has&nbsp;methods&nbsp;to&nbsp;perform&nbsp;it.<br>
+&nbsp;<br>
+Attributes:<br>
+-&nbsp;card:&nbsp;The&nbsp;card&nbsp;involved&nbsp;in&nbsp;the&nbsp;action.<br>
+-&nbsp;from_list:&nbsp;The&nbsp;list&nbsp;from&nbsp;which&nbsp;the&nbsp;card&nbsp;is&nbsp;moved.<br>
+-&nbsp;to_list:&nbsp;The&nbsp;list&nbsp;to&nbsp;which&nbsp;the&nbsp;card&nbsp;is&nbsp;moved.<br>
+-&nbsp;action_type:&nbsp;The&nbsp;type&nbsp;of&nbsp;action,&nbsp;e.g.,&nbsp;"movement"&nbsp;or&nbsp;"add".<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Action-__init__"><strong>__init__</strong></a>(self, card, from_list, to_list, action_type='movement')</dt><dd><span class="code">Constructor&nbsp;which&nbsp;initializes&nbsp;the&nbsp;action&nbsp;type&nbsp;and&nbsp;where&nbsp;to&nbsp;move&nbsp;the&nbsp;card&nbsp;to.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;card:&nbsp;The&nbsp;card&nbsp;involved&nbsp;in&nbsp;the&nbsp;action.<br>
+-&nbsp;from_list:&nbsp;The&nbsp;list&nbsp;from&nbsp;which&nbsp;the&nbsp;card&nbsp;is&nbsp;moved.<br>
+-&nbsp;to_list:&nbsp;The&nbsp;list&nbsp;to&nbsp;which&nbsp;the&nbsp;card&nbsp;is&nbsp;moved.<br>
+-&nbsp;action_type:&nbsp;The&nbsp;type&nbsp;of&nbsp;action,&nbsp;e.g.,&nbsp;"movement"&nbsp;or&nbsp;"add".</span></dd></dl>
+
+<dl><dt><a name="Action-redo"><strong>redo</strong></a>(self, context)</dt><dd><span class="code">Method&nbsp;to&nbsp;redo&nbsp;actions.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;context:&nbsp;The&nbsp;context&nbsp;needed&nbsp;for&nbsp;performing&nbsp;redo&nbsp;operations.</span></dd></dl>
+
+<dl><dt><a name="Action-undo"><strong>undo</strong></a>(self, context)</dt><dd><span class="code">Method&nbsp;to&nbsp;undo&nbsp;actions.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;context:&nbsp;The&nbsp;context&nbsp;needed&nbsp;for&nbsp;performing&nbsp;undo&nbsp;operations.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ActionHistory">class <strong>ActionHistory</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">Class&nbsp;which&nbsp;manages&nbsp;all&nbsp;the&nbsp;history&nbsp;of&nbsp;actions&nbsp;for&nbsp;undo&nbsp;and&nbsp;redo.<br>
+&nbsp;<br>
+Attributes:<br>
+-&nbsp;undo_history:&nbsp;List&nbsp;to&nbsp;store&nbsp;the&nbsp;actions&nbsp;for&nbsp;undo.<br>
+-&nbsp;redo_history:&nbsp;List&nbsp;to&nbsp;store&nbsp;the&nbsp;actions&nbsp;for&nbsp;redo.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="ActionHistory-__init__"><strong>__init__</strong></a>(self)</dt><dd><span class="code">Constructor&nbsp;to&nbsp;initialize&nbsp;the&nbsp;<a href="#ActionHistory">ActionHistory</a>&nbsp;class.</span></dd></dl>
+
+<dl><dt><a name="ActionHistory-record_action"><strong>record_action</strong></a>(self, Action)</dt><dd><span class="code">Method&nbsp;to&nbsp;record&nbsp;action&nbsp;in&nbsp;undo&nbsp;list.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;action:&nbsp;The&nbsp;<a href="#Action">Action</a>&nbsp;instance&nbsp;to&nbsp;be&nbsp;recorded.</span></dd></dl>
+
+<dl><dt><a name="ActionHistory-redo"><strong>redo</strong></a>(self, context)</dt><dd><span class="code">Redo&nbsp;the&nbsp;last&nbsp;action&nbsp;in&nbsp;the&nbsp;redo&nbsp;list.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;context:&nbsp;The&nbsp;context&nbsp;needed&nbsp;for&nbsp;performing&nbsp;redo&nbsp;operations.</span></dd></dl>
+
+<dl><dt><a name="ActionHistory-undo"><strong>undo</strong></a>(self, context)</dt><dd><span class="code">Undo&nbsp;the&nbsp;last&nbsp;action&nbsp;in&nbsp;the&nbsp;undo&nbsp;list.<br>
+&nbsp;<br>
+Parameters:<br>
+-&nbsp;context:&nbsp;The&nbsp;context&nbsp;needed&nbsp;for&nbsp;performing&nbsp;undo&nbsp;operations.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

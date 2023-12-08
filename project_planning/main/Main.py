@@ -12,14 +12,14 @@ import tkinter as tk
 import tkinter.ttk as ttk
 import customtkinter as ctk
 from PIL import Image, ImageTk
-#from tktooltip import ToolTip
+from tktooltip import ToolTip
 import pydoc
 
-#from navbar import Navbar
-#from cards import Cards
-#from lists import Lists
-#from new_card import New_Card
-#from history import ActionHistory
+from navbar import Navbar
+from cards import Cards
+from lists import Lists
+from new_card import New_Card
+from history import ActionHistory
 
 ctk.set_appearance_mode("light")
 
