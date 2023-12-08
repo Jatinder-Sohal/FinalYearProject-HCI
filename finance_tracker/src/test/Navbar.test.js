@@ -3,7 +3,10 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
-
+/**
+ * Testing the highlighting of navbar items
+ * Home should be highlighted when on home page
+ */
 test('Default highlighting', () => {
     render(<MemoryRouter><Navbar /></MemoryRouter>);
 
@@ -13,6 +16,9 @@ test('Default highlighting', () => {
       
 });
 
+/**
+ * Checking if switched pages also changes highlighting of options
+ */
 test('Hightlighting on different page', () => {
     render(<MemoryRouter initialEntries={['/Enter']}><Navbar /></MemoryRouter>);
   
@@ -25,10 +31,14 @@ test('Hightlighting on different page', () => {
     expect(enterLink.classList.contains('active')).toBe(true);
 });
 
+/**
+ * Testing if css correctly switches when paged is switched
+ */
 test('Testing navbar functionality', () => {
     render(<MemoryRouter initialEntries={['/Help']}><Navbar /></MemoryRouter>);
   
     const navbar = screen.getByRole('navigation');
+    //Checking if css active
     expect(navbar.classList.contains('navbar-help', 'custom-helps')).toBe(true);
     
 });

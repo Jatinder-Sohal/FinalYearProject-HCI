@@ -3,6 +3,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import HelpCards from '../components/HelpCards';
 import '@testing-library/jest-dom'; 
 
+/**
+ * Testing if cards are loading on the page
+ */
 test('Loading of cards', () => {
   render(<HelpCards />);
 
@@ -10,6 +13,9 @@ test('Loading of cards', () => {
   expect(chatTitle).toBeInTheDocument();
 
 });
+/**
+ * Testing if the live chat opens by checking colour of live chat button
+ */
 test('Opening live chat', () => {
     render(<HelpCards />);
 
@@ -20,5 +26,6 @@ test('Opening live chat', () => {
     fireEvent.click(liveChatButton);
   
     const liveChatButtone = screen.getByText('Live chat');
+    //Checking colour of button
     expect(liveChatButtone).toHaveStyle('background-color: ButtonFace');
 });
