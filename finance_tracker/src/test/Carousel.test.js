@@ -4,6 +4,7 @@ import Carousel from '../components/Carousel';
 import '@testing-library/jest-dom';
 
 /**
+ * @test TestCarouselLoads
  * Testing if carousel images load and default is pie chart
  */
 test('Carousel images loading', () => {
@@ -13,6 +14,7 @@ test('Carousel images loading', () => {
 });
 
 /**
+ * @test Test1
  * Testing if control buttons switch images
  */
 test('Carousel controls work', () => {
@@ -24,6 +26,7 @@ test('Carousel controls work', () => {
 });
 
 /**
+ * @test
  * Testing if carousel indicators change on slide change
  */
 test('Carousel indicators', () => {

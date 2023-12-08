@@ -3,15 +3,21 @@ import Navbar from "../components/Navbar";
 import Carousel from "../components/Carousel";
 import './DisplayData.css';
 
-
+/**
+ * DisplayData component which prints out information and loads a carousel on right of text
+ * @returns page as a div
+ */
 function DisplayData() {
   return (
     <div className="page4-container">
         <Navbar />
+        {/* Title on page */}
         <h1 className="display-title">Some Recommendations on How to Cut Costs</h1>
+        {/* Carousel component loaded on right */}
         <div className="custom-container">
           <Carousel />
         </div>
+        {/* Paraghaphs of information */}
         <div className="content">
           <section className="section">
             <h2 className="section-title">Cutting Bills</h2>

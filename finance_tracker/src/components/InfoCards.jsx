@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ * InfoCards component, which are 3 cards with information inside each with a title on top
+ * @returns Component as a singular div
+ */
 function InfoCards(){
     return (
       <div className="contain">

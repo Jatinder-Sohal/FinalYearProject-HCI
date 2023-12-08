@@ -1,12 +1,17 @@
 import React from "react";
 
-
+/**
+ * GetStarted component, display text on home screen
+ * @returns GetStarted component as a div
+ */
 function GetStarted(){
     return(
     <div className="text-center">
+        {/* Split into 2 h1 due to wierd bug */}
         <h1 id="topWord" className="page1-h1">Financial </h1>
         <h1 className="page1-h1">Tracker</h1>
         <h2 className="page1-h2">Keep track of your spending habits</h2>
+        {/* Get started button with right arrow */}
         <a href="Enter">
             <button type="button" className="btn btn-primary btn-lg" >
                 Get Started

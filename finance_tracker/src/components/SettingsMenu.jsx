@@ -5,10 +5,22 @@ import SettingImageBlue from '../images/settings-svgrepo-com-Blue.png';
 import './SettingsMenu.css';
 import { useLocation } from "react-router-dom";
 
+/**
+ * SettingsMenu component which contains all accessiblity settings and functionality when selected
+ * Also changes colour of icon depending on screen
+ * @returns Component as div
+ */
 function SettingsMenu() {
   const location = useLocation();
+  /**
+   * Hook to update colour of setting button - white on default
+   */
   const [currentSettingImage, setCurrentSettingImage] = useState(SettingImage);
-
+  /**
+   * Updates icon depending on page location
+   * If home screen change to blue
+   * Has a cleanup, due to errors with testing
+   */
   useEffect(() => {
     if (location.pathname == '/') {
       setCurrentSettingImage(SettingImageBlue);
@@ -17,6 +29,9 @@ function SettingsMenu() {
     }
   }, [location.pathname]);
 
+ {/* Accessiblity settings
+     First sets hook to opposite
+     Then toggles css sheets to make changes to pages */}
   const [isTextEnlarged, setTextEnlarged] = useState(false);
   const toggleTextSize = () => {
     setTextEnlarged(!isTextEnlarged);
@@ -36,7 +51,9 @@ function SettingsMenu() {
 
   return (
     <div className="settings-container">
-      <img src={currentSettingImage} className="setting-size" alt="Settings" />    
+      {/* Settings icon */}
+      <img src={currentSettingImage} className="setting-size" alt="Settings" />  
+        {/* Dropdown with checkbox */}  
         <div className="settings-dropdown">
             <h3 className="dropdown-title">Accessibility Settings</h3>
             <h4>Visual Impairment</h4>   
