@@ -22,16 +22,16 @@ function SettingsMenu() {
    * Has a cleanup, due to errors with testing
    */
   useEffect(() => {
-    if (location.pathname == '/') {
+    if (location.pathname === '/') {
       setCurrentSettingImage(SettingImageBlue);
     } else {
       setCurrentSettingImage(SettingImage);
     }
   }, [location.pathname]);
 
- {/* Accessiblity settings
+ /* Accessiblity settings
      First sets hook to opposite
-     Then toggles css sheets to make changes to pages */}
+     Then toggles css sheets to make changes to pages */
   const [isTextEnlarged, setTextEnlarged] = useState(false);
   const toggleTextSize = () => {
     setTextEnlarged(!isTextEnlarged);

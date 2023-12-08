@@ -28,7 +28,7 @@ function ExpenseTable({deleteTitle}){
      * @param {int} expenseId the row to be deleted
      */
     const deleteExpense = (expenseId) => {
-        {/* Creating a new array without deleted row and updating the expenses with array */}
+        // Creating a new array without deleted row and updating the expenses with array 
         setExpenses(expenses.filter(expense => expense.id !== expenseId));
     };
     /**
@@ -42,7 +42,7 @@ function ExpenseTable({deleteTitle}){
             lastAmount: "",
             difference: "",
         };
-        {/* Split expenses array up to add new expense to end */}
+        // Split expenses array up to add new expense to end 
         setExpenses([...expenses, newExpense]);
     };
 

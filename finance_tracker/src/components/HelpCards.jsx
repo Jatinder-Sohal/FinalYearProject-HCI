@@ -95,7 +95,7 @@ function HelpCards() {
                         <div className="card-body page2-body">
                             <h2 className="card-title page2-title">General questions</h2>
                             <p className="card-text page2-text">Before contacting us, check if your inquiry has been answered here</p>
-                            <a href="#" className="btn btn-secondary page2-button">FAQ</a>
+                            <a href="/Help" className="btn btn-secondary page2-button">FAQ</a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@ function HelpCards() {
                         <div className="card-body page2-body">
                             <h2 className="card-title page2-title">Try something new</h2>
                             <p className="card-text page2-text">There may be a solution for you inside the settings, please take a look</p>
-                            <a href="#" className="btn btn-secondary page2-button">Settings</a>
+                            <a href="/Help" className="btn btn-secondary page2-button">Settings</a>
                         </div>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ function EnterData() {
      * @param {String} sheetBeingRemoved - Sheet being removed
      */
     const removeSheet = (sheetBeingRemoved) => {
-        {/* Only adds sheet to array if not the one being removed */}
+        // Only adds sheet to array if not the one being removed 
         setSheets(sheets.filter(sheet => sheet !== sheetBeingRemoved));
     };
     /**

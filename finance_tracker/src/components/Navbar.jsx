@@ -67,9 +67,9 @@ function Navbar(){
           </li>
           {/* Dropdown for selecting output of data */}
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button className="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Select Output
-            </a>
+          </button>
             <ul className="dropdown-menu">
               <li><a className={displayLink} href="Display">Pie chart</a></li>
               <li><hr className="dropdown-divider" /></li>
