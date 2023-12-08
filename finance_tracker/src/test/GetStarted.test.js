@@ -5,6 +5,9 @@ import '@testing-library/jest-dom';
 import GetStarted from '../components/GetStarted';
 import { MemoryRouter } from 'react-router-dom';
 
+/**
+ * Testing if all elements generated in get started component
+ */
 test('Home elements exist', () => {
   render(<GetStarted />);
   

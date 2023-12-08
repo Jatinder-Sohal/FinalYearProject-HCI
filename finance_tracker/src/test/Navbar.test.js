@@ -38,6 +38,7 @@ test('Testing navbar functionality', () => {
     render(<MemoryRouter initialEntries={['/Help']}><Navbar /></MemoryRouter>);
   
     const navbar = screen.getByRole('navigation');
+    //Checking if css active
     expect(navbar.classList.contains('navbar-help', 'custom-helps')).toBe(true);
     
 });

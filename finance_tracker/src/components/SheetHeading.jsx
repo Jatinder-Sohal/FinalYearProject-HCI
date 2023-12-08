@@ -9,7 +9,7 @@ import Save from '../images/Save.png';
  * Function that sets heading
  * @param {prop} AddSheet  Passed as param so I can putting heading as a sidebar item
  * @param {prop} currentName Replaces name with this new sheet name
- * @returns 
+ * @returns Component as a single div
  */
 function SheetHeading({AddSheet, currentName}) {
     const [sheetName, setSheetName] = useState('');

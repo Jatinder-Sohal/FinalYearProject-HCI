@@ -6,7 +6,7 @@ import binIcon from '../images/Bin.png';
 
 /**
  * Sidebar component which displays sheets array and allows dynamic deleting of any
- * @param {string array} sheets array which contains all sidebar sheets
+ * @param {array} sheets array which contains all sidebar sheets
  * @param {prop} RemoveSheet prop which allows any sheet to be removed
  * @param {prop} OnSheetClick prop which updates name of current sheet with sidebar name
  * @returns component as a single div

@@ -9,7 +9,7 @@ import '@testing-library/jest-dom';
  */
 test('Carousel images loading', () => {
     render(<Carousel />);
-  
+    //Getting alt text of pie chart
     expect(screen.getByAltText('Pie chart')).toHaveAttribute('src', 'Pie_chart.png');
 });
 

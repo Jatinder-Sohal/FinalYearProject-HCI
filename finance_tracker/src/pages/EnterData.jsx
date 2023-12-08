@@ -10,7 +10,7 @@ import './EnterData.css';
 /**
  * EnterData compoent for  loading expense table, sidebar and a page heading
  * Contains consts to dynamically update sidebar content and heading of page
- * @returns 
+ * @returns EnterData page as a single div
  */
 function EnterData() {
     /**
