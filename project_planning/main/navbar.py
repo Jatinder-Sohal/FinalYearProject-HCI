@@ -2,45 +2,61 @@ import tkinter as tk
 import tkinter.ttk as ttk
 import customtkinter as ctk
 from PIL import Image, ImageTk
-from tktooltip import ToolTip
 
-#Class which creates the navbar and the elements inside it
+
 class Navbar:
-    #Initialses the root and other elements and calls the methods
+    """
+    Class for creating the navbar and its elements.
+
+    Methods:
+    - __init__: Initializes the Navbar instance.
+    - create_navbar: Creates the main navbar with buttons and dropdowns.
+    - create_top_bar: Creates the top bar elements on the left side.
+    - show_help_window: Displays the help window.
+    """
+
     def __init__(self, root, open_add_card_window, context):
+        """
+        Initializes the Navbar instance.
+
+        Parameters:
+        - root: Tkinter root window.
+        - open_add_card_window: Function to open the add card window.
+        - context: CardContext instance for global data access.
+        """
         self.root = root
         self.open_add_card_window = open_add_card_window
         self.context = context
-        #The 2 methods of the class
-        self.create_navbar()
         self.top_bar = self.create_top_bar()
-        #Created for testing
-        self.help_window_open = False 
+        self.help_window_open = False
 
-    #Creates the actual white bar, the title and the buttons on right    
     def create_navbar(self):
-        navbar = tk.Frame(self.root, height=75, bg='#F9F7F7') 
+        """
+        Creates the main navbar with title, buttons, and dropdowns.
+        """
+        navbar = tk.Frame(self.root, height=75, bg='#F9F7F7')
         navbar.pack(side=tk.TOP, fill=tk.X)
 
-        label = tk.Label(self.root, text = "Project board", bg='#F9F7F7', font=("Arial", 22))
-        label.place(relx = 0.5, rely = 0.05, anchor = tk.CENTER)
+        label = tk.Label(self.root, text="Project board", bg='#F9F7F7', font=("Arial", 22))
+        label.place(relx=0.5, rely=0.05, anchor=tk.CENTER)
 
-
-        #Help button with question mark image attached on the right. Calls last method when pressed
+        # Help button with question mark image attached on the right.
         help_img = Image.open("../resources/help-alt-svgrepo-com.png")
         help_photo = ctk.CTkImage(help_img)
-        help_button = ctk.CTkButton(self.root, text="Help", hover_color="grey", image=help_photo, compound=tk.RIGHT, width=50, height=30, font=("Arial", 18), text_color="white",  fg_color="#3F72AF", command=self.show_help_window) 
+        help_button = ctk.CTkButton(self.root, text="Help", hover_color="grey", image=help_photo,
+                                    compound=tk.RIGHT, width=50, height=30, font=("Arial", 18), text_color="white",
+                                    fg_color="#3F72AF", command=self.show_help_window)
         help_button.place(relx=0.71, rely=0.05, anchor=tk.CENTER)
-        ToolTip(help_button, msg="Click this button to get information")
+  
 
-
-        #Export dropdown, sets export as original value.
+        # Export dropdown, sets export as the original value.
         options = ["PNG", "JPG", "Image"]
-        dropdown = ctk.CTkOptionMenu(self.root, values=options, width=100, height=30, text_color="white", fg_color="#3F72AF", button_color='#3F72AF',font=("Arial", 18))
+        dropdown = ctk.CTkOptionMenu(self.root, values=options, width=100, height=30, text_color="white",
+                                     fg_color="#3F72AF", button_color='#3F72AF', font=("Arial", 18))
         dropdown.pack(pady=20)
         dropdown.set("Export")
         dropdown.place(relx=0.781, rely=0.05, anchor=tk.CENTER)
-        ToolTip(dropdown, msg="Click to export board as an image")
+   
 
         #Search bar placed in top right
         search_entry = ctk.CTkEntry(self.root, width=235, placeholder_text="search", font=("Arial", 18))
@@ -115,3 +131,5 @@ class Navbar:
             contact_text.config(state="disabled")  
             contact_text.place(relx=1.88, rely=0.5, anchor="center")
         
+
+

@@ -1,21 +1,47 @@
+"""
+Main file
+============
+
+This file contains the main application logic to start the whole application.
+
+Classes:
+- CardContext: Provides global access to data in the application.
+"""
+
 import tkinter as tk
 import tkinter.ttk as ttk
 import customtkinter as ctk
 from PIL import Image, ImageTk
-from tktooltip import ToolTip
+#from tktooltip import ToolTip
+import pydoc
 
-from navbar import Navbar
-from cards import Cards
-from lists import Lists
-from new_card import New_Card
-from history import ActionHistory
+#from navbar import Navbar
+#from cards import Cards
+#from lists import Lists
+#from new_card import New_Card
+#from history import ActionHistory
 
 ctk.set_appearance_mode("light")
 
-#Important class which allows global access to the data in application and allows different classes to communicate
+
 class CardContext:
-    #Adds variables to global ones
+    """
+    A class to provide global access to data in the application and allow communication between different classes.
+    """
     def __init__(self, to_do, progress, finished, on_hold, to_do_cards, progress_cards, finished_cards, on_hold_cards):
+        """
+        Initializes the CardContext global varibales with the local versions.
+
+        Parameters:
+        - to_do: To-Do list
+        - progress: In Progress list
+        - finished: Finished list
+        - on_hold: On Hold list
+        - to_do_cards: List of To-Do cards
+        - progress_cards: List of In Progress cards
+        - finished_cards: List of Finished cards
+        - on_hold_cards: List of On Hold cards
+        """
         self.To_Do = to_do
         self.Progress = progress
         self.Finished = finished
