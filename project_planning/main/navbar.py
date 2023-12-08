@@ -2,7 +2,7 @@ import tkinter as tk
 import tkinter.ttk as ttk
 import customtkinter as ctk
 from PIL import Image, ImageTk
-
+from tktooltip import ToolTip
 
 class Navbar:
     """
@@ -27,6 +27,7 @@ class Navbar:
         self.root = root
         self.open_add_card_window = open_add_card_window
         self.context = context
+        self.create_navbar()
         self.top_bar = self.create_top_bar()
         self.help_window_open = False
 
