@@ -204,7 +204,7 @@ Problems:	-I have an intermediate level in react, so tough to add some complex f
 		-Had a lot of spacing problems causing scrollbars to appear - used overflow in css to fix
 		-Need to fix report mistakes still and sent to supervisor asap
 
-Future: 		-Start testing 1st ui
+Future: 	-Start testing 1st ui
 		-Tag releases
 		-Send report to supervisor asap and revise ppt for presentations on Wednesday
 
@@ -213,12 +213,27 @@ Completed: 	-Tested all UIs
 		-Sent report to supervisor 4 days ago 
 		-Filmed video for report and done presentation
 
-Problems	-Had a lot of speaking errors when filming video 
+Problems:	-Had a lot of speaking errors when filming video 
 		-Components were frustrating to debug when testing
 		-Couldn't add 100% support for colour blindness
 
 Future:		-Complete documentation
 		-Tag last release
 		-Add more references to report
+
+TERM 2
+
+Week 1 (19/01/24)
+Completed: 	-Over the holidays learnt how to code in kotlin/Jetpack compose to build android application
+		-Developed early sketches of the home page and search page
+		-Had supervisor meeting discussing interim submission and future work
+
+Problems:	-Found some aspects tough to learn in jetpack compose such as: Naviagtion, adapting for different screens and unit testing
+		-Designs are quite time consuming to make and tough to balance different HCI elements
+
+Future:		-Countinue designing interface aspects such as saved recipies, searching, settings and lists
+		-Start coding home screen 
+		-Set up routing routes through navigation bar
+
 
 
