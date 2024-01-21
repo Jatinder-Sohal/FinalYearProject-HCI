@@ -1,17 +1,21 @@
 package com.example.cooking_companion
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -32,9 +36,15 @@ fun CompanionApp(
     modifier: Modifier = Modifier,
 ) {
     val navController = rememberNavController()
+    val currentRoute = remember { mutableStateOf(CompanionScreen.Home.route) }
+
+    navController.addOnDestinationChangedListener { _, destination, _ ->
+        currentRoute.value = destination.route ?: CompanionScreen.Home.route
+    }
+
     Scaffold(
         bottomBar = {
-            BottomNavbar(navController)
+            BottomNavbar(navController, currentRoute.value)
         }
     ) { innerPadding ->
         NavHost(navController, startDestination = CompanionScreen.Home.route, Modifier.padding(innerPadding)) {
@@ -46,23 +56,38 @@ fun CompanionApp(
 }
 
 @Composable
-fun BottomNavbar(navController: NavHostController) {
+fun BottomNavbar(navController: NavHostController, currentRoute: String) {
     NavigationBar {
-        val currentDestination = navController.currentDestination?.route
         CompanionScreen.values().forEach { screen ->
+            val selected = currentRoute == screen.route
             NavigationBarItem(
                 icon = { when (screen) {
-                    CompanionScreen.Home -> Icon(Icons.Filled.Home, contentDescription = "Home")
-                    CompanionScreen.Search -> Icon(Icons.Filled.Search, contentDescription = "Search")
+                    CompanionScreen.Home -> {
+                        if (selected) Icon(Icons.Filled.Home, contentDescription = "Home", tint=Color(0xFFDE6B46))
+                        else Icon(Icons.Outlined.Home, contentDescription = "Home")
+                    }
+                    CompanionScreen.Search -> {
+                        if (selected) Icon(Icons.Filled.Search, contentDescription = "Search", tint=Color(0xFFDE6B46))
+                        else Icon(Icons.Outlined.Search, contentDescription = "Search")
+                    }
                 } },
-                label = { Text(screen.name) },
-                selected = currentDestination == screen.route,
+                label = { Text(screen.name, color = getColor(selected)) },
+                selected = selected,
                 onClick = {
-                    if (currentDestination != screen.route) {
+                    if (!selected) {
                         navController.navigate(screen.route)
                     }
                 }
             )
         }
+    }
+}
+@Composable
+fun getColor(selected: Boolean): Color {
+    return if (selected) {
+        Color(0xFFDE6B46)
+    }
+    else {
+        Color(0xFF000000)
     }
 }
