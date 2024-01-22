@@ -3,12 +3,15 @@ package com.example.cooking_companion.ui.pages
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -16,13 +19,17 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun CompanionHomeScreen(
@@ -32,6 +39,7 @@ fun CompanionHomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxWidth()
+
     ){
         SearchBar()
         Title()
@@ -43,43 +51,64 @@ fun CompanionHomeScreen(
 fun SearchBar(modifier: Modifier = Modifier){
     Surface(
         modifier = modifier
-            .height(80.dp)
+            .height(60.dp)
             .width(280.dp)
-            .padding(vertical = 20.dp),
+            .padding(vertical = 8.dp),
 
         border = BorderStroke(2.dp, Color.Black),
         shape = RoundedCornerShape(50),
-
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
+
         ) {
             Icon(
                 imageVector = Icons.Default.Search,
                 contentDescription = "Search Icon",
                 modifier = Modifier.size(24.dp)
             )
-            Spacer(modifier = Modifier.width(30.dp))
-            Text(text = "Search for recipes")
+            Spacer(modifier = Modifier.width(40.dp))
+            Text(
+                text = "Search for recipes",
+                fontWeight = FontWeight.Medium,
+                fontSize = 15.sp
+            )
         }
     }
 }
 @Composable
 fun Title(modifier: Modifier = Modifier) {
     Box(
-        contentAlignment = Alignment.Center,
         modifier = modifier
             .fillMaxWidth()
-            .height(200.dp)
+            .height(180.dp)
             .background(Color(0xFFC4F0F3))
 
     ) {
-        Text(
-            text = "Cooking Companion",
-            color = Color(0xFF333333),
-        )
+        Column(
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxSize()
+
+        ){
+            Text(
+                text = "Cooking",
+                color = Color.Black,
+                style = MaterialTheme.typography.titleLarge,
+                fontSize = 55.sp,
+                modifier = modifier.offset(x = 40.dp)
+            )
+            Text(
+                text = "Companion",
+                color = Color.Black,
+                style = MaterialTheme.typography.titleLarge,
+                fontSize = 55.sp,
+                modifier = modifier.offset(x = 150.dp, y = (-10).dp)
+            )
+        }
+
     }
 }
