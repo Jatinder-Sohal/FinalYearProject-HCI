@@ -3,11 +3,10 @@ package com.example.cooking_companion.ui.pages
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,9 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
-
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,14 +31,13 @@ fun CompanionHomeScreen(
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
-            .background(Color.Blue)
-            .fillMaxHeight()
             .fillMaxWidth()
     ){
         SearchBar()
+        Title()
     }
-
 }
+
 
 @Composable
 fun SearchBar(modifier: Modifier = Modifier){
@@ -66,5 +62,24 @@ fun SearchBar(modifier: Modifier = Modifier){
                 contentDescription = "Search Icon",
                 modifier = Modifier.size(24.dp)
             )
-        }}
+            Spacer(modifier = Modifier.width(30.dp))
+            Text(text = "Search for recipes")
+        }
+    }
+}
+@Composable
+fun Title(modifier: Modifier = Modifier) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+            .fillMaxWidth()
+            .height(200.dp)
+            .background(Color(0xFFC4F0F3))
+
+    ) {
+        Text(
+            text = "Cooking Companion",
+            color = Color(0xFF333333),
+        )
+    }
 }
