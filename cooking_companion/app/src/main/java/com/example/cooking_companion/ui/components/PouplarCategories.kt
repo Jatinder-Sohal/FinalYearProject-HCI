@@ -2,54 +2,83 @@ package com.example.cooking_companion.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.cooking_companion.R
+import androidx.compose.ui.unit.sp
 import com.example.cooking_companion.data.Category
-
 
 
 @Composable
 fun CategoryItem(category: Category, modifier: Modifier = Modifier) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .padding(8.dp)
-            .size(width = 120.dp, height = 100.dp),
-        shape = RoundedCornerShape(10.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+            .size(width = 160.dp, height = 80.dp),
+        shape = RoundedCornerShape(15.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 15.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White,
+            contentColor = Color.Black
+        )
+
     ) {
-        Row(
-
+        Column(
+            verticalArrangement = Arrangement.Center
         ) {
-            Text(text = category.name)
-            Image(
-                painter = painterResource(id = category.image),
-                contentDescription = category.name,
-                modifier = Modifier.size(60.dp)
-            )
-        }
-    }
-}
+            Row(
+                modifier = modifier
+                    .fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = category.name,
+                    fontSize = 18.sp,
+                    modifier = Modifier
+                        .padding(start = 7.dp)
+                        .weight(1f)
+                )
+                Box(
+                    modifier = Modifier
+                        .size(70.dp)
+                        .padding(end = 10.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = category.image),
+                        contentDescription = category.name,
+                        modifier = Modifier
+                            .fillMaxSize()
 
+                    )
+                }
+            }
+        }
+    }}
 @Composable
 fun CategoryList(categories: List<Category>) {
     LazyRow(
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        contentPadding = PaddingValues(horizontal = 8.dp),
+
     ) {
         items(categories) { category ->
             CategoryItem(category)

@@ -18,8 +18,8 @@ import com.example.cooking_companion.ui.components.SearchBar
 import com.example.cooking_companion.ui.components.Title
 
 val categoriesList = listOf(
-    Category("Diets", R.drawable.dishes),
-    Category("Courses",  R.drawable.dishes),
+    Category("Diets", R.drawable.diet),
+    Category("Courses",  R.drawable.course),
     Category("Courses",  R.drawable.dishes),
     Category("Courses",  R.drawable.dishes),
     Category("Courses",  R.drawable.dishes),
@@ -42,7 +42,8 @@ fun CompanionHomeScreen(
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
-                .padding(16.dp)
+                .padding(horizontal = 16.dp, vertical = 4.dp)
+                .padding(top=8.dp)
                 .align(Alignment.Start)
 
         )
