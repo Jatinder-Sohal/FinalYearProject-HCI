@@ -8,14 +8,12 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ReceiptLong
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ReceiptLong
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -50,7 +48,7 @@ enum class CompanionScreen(val route: String){
 
 @Composable
 fun CompanionApp(
-    modifier: Modifier = Modifier,
+
 ) {
     val navController = rememberNavController()
     val currentRoute = remember { mutableStateOf(CompanionScreen.Home.route) }
@@ -77,7 +75,7 @@ fun CompanionApp(
 }
 
 @Composable
-fun BottomNavbar(navController: NavHostController, currentRoute: String, modifier: Modifier = Modifier) {
+fun BottomNavbar(navController: NavHostController, currentRoute: String) {
     NavigationBar{
         CompanionScreen.values().forEach { screen ->
             val selected = currentRoute == screen.route
