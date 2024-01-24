@@ -27,9 +27,9 @@ import com.example.cooking_companion.ui.components.Title
 val categoriesList = listOf(
     Category("Diets", R.drawable.diet_cat),
     Category("Courses",  R.drawable.course_cat),
-    Category("Courses",  R.drawable.diet_cat),
-    Category("Courses",  R.drawable.diet_cat),
-    Category("Courses",  R.drawable.diet_cat),
+    Category("Healthy",  R.drawable.healthy_cat),
+    Category("Asian",  R.drawable.asian_cat),
+    Category("Simple",  R.drawable.simple_cat),
 )
 
 

@@ -236,4 +236,28 @@ Future:		-Countinue designing interface aspects such as saved recipies, searchin
 		-Set up routing routes through navigation bar
 
 
+Week 1 (21/01/24)
+Completed: 	-Created new Andriod project and seperate pages for each screen
+		-Set up bottom navigation bar allowing access between pages through it
+		-Added icons that light up orange to indicate which page is selected
+
+Problems:	-Had a big problem with indicating on navbar - as had variable before navhost - required mutable variable
+		-There was a standard blue effect when selecting an option on navbar - Not much info about it
+
+Future:		-Now begin development of elements on home screen: Search, Pictures, Titles
+		-Think about what other pages design could look like
+		-Modularize code for future development
+
+
+Week 2 (24/01/24)
+Completed:	-Home screen mostly finished (only static elements for now)
+		-Added elements like: Blue background with title, search bar, horizontal and vertically scrolling cards
+		-Created an organized file structure allowing easy access and addition like adding photos
+
+Problems:	-After adding photos, app became quite laggy. Had to download smaller file versions for each file		-Tested on emulator and phone which showed my app didnt scale well
+		-Documentation is very bad - Takes a long time to research elements
+
+Future:		-Add button that allows viewing of all recommended dishes
+		-Begin designing search screen elements
+		-Link search bar on home to search function 	
 
