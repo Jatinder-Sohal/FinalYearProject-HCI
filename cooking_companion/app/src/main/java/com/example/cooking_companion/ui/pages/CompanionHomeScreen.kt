@@ -25,11 +25,11 @@ import com.example.cooking_companion.ui.components.SearchBar
 import com.example.cooking_companion.ui.components.Title
 
 val categoriesList = listOf(
-    Category("Diets", R.drawable.diet),
-    Category("Courses",  R.drawable.course),
-    Category("Courses",  R.drawable.dishes),
-    Category("Courses",  R.drawable.dishes),
-    Category("Courses",  R.drawable.dishes),
+    Category("Diets", R.drawable.diet_cat),
+    Category("Courses",  R.drawable.course_cat),
+    Category("Courses",  R.drawable.diet_cat),
+    Category("Courses",  R.drawable.diet_cat),
+    Category("Courses",  R.drawable.diet_cat),
 )
 
 
@@ -39,10 +39,12 @@ fun CompanionHomeScreen(
 ) {
     val scrollState = rememberScrollState()
     val recipesList = listOf(
-        Recipe("Simple Chicken Curry", painterResource(id = R.drawable.dishessecond)),
-        Recipe("Grilled Cheese", painterResource(id = R.drawable.dishessecond)),
-        Recipe("Grilled Cheese", painterResource(id = R.drawable.dishessecond)),
-        Recipe("Grilled Cheese", painterResource(id = R.drawable.dishessecond)),
+        Recipe("Chicken Curry", painterResource(id = R.drawable.chickencurry_dishes)),
+        Recipe("Grilled Cheese", painterResource(id = R.drawable.grilledcheese_dishes)),
+        Recipe("Fried Noodles", painterResource(id = R.drawable.noodles_dishes)),
+        Recipe("BBQ Pie", painterResource(id = R.drawable.bbqpie_dishes)),
+        Recipe("Pumpkin Soup", painterResource(id = R.drawable.pumpkinsoup_dishes)),
+        Recipe("Chicken Waffles ", painterResource(id = R.drawable.chickenwaffles_dishes)),
     )
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -87,7 +89,7 @@ fun RecipesGrid(recipes: List<Recipe>) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             for (recipe in chunk) {
-                RecipeCard(recipe, Modifier.weight(1f).padding(2.dp))
+                RecipeCard(recipe, Modifier.weight(1f).padding(0.dp))
             }
         }
     }
