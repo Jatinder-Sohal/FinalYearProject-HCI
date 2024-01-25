@@ -20,8 +20,8 @@ import com.example.cooking_companion.R
 import com.example.cooking_companion.data.Category
 import com.example.cooking_companion.data.Recipe
 import com.example.cooking_companion.ui.components.CategoryList
+import com.example.cooking_companion.ui.components.HomeSearchBar
 import com.example.cooking_companion.ui.components.RecipeCard
-import com.example.cooking_companion.ui.components.SearchBar
 import com.example.cooking_companion.ui.components.Title
 
 val categoriesList = listOf(
@@ -53,13 +53,13 @@ fun CompanionHomeScreen(
             .fillMaxWidth()
 
     ){
-        SearchBar()
+        HomeSearchBar()
         Title()
         Text(
             text = "Popular Categories",
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier
+            modifier = modifier
                 .padding(horizontal = 16.dp, vertical = 4.dp)
                 .padding(top=8.dp)
                 .align(Alignment.Start)
@@ -70,7 +70,7 @@ fun CompanionHomeScreen(
             text = "Dishes for you",
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier
+            modifier = modifier
                 .padding(horizontal = 16.dp, vertical = 4.dp)
                 .padding(top=8.dp)
                 .align(Alignment.Start)
