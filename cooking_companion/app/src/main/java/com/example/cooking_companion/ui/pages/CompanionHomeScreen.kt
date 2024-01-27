@@ -1,6 +1,5 @@
 package com.example.cooking_companion.ui.pages
 
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,39 +12,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.cooking_companion.R
-import com.example.cooking_companion.data.Category
+import com.example.cooking_companion.data.DataSource.categoriesList
+import com.example.cooking_companion.data.DataSource.recipesList
 import com.example.cooking_companion.data.Recipe
 import com.example.cooking_companion.ui.components.CategoryList
 import com.example.cooking_companion.ui.components.HomeSearchBar
 import com.example.cooking_companion.ui.components.RecipeCard
 import com.example.cooking_companion.ui.components.Title
 
-val categoriesList = listOf(
-    Category("Diets", R.drawable.diet_cat),
-    Category("Courses",  R.drawable.course_cat),
-    Category("Healthy",  R.drawable.healthy_cat),
-    Category("Asian",  R.drawable.asian_cat),
-    Category("Simple",  R.drawable.simple_cat),
-)
-
-
 @Composable
 fun CompanionHomeScreen(
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
-    val recipesList = listOf(
-        Recipe("Chicken Curry", painterResource(id = R.drawable.chickencurry_dishes)),
-        Recipe("Grilled Cheese", painterResource(id = R.drawable.grilledcheese_dishes)),
-        Recipe("Fried Noodles", painterResource(id = R.drawable.noodles_dishes)),
-        Recipe("BBQ Pie", painterResource(id = R.drawable.bbqpie_dishes)),
-        Recipe("Pumpkin Soup", painterResource(id = R.drawable.pumpkinsoup_dishes)),
-        Recipe("Chicken Waffles ", painterResource(id = R.drawable.chickenwaffles_dishes)),
-    )
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier

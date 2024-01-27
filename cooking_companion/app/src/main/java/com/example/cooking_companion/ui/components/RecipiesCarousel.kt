@@ -15,7 +15,6 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,7 +48,7 @@ fun RecipeCarousel(modifier : Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(220.dp)
-                .padding(13.dp)
+                .padding(horizontal = 13.dp, vertical = 10.dp)
                 .clip(RoundedCornerShape(percent = 10))
         )
     }

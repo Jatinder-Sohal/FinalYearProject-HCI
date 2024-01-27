@@ -4,5 +4,5 @@ import androidx.compose.ui.graphics.painter.Painter
 
 data class Recipe(
     val name: String,
-    val imagePainter: Painter
+    val image: Int
 )

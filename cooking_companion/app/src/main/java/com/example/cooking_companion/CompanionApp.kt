@@ -47,9 +47,7 @@ enum class CompanionScreen(val route: String){
 
 
 @Composable
-fun CompanionApp(
-
-) {
+fun CompanionApp() {
     val navController = rememberNavController()
     val currentRoute = remember { mutableStateOf(CompanionScreen.Home.route) }
 

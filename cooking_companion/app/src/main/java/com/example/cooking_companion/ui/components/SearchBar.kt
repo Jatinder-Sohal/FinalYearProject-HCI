@@ -57,9 +57,9 @@ fun HomeSearchBar(modifier: Modifier = Modifier){
 fun SearchSearchBar(modifier: Modifier = Modifier){
     Surface(
         modifier = modifier
-            .height(65.dp)
+            .height(70.dp)
             .fillMaxWidth()
-            .padding(horizontal = 16.dp,vertical = 8.dp),
+            .padding(horizontal = 16.dp,vertical = 6.dp),
 
         border = BorderStroke(2.dp, Color.LightGray),
         shape = RoundedCornerShape(10),

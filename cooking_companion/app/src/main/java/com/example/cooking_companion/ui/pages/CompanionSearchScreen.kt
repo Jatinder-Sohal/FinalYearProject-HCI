@@ -1,6 +1,5 @@
 package com.example.cooking_companion.ui.pages
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,9 +17,8 @@ import com.example.cooking_companion.ui.components.RecipeCarousel
 import com.example.cooking_companion.ui.components.SearchSearchBar
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CompanionSearchScreen(modifier: Modifier = Modifier, ) {
+fun CompanionSearchScreen(modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     Column (
         modifier = modifier
@@ -44,11 +42,21 @@ fun CompanionSearchScreen(modifier: Modifier = Modifier, ) {
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             modifier = modifier
-                .padding(horizontal = 16.dp, vertical = 5.dp)
+                .padding(horizontal = 16.dp, vertical = 1.dp)
                 .padding(top = 8.dp)
                 .align(Alignment.Start)
 
         )
         RecipeCarousel()
+        Text(
+            text = "Popular today",
+            style = MaterialTheme.typography.headlineMedium,
+            fontWeight = FontWeight.Bold,
+            modifier = modifier
+                .padding(horizontal = 16.dp, vertical = 4.dp)
+                .padding(top = 8.dp)
+                .align(Alignment.Start)
+
+        )
     }
 }

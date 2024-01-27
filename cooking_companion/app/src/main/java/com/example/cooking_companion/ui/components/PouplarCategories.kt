@@ -11,17 +11,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -30,7 +26,7 @@ import com.example.cooking_companion.data.Category
 
 
 @Composable
-fun CategoryItem(category: Category, modifier: Modifier = Modifier) {
+fun HorizontalCategoryItem(category: Category, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .padding(8.dp)
@@ -81,7 +77,12 @@ fun CategoryList(categories: List<Category>) {
 
     ) {
         items(categories) { category ->
-            CategoryItem(category)
+            HorizontalCategoryItem(category)
         }
     }
+}
+
+@Composable
+fun VerticalCategoryCard(){
+
 }
