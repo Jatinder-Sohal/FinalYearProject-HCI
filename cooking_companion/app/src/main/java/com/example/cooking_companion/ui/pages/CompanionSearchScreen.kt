@@ -1,6 +1,8 @@
 package com.example.cooking_companion.ui.pages
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -13,8 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.cooking_companion.data.Category
+import com.example.cooking_companion.data.DataSource
+import com.example.cooking_companion.ui.components.RecipeCard
 import com.example.cooking_companion.ui.components.RecipeCarousel
 import com.example.cooking_companion.ui.components.SearchSearchBar
+import com.example.cooking_companion.ui.components.VerticalCategoryCard
 
 
 @Composable
@@ -49,14 +55,32 @@ fun CompanionSearchScreen(modifier: Modifier = Modifier) {
         )
         RecipeCarousel()
         Text(
-            text = "Popular today",
+            text = "Top categories",
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             modifier = modifier
-                .padding(horizontal = 16.dp, vertical = 4.dp)
+                .padding(horizontal = 16.dp, vertical = 1.dp)
                 .padding(top = 8.dp)
                 .align(Alignment.Start)
 
         )
+        CategoriesGrid(DataSource.categoriesList)
+
+    }
+}
+@Composable
+fun CategoriesGrid(categories: List<Category>) {
+    val chunkedRecipes = categories.chunked(3)
+    for (chunk in chunkedRecipes) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 6.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            for (category in chunk) {
+                VerticalCategoryCard(category, Modifier.weight(1f).padding(2.dp))
+            }
+        }
     }
 }
