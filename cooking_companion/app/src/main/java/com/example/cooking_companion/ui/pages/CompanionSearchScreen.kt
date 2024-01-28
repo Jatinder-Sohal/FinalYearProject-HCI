@@ -70,7 +70,9 @@ fun CompanionSearchScreen(modifier: Modifier = Modifier) {
 }
 @Composable
 fun CategoriesGrid(categories: List<Category>) {
-    val chunkedRecipes = categories.chunked(3)
+    val subsetOfRecipes = categories.slice(3..8)
+
+    val chunkedRecipes = subsetOfRecipes.chunked(3)
     for (chunk in chunkedRecipes) {
         Row(
             modifier = Modifier
@@ -79,7 +81,7 @@ fun CategoriesGrid(categories: List<Category>) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             for (category in chunk) {
-                VerticalCategoryCard(category, Modifier.weight(1f).padding(2.dp))
+                VerticalCategoryCard(category, Modifier.weight(1f).padding(0.dp))
             }
         }
     }
