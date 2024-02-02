@@ -1,6 +1,7 @@
 package com.example.cooking_companion.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,8 +18,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.cooking_companion.ui.pages.Recipe
 
 @Composable
@@ -26,31 +29,34 @@ fun SavedRecipeCard(recipe: Recipe, modifier: Modifier = Modifier) {
     Card (
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         modifier = modifier
-            .height(150.dp)
+            .height(130.dp)
             .width(350.dp)
             .padding(16.dp)
-            .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .background(Color(0xFFEFEDED))
     ){
         Row(
             modifier = modifier
-                .padding(16.dp)
+                .padding(4.dp)
                 .fillMaxWidth()
         ) {
             Image(
                 painter = painterResource(id = recipe.foodImage),
                 contentDescription = recipe.title,
                 modifier = modifier
-                    .size(100.dp)
+                    .padding(horizontal = 10.dp)
+                    .size(90.dp)
                     .clip(RoundedCornerShape(20.dp))
             )
             Column(
                 modifier = Modifier
-                    .padding(start = 16.dp)
-                    .align(Alignment.CenterVertically)
+                    .padding(start = 8.dp)
+
             ) {
                 Text(
                     text = recipe.title,
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleMedium,
+                    fontSize = 25.sp,
                 )
                 Text(
                     text = recipe.cookingTime,
