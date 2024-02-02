@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun HomeSearchBar(modifier: Modifier = Modifier){
+fun TopSearchBar(modifier: Modifier = Modifier){
     Surface(
         modifier = modifier
             .height(60.dp)

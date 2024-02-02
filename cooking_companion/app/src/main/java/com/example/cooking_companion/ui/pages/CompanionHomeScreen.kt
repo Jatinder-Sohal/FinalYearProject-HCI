@@ -21,10 +21,10 @@ import com.example.cooking_companion.data.Category
 import com.example.cooking_companion.data.DataSource.categoriesList
 import com.example.cooking_companion.data.DataSource.recipesList
 import com.example.cooking_companion.data.Recipe
-import com.example.cooking_companion.ui.components.HomeSearchBar
 import com.example.cooking_companion.ui.components.HorizontalCategoryItem
 import com.example.cooking_companion.ui.components.RecipeCard
 import com.example.cooking_companion.ui.components.Title
+import com.example.cooking_companion.ui.components.TopSearchBar
 
 @Composable
 fun CompanionHomeScreen(
@@ -38,7 +38,7 @@ fun CompanionHomeScreen(
             .fillMaxWidth()
 
     ){
-        HomeSearchBar()
+        TopSearchBar()
         Title()
         Text(
             text = "Popular Categories",
