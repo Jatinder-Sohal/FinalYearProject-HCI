@@ -14,6 +14,7 @@ import androidx.compose.material.icons.outlined.ReceiptLong
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -109,7 +110,7 @@ fun BottomNavbar(navController: NavHostController, currentRoute: String) {
                     }
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    indicatorColor = Color(0xFFDCDCDC)
+                    indicatorColor = MaterialTheme.colorScheme.surfaceVariant
                 )
             )
         }
@@ -121,6 +122,6 @@ fun getColor(selected: Boolean): Color {
         Color(0xFFDE6B46)
     }
     else {
-        Color(0xFF000000)
+        MaterialTheme.colorScheme.inverseSurface
     }
 }

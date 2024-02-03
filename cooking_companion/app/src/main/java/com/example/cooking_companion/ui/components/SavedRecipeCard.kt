@@ -27,13 +27,16 @@ import com.example.cooking_companion.ui.pages.Recipe
 @Composable
 fun SavedRecipeCard(recipe: Recipe, modifier: Modifier = Modifier) {
     Card (
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.secondaryContainer,
+            contentColor = MaterialTheme.colorScheme.inverseSurface
+            ),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         modifier = modifier
-            .height(130.dp)
+            .height(110.dp)
             .width(350.dp)
-            .padding(16.dp)
-            .clip(RoundedCornerShape(20.dp))
-            .background(Color(0xFFEFEDED))
+            .padding(vertical = 10.dp, horizontal = 10.dp)
     ){
         Row(
             modifier = modifier
@@ -45,7 +48,7 @@ fun SavedRecipeCard(recipe: Recipe, modifier: Modifier = Modifier) {
                 contentDescription = recipe.title,
                 modifier = modifier
                     .padding(horizontal = 10.dp)
-                    .size(90.dp)
+                    .size(85.dp)
                     .clip(RoundedCornerShape(20.dp))
             )
             Column(

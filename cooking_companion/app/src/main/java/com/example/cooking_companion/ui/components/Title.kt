@@ -30,6 +30,7 @@ fun Title(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .height(boxSize)
+            //#C4F0F3
             .background(Color(0xFFC4F0F3))
     ) {
         Text(

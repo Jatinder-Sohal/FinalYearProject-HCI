@@ -47,15 +47,15 @@ fun CompanionSavedScreen(modifier: Modifier = Modifier) {
         modifier = modifier
             .verticalScroll(scrollState)
             .fillMaxWidth()
-            .background(Color(0xFFEFEDED))
+            .background(MaterialTheme.colorScheme.secondaryContainer)
             .padding(horizontal = 2.dp)
     ) {
         TopSearchBar()
         Surface(
+            shape = MaterialTheme.shapes.medium,
+            color = MaterialTheme.colorScheme.background,
             modifier = Modifier
                 .fillMaxWidth(),
-            shape = RoundedCornerShape(25.dp),
-            color = Color.White
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -83,7 +83,6 @@ fun CompanionSavedScreen(modifier: Modifier = Modifier) {
                             .padding(top=8.dp)
                     )
                 }
-
                 for (recipe in savedRecipes) {
                     SavedRecipeCard(recipe)
                 }
