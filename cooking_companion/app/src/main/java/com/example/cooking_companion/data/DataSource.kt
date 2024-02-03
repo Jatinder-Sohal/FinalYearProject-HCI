@@ -14,7 +14,6 @@ object DataSource {
         Category("Vegan", R.drawable.vegan_cat),
         Category("Italian", R.drawable.spaghetti_cat),
     )
-
     val recipesList = listOf(
         Recipe("Chicken Curry", R.drawable.chickencurry_dishes),
         Recipe("Grilled Cheese", R.drawable.grilledcheese_dishes),
@@ -22,5 +21,13 @@ object DataSource {
         Recipe("BBQ Pie", R.drawable.bbqpie_dishes),
         Recipe("Pumpkin Soup", R.drawable.pumpkinsoup_dishes),
         Recipe("Chicken Waffles ", R.drawable.chickenwaffles_dishes),
+    )
+    val bookmarkedRecipes = listOf(
+        Bookmark(1,"test", R.drawable.chickencurry_dishes, "test", "test"),
+        Bookmark(2, "test", R.drawable.chickencurry_dishes, "test", "test"),
+        Bookmark(3,"test", R.drawable.bbqpie_dishes, "test", "test"),
+        Bookmark(4,"test", R.drawable.bbqpie_dishes, "test", "test"),
+        Bookmark(5, "test", R.drawable.bbqpie_dishes, "test", "test"),
+        Bookmark(6,"test", R.drawable.bbqpie_dishes, "test", "test"),
     )
 }
