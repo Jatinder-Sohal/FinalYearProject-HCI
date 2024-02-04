@@ -33,7 +33,6 @@ import com.example.cooking_companion.ui.components.TopSearchBar
 @Composable
 fun CompanionSavedScreen(modifier: Modifier = Modifier) {
     val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(DataSource.bookmarkedRecipes) }
-
     val onBookmarkClick = { bookmark: Bookmark ->
         setBookmarkedRecipes(bookmarkedRecipes.filter { it.id != bookmark.id })
     }
@@ -45,7 +44,6 @@ fun CompanionSavedScreen(modifier: Modifier = Modifier) {
             .verticalScroll(scrollState)
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.secondaryContainer)
-            .padding(horizontal = 2.dp)
     ) {
         TopSearchBar()
         Surface(
@@ -72,7 +70,7 @@ fun CompanionSavedScreen(modifier: Modifier = Modifier) {
                             .padding(top=8.dp)
                     )
                     Text(
-                        text = "Recipes",
+                        text = "Dropdown",
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         modifier = modifier
