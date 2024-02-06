@@ -61,17 +61,17 @@ fun CompanionListsScreen(modifier: Modifier = Modifier, ) {
                 navigationIcon = {
                     IconButton(onClick = {}) {
                         Icon(
-                            imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = "Localized description"
+                            imageVector = Icons.Filled.Menu,
+                            contentDescription = "Load all lists"
                         )
                     }
                 },
                 actions = {
                     IconButton(onClick = {}) {
-                        Icon(
-                            imageVector = Icons.Filled.Menu,
-                            contentDescription = "Localized description"
-                        )
+                        Icon(Icons.Default.Edit, contentDescription = "Edit")
+                    }
+                    IconButton(onClick = {}) {
+                        Icon(Icons.Default.Delete, contentDescription = "Delete All")
                     }
                 },
                 scrollBehavior = scrollBehavior
@@ -91,10 +91,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier, ) {
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             items.forEach { item ->
-                ListItem(
-                    text = item,
-                    modifier = Modifier.fillMaxWidth(),
-                )
+                ListItem(item)
             }
         }
     }
@@ -110,5 +107,8 @@ fun ListItem(text: String, modifier: Modifier = Modifier) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(text = text)
+        IconButton(onClick = {}) {
+            Icon(Icons.Default.Delete, contentDescription = "Delete")
+        }
     }
 }
