@@ -117,7 +117,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                     IconButton(onClick = {}) {
                         Icon(Icons.Default.Edit, contentDescription = "Edit")
                     }
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = {listOneItems = listOf(); listTwoItems = listOf()}) {
                         Icon(Icons.Default.Delete, contentDescription = "Delete All")
                     }
                 },
@@ -147,6 +147,9 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                     listOneItems = listOneItems - item
                     listTwoItems = listTwoItems + item
                 },
+                deleteItem = { item ->
+                    listOneItems = listOneItems - item
+                },
                 checked = false
             )
             Dropdown(
@@ -156,6 +159,9 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                 toggleDropdown = { listTwoExpanded = !listTwoExpanded },
                 moveItem = { item ->
                     listOneItems = listOneItems + item
+                    listTwoItems = listTwoItems - item
+                },
+                deleteItem = { item ->
                     listTwoItems = listTwoItems - item
                 },
                 checked = true

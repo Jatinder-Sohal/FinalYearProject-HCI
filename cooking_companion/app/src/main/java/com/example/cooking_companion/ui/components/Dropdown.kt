@@ -28,6 +28,7 @@ fun Dropdown(
     expanded: Boolean,
     toggleDropdown: () -> Unit,
     moveItem:(String) -> Unit,
+    deleteItem:(String) -> Unit,
     checked : Boolean
 ) {
     Column {
@@ -50,13 +51,19 @@ fun Dropdown(
         }
         if (expanded) {
             items.forEach { item ->
-                ListItem(text = item, {moveItem(item)}, checked)
+                ListItem(text = item, {moveItem(item)}, {deleteItem(item)}, checked)
             }
         }
     }
 }
 @Composable
-fun ListItem(text: String, moveItem: () -> Unit, checked: Boolean, modifier: Modifier = Modifier) {
+fun ListItem(
+    text: String,
+    moveItem: () -> Unit,
+    deleteItem: () -> Unit,
+    checked: Boolean,
+    modifier: Modifier = Modifier
+) {
     Row(
         modifier = modifier
             .background(MaterialTheme.colorScheme.secondaryContainer)
@@ -66,15 +73,14 @@ fun ListItem(text: String, moveItem: () -> Unit, checked: Boolean, modifier: Mod
     ) {
         Checkbox(
             checked = checked,
-            onCheckedChange = {moveItem()
-            }
+            onCheckedChange = { moveItem() }
         )
         Text(
             text = text,
             style = MaterialTheme.typography.bodyLarge,
         )
         Spacer(Modifier.weight(1f))
-        IconButton(onClick = {}) {
+        IconButton(onClick = { deleteItem() }) {
             Icon(Icons.Default.Delete, contentDescription = "Delete")
         }
     }
