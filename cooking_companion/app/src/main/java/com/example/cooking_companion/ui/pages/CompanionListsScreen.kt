@@ -7,6 +7,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,6 +24,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -61,7 +63,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier, ) {
         topBar = {
             MediumTopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
-                    scrolledContainerColor = MaterialTheme.colorScheme.primaryContainer
+                    scrolledContainerColor = MaterialTheme.colorScheme.tertiaryContainer
                 ),
                 title = {
                     Text(
@@ -103,15 +105,33 @@ fun CompanionListsScreen(modifier: Modifier = Modifier, ) {
 
             verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
-            Dropdown(ListOneitems,"To buy")
-            Dropdown(ListTwoitems,"Bought")
+            Dropdown(
+                items = ListOneitems,
+                title = "To buy",
+                moveItem = { item ->
+                    ListOneitems = ListOneitems - item
+                    ListTwoitems = ListTwoitems + item
+                },
+                checked = false
+            )
+            Dropdown(
+                items = ListTwoitems,
+                title =  "Bought",
+                moveItem = { item ->
+                    ListOneitems = ListOneitems + item
+                    ListTwoitems = ListTwoitems - item
+                },
+                checked = true
+            )
         }
     }
 }
 @Composable
 fun Dropdown(
     items: List<String>,
-    title: String
+    title: String,
+    moveItem:(String) -> Unit,
+    checked : Boolean
 ) {
     Column {
         Row(
@@ -131,25 +151,30 @@ fun Dropdown(
             )
         }
         items.forEach { item ->
-            ListItem(text = item)
+            ListItem(text = item, {moveItem(item)}, checked)
         }
 
     }
 }
 @Composable
-fun ListItem(text: String, modifier: Modifier = Modifier) {
+fun ListItem(text: String, moveItem: () -> Unit, checked: Boolean, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .background(MaterialTheme.colorScheme.secondaryContainer)
             .padding(horizontal = 16.dp, vertical = 6.dp)
             .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
+        Checkbox(
+            checked = checked,
+            onCheckedChange = {moveItem()
+            }
+        )
         Text(
             text = text,
             style = MaterialTheme.typography.bodyLarge,
         )
+        Spacer(Modifier.weight(1f))
         IconButton(onClick = {}) {
             Icon(Icons.Default.Delete, contentDescription = "Delete")
         }
