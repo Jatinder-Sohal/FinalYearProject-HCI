@@ -2,6 +2,8 @@ package com.example.cooking_companion.ui.pages
 
 
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,14 +18,22 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -33,6 +43,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -40,17 +51,18 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CompanionListsScreen(modifier: Modifier = Modifier, ) {
-    var items by remember { mutableStateOf(listOf("Milk", "Eggs", "Bread", "Bread","Bread")) }
+    var ListOneitems by remember { mutableStateOf(listOf("Milk", "Eggs", "Bread", "Bread","Bread")) }
+    var ListTwoitems by remember { mutableStateOf(listOf("Milk")) }
+
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val scrollState = rememberScrollState()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            LargeTopAppBar(
-//                colors = TopAppBarDefaults.topAppBarColors(
-//                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-//                    titleContentColor = MaterialTheme.colorScheme.primary,
-//                ),
+            MediumTopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
+                    scrolledContainerColor = MaterialTheme.colorScheme.primaryContainer
+                ),
                 title = {
                     Text(
                         "Shopping list",
@@ -86,27 +98,58 @@ fun CompanionListsScreen(modifier: Modifier = Modifier, ) {
         Column(
             modifier = Modifier
                 .verticalScroll(scrollState)
+                .background(MaterialTheme.colorScheme.secondaryContainer)
                 .padding(innerPadding),
 
-            verticalArrangement = Arrangement.spacedBy(4.dp)
+            verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
-            items.forEach { item ->
-                ListItem(item)
-            }
+            Dropdown(ListOneitems,"To buy")
+            Dropdown(ListTwoitems,"Bought")
         }
     }
 }
+@Composable
+fun Dropdown(
+    items: List<String>,
+    title: String
+) {
+    Column {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.background)
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Icon(
+                imageVector = Icons.Filled.KeyboardArrowUp,
+                contentDescription = "Toggle Dropdown"
+            )
+        }
+        items.forEach { item ->
+            ListItem(text = item)
+        }
 
+    }
+}
 @Composable
 fun ListItem(text: String, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .background(MaterialTheme.colorScheme.secondaryContainer)
+            .padding(horizontal = 16.dp, vertical = 6.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = text)
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyLarge,
+        )
         IconButton(onClick = {}) {
             Icon(Icons.Default.Delete, contentDescription = "Delete")
         }
