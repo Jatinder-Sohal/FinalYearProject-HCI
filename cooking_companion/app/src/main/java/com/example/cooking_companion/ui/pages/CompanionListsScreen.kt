@@ -36,6 +36,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.cooking_companion.ui.components.AddItemDialog
+import com.example.cooking_companion.ui.components.DeleteItemsDialog
 import com.example.cooking_companion.ui.components.Dropdown
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,48 +51,20 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val scrollState = rememberScrollState()
 
-    var showDialog by remember { mutableStateOf(false) }
-    var newItemName by remember { mutableStateOf("") }
-
-    if (showDialog) {
-        AlertDialog(
-            onDismissRequest = {
-                showDialog = false
-            },
-            title = {
-                Text(
-                    text = "Add New Item",
-                    modifier = modifier.padding(start=5.dp)
-                )
-            },
-            text = {
-                TextField(
-                    value = newItemName,
-                    onValueChange = { newItemName = it },
-                    label = { Text("Item Name") }
-                )
-            },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        if (newItemName.isNotBlank()) {
-                            listOneItems = listOneItems + newItemName
-                            newItemName = ""
-                            showDialog = false
-                        }
-                    }
-                ) {
-                    Text("Add")
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showDialog = false }) {
-                    Text("Cancel")
-                }
-            }
-        )
-    }
-
+    var showAddNewItem by remember { mutableStateOf(false) }
+    var showDeleteWarning by remember { mutableStateOf(false) }
+    AddItemDialog(
+        showDialog = showAddNewItem,
+        onDismiss = { showAddNewItem = false },
+        onConfirm = { newItem ->
+            listOneItems = listOneItems + newItem
+        },
+    )
+    DeleteItemsDialog(
+        showDialog = showDeleteWarning,
+        onDismiss = { showDeleteWarning = false },
+        onConfirm = { listOneItems = listOf(); listTwoItems = listOf() },
+    )
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
@@ -117,7 +91,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                     IconButton(onClick = {}) {
                         Icon(Icons.Default.Edit, contentDescription = "Edit")
                     }
-                    IconButton(onClick = {listOneItems = listOf(); listTwoItems = listOf()}) {
+                    IconButton(onClick = { showDeleteWarning = true}) {
                         Icon(Icons.Default.Delete, contentDescription = "Delete All")
                     }
                 },
@@ -125,7 +99,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { showDialog = true }) {
+            FloatingActionButton(onClick = { showAddNewItem = true }) {
                 Icon(Icons.Default.Add, contentDescription = "Add item")
             }
         }
