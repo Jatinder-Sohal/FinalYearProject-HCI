@@ -29,7 +29,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -40,7 +39,6 @@ import com.example.cooking_companion.ui.components.ChangeTitles
 import com.example.cooking_companion.ui.components.DeleteItemsDialog
 import com.example.cooking_companion.ui.components.Dropdown
 import com.example.cooking_companion.ui.components.ListsBottomSheet
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,8 +46,8 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
     var title by remember { mutableStateOf("Shopping List") }
     var listOneName by remember {mutableStateOf("To buy") }
     var listTwoName by remember {mutableStateOf("Bought") }
-    var listOneItems by remember { mutableStateOf(listOf("Milk", "Eggs", "Bread", "Bread","Bread")) }
-    var listTwoItems by remember { mutableStateOf(listOf("Milk")) }
+    var listOneItems by remember { mutableStateOf(listOf("Milk", "Eggs", "Bread", "Paprika", "Tomatoes")) }
+    var listTwoItems by remember { mutableStateOf(listOf("Lemons")) }
     var listOneExpanded by remember { mutableStateOf(false) }
     var listTwoExpanded by remember { mutableStateOf(false) }
 
@@ -80,7 +78,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
         onDismiss = { showDeleteWarning = false },
         onConfirm = {
             listOneItems = listOf(); listTwoItems = listOf(); title =
-            "Click pencil to enter list name"
+            "Click pencil to enter a list name"
         },
     )
 
@@ -136,10 +134,16 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
             ) {
                 ListsBottomSheet(
                     onListSelected = {
-                        itemSelected -> title = itemSelected;
-                        showBottomSheet=false
+                        itemSelected -> title = itemSelected
+                        showBottomSheet = false
                     },
                     onAddList = {
+                        title = "Click pencil to enter a list name"
+                        listOneName = ""
+                        listTwoName = ""
+                        listOneItems = (listOf())
+                        listTwoItems = (listOf())
+                        showBottomSheet=false
                     }
                 )
             }
