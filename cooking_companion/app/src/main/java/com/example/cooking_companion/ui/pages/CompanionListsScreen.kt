@@ -37,22 +37,36 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.cooking_companion.ui.components.AddItemDialog
+import com.example.cooking_companion.ui.components.ChangeTitles
 import com.example.cooking_companion.ui.components.DeleteItemsDialog
 import com.example.cooking_companion.ui.components.Dropdown
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CompanionListsScreen(modifier: Modifier = Modifier) {
+    var title by remember { mutableStateOf("Shopping List") }
+    var listOneName by remember {mutableStateOf("To buy") }
+    var listTwoName by remember {mutableStateOf("Bought") }
     var listOneItems by remember { mutableStateOf(listOf("Milk", "Eggs", "Bread", "Bread","Bread")) }
     var listTwoItems by remember { mutableStateOf(listOf("Milk")) }
     var listOneExpanded by remember { mutableStateOf(false) }
     var listTwoExpanded by remember { mutableStateOf(false) }
 
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
-    val scrollState = rememberScrollState()
-
+    var showChangeTitle by remember { mutableStateOf(false) }
     var showAddNewItem by remember { mutableStateOf(false) }
     var showDeleteWarning by remember { mutableStateOf(false) }
+    ChangeTitles(
+        showDialog = showChangeTitle,
+        onDismiss = { showChangeTitle = false },
+        onConfirm = { updatedTitle, updatedDropDownOne, updatedDropDownTwo ->
+            title = updatedTitle
+            listOneName = updatedDropDownOne
+            listTwoName = updatedDropDownTwo
+        },
+        Title = title,
+        DropDownOne = listOneName,
+        DropDownTwo = listTwoName
+    )
     AddItemDialog(
         showDialog = showAddNewItem,
         onDismiss = { showAddNewItem = false },
@@ -63,8 +77,11 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
     DeleteItemsDialog(
         showDialog = showDeleteWarning,
         onDismiss = { showDeleteWarning = false },
-        onConfirm = { listOneItems = listOf(); listTwoItems = listOf() },
+        onConfirm = { listOneItems = listOf(); listTwoItems = listOf(); title = "Click pencil to enter list name" },
     )
+
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val scrollState = rememberScrollState()
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
@@ -74,7 +91,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                 ),
                 title = {
                     Text(
-                        "Shopping list",
+                        text = title,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -88,7 +105,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                     }
                 },
                 actions = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = {showChangeTitle = true}) {
                         Icon(Icons.Default.Edit, contentDescription = "Edit")
                     }
                     IconButton(onClick = { showDeleteWarning = true}) {
@@ -114,7 +131,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
         ) {
             Dropdown(
                 items = listOneItems,
-                title = "To buy",
+                title = listOneName,
                 expanded = listOneExpanded,
                 toggleDropdown = { listOneExpanded = !listOneExpanded },
                 moveItem = { item ->
@@ -128,7 +145,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
             )
             Dropdown(
                 items = listTwoItems,
-                title =  "Bought",
+                title =  listTwoName,
                 expanded = listTwoExpanded,
                 toggleDropdown = { listTwoExpanded = !listTwoExpanded },
                 moveItem = { item ->

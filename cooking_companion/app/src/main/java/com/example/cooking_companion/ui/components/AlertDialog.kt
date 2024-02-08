@@ -2,6 +2,7 @@ package com.example.cooking_companion.ui.components
 
 
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -66,6 +67,69 @@ fun AddItemDialog(
         )
     }
 }
+@Composable
+fun ChangeTitles(
+    showDialog: Boolean,
+    onDismiss: () -> Unit,
+    onConfirm: (String, String, String) -> Unit,
+    originalTitle : String,
+    originalDropDownOne : String,
+    originalDropDownTwo : String,
+    modifier : Modifier = Modifier
+) {
+    if (showDialog) {
+        var title by remember { mutableStateOf(originalTitle) }
+        var dropDownOne by remember { mutableStateOf(originalDropDownOne) }
+        var dropDownTwo by remember { mutableStateOf(originalDropDownTwo) }
+
+        AlertDialog(
+            onDismissRequest = onDismiss,
+            title = {
+                Text(
+                    text = "Edit titles",
+                    modifier = modifier.padding(start=5.dp)
+                )
+            },
+
+            text = {
+                Column {
+                    TextField(
+                        value = title,
+                        onValueChange = { title = it },
+                        label = { Text("Item Name") },
+                        modifier = modifier.padding(bottom = 15.dp)
+                    )
+                    TextField(
+                        value = dropDownOne,
+                        onValueChange = { dropDownOne = it },
+                        label = { Text("Drop Down One") },
+                        modifier = modifier.padding(bottom = 15.dp)
+                    )
+                    TextField(
+                        value = dropDownTwo,
+                        onValueChange = { dropDownTwo = it },
+                        label = { Text("Drop Down Two") }
+                    )
+                }
+            },
+
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        onConfirm(title, dropDownOne, dropDownTwo)
+                        onDismiss()
+                    }
+                ) { Text("Change") }
+            },
+            dismissButton = {
+                TextButton(onClick = onDismiss) {
+                    Text("Cancel")
+                }
+            }
+        )
+    }
+}
+
 @Composable
 fun DeleteItemsDialog(
     showDialog: Boolean,
