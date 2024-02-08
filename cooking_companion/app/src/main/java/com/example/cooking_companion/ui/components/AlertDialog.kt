@@ -96,7 +96,7 @@ fun ChangeTitles(
                     TextField(
                         value = title,
                         onValueChange = { title = it },
-                        label = { Text("Item Name") },
+                        label = { Text("List title") },
                         modifier = modifier.padding(bottom = 15.dp)
                     )
                     TextField(

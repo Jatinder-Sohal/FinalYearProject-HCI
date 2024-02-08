@@ -13,19 +13,17 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumTopAppBar
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -63,9 +61,9 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
             listOneName = updatedDropDownOne
             listTwoName = updatedDropDownTwo
         },
-        Title = title,
-        DropDownOne = listOneName,
-        DropDownTwo = listTwoName
+        originalTitle = title,
+        originalDropDownOne = listOneName,
+        originalDropDownTwo = listTwoName
     )
     AddItemDialog(
         showDialog = showAddNewItem,
@@ -77,11 +75,20 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
     DeleteItemsDialog(
         showDialog = showDeleteWarning,
         onDismiss = { showDeleteWarning = false },
-        onConfirm = { listOneItems = listOf(); listTwoItems = listOf(); title = "Click pencil to enter list name" },
+        onConfirm = {
+            listOneItems = listOf(); listTwoItems = listOf(); title =
+            "Click pencil to enter list name"
+        },
     )
 
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val scrollState = rememberScrollState()
+
+
+    val items = listOf("List 1", "List 2", "List 3")
+    val sheetState = rememberModalBottomSheetState()
+    var showBottomSheet by remember { mutableStateOf(false) }
+
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
@@ -97,7 +104,9 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = {
+                        showBottomSheet = true
+                    }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
                             contentDescription = "Load all lists"
@@ -105,10 +114,10 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                     }
                 },
                 actions = {
-                    IconButton(onClick = {showChangeTitle = true}) {
+                    IconButton(onClick = { showChangeTitle = true }) {
                         Icon(Icons.Default.Edit, contentDescription = "Edit")
                     }
-                    IconButton(onClick = { showDeleteWarning = true}) {
+                    IconButton(onClick = { showDeleteWarning = true }) {
                         Icon(Icons.Default.Delete, contentDescription = "Delete All")
                     }
                 },
@@ -121,6 +130,16 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
             }
         }
     ) { innerPadding ->
+        if (showBottomSheet) {
+            ModalBottomSheet(
+                onDismissRequest = {
+                    showBottomSheet = false
+                },
+                sheetState = sheetState
+            ) {
+                Text(text = "testing")
+            }
+        }
         Column(
             modifier = modifier
                 .verticalScroll(scrollState)
@@ -145,7 +164,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
             )
             Dropdown(
                 items = listTwoItems,
-                title =  listTwoName,
+                title = listTwoName,
                 expanded = listTwoExpanded,
                 toggleDropdown = { listTwoExpanded = !listTwoExpanded },
                 moveItem = { item ->
