@@ -43,9 +43,9 @@ fun SavedRecipeCard(bookmark: Bookmark,onBookmarkClick: () -> Unit, modifier: Mo
             ),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         modifier = modifier
+            .fillMaxWidth()
             .height(110.dp)
-            .width(350.dp)
-            .padding(vertical = 10.dp, horizontal = 10.dp)
+            .padding(vertical = 10.dp, horizontal = 20.dp)
     ){
         Row(
             modifier = modifier

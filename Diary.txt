@@ -274,7 +274,33 @@ Problems:	-Had problems with sizes of images - All were different so didn't fit 
 
 Future:		-Use figma to design other pages and make changes to home and search
 		-Finish implementation of search page with vertical columns and improve look
-		-Start implementing next pages
+		-Start implementing next pages (saved, lists)
+
+Week 3 (01/02/24)
+Completed:	-Created Sketches of other pages: Saved, Lists and settings
+		-Made changes to search design and experimented implementing them e.g segregating blocks of code with white blocks
+		-Start planning professional issues part of report
+
+Problems:	-Lists page design was too similar to settings page - changed input options
+		-Dark mode is still not functioning and pages are not usable/visible
+		-The segregation blocks appear differently on phone and emulator not quite sure how to make a uniform design
+
+Future:		-Leave search page for now and code other pages
+		-Find out how to fix colour issues in dark mode and choose colour scheme
+		-Change search bar to blend more with the page
 
 
+Week 3 (04/02/24)
+Completed:	-Implemented Saved page with scrolling list of recipies that allows any singular item to be removed
+		-Cards contain colour coded difficulty
+		-Added material 3 colour scheme that adapts for dark mode and light
+		
+
+Problems:	-Theme.kt was having no effect - had to use dynamic theming
+		-Some of the datasource is duplicated - Same recipies with more attributes
+		-Unsure of how to code dropdown for filtering items
+
+Future:		-Code Lists page with several elements: Top navbar, list items and add row
+		-Start coding settings page
+		-Add dropdown to filter saved page recipies and maybe add collections
 
