@@ -29,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -38,6 +39,8 @@ import com.example.cooking_companion.ui.components.AddItemDialog
 import com.example.cooking_companion.ui.components.ChangeTitles
 import com.example.cooking_companion.ui.components.DeleteItemsDialog
 import com.example.cooking_companion.ui.components.Dropdown
+import com.example.cooking_companion.ui.components.ListsBottomSheet
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -84,8 +87,6 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val scrollState = rememberScrollState()
 
-
-    val items = listOf("List 1", "List 2", "List 3")
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
 
@@ -104,9 +105,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = {
-                        showBottomSheet = true
-                    }) {
+                    IconButton(onClick = { showBottomSheet = true }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
                             contentDescription = "Load all lists"
@@ -132,12 +131,17 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
     ) { innerPadding ->
         if (showBottomSheet) {
             ModalBottomSheet(
-                onDismissRequest = {
-                    showBottomSheet = false
-                },
+                onDismissRequest = { showBottomSheet = false },
                 sheetState = sheetState
             ) {
-                Text(text = "testing")
+                ListsBottomSheet(
+                    onListSelected = {
+                        itemSelected -> title = itemSelected;
+                        showBottomSheet=false
+                    },
+                    onAddList = {
+                    }
+                )
             }
         }
         Column(
