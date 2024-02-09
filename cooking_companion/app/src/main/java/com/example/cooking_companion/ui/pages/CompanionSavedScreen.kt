@@ -144,8 +144,8 @@ fun filterRecipes(filterOption: String, recipes: List<Bookmark>): List<Bookmark>
     return when (filterOption) {
         "Difficulty" -> recipes.sortedBy { recipe ->
             difficultyOrder.indexOf(recipe.difficulty)}
-        "Quickest" -> recipes.sortedBy { it.cookingTime }
-        "Longest" -> recipes.sortedByDescending { it.cookingTime }
+        "Quickest" -> recipes.sortedBy { it.id }
+        "Longest" -> recipes.sortedByDescending { it.id }
         else -> recipes
     }
 }

@@ -23,12 +23,14 @@ object DataSource {
         Recipe("Chicken Waffles", R.drawable.chickenwaffles_dishes),
     )
     val bookmarkedRecipes = listOf(
-        Bookmark(0, "BBQ Pie", R.drawable.bbqpie_dishes, "2 Hours", "Hard"),
-        Bookmark(1,"Chicken Curry", R.drawable.chickencurry_dishes, "1 Hour and 30 Minutes", "Moderate"),
-        Bookmark(2,"Chicken Waffles", R.drawable.chickenwaffles_dishes, "1 Hour", "Moderate"),
-        Bookmark(3,"Fried Noodles", R.drawable.noodles_dishes, "1 Hour", "Easy"),
-        Bookmark(4,"Pumpkin Soup", R.drawable.pumpkinsoup_dishes, "1 Hour 30 Minutes", "Moderate"),
-
-
+        Bookmark(8, "BBQ Pie", R.drawable.bbqpie_dishes, "2 Hours 55 Minutes", "Hard"),
+        Bookmark(3,"Chicken Curry", R.drawable.chickencurry_dishes, "50 Minutes", "Moderate"),
+        Bookmark(4,"Chicken Waffles", R.drawable.chickenwaffles_dishes, "1 Hour", "Hard"),
+        Bookmark(5,"Fried Noodles", R.drawable.noodles_dishes, "1 Hour and 10 Minutes", "Easy"),
+        Bookmark(0,"Grilled Cheese", R.drawable.grilledcheese_dishes, "15 Minutes", "Easy"),
+        Bookmark(1,"Guacamole Salad", R.drawable.guacamolesalad_dishes, "20 Minutes", "Easy"),
+        Bookmark(7,"Oreo Sundae", R.drawable.oreosunday_dishes, "2 Hours", "Moderate"),
+        Bookmark(2,"Pumpkin Soup", R.drawable.pumpkinsoup_dishes, "45 Minutes", "Moderate"),
+        Bookmark(6,"Raspberry Cake", R.drawable.raspberrycake_dishes, "1 Hour 55 Minutes", "Hard"),
     )
 }
