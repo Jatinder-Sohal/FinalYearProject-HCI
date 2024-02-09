@@ -11,31 +11,45 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.cooking_companion.R
 import com.example.cooking_companion.data.Bookmark
 import com.example.cooking_companion.data.DataSource
+import com.example.cooking_companion.ui.components.SavedFiltersSheet
 import com.example.cooking_companion.ui.components.SavedRecipeCard
 import com.example.cooking_companion.ui.components.TopSearchBar
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CompanionSavedScreen(modifier: Modifier = Modifier) {
     val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(DataSource.bookmarkedRecipes) }
     val onBookmarkClick = { bookmark: Bookmark ->
         setBookmarkedRecipes(bookmarkedRecipes.filter { it.id != bookmark.id })
     }
+    val currentFilter by remember { mutableStateOf("All") }
+    val filterOptions = listOf("All", "Main Course", "Dessert", "Drinks")
+    val sheetState = rememberModalBottomSheetState()
+    var showBottomSheet by remember { mutableStateOf(false) }
 
     val scrollState = rememberScrollState()
     Column (
@@ -66,19 +80,48 @@ fun CompanionSavedScreen(modifier: Modifier = Modifier) {
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold,
                         modifier = modifier
-                            .padding(horizontal = 32.dp, vertical = 5.dp)
-                            .padding(top=8.dp)
+                            .padding(horizontal = 32.dp, vertical = 0.dp)
+                            .padding(top=4.dp)
                     )
-                    Text(
-                        text = "Dropdown",
-                        style = MaterialTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Bold,
-                        modifier = modifier
-                            .padding(horizontal = 32.dp, vertical = 5.dp)
-                            .padding(top=8.dp)
-                    )
-                }
 
+                    Surface(
+                        shape = RoundedCornerShape(10.dp),
+                        color = Color.White,
+                        contentColor = Color.Black,
+
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp, vertical = 5.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 4.dp, end = 16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            IconButton(onClick = { showBottomSheet = true }) {
+                                Row{
+                                    Text(
+                                        text = currentFilter,
+                                        style = MaterialTheme.typography.titleMedium,
+                                    )
+                                    Icon(
+                                        Icons.Filled.KeyboardArrowDown,
+                                        contentDescription = "Delete All"
+                                    )
+                                }
+                            }
+                        }
+
+                    }
+                }
+                if (showBottomSheet) {
+                    ModalBottomSheet(
+                        onDismissRequest = { showBottomSheet = false },
+                        sheetState = sheetState
+                    ) {
+                        SavedFiltersSheet()
+                    }
+                }
                 for (bookmark in bookmarkedRecipes) {
                     if (bookmark.isBookmarked) {
                         SavedRecipeCard(bookmark, onBookmarkClick = { onBookmarkClick(bookmark) })

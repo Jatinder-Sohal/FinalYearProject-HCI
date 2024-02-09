@@ -1,6 +1,8 @@
 package com.example.cooking_companion.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -8,11 +10,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -24,7 +29,7 @@ fun ListsBottomSheet(onListSelected: (String) -> Unit, onAddList: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 20.dp)
-            .padding(bottom = 20.dp)
+            .padding(bottom = 32.dp)
     ) {
         Text(
             text = "Select a List",
@@ -52,4 +57,39 @@ fun ListsBottomSheet(onListSelected: (String) -> Unit, onAddList: () -> Unit) {
             Text("Add New List")
         }
     }
+}
+@Composable
+fun SavedFiltersSheet(modifier: Modifier = Modifier) {
+    val filterOptions = listOf("All", "Main Course", "Dessert", "Drinks")
+    var currentFilter = "All"
+    Column (
+        modifier = modifier.padding(bottom = 32.dp)
+    ){
+        Text(
+            text = "Sort Saved Recipes by",
+            style = MaterialTheme.typography.headlineSmall,
+            modifier = modifier.padding(start = 16.dp, bottom = 16.dp)
+        )
+        Divider()
+        filterOptions.forEach { filter ->
+            Row(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+                    .padding(bottom = 2.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                RadioButton(
+                    selected = currentFilter == filter,
+                    onClick = {}
+                )
+                Text(
+                    text = filter,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = modifier.padding(start = 16.dp)
+                )
+            }
+        }
+    }
+
 }
