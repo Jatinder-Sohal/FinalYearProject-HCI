@@ -23,11 +23,12 @@ object DataSource {
         Recipe("Chicken Waffles", R.drawable.chickenwaffles_dishes),
     )
     val bookmarkedRecipes = listOf(
+        Bookmark(0, "BBQ Pie", R.drawable.bbqpie_dishes, "2 Hours", "Hard"),
         Bookmark(1,"Chicken Curry", R.drawable.chickencurry_dishes, "1 Hour and 30 Minutes", "Moderate"),
         Bookmark(2,"Chicken Waffles", R.drawable.chickenwaffles_dishes, "1 Hour", "Moderate"),
         Bookmark(3,"Fried Noodles", R.drawable.noodles_dishes, "1 Hour", "Easy"),
         Bookmark(4,"Pumpkin Soup", R.drawable.pumpkinsoup_dishes, "1 Hour 30 Minutes", "Moderate"),
-        Bookmark(5, "BBQ Pie", R.drawable.bbqpie_dishes, "2 Hours", "Hard"),
+
 
     )
 }

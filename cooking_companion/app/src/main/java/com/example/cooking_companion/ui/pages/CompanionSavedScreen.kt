@@ -45,15 +45,16 @@ import com.example.cooking_companion.ui.components.TopSearchBar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CompanionSavedScreen(modifier: Modifier = Modifier) {
-    val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(DataSource.bookmarkedRecipes) }
-    val onBookmarkClick = { bookmark: Bookmark ->
-        setBookmarkedRecipes(bookmarkedRecipes.filter { it.id != bookmark.id })
-    }
-    var currentFilter by remember { mutableStateOf("All recipes") }
-    val filterOptions = listOf("All recipes", "Difficulty", "Quickest", "Longest", "A to Z")
+
+    var currentFilter by remember { mutableStateOf("A to Z") }
+    val filterOptions = listOf("A to Z", "Difficulty", "Quickest", "Slowest")
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
 
+    val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(filterRecipes(currentFilter, DataSource.bookmarkedRecipes))}
+    val onBookmarkClick = { bookmark: Bookmark ->
+        setBookmarkedRecipes(bookmarkedRecipes.filter { it.id != bookmark.id })
+    }
     val scrollState = rememberScrollState()
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -124,6 +125,7 @@ fun CompanionSavedScreen(modifier: Modifier = Modifier) {
                             onFilterSelected = {filter ->
                                 currentFilter = filter
                                 showBottomSheet=false
+                                setBookmarkedRecipes(filterRecipes(currentFilter, DataSource.bookmarkedRecipes))
                             }
                         )
                     }
@@ -137,4 +139,13 @@ fun CompanionSavedScreen(modifier: Modifier = Modifier) {
         }
     }
 }
-
+fun filterRecipes(filterOption: String, recipes: List<Bookmark>): List<Bookmark> {
+    val difficultyOrder = listOf("Easy", "Moderate", "Hard")
+    return when (filterOption) {
+        "Difficulty" -> recipes.sortedBy { recipe ->
+            difficultyOrder.indexOf(recipe.difficulty)}
+        "Quickest" -> recipes.sortedBy { it.cookingTime }
+        "Longest" -> recipes.sortedByDescending { it.cookingTime }
+        else -> recipes
+    }
+}
