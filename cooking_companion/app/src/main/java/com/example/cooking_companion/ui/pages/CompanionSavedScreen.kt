@@ -6,8 +6,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -31,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.cooking_companion.data.Bookmark
 import com.example.cooking_companion.data.DataSource
@@ -46,8 +49,8 @@ fun CompanionSavedScreen(modifier: Modifier = Modifier) {
     val onBookmarkClick = { bookmark: Bookmark ->
         setBookmarkedRecipes(bookmarkedRecipes.filter { it.id != bookmark.id })
     }
-    val currentFilter by remember { mutableStateOf("All") }
-    val filterOptions = listOf("All", "Main Course", "Dessert", "Drinks")
+    var currentFilter by remember { mutableStateOf("All recipes") }
+    val filterOptions = listOf("All recipes", "Difficulty", "Quickest", "Longest", "A to Z")
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
 
@@ -83,35 +86,31 @@ fun CompanionSavedScreen(modifier: Modifier = Modifier) {
                             .padding(horizontal = 32.dp, vertical = 0.dp)
                             .padding(top=4.dp)
                     )
-
-                    Surface(
-                        shape = RoundedCornerShape(10.dp),
-                        color = Color.White,
-                        contentColor = Color.Black,
-
+                    Row(
                         modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 5.dp)
-                            .clip(RoundedCornerShape(10.dp))
+                            .width(150.dp)
+                            .padding(top = 4.dp, end = 32.dp),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Row(
+                        IconButton(
+                            onClick = { showBottomSheet = true },
                             modifier = Modifier
-                                .padding(top = 4.dp, end = 16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
+                                .fillMaxWidth()
                         ) {
-                            IconButton(onClick = { showBottomSheet = true }) {
-                                Row{
-                                    Text(
-                                        text = currentFilter,
-                                        style = MaterialTheme.typography.titleMedium,
-                                    )
-                                    Icon(
-                                        Icons.Filled.KeyboardArrowDown,
-                                        contentDescription = "Delete All"
-                                    )
-                                }
+                            Row{
+                                Text(
+                                    text = currentFilter,
+                                    style = MaterialTheme.typography.titleMedium,
+                                    modifier = Modifier.weight(1f),
+                                    maxLines = 1,
+                                    textAlign = TextAlign.End
+                                )
+                                Icon(
+                                    Icons.Filled.KeyboardArrowDown,
+                                    contentDescription = "Delete All"
+                                )
                             }
                         }
-
                     }
                 }
                 if (showBottomSheet) {
@@ -119,7 +118,14 @@ fun CompanionSavedScreen(modifier: Modifier = Modifier) {
                         onDismissRequest = { showBottomSheet = false },
                         sheetState = sheetState
                     ) {
-                        SavedFiltersSheet()
+                        SavedFiltersSheet(
+                            filterOptions = filterOptions,
+                            currentFilter = currentFilter,
+                            onFilterSelected = {filter ->
+                                currentFilter = filter
+                                showBottomSheet=false
+                            }
+                        )
                     }
                 }
                 for (bookmark in bookmarkedRecipes) {
