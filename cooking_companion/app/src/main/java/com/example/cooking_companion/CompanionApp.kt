@@ -35,6 +35,7 @@ import com.example.cooking_companion.ui.pages.CompanionListsScreen
 import com.example.cooking_companion.ui.pages.CompanionSavedScreen
 import com.example.cooking_companion.ui.pages.CompanionSearchScreen
 import com.example.cooking_companion.ui.pages.CompanionSettingsScreen
+import com.example.cooking_companion.ui.pages.SavedCollection
 
 
 enum class CompanionScreen(val route: String){
@@ -64,10 +65,10 @@ fun CompanionApp() {
         NavHost(navController, startDestination = CompanionScreen.Home.route, Modifier.padding(innerPadding)) {
             composable(CompanionScreen.Home.route) { CompanionHomeScreen() }
             composable(CompanionScreen.Search.route) { CompanionSearchScreen() }
-            composable(CompanionScreen.Saved.route) { CompanionSavedScreen() }
+            composable(CompanionScreen.Saved.route) { CompanionSavedScreen(navController) }
             composable(CompanionScreen.Lists.route) { CompanionListsScreen() }
             composable(CompanionScreen.Settings.route) { CompanionSettingsScreen() }
-
+            composable("savedCollection") { SavedCollection() }
 
         }
     }
@@ -77,7 +78,7 @@ fun CompanionApp() {
 fun BottomNavbar(navController: NavHostController, currentRoute: String) {
     NavigationBar{
         CompanionScreen.values().forEach { screen ->
-            val selected = currentRoute == screen.route
+            val selected = currentRoute == screen.route || (currentRoute == "savedCollection" && screen == CompanionScreen.Saved)
             NavigationBarItem(
                 icon = { when (screen) {
                     CompanionScreen.Home -> {
