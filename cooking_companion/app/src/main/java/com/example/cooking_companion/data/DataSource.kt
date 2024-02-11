@@ -33,4 +33,10 @@ object DataSource {
         Bookmark(2,"Pumpkin Soup", R.drawable.pumpkinsoup_dishes, "45 Minutes", "Moderate"),
         Bookmark(6,"Raspberry Cake", R.drawable.raspberrycake_dishes, "1 Hour 55 Minutes", "Hard"),
     )
+    val collections = listOf(
+        Collection("list1", 0),
+        Collection("list2", 0),
+        Collection("list3", 0),
+        Collection("list4", 0),
+    )
 }
