@@ -38,15 +38,51 @@ import com.example.cooking_companion.data.Bookmark
 fun CollectionOption(modifier : Modifier = Modifier){
     Card(
         modifier = modifier
-            .padding(8.dp)
-            .height(240.dp)
-            .width(150.dp),
-        shape = MaterialTheme.shapes.medium,
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        border = BorderStroke(2.dp,Color.Black)
+            .padding(4.dp)
+            .padding(bottom = 8.dp)
+            .height(245.dp)
+            .width(170.dp),
+        shape = RoundedCornerShape(16.dp),
+        //elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background,
+            contentColor = Color.Black
+        )
     ){
         Column(){
-
+            Card(
+                modifier = modifier
+                    .padding(bottom = 4.dp)
+                    .fillMaxWidth()
+                    .height(100.dp),
+                shape = RoundedCornerShape(
+                    topStart = 16.dp,
+                    topEnd = 16.dp,
+                    bottomEnd = 0.dp,
+                    bottomStart = 0.dp)
+            ){}
+            Row(){
+                Card(
+                    modifier = modifier
+                        .padding(end = 4.dp)
+                        .width(85.dp)
+                        .height(90.dp),
+                    shape = RoundedCornerShape(
+                        topStart = 0.dp,
+                        topEnd = 0.dp,
+                        bottomEnd = 0.dp,
+                        bottomStart = 16.dp)){}
+                Card(
+                    modifier = modifier
+                        //.padding(end = 4.dp)
+                        .width(85.dp)
+                        .height(90.dp),
+                    shape = RoundedCornerShape(
+                        topStart = 0.dp,
+                        topEnd = 0.dp,
+                        bottomEnd = 16.dp,
+                        bottomStart = 0.dp)){}
+            }
             Text(
                 text = "test",
                 style = MaterialTheme.typography.displayMedium,
@@ -55,14 +91,19 @@ fun CollectionOption(modifier : Modifier = Modifier){
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .fillMaxWidth()
-                    .padding(top = 5.dp)
+                    .padding(top = 1.dp, start = 4.dp)
 
             )
-//                            Card(){}
-//                            Row(){
-//                                Card(){}
-//                                Card(){}
-//                            }
+            Text(
+                text = "test",
+                style = MaterialTheme.typography.displayMedium,
+                fontWeight = FontWeight.Bold,
+                fontSize = 19.sp,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .fillMaxWidth()
+                    .padding(start = 4.dp)
+            )
         }
     }
 }

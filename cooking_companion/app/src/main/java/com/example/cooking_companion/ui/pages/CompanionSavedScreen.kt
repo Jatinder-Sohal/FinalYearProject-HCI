@@ -4,10 +4,12 @@ package com.example.cooking_companion.ui.pages
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -34,7 +36,11 @@ import com.example.cooking_companion.ui.components.RecipeCard
 
 @Composable
 fun CompanionSavedScreen(navController: NavHostController, modifier: Modifier = Modifier) {
-    Column(){
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+    ){
         Text(
             text = "Saved Collections",
             style = MaterialTheme.typography.titleLarge,
