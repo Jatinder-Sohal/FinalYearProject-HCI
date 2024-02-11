@@ -33,8 +33,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.cooking_companion.data.Bookmark
 import com.example.cooking_companion.data.DataSource
+import com.example.cooking_companion.ui.components.CollectionItem
 import com.example.cooking_companion.ui.components.SavedFiltersSheet
-import com.example.cooking_companion.ui.components.SavedRecipeCard
 import com.example.cooking_companion.ui.components.TopSearchBar
 
 
@@ -128,7 +128,7 @@ fun SavedCollection(modifier: Modifier = Modifier) {
                 }
                 for (bookmark in bookmarkedRecipes) {
                     if (bookmark.isBookmarked) {
-                        SavedRecipeCard(bookmark, onBookmarkClick = { onBookmarkClick(bookmark) })
+                        CollectionItem(bookmark, onBookmarkClick = { onBookmarkClick(bookmark) })
                     }
                 }
             }

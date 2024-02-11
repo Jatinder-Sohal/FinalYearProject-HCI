@@ -33,7 +33,7 @@ import com.example.cooking_companion.data.Bookmark
 
 
 @Composable
-fun SavedRecipeCard(bookmark: Bookmark,onBookmarkClick: () -> Unit, modifier: Modifier = Modifier) {
+fun CollectionItem(bookmark: Bookmark,onBookmarkClick: () -> Unit, modifier: Modifier = Modifier) {
     val darkTheme = isSystemInDarkTheme()
     Card (
         shape = RoundedCornerShape(20.dp),
