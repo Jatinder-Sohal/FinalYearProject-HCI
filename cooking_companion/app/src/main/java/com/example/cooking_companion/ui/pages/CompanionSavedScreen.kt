@@ -31,11 +31,9 @@ import com.example.cooking_companion.ui.components.CollectionOption
 @Composable
 fun CompanionSavedScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     var collections by remember { mutableStateOf(listOf(
-        Collection("List1", 0),
-        Collection("List2", 0),
-        Collection("List3", 0),
-        Collection("List4", 0),
-
+        Collection("Collection One", 7),
+        Collection("12/02/24", 2),
+        Collection("List3", 1),
     ))}
     Column(
         modifier = modifier

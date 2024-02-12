@@ -47,7 +47,7 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
             .padding(bottom = 8.dp)
             .height(245.dp)
             .width(170.dp)
-            .clickable { navController.navigate("savedCollection") },
+            .clickable { navController.navigate("savedCollection/${collection.posts}") },
         shape = RoundedCornerShape(16.dp),
         //elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(
@@ -99,7 +99,7 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
 
             )
             Text(
-                text = "0",
+                text = collection.posts.toString(),
                 style = MaterialTheme.typography.displayMedium,
                 fontSize = 19.sp,
                 modifier = Modifier

@@ -40,14 +40,14 @@ import com.example.cooking_companion.ui.components.TopSearchBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SavedCollection(modifier: Modifier = Modifier) {
+fun SavedCollection(modifier: Modifier = Modifier, collectionPosts: String) {
 
     var currentFilter by remember { mutableStateOf("A to Z") }
     val filterOptions = listOf("A to Z", "Difficulty", "Quickest", "Slowest")
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
 
-    val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(filterRecipes(currentFilter, DataSource.bookmarkedRecipes))}
+    val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(filterRecipes(currentFilter, DataSource.bookmarkedRecipes.subList(0, collectionPosts.toInt())))}
     val onBookmarkClick = { bookmark: Bookmark ->
         setBookmarkedRecipes(bookmarkedRecipes.filter { it.id != bookmark.id })
     }

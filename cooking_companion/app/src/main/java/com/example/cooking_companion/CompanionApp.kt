@@ -27,9 +27,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.cooking_companion.ui.pages.CompanionHomeScreen
 import com.example.cooking_companion.ui.pages.CompanionListsScreen
 import com.example.cooking_companion.ui.pages.CompanionSavedScreen
@@ -68,7 +70,12 @@ fun CompanionApp() {
             composable(CompanionScreen.Saved.route) { CompanionSavedScreen(navController) }
             composable(CompanionScreen.Lists.route) { CompanionListsScreen() }
             composable(CompanionScreen.Settings.route) { CompanionSettingsScreen() }
-            composable("savedCollection") { SavedCollection() }
+            composable(
+                route = "savedCollection/{collectionPosts}",
+                arguments = listOf(navArgument("collectionPosts"){type = NavType.StringType})
+            ) { backStackEntry ->
+                SavedCollection(collectionPosts = backStackEntry.arguments?.getString("collectionPosts") ?: "")
+            }
 
         }
     }
