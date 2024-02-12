@@ -1,5 +1,6 @@
 package com.example.cooking_companion.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -110,34 +111,37 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
     }
 }
 @Composable
-fun AddNewCollection(modifier: Modifier = Modifier){
+fun AddNewCollection(onClick: () -> Unit, modifier: Modifier = Modifier){
     Card(
         modifier = modifier
             .padding(4.dp)
             .padding(bottom = 8.dp)
             .height(245.dp)
             .width(170.dp)
-            .clickable { },
+            .clickable {onClick() },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.background,
-        )
+        ),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground),
     ){
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            IconButton(onClick = { }) {
+            IconButton(onClick = { onClick() }) {
                 Icon(
                     imageVector = Icons.Default.Add,
                     contentDescription = "Add New Collection",
+                    tint = Color(0xFFDE6B46),
                     modifier = Modifier.size(64.dp)
                 )
             }
             Text(
                 text = "Add New Collection",
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color(0xFFDE6B46)
             )
         }
     }
