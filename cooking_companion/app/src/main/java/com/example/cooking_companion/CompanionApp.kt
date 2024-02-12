@@ -85,7 +85,7 @@ fun CompanionApp() {
 fun BottomNavbar(navController: NavHostController, currentRoute: String) {
     NavigationBar{
         CompanionScreen.values().forEach { screen ->
-            val selected = currentRoute == screen.route || (currentRoute == "savedCollection" && screen == CompanionScreen.Saved)
+            val selected = currentRoute == screen.route || (currentRoute == "savedCollection/{collectionPosts}" && screen == CompanionScreen.Saved)
             NavigationBarItem(
                 icon = { when (screen) {
                     CompanionScreen.Home -> {

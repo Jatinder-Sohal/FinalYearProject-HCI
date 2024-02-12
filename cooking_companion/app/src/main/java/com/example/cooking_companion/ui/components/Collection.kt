@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Bookmark
 import com.example.cooking_companion.data.Collection
+import com.example.cooking_companion.data.DataSource.bookmarkedRecipes
 
 @Composable
 fun CollectionOption(collection : Collection, navController: NavHostController, modifier : Modifier = Modifier){
@@ -65,8 +66,19 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
                     topEnd = 16.dp,
                     bottomEnd = 0.dp,
                     bottomStart = 0.dp)
-            ){}
-            Row(){
+            ){
+                if (collection.posts != 0){
+                    Image(
+                        painter = painterResource(bookmarkedRecipes[0].foodImage),
+                        contentDescription = bookmarkedRecipes[0].title,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxSize()
+                    )
+                }
+
+            }
+            Row{
                 Card(
                     modifier = modifier
                         .width(82.dp)
@@ -75,7 +87,19 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
                         topStart = 0.dp,
                         topEnd = 0.dp,
                         bottomEnd = 0.dp,
-                        bottomStart = 16.dp)){}
+                        bottomStart = 16.dp)
+                ) {
+                    if (collection.posts == 9 || collection.posts == 2){
+                        Image(
+                            painter = painterResource(bookmarkedRecipes[1].foodImage),
+                            contentDescription = bookmarkedRecipes[1].title,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxSize()
+
+                        )
+                    }
+                }
                 Card(
                     modifier = modifier
                         .padding(start = 4.dp)
@@ -85,7 +109,19 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
                         topStart = 0.dp,
                         topEnd = 0.dp,
                         bottomEnd = 16.dp,
-                        bottomStart = 0.dp)){}
+                        bottomStart = 0.dp)
+                ){
+                    if (collection.posts == 9){
+                        Image(
+                            painter = painterResource(bookmarkedRecipes[2].foodImage),
+                            contentDescription = bookmarkedRecipes[2].title,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxSize()
+
+                        )
+                    }
+                }
             }
             Text(
                 text = collection.name,
