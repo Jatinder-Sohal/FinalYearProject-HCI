@@ -1,5 +1,7 @@
 package com.example.cooking_companion.data
 
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import com.example.cooking_companion.R
 
 object DataSource {
@@ -32,11 +34,5 @@ object DataSource {
         Bookmark(7,"Oreo Sundae", R.drawable.oreosunday_dishes, "2 Hours", "Moderate"),
         Bookmark(2,"Pumpkin Soup", R.drawable.pumpkinsoup_dishes, "45 Minutes", "Moderate"),
         Bookmark(6,"Raspberry Cake", R.drawable.raspberrycake_dishes, "1 Hour 55 Minutes", "Hard"),
-    )
-    val collections = listOf(
-        Collection("list1", 0),
-        Collection("list2", 0),
-        Collection("list3", 0),
-        Collection("list4", 0),
     )
 }

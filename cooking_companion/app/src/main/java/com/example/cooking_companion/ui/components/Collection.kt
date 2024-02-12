@@ -1,13 +1,14 @@
 package com.example.cooking_companion.ui.components
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -32,24 +34,26 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Bookmark
+import com.example.cooking_companion.data.Collection
 
 @Composable
-fun CollectionOption(modifier : Modifier = Modifier){
+fun CollectionOption(collection : Collection, navController: NavHostController, modifier : Modifier = Modifier){
     Card(
         modifier = modifier
             .padding(4.dp)
             .padding(bottom = 8.dp)
             .height(245.dp)
-            .width(170.dp),
+            .width(170.dp)
+            .clickable { navController.navigate("savedCollection") },
         shape = RoundedCornerShape(16.dp),
         //elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.background,
-            contentColor = Color.Black
         )
     ){
-        Column(){
+        Column{
             Card(
                 modifier = modifier
                     .padding(bottom = 4.dp)
@@ -64,8 +68,7 @@ fun CollectionOption(modifier : Modifier = Modifier){
             Row(){
                 Card(
                     modifier = modifier
-                        .padding(end = 4.dp)
-                        .width(85.dp)
+                        .width(82.dp)
                         .height(90.dp),
                     shape = RoundedCornerShape(
                         topStart = 0.dp,
@@ -74,7 +77,7 @@ fun CollectionOption(modifier : Modifier = Modifier){
                         bottomStart = 16.dp)){}
                 Card(
                     modifier = modifier
-                        //.padding(end = 4.dp)
+                        .padding(start = 4.dp)
                         .width(85.dp)
                         .height(90.dp),
                     shape = RoundedCornerShape(
@@ -84,25 +87,57 @@ fun CollectionOption(modifier : Modifier = Modifier){
                         bottomStart = 0.dp)){}
             }
             Text(
-                text = "test",
+                text = collection.name,
                 style = MaterialTheme.typography.displayMedium,
                 fontWeight = FontWeight.Bold,
                 fontSize = 19.sp,
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .fillMaxWidth()
-                    .padding(top = 1.dp, start = 4.dp)
+                    .padding(top = 1.dp, start = 8.dp)
 
             )
             Text(
-                text = "test",
+                text = "0",
                 style = MaterialTheme.typography.displayMedium,
-                fontWeight = FontWeight.Bold,
                 fontSize = 19.sp,
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .fillMaxWidth()
-                    .padding(start = 4.dp)
+                    .padding(start = 8.dp)
+            )
+        }
+    }
+}
+@Composable
+fun AddNewCollection(modifier: Modifier = Modifier){
+    Card(
+        modifier = modifier
+            .padding(4.dp)
+            .padding(bottom = 8.dp)
+            .height(245.dp)
+            .width(170.dp)
+            .clickable { },
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background,
+        )
+    ){
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            IconButton(onClick = { }) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "Add New Collection",
+                    modifier = Modifier.size(64.dp)
+                )
+            }
+            Text(
+                text = "Add New Collection",
+                style = MaterialTheme.typography.bodyLarge
             )
         }
     }
