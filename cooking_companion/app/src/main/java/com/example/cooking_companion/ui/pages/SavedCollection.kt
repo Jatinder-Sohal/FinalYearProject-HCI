@@ -12,13 +12,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -26,7 +25,6 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -40,6 +38,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Bookmark
 import com.example.cooking_companion.data.DataSource
 import com.example.cooking_companion.ui.components.CollectionItem
@@ -48,31 +48,42 @@ import com.example.cooking_companion.ui.components.SavedFiltersSheet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SavedCollection(modifier: Modifier = Modifier, collectionPosts: String) {
+fun SavedCollection(navController: NavHostController, collectionPosts: String, modifier: Modifier = Modifier) {
     var currentFilter by remember { mutableStateOf("A to Z") }
     val filterOptions = listOf("A to Z", "Difficulty", "Quickest", "Slowest")
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
-    
+
     val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(filterRecipes(currentFilter, DataSource.bookmarkedRecipes.subList(0, collectionPosts.toInt())))}
     val onBookmarkClick = { bookmark: Bookmark ->
         setBookmarkedRecipes(bookmarkedRecipes.filter { it.id != bookmark.id })
     }
     val scrollState = rememberScrollState()
+    val title = when (collectionPosts){
+        "9" -> "Collection One"
+        "2" -> "12/02/24"
+        "1" -> "List3"
+        else -> {"New List"}
+    }
     Scaffold(
         topBar = {
-            TopAppBar(
+            CenterAlignedTopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
                     scrolledContainerColor = MaterialTheme.colorScheme.tertiaryContainer
                 ),
                 title = {
-                    Text("")
+                    Text(
+                        title,
+                        fontSize = 24.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { showBottomSheet = true }) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
-                            imageVector = Icons.Filled.Menu,
-                            contentDescription = "Load all lists"
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = "Back to main collections page"
                         )
                     }
                 },
@@ -96,7 +107,6 @@ fun SavedCollection(modifier: Modifier = Modifier, collectionPosts: String) {
                 .background(MaterialTheme.colorScheme.secondaryContainer)
         ) {
             Surface(
-                shape = MaterialTheme.shapes.medium,
                 color = MaterialTheme.colorScheme.background,
                 modifier = Modifier
                     .fillMaxWidth(),

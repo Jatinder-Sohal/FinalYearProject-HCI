@@ -63,7 +63,7 @@ fun CompanionSavedScreen(navController: NavHostController, modifier: Modifier = 
                     if (collections.size % 2 != 0 && chunk == collections.chunked(2).last()) {
                         AddNewCollection(
                             onClick = {
-                                val newCollection = Collection("New", 0)
+                                val newCollection = Collection("New List", 0)
                                 collections = collections + newCollection
                             }
                         )

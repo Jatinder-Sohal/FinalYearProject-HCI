@@ -74,7 +74,7 @@ fun CompanionApp() {
                 route = "savedCollection/{collectionPosts}",
                 arguments = listOf(navArgument("collectionPosts"){type = NavType.StringType})
             ) { backStackEntry ->
-                SavedCollection(collectionPosts = backStackEntry.arguments?.getString("collectionPosts") ?: "")
+                SavedCollection(navController, collectionPosts = backStackEntry.arguments?.getString("collectionPosts") ?: "")
             }
 
         }
