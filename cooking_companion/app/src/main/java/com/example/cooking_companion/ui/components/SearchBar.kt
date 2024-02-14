@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SearchBar(modifier: Modifier = Modifier){
+fun TopSearchBar(modifier: Modifier = Modifier){
     Surface(
         modifier = modifier
             .height(60.dp)
@@ -49,6 +49,39 @@ fun SearchBar(modifier: Modifier = Modifier){
                 text = "Search for recipes",
                 fontWeight = FontWeight.Medium,
                 fontSize = 15.sp
+            )
+        }
+    }
+}
+@Composable
+fun SearchSearchBar(modifier: Modifier = Modifier){
+    Surface(
+        modifier = modifier
+            .height(70.dp)
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp,vertical = 6.dp),
+
+        border = BorderStroke(2.dp, Color.LightGray),
+        shape = RoundedCornerShape(10),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = "Search Icon",
+                tint = Color.LightGray,
+                modifier = Modifier.size(24.dp)
+            )
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(
+                text = "Type in ingredients or dishes...",
+                fontWeight = FontWeight.Medium,
+                fontSize = 18.sp,
+                color = Color.LightGray
             )
         }
     }

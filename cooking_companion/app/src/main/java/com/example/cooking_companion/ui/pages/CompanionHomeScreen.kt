@@ -1,11 +1,16 @@
 package com.example.cooking_companion.ui.pages
 
-
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -13,39 +18,32 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.cooking_companion.R
+import androidx.compose.ui.unit.sp
 import com.example.cooking_companion.data.Category
+import com.example.cooking_companion.data.DataSource.categoriesList
+import com.example.cooking_companion.data.DataSource.recipesList
 import com.example.cooking_companion.data.Recipe
-import com.example.cooking_companion.ui.components.CategoryList
+import com.example.cooking_companion.ui.components.HorizontalCategoryItem
 import com.example.cooking_companion.ui.components.RecipeCard
-import com.example.cooking_companion.ui.components.SearchBar
-import com.example.cooking_companion.ui.components.Title
-
-val categoriesList = listOf(
-    Category("Diets", R.drawable.diet_cat),
-    Category("Courses",  R.drawable.course_cat),
-    Category("Healthy",  R.drawable.healthy_cat),
-    Category("Asian",  R.drawable.asian_cat),
-    Category("Simple",  R.drawable.simple_cat),
-)
-
+import com.example.cooking_companion.ui.components.TopSearchBar
 
 @Composable
 fun CompanionHomeScreen(
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
-    val recipesList = listOf(
-        Recipe("Chicken Curry", painterResource(id = R.drawable.chickencurry_dishes)),
-        Recipe("Grilled Cheese", painterResource(id = R.drawable.grilledcheese_dishes)),
-        Recipe("Fried Noodles", painterResource(id = R.drawable.noodles_dishes)),
-        Recipe("BBQ Pie", painterResource(id = R.drawable.bbqpie_dishes)),
-        Recipe("Pumpkin Soup", painterResource(id = R.drawable.pumpkinsoup_dishes)),
-        Recipe("Chicken Waffles ", painterResource(id = R.drawable.chickenwaffles_dishes)),
-    )
+
+    val configuration = LocalConfiguration.current
+    val screenWidth = configuration.screenWidthDp.dp
+    val screenHeight = configuration.screenHeightDp.dp
+
+    val averageSize = (screenWidth + screenHeight) / 2
+    val fontSize = (averageSize.value / 10).sp
+    val boxSize = (averageSize/4)+15.dp
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
@@ -53,13 +51,38 @@ fun CompanionHomeScreen(
             .fillMaxWidth()
 
     ){
-        SearchBar()
-        Title()
+        TopSearchBar()
+        Box(
+            modifier = modifier
+                .fillMaxWidth()
+                .height(boxSize)
+                //#C4F0F3
+                .background(Color(0xFFC4F0F3))
+        ) {
+            Text(
+                text = "Cooking",
+                color = Color.Black,
+                style = MaterialTheme.typography.titleLarge,
+                fontSize = fontSize,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(start = 25.dp, top=5.dp )
+            )
+            Text(
+                text = "Companion",
+                color = Color.Black,
+                style = MaterialTheme.typography.titleLarge,
+                fontSize = fontSize,
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(end = 25.dp, bottom = 10.dp)
+            )
+        }
         Text(
             text = "Popular Categories",
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier
+            modifier = modifier
                 .padding(horizontal = 16.dp, vertical = 4.dp)
                 .padding(top=8.dp)
                 .align(Alignment.Start)
@@ -70,13 +93,25 @@ fun CompanionHomeScreen(
             text = "Dishes for you",
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier
+            modifier = modifier
                 .padding(horizontal = 16.dp, vertical = 4.dp)
                 .padding(top=8.dp)
                 .align(Alignment.Start)
 
         )
         RecipesGrid(recipesList)
+    }
+}
+
+@Composable
+fun CategoryList(categories: List<Category>) {
+    val subsetOfRecipes = categories.slice(0..4)
+    LazyRow(
+        contentPadding = PaddingValues(horizontal = 8.dp),
+    ) {
+        items(subsetOfRecipes) { category ->
+            HorizontalCategoryItem(category)
+        }
     }
 }
 

@@ -1,6 +1,8 @@
 package com.example.cooking_companion.data
 
-data class Category(
+data class Collection(
     val name: String,
-    val image: Int
+    val posts: Int,
+
+
 )

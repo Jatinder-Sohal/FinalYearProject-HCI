@@ -14,6 +14,7 @@ import androidx.compose.material.icons.outlined.ReceiptLong
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -26,14 +27,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.cooking_companion.ui.pages.CompanionHomeScreen
 import com.example.cooking_companion.ui.pages.CompanionListsScreen
 import com.example.cooking_companion.ui.pages.CompanionSavedScreen
 import com.example.cooking_companion.ui.pages.CompanionSearchScreen
 import com.example.cooking_companion.ui.pages.CompanionSettingsScreen
+import com.example.cooking_companion.ui.pages.SavedCollection
 
 
 enum class CompanionScreen(val route: String){
@@ -47,9 +51,7 @@ enum class CompanionScreen(val route: String){
 
 
 @Composable
-fun CompanionApp(
-
-) {
+fun CompanionApp() {
     val navController = rememberNavController()
     val currentRoute = remember { mutableStateOf(CompanionScreen.Home.route) }
 
@@ -65,10 +67,15 @@ fun CompanionApp(
         NavHost(navController, startDestination = CompanionScreen.Home.route, Modifier.padding(innerPadding)) {
             composable(CompanionScreen.Home.route) { CompanionHomeScreen() }
             composable(CompanionScreen.Search.route) { CompanionSearchScreen() }
-            composable(CompanionScreen.Saved.route) { CompanionSavedScreen() }
+            composable(CompanionScreen.Saved.route) { CompanionSavedScreen(navController) }
             composable(CompanionScreen.Lists.route) { CompanionListsScreen() }
             composable(CompanionScreen.Settings.route) { CompanionSettingsScreen() }
-
+            composable(
+                route = "savedCollection/{collectionPosts}",
+                arguments = listOf(navArgument("collectionPosts"){type = NavType.StringType})
+            ) { backStackEntry ->
+                SavedCollection(navController, collectionPosts = backStackEntry.arguments?.getString("collectionPosts") ?: "")
+            }
 
         }
     }
@@ -78,7 +85,7 @@ fun CompanionApp(
 fun BottomNavbar(navController: NavHostController, currentRoute: String) {
     NavigationBar{
         CompanionScreen.values().forEach { screen ->
-            val selected = currentRoute == screen.route
+            val selected = currentRoute == screen.route || (currentRoute == "savedCollection/{collectionPosts}" && screen == CompanionScreen.Saved)
             NavigationBarItem(
                 icon = { when (screen) {
                     CompanionScreen.Home -> {
@@ -111,7 +118,7 @@ fun BottomNavbar(navController: NavHostController, currentRoute: String) {
                     }
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    indicatorColor = Color(0xFFDCDCDC)
+                    indicatorColor = MaterialTheme.colorScheme.surfaceVariant
                 )
             )
         }
@@ -123,6 +130,6 @@ fun getColor(selected: Boolean): Color {
         Color(0xFFDE6B46)
     }
     else {
-        Color(0xFF000000)
+        MaterialTheme.colorScheme.inverseSurface
     }
 }
