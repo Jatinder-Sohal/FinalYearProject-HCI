@@ -34,11 +34,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.cooking_companion.ui.components.AddItemDialog
 import com.example.cooking_companion.ui.components.ChangeTitles
 import com.example.cooking_companion.ui.components.DeleteItemsDialog
 import com.example.cooking_companion.ui.components.Dropdown
 import com.example.cooking_companion.ui.components.ListsBottomSheet
+import com.example.cooking_companion.ui.components.OneInputDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -66,7 +66,9 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
         originalDropDownOne = listOneName,
         originalDropDownTwo = listTwoName
     )
-    AddItemDialog(
+    OneInputDialog(
+        title = "Add New Item",
+        boxTitle = "Item Name",
         showDialog = showAddNewItem,
         onDismiss = { showAddNewItem = false },
         onConfirm = { newItem ->
@@ -74,6 +76,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
         },
     )
     DeleteItemsDialog(
+        text = "This will delete all your list items",
         showDialog = showDeleteWarning,
         onDismiss = { showDeleteWarning = false },
         onConfirm = {

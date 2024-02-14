@@ -19,22 +19,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Collection
+import com.example.cooking_companion.data.DataSource
 import com.example.cooking_companion.ui.components.AddNewCollection
 import com.example.cooking_companion.ui.components.CollectionOption
 
 
 @Composable
 fun CompanionSavedScreen(navController: NavHostController, modifier: Modifier = Modifier) {
-    var collections by remember { mutableStateOf(listOf(
-        Collection("Collection One", 9),
-        Collection("12/02/24", 2),
-        Collection("List3", 1),
-    ))}
+    val collections = DataSource.collections
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -64,7 +62,7 @@ fun CompanionSavedScreen(navController: NavHostController, modifier: Modifier = 
                         AddNewCollection(
                             onClick = {
                                 val newCollection = Collection("New List", 0)
-                                collections = collections + newCollection
+                                collections.add(newCollection)
                             }
                         )
                     }
@@ -81,7 +79,7 @@ fun CompanionSavedScreen(navController: NavHostController, modifier: Modifier = 
                         AddNewCollection(
                             onClick = {
                                 val newCollection = Collection("New", 0)
-                                collections = collections + newCollection
+                                collections.add(newCollection)
                             }
                         )
                         Spacer(modifier = Modifier.weight(1f))

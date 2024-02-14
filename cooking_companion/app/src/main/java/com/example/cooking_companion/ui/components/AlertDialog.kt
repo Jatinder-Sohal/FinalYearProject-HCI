@@ -22,7 +22,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun AddItemDialog(
+fun OneInputDialog(
+    title: String,
+    boxTitle: String,
     showDialog: Boolean,
     onDismiss: () -> Unit,
     onConfirm: (String) -> Unit,
@@ -35,7 +37,7 @@ fun AddItemDialog(
             onDismissRequest = onDismiss,
             title = {
                 Text(
-                    text = "Add New Item",
+                    text = title,
                     modifier = modifier.padding(start=5.dp)
                 )
             },
@@ -43,7 +45,7 @@ fun AddItemDialog(
                 TextField(
                     value = newItemName,
                     onValueChange = { newItemName = it },
-                    label = { Text("Item Name") }
+                    label = { Text(boxTitle) }
                 )
             },
             confirmButton = {
@@ -130,6 +132,7 @@ fun ChangeTitles(
 
 @Composable
 fun DeleteItemsDialog(
+    text: String,
     showDialog: Boolean,
     onDismiss: () -> Unit,
     onConfirm: () -> Unit,
@@ -146,7 +149,7 @@ fun DeleteItemsDialog(
             },
             text = {
                 Text(
-                    text = "This will delete all your list items",
+                    text = text,
                     modifier = modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
                 )

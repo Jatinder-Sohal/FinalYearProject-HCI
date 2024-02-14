@@ -41,8 +41,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Bookmark
+import com.example.cooking_companion.data.Collection
 import com.example.cooking_companion.data.DataSource
+import com.example.cooking_companion.data.DataSource.collections
 import com.example.cooking_companion.ui.components.CollectionItem
+import com.example.cooking_companion.ui.components.DeleteItemsDialog
+import com.example.cooking_companion.ui.components.OneInputDialog
 import com.example.cooking_companion.ui.components.SavedFiltersSheet
 
 
@@ -54,17 +58,42 @@ fun SavedCollection(navController: NavHostController, collectionPosts: String, m
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
 
-    val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(filterRecipes(currentFilter, DataSource.bookmarkedRecipes.subList(0, collectionPosts.toInt())))}
+    val posts = collectionPosts.toInt()
+    val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(filterRecipes(currentFilter, DataSource.bookmarkedRecipes.subList(0, posts)))}
     val onBookmarkClick = { bookmark: Bookmark ->
         setBookmarkedRecipes(bookmarkedRecipes.filter { it.id != bookmark.id })
     }
     val scrollState = rememberScrollState()
-    val title = when (collectionPosts){
+    var title = when (collectionPosts){
         "9" -> "Collection One"
         "2" -> "12/02/24"
         "1" -> "List3"
         else -> {"New List"}
     }
+
+    var showDeleteWarning by remember { mutableStateOf(false) }
+    var showChangeTitle by remember { mutableStateOf(false) }
+    DeleteItemsDialog(
+        text = "This will delete your collection of recipes",
+        showDialog = showDeleteWarning,
+        onDismiss = { showDeleteWarning = false },
+        onConfirm = {
+            collections.removeIf { it.posts == posts }
+            navController.popBackStack()
+        },
+    )
+    OneInputDialog(
+        title = "Change Collection Title",
+        boxTitle = "New title",
+        showDialog = showChangeTitle,
+        onDismiss = { showChangeTitle = false },
+        onConfirm = { newName ->
+            collections.removeIf { it.posts == posts }
+            val newCollection = Collection(newName, posts)
+            collections.add(newCollection)
+            title = newName
+        },
+    )
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -88,10 +117,10 @@ fun SavedCollection(navController: NavHostController, collectionPosts: String, m
                     }
                 },
                 actions = {
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { showChangeTitle = true}) {
                         Icon(Icons.Default.Edit, contentDescription = "Edit")
                     }
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { showDeleteWarning = true}) {
                         Icon(Icons.Default.Delete, contentDescription = "Delete All")
                     }
                 },
