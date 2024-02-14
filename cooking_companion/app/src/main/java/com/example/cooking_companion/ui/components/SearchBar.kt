@@ -1,6 +1,7 @@
 package com.example.cooking_companion.ui.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
 @Composable
 fun TopSearchBar(modifier: Modifier = Modifier){
@@ -54,13 +56,13 @@ fun TopSearchBar(modifier: Modifier = Modifier){
     }
 }
 @Composable
-fun SearchSearchBar(modifier: Modifier = Modifier){
+fun SearchPageBar(navController: NavHostController, modifier: Modifier = Modifier){
     Surface(
         modifier = modifier
             .height(70.dp)
             .fillMaxWidth()
-            .padding(horizontal = 16.dp,vertical = 6.dp),
-
+            .padding(horizontal = 16.dp,vertical = 6.dp)
+            .clickable { navController.navigate("Search") },
         border = BorderStroke(2.dp, Color.LightGray),
         shape = RoundedCornerShape(10),
     ) {

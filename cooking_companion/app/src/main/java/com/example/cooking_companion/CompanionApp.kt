@@ -38,6 +38,7 @@ import com.example.cooking_companion.ui.pages.CompanionSavedScreen
 import com.example.cooking_companion.ui.pages.CompanionSearchScreen
 import com.example.cooking_companion.ui.pages.CompanionSettingsScreen
 import com.example.cooking_companion.ui.pages.SavedCollection
+import com.example.cooking_companion.ui.pages.Search
 
 
 enum class CompanionScreen(val route: String){
@@ -66,7 +67,7 @@ fun CompanionApp() {
     ) { innerPadding ->
         NavHost(navController, startDestination = CompanionScreen.Home.route, Modifier.padding(innerPadding)) {
             composable(CompanionScreen.Home.route) { CompanionHomeScreen() }
-            composable(CompanionScreen.Search.route) { CompanionSearchScreen() }
+            composable(CompanionScreen.Search.route) { CompanionSearchScreen(navController) }
             composable(CompanionScreen.Saved.route) { CompanionSavedScreen(navController) }
             composable(CompanionScreen.Lists.route) { CompanionListsScreen() }
             composable(CompanionScreen.Settings.route) { CompanionSettingsScreen() }
@@ -76,7 +77,7 @@ fun CompanionApp() {
             ) { backStackEntry ->
                 SavedCollection(navController, collectionPosts = backStackEntry.arguments?.getString("collectionPosts") ?: "")
             }
-
+            composable("Search"){ Search()}
         }
     }
 }

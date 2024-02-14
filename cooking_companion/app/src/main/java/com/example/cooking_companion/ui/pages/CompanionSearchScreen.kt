@@ -19,21 +19,23 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Category
 import com.example.cooking_companion.data.DataSource
 import com.example.cooking_companion.ui.components.RecipeCarousel
-import com.example.cooking_companion.ui.components.SearchSearchBar
+import com.example.cooking_companion.ui.components.SearchPageBar
 import com.example.cooking_companion.ui.components.VerticalCategoryCard
 
 
 @Composable
-fun CompanionSearchScreen(modifier: Modifier = Modifier) {
+fun CompanionSearchScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     Column (
         modifier = modifier
             .verticalScroll(scrollState)
             .fillMaxWidth()
             .background(Color(0xFFF0EAE2))
+
     ) {
         Surface(
             modifier = Modifier
@@ -57,7 +59,7 @@ fun CompanionSearchScreen(modifier: Modifier = Modifier) {
                         .align(Alignment.Start)
 
                 )
-                SearchSearchBar()
+                SearchPageBar(navController)
             }
         }
         Surface(
