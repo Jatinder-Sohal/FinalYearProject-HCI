@@ -77,7 +77,7 @@ fun CompanionApp() {
             ) { backStackEntry ->
                 SavedCollection(navController, collectionPosts = backStackEntry.arguments?.getString("collectionPosts") ?: "")
             }
-            composable("Search"){ Search()}
+            composable("Search"){ Search(navController)}
         }
     }
 }
