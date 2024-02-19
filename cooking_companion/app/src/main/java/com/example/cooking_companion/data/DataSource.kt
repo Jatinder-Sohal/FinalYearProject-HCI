@@ -41,4 +41,6 @@ object DataSource {
         Collection("12/02/24", 2),
         Collection("List3", 1)
     )
+    val recommendations = listOf("Apple", "Apricot", "Apple Crumble", "Banana", "Cherry", "Chicken Soup", "Chicken Curry", "Cheese Pizza", "Date", "Eggfruit", "Fig", "Grapes",)
+
 }

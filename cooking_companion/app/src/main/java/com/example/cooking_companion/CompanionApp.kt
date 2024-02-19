@@ -66,7 +66,7 @@ fun CompanionApp() {
         }
     ) { innerPadding ->
         NavHost(navController, startDestination = CompanionScreen.Home.route, Modifier.padding(innerPadding)) {
-            composable(CompanionScreen.Home.route) { CompanionHomeScreen() }
+            composable(CompanionScreen.Home.route) { CompanionHomeScreen(navController) }
             composable(CompanionScreen.Search.route) { CompanionSearchScreen(navController) }
             composable(CompanionScreen.Saved.route) { CompanionSavedScreen(navController) }
             composable(CompanionScreen.Lists.route) { CompanionListsScreen() }
@@ -86,7 +86,7 @@ fun CompanionApp() {
 fun BottomNavbar(navController: NavHostController, currentRoute: String) {
     NavigationBar{
         CompanionScreen.values().forEach { screen ->
-            val selected = currentRoute == screen.route || (currentRoute == "savedCollection/{collectionPosts}" && screen == CompanionScreen.Saved)
+            val selected = currentRoute == screen.route || (currentRoute == "savedCollection/{collectionPosts}" && screen == CompanionScreen.Saved)|| (currentRoute == "Search" && screen == CompanionScreen.Search)
             NavigationBarItem(
                 icon = { when (screen) {
                     CompanionScreen.Home -> {
@@ -109,7 +109,6 @@ fun BottomNavbar(navController: NavHostController, currentRoute: String) {
                         if (selected) Icon(Icons.Filled.Settings, contentDescription = "Settings", modifier = Modifier.size(32.dp), tint=Color(0xFFDE6B46))
                         else Icon(Icons.Outlined.Settings, modifier = Modifier.size(32.dp), contentDescription = "Settings")
                     }
-
                 } },
                 label = { Text(screen.name, color = getColor(selected)) },
                 selected = selected,

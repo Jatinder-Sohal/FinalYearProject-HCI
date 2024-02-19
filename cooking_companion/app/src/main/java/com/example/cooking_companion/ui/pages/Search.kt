@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -30,16 +31,16 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.cooking_companion.data.DataSource.recommendations
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
     var searchQuery by remember { mutableStateOf("") }
-    val recentSearches = listOf("Test1", "Test2", "Sest3")
-    val popularSearches = listOf("Test1", "Test2", "Test3", "Test4", "test5")
-    val allRecommendations = listOf("Apple", "Apricot", "Banana", "Cherry", "Date", "Eggfruit", "Fig", "Grapes")
-    val filteredRecommendations = allRecommendations.filter { it.startsWith(searchQuery, ignoreCase = true) }
+    val recentSearches = listOf("Chicken Soup", "Tomato", "Grilled Cheese")
+    val popularSearches = listOf("Oreo Sundae", "Cheese", "Mince", "Chicken", "Pasta")
+    val filteredRecommendations = recommendations.filter { it.startsWith(searchQuery, ignoreCase = true) }
 
     Column {
         Row(
@@ -47,14 +48,16 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
             modifier = modifier
                 .height(100.dp)
         ) {
-            Icon(
-                imageVector = Icons.Default.ArrowBackIos,
-                contentDescription = "Back arrow",
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = modifier
-                    .height(95.dp)
-                    .padding(start = 22.dp)
-            )
+            IconButton(onClick = { navController.popBackStack() }) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBackIos,
+                    contentDescription = "Back arrow",
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = modifier
+                        .height(95.dp)
+                        .padding(start = 22.dp)
+                )
+            }
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },

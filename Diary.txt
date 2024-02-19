@@ -304,3 +304,9 @@ Future:		-Code Lists page with several elements: Top navbar, list items and add 
 		-Start coding settings page
 		-Add dropdown to filter saved page recipies and maybe add collections
 
+
+Week 4 (08/02/24)
+Completed:
+
+
+

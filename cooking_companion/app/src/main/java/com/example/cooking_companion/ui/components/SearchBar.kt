@@ -25,12 +25,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @Composable
-fun TopSearchBar(modifier: Modifier = Modifier){
+fun TopSearchBar(navController: NavHostController, modifier: Modifier = Modifier){
     Surface(
         modifier = modifier
             .height(60.dp)
             .width(280.dp)
-            .padding(vertical = 8.dp),
+            .padding(vertical = 8.dp)
+            .clickable { navController.navigate("Search") },
 
         border = BorderStroke(2.dp, Color.Black),
         shape = RoundedCornerShape(50),

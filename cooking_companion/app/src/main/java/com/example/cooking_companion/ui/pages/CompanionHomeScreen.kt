@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Category
 import com.example.cooking_companion.data.DataSource.categoriesList
 import com.example.cooking_companion.data.DataSource.recipesList
@@ -32,9 +33,7 @@ import com.example.cooking_companion.ui.components.RecipeCard
 import com.example.cooking_companion.ui.components.TopSearchBar
 
 @Composable
-fun CompanionHomeScreen(
-    modifier: Modifier = Modifier,
-) {
+fun CompanionHomeScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
 
     val configuration = LocalConfiguration.current
@@ -51,7 +50,7 @@ fun CompanionHomeScreen(
             .fillMaxWidth()
 
     ){
-        TopSearchBar()
+        TopSearchBar(navController)
         Box(
             modifier = modifier
                 .fillMaxWidth()
