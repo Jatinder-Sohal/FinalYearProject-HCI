@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIos
@@ -28,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -67,7 +69,13 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
                     containerColor = Color.Transparent
                 ),
                 keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Words,
                     imeAction = ImeAction.Search
+                ),
+                keyboardActions = KeyboardActions(
+                    onSearch = {
+                        navController.navigate("results/${searchQuery}")
+                    }
                 ),
                 shape = RoundedCornerShape(15),
                 leadingIcon = {
@@ -101,6 +109,7 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
                             .fillMaxWidth()
                             .clickable {
                                 searchQuery = recommendation
+                                navController.navigate("results/${searchQuery}")
                             }
                             .padding(vertical = 8.dp),
                         style = MaterialTheme.typography.bodyLarge
@@ -121,7 +130,10 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { }
+                        .clickable {
+                            searchQuery = searchTerm
+                            navController.navigate("results/${searchTerm}")
+                        }
                         .padding(horizontal = 24.dp, vertical = 10.dp)
                 ) {
                     Text(
@@ -145,7 +157,10 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { }
+                        .clickable {
+                            searchQuery = searchTerm
+                            navController.navigate("results/${searchTerm}")
+                        }
                         .padding(horizontal = 24.dp, vertical = 10.dp)
                 ) {
                     Text(

@@ -37,6 +37,7 @@ import com.example.cooking_companion.ui.pages.CompanionListsScreen
 import com.example.cooking_companion.ui.pages.CompanionSavedScreen
 import com.example.cooking_companion.ui.pages.CompanionSearchScreen
 import com.example.cooking_companion.ui.pages.CompanionSettingsScreen
+import com.example.cooking_companion.ui.pages.Results
 import com.example.cooking_companion.ui.pages.SavedCollection
 import com.example.cooking_companion.ui.pages.Search
 
@@ -78,6 +79,12 @@ fun CompanionApp() {
                 SavedCollection(navController, collectionPosts = backStackEntry.arguments?.getString("collectionPosts") ?: "")
             }
             composable("Search"){ Search(navController)}
+            composable(
+                route = "Results/{searchQuery}",
+                arguments = listOf(navArgument("searchQuery"){type = NavType.StringType})
+            ) { backStackEntry ->
+            Results(navController, searchQuery = backStackEntry.arguments?.getString("searchQuery") ?: "")
+            }
         }
     }
 }
