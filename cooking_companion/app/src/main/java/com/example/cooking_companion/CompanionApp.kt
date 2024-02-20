@@ -83,7 +83,7 @@ fun CompanionApp() {
                 route = "Results/{searchQuery}",
                 arguments = listOf(navArgument("searchQuery"){type = NavType.StringType})
             ) { backStackEntry ->
-            Results(navController, searchQuery = backStackEntry.arguments?.getString("searchQuery") ?: "")
+            Results(navController, query = backStackEntry.arguments?.getString("searchQuery") ?: "")
             }
         }
     }
@@ -93,7 +93,7 @@ fun CompanionApp() {
 fun BottomNavbar(navController: NavHostController, currentRoute: String) {
     NavigationBar{
         CompanionScreen.values().forEach { screen ->
-            val selected = currentRoute == screen.route || (currentRoute == "savedCollection/{collectionPosts}" && screen == CompanionScreen.Saved)|| (currentRoute == "Search" && screen == CompanionScreen.Search)
+            val selected = currentRoute == screen.route || (currentRoute == "savedCollection/{collectionPosts}" && screen == CompanionScreen.Saved)|| (currentRoute == "Search" && screen == CompanionScreen.Search) || (currentRoute == "Results/{searchQuery}" && screen == CompanionScreen.Search)
             NavigationBarItem(
                 icon = { when (screen) {
                     CompanionScreen.Home -> {

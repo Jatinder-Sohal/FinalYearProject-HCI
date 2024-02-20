@@ -12,14 +12,12 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,7 +34,6 @@ import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.DataSource.recommendations
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
     var searchQuery by remember { mutableStateOf("") }
@@ -63,10 +60,12 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    unfocusedBorderColor = Color.LightGray,
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = Color.Transparent,
+                    unfocusedContainerColor = Color.Transparent,
+                    disabledContainerColor = Color.Transparent,
                     focusedBorderColor = MaterialTheme.colorScheme.onBackground,
-                    containerColor = Color.Transparent
+                    unfocusedBorderColor = Color.LightGray,
                 ),
                 keyboardOptions = KeyboardOptions(
                     capitalization = KeyboardCapitalization.Words,
@@ -78,18 +77,19 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
                     }
                 ),
                 shape = RoundedCornerShape(15),
-                leadingIcon = {
-                    Icon(
-                        Icons.Default.Search,
-                        contentDescription = "Search",
-                        tint = MaterialTheme.colorScheme.outline
-                    )
-                },
                 placeholder = {
-                    Text(
-                        text = "Search...",
-                        color = MaterialTheme.colorScheme.outline
-                    )
+                    Row (modifier = modifier.fillMaxWidth()){
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = "Search",
+                            tint = MaterialTheme.colorScheme.outline,
+                            modifier = modifier.padding(end = 9.dp)
+                        )
+                        Text(
+                            text = "Search...",
+                            color = MaterialTheme.colorScheme.outline
+                        )
+                    }
                 },
                 modifier = Modifier
                     .padding(horizontal = 26.dp, vertical = 6.dp)
