@@ -6,11 +6,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIos
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -47,14 +49,13 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
             modifier = modifier
                 .height(100.dp)
         ) {
-            IconButton(onClick = { navController.popBackStack() }) {
+            IconButton(onClick = { navController.popBackStack() }, modifier = modifier.size(47.dp)) {
                 Icon(
                     imageVector = Icons.Default.ArrowBackIos,
                     contentDescription = "Back arrow",
                     tint = MaterialTheme.colorScheme.primary,
                     modifier = modifier
-                        .height(95.dp)
-                        .padding(start = 22.dp)
+                        .padding(start = 24.dp)
                 )
             }
             OutlinedTextField(
@@ -91,6 +92,17 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
                         )
                     }
                 },
+                trailingIcon = {
+                    IconButton(onClick = { searchQuery = "" }) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = "Clear search bar",
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = modifier.size(25.dp)
+                        )
+                    }
+                },
+                singleLine = true,
                 modifier = Modifier
                     .padding(horizontal = 26.dp, vertical = 6.dp)
             )
