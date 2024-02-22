@@ -2,32 +2,47 @@ package com.example.cooking_companion.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ThumbUp
+import androidx.compose.material.icons.outlined.Bookmark
+import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cooking_companion.data.Recipe
 
 @Composable
 fun ResultsCard(recipe: Recipe, modifier : Modifier = Modifier){
+    var bookmarked by remember { mutableStateOf(recipe.bookmarked) }
+    val width = LocalConfiguration.current.screenWidthDp.dp/2
     Card(
         modifier = modifier
-            .padding(8.dp)
-            .height(240.dp),
+            .padding(horizontal = 6.dp)
+            .height(240.dp)
+            .width(width - 20.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
             contentColor = Color.Black),
@@ -42,15 +57,39 @@ fun ResultsCard(recipe: Recipe, modifier : Modifier = Modifier){
                     .height(200.dp)
                     .clip(RoundedCornerShape(percent = 10))
             )
+            Row {
+                Icon(
+                    imageVector = Icons.Filled.ThumbUp,
+                    contentDescription = "Likes",
+                    tint = Color.White,
+                    modifier = modifier
+                        .padding(horizontal = 10.dp, vertical = 8.dp)
+                        .size(20.dp)
+                )
+                Text(
+                    text = recipe.likes.toString() + "%",
+                    color = Color.White,
+                    modifier = modifier.padding(vertical = 6.dp)
+                )
+                Spacer(modifier = modifier.weight(1f))
+                IconButton(onClick = { bookmarked = !bookmarked }) {
+                    Icon(
+                        imageVector = if (bookmarked) Icons.Outlined.Bookmark else Icons.Outlined.BookmarkBorder,
+                        contentDescription = "Save recipe",
+                        tint = Color.White,
+                        modifier = modifier.padding(vertical = 6.dp, horizontal = 8.dp)
+                    )
+                }
+            }
+
         }
         Text(
             text = recipe.name,
             style = MaterialTheme.typography.displayMedium,
-            fontWeight = FontWeight.Bold,
-            fontSize = 19.sp,
+            fontSize = 18.sp,
             modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 5.dp)
+                //.align(Alignment.CenterHorizontally)
+                .padding(top = 5.dp, start = 5.dp)
         )
     }
 }
