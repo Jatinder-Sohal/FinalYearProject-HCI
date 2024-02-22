@@ -28,8 +28,8 @@ import com.example.cooking_companion.data.Category
 import com.example.cooking_companion.data.DataSource.categoriesList
 import com.example.cooking_companion.data.DataSource.recipesList
 import com.example.cooking_companion.data.Recipe
+import com.example.cooking_companion.ui.components.DisplayCard
 import com.example.cooking_companion.ui.components.HorizontalCategoryItem
-import com.example.cooking_companion.ui.components.RecipeCard
 import com.example.cooking_companion.ui.components.TopSearchBar
 
 @Composable
@@ -123,7 +123,7 @@ fun RecipesGrid(recipes: List<Recipe>) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             for (recipe in chunk) {
-                RecipeCard(recipe, Modifier.weight(1f).padding(0.dp))
+                DisplayCard(recipe, Modifier.weight(1f).padding(0.dp))
             }
         }
     }

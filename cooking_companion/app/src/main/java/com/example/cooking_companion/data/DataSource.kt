@@ -1,8 +1,6 @@
 package com.example.cooking_companion.data
 
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import com.example.cooking_companion.R
 
 object DataSource {
@@ -18,12 +16,12 @@ object DataSource {
         Category("Italian", R.drawable.spaghetti_cat),
     )
     val recipesList = listOf(
-        Recipe("Chicken Curry", R.drawable.chickencurry_dishes),
-        Recipe("Grilled Cheese", R.drawable.grilledcheese_dishes),
-        Recipe("Fried Noodles", R.drawable.noodles_dishes),
-        Recipe("BBQ Pie", R.drawable.bbqpie_dishes),
-        Recipe("Pumpkin Soup", R.drawable.pumpkinsoup_dishes),
-        Recipe("Chicken Waffles", R.drawable.chickenwaffles_dishes),
+        Recipe("Chicken Curry", R.drawable.chickencurry_dishes, false, 100, "Jatinder Sohal"),
+        Recipe("Grilled Cheese", R.drawable.grilledcheese_dishes, false, 100, "Jatinder Sohal"),
+        Recipe("Fried Noodles", R.drawable.noodles_dishes, false, 100, "Jatinder Sohal"),
+        Recipe("BBQ Pie", R.drawable.bbqpie_dishes, false, 100, "Jatinder Sohal"),
+        Recipe("Pumpkin Soup", R.drawable.pumpkinsoup_dishes, false, 100, "Jatinder Sohal"),
+        Recipe("Chicken Waffles", R.drawable.chickenwaffles_dishes, false, 100, "Jatinder Sohal"),
     )
     val bookmarkedRecipes = listOf(
         Bookmark(8, "BBQ Pie", R.drawable.bbqpie_dishes, "2 Hours 55 Minutes", "Hard"),
@@ -41,6 +39,11 @@ object DataSource {
         Collection("12/02/24", 2),
         Collection("List3", 1)
     )
-    val recommendations = listOf("Apple", "Apricot", "Apple Crumble", "Banana", "Cherry", "Chicken Soup", "Chicken Curry", "Cheese Pizza", "Date", "Eggfruit", "Fig", "Grapes",)
-
+    val recommendations = listOf("Apple", "Apricot", "Apple Crumble", "Banana", "Cherry", "Chicken Soup", "Chicken Curry", "Cheese Pizza", "Date", "Egg fruit", "Fig", "Grapes")
+    val veganRecipes = mutableListOf(
+        Recipe("Vegan Curry", R.drawable.chickencurry_dishes, false, 87, "Jatinder Sohal"),
+        Recipe("Veganddf Curry", R.drawable.chickencurry_dishes, false, 67, "Jatinder Sohal"),
+        Recipe("Veganddf Curry", R.drawable.chickencurry_dishes, false, 67, "Jatinder Sohal"),
+        Recipe("Veganddf Curry", R.drawable.chickencurry_dishes, false, 67, "Jatinder Sohal"),
+    )
 }

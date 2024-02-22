@@ -13,9 +13,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.material.icons.filled.Close
@@ -35,17 +37,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.cooking_companion.data.DataSource
+import com.example.cooking_companion.data.Recipe
+import com.example.cooking_companion.ui.components.ResultsCard
 
 @Composable
 fun Results(navController: NavHostController, query:String, modifier: Modifier = Modifier) {
+    val scrollState = rememberScrollState()
     var searchQuery by remember { mutableStateOf(query) }
     var selectedTab by remember { mutableStateOf("Recipes") }
-    Column(modifier.fillMaxHeight()) {
+    val veganRecipes = DataSource.veganRecipes
+    Column(modifier.fillMaxHeight().verticalScroll(scrollState)) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = modifier
@@ -125,7 +131,8 @@ fun Results(navController: NavHostController, query:String, modifier: Modifier =
                 .height(70.dp)
                 .padding(horizontal = 20.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly
+            horizontalArrangement = Arrangement.SpaceEvenly,
+
         ){
             ResultsTab(
                 "Recipes",
@@ -143,6 +150,17 @@ fun Results(navController: NavHostController, query:String, modifier: Modifier =
                 onSelected = { selectedTab = "Ingredient" }
             )
         }
+        when (selectedTab) {
+            "Recipes" -> {
+                DisplayGrid(veganRecipes)
+            }
+            "Collections" -> {
+
+            }
+            "Ingredient" -> {
+
+            }
+        }
     }
 }
 @Composable
@@ -159,7 +177,8 @@ fun ResultsTab(
     ) {
         Text(
             text = text,
-            color = if (isSelected) MaterialTheme.colorScheme.onBackground else Color.Gray
+            color = if (isSelected) MaterialTheme.colorScheme.onBackground else Color.Gray,
+            modifier = modifier.padding(bottom = 4.dp)
         )
         if (isSelected) {
             Spacer(modifier = Modifier.height(4.dp))
@@ -169,6 +188,20 @@ fun ResultsTab(
                     .width(60.dp)
                     .background(Color(0xFFDE6B46))
             )
+        }
+    }
+}
+@Composable
+fun DisplayGrid(recipes: List<Recipe>) {
+    val chunkedRecipes = recipes.chunked(2)
+    for (chunk in chunkedRecipes) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(5.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            for (recipe in chunk) {
+                ResultsCard(recipe, Modifier.weight(1f))
+            }
         }
     }
 }

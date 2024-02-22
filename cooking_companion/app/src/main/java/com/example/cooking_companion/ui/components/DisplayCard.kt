@@ -22,7 +22,7 @@ import com.example.cooking_companion.data.Recipe
 
 
 @Composable
-fun RecipeCard(recipe: Recipe, modifier: Modifier = Modifier) {
+fun DisplayCard(recipe: Recipe, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .padding(8.dp)
@@ -42,7 +42,6 @@ fun RecipeCard(recipe: Recipe, modifier: Modifier = Modifier) {
                     .fillMaxWidth()
                     .height(200.dp)
             )
-
         }
         Text(
             text = recipe.name,
@@ -52,7 +51,6 @@ fun RecipeCard(recipe: Recipe, modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 5.dp)
-
         )
     }
 }
