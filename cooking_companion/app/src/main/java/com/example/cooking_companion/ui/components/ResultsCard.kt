@@ -39,7 +39,7 @@ import com.example.cooking_companion.data.Recipe
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ResultsCard(recipe: Recipe, modifier : Modifier = Modifier){
+fun RecipeCard(recipe: Recipe, modifier : Modifier = Modifier){
     var bookmarked by remember { mutableStateOf(recipe.bookmarked) }
     val width = LocalConfiguration.current.screenWidthDp.dp/2
 

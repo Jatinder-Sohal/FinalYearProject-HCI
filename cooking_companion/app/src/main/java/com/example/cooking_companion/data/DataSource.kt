@@ -35,15 +35,24 @@ object DataSource {
         Bookmark(6,"Raspberry Cake", R.drawable.raspberrycake_dishes, "1 Hour 55 Minutes", "Hard"),
     )
     val collections = mutableStateListOf(
-        Collection("Collection One", 9),
-        Collection("12/02/24", 2),
-        Collection("List3", 1)
+        Collection("Collection One", 9, listOf(R.drawable.chickencurry_dishes, R.drawable.grilledcheese_dishes, R.drawable.chickenwaffles_dishes)),
+        Collection("12/02/24", 2, listOf(R.drawable.pizza_cat, R.drawable.pumpkinsoup_dishes)),
+        Collection("List3", 1, listOf(R.drawable.raspberrycake_dishes))
     )
     val recommendations = listOf("Apple", "Apricot", "Apple Crumble", "Banana", "Cherry", "Chicken Soup", "Chicken Curry", "Cheese Pizza", "Date", "Egg fruit", "Fig", "Grapes")
+
     val veganRecipes = mutableListOf(
         Recipe("Vegan Curry", R.drawable.chickencurry_dishes, false, 87, "Jatinder Sohal"),
-        Recipe("Veganddf Curry", R.drawable.chickencurry_dishes, false, 67, "Jatinder Sohal"),
-        Recipe("Veganddf Curry", R.drawable.chickencurry_dishes, false, 67, "Jatinder Sohal"),
-        Recipe("Veganddf Curry", R.drawable.chickencurry_dishes, false, 67, "Jatinder Sohal"),
+        Recipe("Vegan Pie", R.drawable.chickencurry_dishes, true, 74, "Jatinder Sohal"),
+        Recipe("Vegan Burger", R.drawable.chickencurry_dishes, false, 94, "Jatinder Sohal"),
+        Recipe("BBQ Vegan", R.drawable.chickencurry_dishes, false, 47, "Jatinder Sohal"),
+        Recipe("Vegan Samosa", R.drawable.chickencurry_dishes, false, 47, "Jatinder Sohal"),
+        Recipe("Vegan Pasta", R.drawable.chickencurry_dishes, false, 47, "Jatinder Sohal"),
+        )
+    val veganCollection = mutableListOf(
+        Collection("Vegan Recipes", 6, listOf(R.drawable.oreosunday_dishes, R.drawable.pumpkinsoup_dishes, R.drawable.raspberrycake_dishes)),
+        Collection("Quick Vegan", 4, listOf(R.drawable.guacamolesalad_dishes, R.drawable.grilledcheese_dishes, R.drawable.chickenwaffles_dishes)),
+        Collection("Main Dish vegan", 8, listOf(R.drawable.pumpkinsoup_dishes, R.drawable.bbqpie_dishes, R.drawable.noodles_dishes)),
+        Collection("Vegan easy", 3, listOf(R.drawable.grilledcheese_dishes, R.drawable.chickencurry_dishes,  R.drawable.chickenwaffles_dishes)),
     )
 }

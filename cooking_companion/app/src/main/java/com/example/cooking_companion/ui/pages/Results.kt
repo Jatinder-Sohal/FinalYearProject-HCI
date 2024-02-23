@@ -42,16 +42,22 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.DataSource
-import com.example.cooking_companion.data.Recipe
-import com.example.cooking_companion.ui.components.ResultsCard
+import com.example.cooking_companion.ui.components.CollectionOption
+import com.example.cooking_companion.ui.components.RecipeCard
 
 @Composable
 fun Results(navController: NavHostController, query:String, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     var searchQuery by remember { mutableStateOf(query) }
     var selectedTab by remember { mutableStateOf("Recipes") }
-    val veganRecipes = DataSource.veganRecipes
-    Column(modifier.fillMaxHeight().verticalScroll(scrollState)) {
+
+    val recipes = if (searchQuery == "Vegan"){DataSource.veganRecipes} else{DataSource.veganRecipes}
+    val collection = if (searchQuery == "Vegan"){DataSource.veganCollection} else{DataSource.veganCollection}
+
+    Column(
+        modifier
+            .fillMaxHeight()
+            .verticalScroll(scrollState)) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = modifier
@@ -153,10 +159,10 @@ fun Results(navController: NavHostController, query:String, modifier: Modifier =
         }
         when (selectedTab) {
             "Recipes" -> {
-                DisplayGrid(veganRecipes)
+                DisplayGrid(recipes) { recipe -> RecipeCard(recipe) }
             }
             "Collections" -> {
-
+                DisplayGrid(collection) { collection -> CollectionOption(collection, navController) }
             }
             "Ingredient" -> {
 
@@ -193,15 +199,22 @@ fun ResultsTab(
     }
 }
 @Composable
-fun DisplayGrid(recipes: List<Recipe>) {
-    val chunkedRecipes = recipes.chunked(2)
-    for (chunk in chunkedRecipes) {
+fun <T> DisplayGrid(
+    items: List<T>,
+    content: @Composable (T) -> Unit
+) {
+    val chunkedItems = items.chunked(2)
+    for (chunk in chunkedItems) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(5.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(5.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            for (recipe in chunk) {
-                ResultsCard(recipe)
+            for (item in chunk) {
+                Box(modifier = Modifier.weight(1f).padding(5.dp)) {
+                    content(item)
+                }
             }
         }
     }

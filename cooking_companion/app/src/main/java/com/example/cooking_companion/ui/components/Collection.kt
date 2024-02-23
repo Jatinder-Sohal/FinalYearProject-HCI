@@ -38,7 +38,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Bookmark
 import com.example.cooking_companion.data.Collection
-import com.example.cooking_companion.data.DataSource.bookmarkedRecipes
 
 @Composable
 fun CollectionOption(collection : Collection, navController: NavHostController, modifier : Modifier = Modifier){
@@ -69,8 +68,8 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
             ){
                 if (collection.posts != 0){
                     Image(
-                        painter = painterResource(bookmarkedRecipes[0].foodImage),
-                        contentDescription = bookmarkedRecipes[0].title,
+                        painter = painterResource(collection.images[0]),
+                        contentDescription = collection.images[0].toString(),
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .fillMaxSize()
@@ -89,10 +88,10 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
                         bottomEnd = 0.dp,
                         bottomStart = 16.dp)
                 ) {
-                    if (collection.posts == 9 || collection.posts == 2){
+                    if (collection.posts >= 2){
                         Image(
-                            painter = painterResource(bookmarkedRecipes[1].foodImage),
-                            contentDescription = bookmarkedRecipes[1].title,
+                            painter = painterResource(collection.images[1]),
+                            contentDescription = collection.images[0].toString(),
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .fillMaxSize()
@@ -111,10 +110,10 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
                         bottomEnd = 16.dp,
                         bottomStart = 0.dp)
                 ){
-                    if (collection.posts == 9){
+                    if (collection.posts > 2){
                         Image(
-                            painter = painterResource(bookmarkedRecipes[2].foodImage),
-                            contentDescription = bookmarkedRecipes[2].title,
+                            painter = painterResource(collection.images[2]),
+                            contentDescription = collection.images[2].toString(),
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .fillMaxSize()
@@ -135,7 +134,7 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
 
             )
             Text(
-                text = collection.posts.toString(),
+                text = collection.posts.toString()+" Recipes",
                 style = MaterialTheme.typography.displayMedium,
                 fontSize = 19.sp,
                 modifier = Modifier
