@@ -15,10 +15,13 @@ import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,19 +37,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cooking_companion.data.Recipe
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ResultsCard(recipe: Recipe, modifier : Modifier = Modifier){
     var bookmarked by remember { mutableStateOf(recipe.bookmarked) }
     val width = LocalConfiguration.current.screenWidthDp.dp/2
+
+    val sheetState = rememberModalBottomSheetState()
+    var showBottomSheet by remember { mutableStateOf(false) }
+
     Card(
         modifier = modifier
             .padding(horizontal = 6.dp)
             .height(240.dp)
             .width(width - 20.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White,
-            contentColor = Color.Black),
-
+            containerColor = Color.Transparent
+        ),
     ) {
         Box {
             Image(
@@ -54,7 +61,7 @@ fun ResultsCard(recipe: Recipe, modifier : Modifier = Modifier){
                 contentDescription = recipe.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .height(200.dp)
+                    .height(180.dp)
                     .clip(RoundedCornerShape(percent = 10))
             )
             Row {
@@ -72,7 +79,7 @@ fun ResultsCard(recipe: Recipe, modifier : Modifier = Modifier){
                     modifier = modifier.padding(vertical = 6.dp)
                 )
                 Spacer(modifier = modifier.weight(1f))
-                IconButton(onClick = { bookmarked = !bookmarked }) {
+                IconButton(onClick = { if (bookmarked){bookmarked = false} else{showBottomSheet = true} }) {
                     Icon(
                         imageVector = if (bookmarked) Icons.Outlined.Bookmark else Icons.Outlined.BookmarkBorder,
                         contentDescription = "Save recipe",
@@ -91,5 +98,28 @@ fun ResultsCard(recipe: Recipe, modifier : Modifier = Modifier){
                 //.align(Alignment.CenterHorizontally)
                 .padding(top = 5.dp, start = 5.dp)
         )
+        Text(
+            text = "By: "+ recipe.author,
+            style = MaterialTheme.typography.displayMedium,
+            fontSize = 15.sp,
+            color = Color(0xFFDE6B46),
+            modifier = Modifier
+                //.align(Alignment.CenterHorizontally)
+                .padding(top = 5.dp, start = 5.dp)
+        )
+
+        if (showBottomSheet) {
+            ModalBottomSheet(
+                onDismissRequest = { showBottomSheet = false },
+                sheetState = sheetState
+            ) {
+                SelectCollectionSheet(
+                    onCollectionSelected = {
+                        bookmarked = true
+                        showBottomSheet = false
+                    },
+                )
+            }
+        }
     }
 }

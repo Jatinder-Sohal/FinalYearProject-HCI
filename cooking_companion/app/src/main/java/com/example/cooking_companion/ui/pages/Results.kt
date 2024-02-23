@@ -113,7 +113,7 @@ fun Results(navController: NavHostController, query:String, modifier: Modifier =
                 singleLine = true,
                 modifier = modifier
                     .padding(vertical = 6.dp)
-                    .padding(start = 26.dp, end = 32.dp)
+                    .padding(start = 26.dp, end = 10.dp)
                     .width(220.dp)
             )
             IconButton(onClick = {  }) {
@@ -121,7 +121,8 @@ fun Results(navController: NavHostController, query:String, modifier: Modifier =
                     imageVector = Icons.Default.Tune,
                     contentDescription = "Filter Search Results",
                     tint = MaterialTheme.colorScheme.primary,
-                    modifier = modifier.size(30.dp)
+                    modifier = modifier
+                        .size(30.dp)
                 )
             }
         }
@@ -200,7 +201,7 @@ fun DisplayGrid(recipes: List<Recipe>) {
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             for (recipe in chunk) {
-                ResultsCard(recipe, Modifier.weight(1f))
+                ResultsCard(recipe)
             }
         }
     }

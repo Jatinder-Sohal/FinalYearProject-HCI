@@ -22,7 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ListsBottomSheet(onListSelected: (String) -> Unit, onAddList: () -> Unit) {
+fun SelectListsSheet(onListSelected: (String) -> Unit, onAddList: () -> Unit) {
     val items = listOf("List 1", "List 2", "List 3")
     Column(
         modifier = Modifier
@@ -55,6 +55,34 @@ fun ListsBottomSheet(onListSelected: (String) -> Unit, onAddList: () -> Unit) {
             Icon(Icons.Filled.Add, contentDescription = "Add List")
             Text("Add New List")
         }
+    }
+}
+@Composable
+fun SelectCollectionSheet(onCollectionSelected: () -> Unit) {
+    val items = listOf("Collection one", "16/12/23", "List 5")
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp)
+            .padding(bottom = 32.dp)
+    ) {
+        Text(
+            text = "Select a Collection",
+            style = MaterialTheme.typography.headlineSmall,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .padding(bottom = 8.dp)
+                .fillMaxWidth()
+        )
+        items.forEach { item ->
+            TextButton(
+                onClick = { onCollectionSelected() },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(item)
+            }
+        }
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }
 @Composable
