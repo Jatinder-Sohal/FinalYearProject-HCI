@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ThumbUp
@@ -97,6 +98,7 @@ fun RecipeCard(recipe: Recipe, modifier : Modifier = Modifier){
             modifier = Modifier
                 //.align(Alignment.CenterHorizontally)
                 .padding(top = 5.dp, start = 5.dp)
+                .wrapContentSize()
         )
         Text(
             text = "By: "+ recipe.author,

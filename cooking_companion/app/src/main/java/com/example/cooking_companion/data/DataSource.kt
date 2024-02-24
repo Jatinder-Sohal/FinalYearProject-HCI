@@ -43,16 +43,22 @@ object DataSource {
 
     val veganRecipes = mutableListOf(
         Recipe("Vegan Curry", R.drawable.chickencurry_dishes, false, 87, "Jatinder Sohal"),
-        Recipe("Vegan Pie", R.drawable.chickencurry_dishes, true, 74, "Jatinder Sohal"),
-        Recipe("Vegan Burger", R.drawable.chickencurry_dishes, false, 94, "Jatinder Sohal"),
-        Recipe("BBQ Vegan", R.drawable.chickencurry_dishes, false, 47, "Jatinder Sohal"),
-        Recipe("Vegan Samosa", R.drawable.chickencurry_dishes, false, 47, "Jatinder Sohal"),
-        Recipe("Vegan Pasta", R.drawable.chickencurry_dishes, false, 47, "Jatinder Sohal"),
+        Recipe("Pie (Vegan)", R.drawable.bbqpie_dishes, true, 74, "Jatinder Sohal"),
+        Recipe("Cake vegan", R.drawable.raspberrycake_dishes, false, 94, "Jatinder Sohal"),
+        Recipe("Vegan Waffles ", R.drawable.chickenwaffles_dishes, false, 47, "Jatinder Sohal"),
+        Recipe("Vegan Pancakes", R.drawable.pancakes_recent, false, 47, "Jatinder Sohal"),
+        Recipe("Vegan Noodles", R.drawable.noodles_dishes, false, 47, "Jatinder Sohal"),
         )
     val veganCollection = mutableListOf(
         Collection("Vegan Recipes", 6, listOf(R.drawable.oreosunday_dishes, R.drawable.pumpkinsoup_dishes, R.drawable.raspberrycake_dishes)),
         Collection("Quick Vegan", 4, listOf(R.drawable.guacamolesalad_dishes, R.drawable.grilledcheese_dishes, R.drawable.chickenwaffles_dishes)),
         Collection("Main Dish vegan", 8, listOf(R.drawable.pumpkinsoup_dishes, R.drawable.bbqpie_dishes, R.drawable.noodles_dishes)),
         Collection("Vegan easy", 3, listOf(R.drawable.grilledcheese_dishes, R.drawable.chickencurry_dishes,  R.drawable.chickenwaffles_dishes)),
+    )
+    val tomatoIngredient = mutableListOf(
+        Recipe("Fish with a twist", R.drawable.fish_recent, true, 74, "Jatinder Sohal"),
+        Recipe("Easy soup", R.drawable.pumpkinsoup_dishes, false, 94, "Jatinder Sohal"),
+        Recipe("Chicken Curry", R.drawable.chickencurry_dishes, false, 87, "Jatinder Sohal"),
+        Recipe("Saucy Pizza", R.drawable.bbqpie_dishes, false, 47, "Jatinder Sohal")
     )
 }

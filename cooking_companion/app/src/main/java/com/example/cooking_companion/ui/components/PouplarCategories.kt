@@ -1,6 +1,7 @@
 package com.example.cooking_companion.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,21 +23,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Category
 
 @Composable
-fun HorizontalCategoryItem(category: Category, modifier: Modifier = Modifier) {
+fun HorizontalCategoryItem(navController: NavHostController, category: Category, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .padding(8.dp)
-            .size(width = 160.dp, height = 80.dp),
+            .size(width = 160.dp, height = 80.dp)
+            .clickable{navController.navigate("results/${category.name}")},
         shape = RoundedCornerShape(15.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 15.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
             contentColor = Color.Black
         )
-
     ) {
         Column(
             verticalArrangement = Arrangement.Center

@@ -87,7 +87,7 @@ fun CompanionHomeScreen(navController: NavHostController, modifier: Modifier = M
                 .align(Alignment.Start)
 
         )
-        CategoryList(categoriesList)
+        CategoryList(navController, categoriesList)
         Text(
             text = "Dishes for you",
             style = MaterialTheme.typography.headlineMedium,
@@ -103,13 +103,13 @@ fun CompanionHomeScreen(navController: NavHostController, modifier: Modifier = M
 }
 
 @Composable
-fun CategoryList(categories: List<Category>) {
+fun CategoryList(navController: NavHostController, categories: List<Category>) {
     val subsetOfRecipes = categories.slice(0..4)
     LazyRow(
         contentPadding = PaddingValues(horizontal = 8.dp),
     ) {
         items(subsetOfRecipes) { category ->
-            HorizontalCategoryItem(category)
+            HorizontalCategoryItem(navController, category)
         }
     }
 }

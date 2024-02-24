@@ -40,7 +40,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -58,9 +57,16 @@ fun Results(navController: NavHostController, query:String, modifier: Modifier =
     var searchQuery by remember { mutableStateOf(query) }
     var selectedTab by remember { mutableStateOf("Recipes") }
 
-    val recipes = if (searchQuery == "Vegan"){DataSource.veganRecipes} else{DataSource.veganRecipes}
+    val recipes = when (searchQuery){
+        "Vegan" -> DataSource.veganRecipes
+        else -> { listOf() }
+    }
     val collection = when (searchQuery){
         "Vegan" -> DataSource.veganCollection
+        else -> { listOf() }
+    }
+    val ingredient = when (searchQuery){
+        "Tomato" -> DataSource.tomatoIngredient
         else -> { listOf() }
     }
 
@@ -175,7 +181,7 @@ fun Results(navController: NavHostController, query:String, modifier: Modifier =
                 DisplayGrid(collection) { collection -> CollectionOption(collection, navController) }
             }
             "Ingredient" -> {
-
+                DisplayGrid(ingredient) { recipe -> RecipeCard(recipe) }
             }
         }
     }
@@ -229,7 +235,7 @@ fun <T> DisplayGrid(
             Text(
                 text = "No results. Try changing your search term!",
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.onSurface, 
+                color = MaterialTheme.colorScheme.onSurface,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier
