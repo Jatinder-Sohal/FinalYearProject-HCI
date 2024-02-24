@@ -8,11 +8,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -21,6 +23,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.ReportProblem
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.Icon
@@ -37,9 +40,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.DataSource
 import com.example.cooking_companion.ui.components.CollectionOption
@@ -52,7 +59,10 @@ fun Results(navController: NavHostController, query:String, modifier: Modifier =
     var selectedTab by remember { mutableStateOf("Recipes") }
 
     val recipes = if (searchQuery == "Vegan"){DataSource.veganRecipes} else{DataSource.veganRecipes}
-    val collection = if (searchQuery == "Vegan"){DataSource.veganCollection} else{DataSource.veganCollection}
+    val collection = when (searchQuery){
+        "Vegan" -> DataSource.veganCollection
+        else -> { listOf() }
+    }
 
     Column(
         modifier
@@ -203,19 +213,49 @@ fun <T> DisplayGrid(
     items: List<T>,
     content: @Composable (T) -> Unit
 ) {
-    val chunkedItems = items.chunked(2)
-    for (chunk in chunkedItems) {
-        Row(
+    if (items.isEmpty()){
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(5.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            for (item in chunk) {
-                Box(modifier = Modifier.weight(1f).padding(5.dp)) {
-                    content(item)
+            Spacer(modifier = Modifier.height(70.dp))
+            Icon(
+                imageVector = Icons.Filled.ReportProblem,
+                contentDescription = "Search mistake",
+                modifier = Modifier
+                    .size(50.dp)
+            )
+            Text(
+                text = "No results. Try changing your search term!",
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurface, 
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .wrapContentSize(Alignment.Center)
+                    .padding(horizontal = 16.dp)
+            )
+        }
+    } else{
+        val chunkedItems = items.chunked(2)
+        for (chunk in chunkedItems) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                for (item in chunk) {
+                    Box(modifier = Modifier
+                        .weight(1f)
+                        .padding(5.dp)) {
+                        content(item)
+                    }
                 }
             }
         }
     }
+
 }
