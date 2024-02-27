@@ -4,7 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,10 +38,12 @@ fun CompanionSearchScreen(navController: NavHostController, modifier: Modifier =
                 fontWeight = FontWeight.Bold,
                 modifier = modifier
                     .padding(horizontal = 20.dp, vertical = 1.dp)
+                    .padding(bottom = 4.dp)
                     .align(Alignment.Start)
 
             )
-            CategoriesGrid(DataSource.categoriesList)
+            CategoriesGrid(navController, DataSource.categoriesList)
+            Spacer(modifier = Modifier.height(7.dp))
         },
         scaffoldState = rememberBottomSheetScaffoldState(),
         sheetPeekHeight = 170.dp
@@ -76,7 +80,7 @@ fun CompanionSearchScreen(navController: NavHostController, modifier: Modifier =
 }
 
 @Composable
-fun CategoriesGrid(categories: List<Category>) {
+fun CategoriesGrid(navController: NavHostController, categories: List<Category>) {
     val subsetOfRecipes = categories.slice(3..8)
 
     val chunkedRecipes = subsetOfRecipes.chunked(3)
@@ -88,7 +92,7 @@ fun CategoriesGrid(categories: List<Category>) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             for (category in chunk) {
-                VerticalCategoryCard(category, Modifier.weight(1f).padding(0.dp))
+                VerticalCategoryCard(navController, category, Modifier.weight(1f).padding(0.dp))
             }
         }
     }

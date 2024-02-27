@@ -98,7 +98,7 @@ fun CompanionHomeScreen(navController: NavHostController, modifier: Modifier = M
                 .align(Alignment.Start)
 
         )
-        RecipesGrid(recipesList)
+        RecipesGrid(navController, recipesList)
     }
 }
 
@@ -115,7 +115,7 @@ fun CategoryList(navController: NavHostController, categories: List<Category>) {
 }
 
 @Composable
-fun RecipesGrid(recipes: List<Recipe>) {
+fun RecipesGrid(navController: NavHostController, recipes: List<Recipe>) {
     val chunkedRecipes = recipes.chunked(2)
     for (chunk in chunkedRecipes) {
         Row(
@@ -123,7 +123,7 @@ fun RecipesGrid(recipes: List<Recipe>) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             for (recipe in chunk) {
-                DisplayCard(recipe, Modifier.weight(1f).padding(0.dp))
+                DisplayCard(navController, recipe, Modifier.weight(1f).padding(0.dp))
             }
         }
     }

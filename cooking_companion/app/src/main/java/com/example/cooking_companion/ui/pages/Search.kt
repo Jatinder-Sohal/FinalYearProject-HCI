@@ -74,7 +74,7 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
                 ),
                 keyboardActions = KeyboardActions(
                     onSearch = {
-                        navController.navigate("results/${searchQuery}")
+                        navController.navigate("results/Recipes/${searchQuery}")
                     }
                 ),
                 shape = RoundedCornerShape(15),
@@ -121,7 +121,7 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
                             .fillMaxWidth()
                             .clickable {
                                 searchQuery = recommendation
-                                navController.navigate("results/${searchQuery}")
+                                navController.navigate("results/Recipes/${searchQuery}")
                             }
                             .padding(vertical = 8.dp),
                         style = MaterialTheme.typography.bodyLarge
@@ -144,7 +144,7 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .clickable {
                             searchQuery = searchTerm
-                            navController.navigate("results/${searchTerm}")
+                            navController.navigate("results/Recipes/${searchTerm}")
                         }
                         .padding(horizontal = 24.dp, vertical = 10.dp)
                 ) {
@@ -171,7 +171,7 @@ fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .clickable {
                             searchQuery = searchTerm
-                            navController.navigate("results/${searchTerm}")
+                            navController.navigate("results/Recipes/${searchTerm}")
                         }
                         .padding(horizontal = 24.dp, vertical = 10.dp)
                 ) {

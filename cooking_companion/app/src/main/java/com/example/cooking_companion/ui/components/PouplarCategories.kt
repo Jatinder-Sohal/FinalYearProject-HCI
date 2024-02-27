@@ -32,7 +32,7 @@ fun HorizontalCategoryItem(navController: NavHostController, category: Category,
         modifier = modifier
             .padding(8.dp)
             .size(width = 160.dp, height = 80.dp)
-            .clickable{navController.navigate("results/${category.name}")},
+            .clickable{navController.navigate("results/Collections/${category.name}")},
         shape = RoundedCornerShape(15.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 15.dp),
         colors = CardDefaults.cardColors(
@@ -73,12 +73,12 @@ fun HorizontalCategoryItem(navController: NavHostController, category: Category,
     }}
 
 @Composable
-fun VerticalCategoryCard(category: Category, modifier : Modifier = Modifier){
+fun VerticalCategoryCard(navController: NavHostController, category: Category, modifier : Modifier = Modifier){
     Card(
         modifier = modifier
             .padding(6.dp)
-            .height(148.dp),
-
+            .height(148.dp)
+            .clickable{navController.navigate("results/Collections/${category.name}")},
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFFFFF6E4),
             contentColor = Color.Black),

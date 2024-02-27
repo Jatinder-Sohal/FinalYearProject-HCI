@@ -52,10 +52,10 @@ import com.example.cooking_companion.ui.components.CollectionOption
 import com.example.cooking_companion.ui.components.RecipeCard
 
 @Composable
-fun Results(navController: NavHostController, query:String, modifier: Modifier = Modifier) {
+fun Results(navController: NavHostController, tab:String, query:String, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     var searchQuery by remember { mutableStateOf(query) }
-    var selectedTab by remember { mutableStateOf("Recipes") }
+    var selectedTab by remember { mutableStateOf(tab) }
 
     val recipes = when (searchQuery){
         "Vegan" -> DataSource.veganRecipes
@@ -104,7 +104,7 @@ fun Results(navController: NavHostController, query:String, modifier: Modifier =
                 ),
                 keyboardActions = KeyboardActions(
                     onSearch = {
-                        navController.navigate("results/${searchQuery}")
+                        navController.navigate("results/Recipes/${searchQuery}")
                     }
                 ),
                 shape = RoundedCornerShape(15),
