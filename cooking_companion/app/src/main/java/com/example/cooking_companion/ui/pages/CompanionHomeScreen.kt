@@ -23,18 +23,17 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Category
 import com.example.cooking_companion.data.DataSource.categoriesList
 import com.example.cooking_companion.data.DataSource.recipesList
 import com.example.cooking_companion.data.Recipe
+import com.example.cooking_companion.ui.components.DisplayCard
 import com.example.cooking_companion.ui.components.HorizontalCategoryItem
-import com.example.cooking_companion.ui.components.RecipeCard
 import com.example.cooking_companion.ui.components.TopSearchBar
 
 @Composable
-fun CompanionHomeScreen(
-    modifier: Modifier = Modifier,
-) {
+fun CompanionHomeScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
 
     val configuration = LocalConfiguration.current
@@ -51,7 +50,7 @@ fun CompanionHomeScreen(
             .fillMaxWidth()
 
     ){
-        TopSearchBar()
+        TopSearchBar(navController)
         Box(
             modifier = modifier
                 .fillMaxWidth()
@@ -88,7 +87,7 @@ fun CompanionHomeScreen(
                 .align(Alignment.Start)
 
         )
-        CategoryList(categoriesList)
+        CategoryList(navController, categoriesList)
         Text(
             text = "Dishes for you",
             style = MaterialTheme.typography.headlineMedium,
@@ -99,24 +98,24 @@ fun CompanionHomeScreen(
                 .align(Alignment.Start)
 
         )
-        RecipesGrid(recipesList)
+        RecipesGrid(navController, recipesList)
     }
 }
 
 @Composable
-fun CategoryList(categories: List<Category>) {
+fun CategoryList(navController: NavHostController, categories: List<Category>) {
     val subsetOfRecipes = categories.slice(0..4)
     LazyRow(
         contentPadding = PaddingValues(horizontal = 8.dp),
     ) {
         items(subsetOfRecipes) { category ->
-            HorizontalCategoryItem(category)
+            HorizontalCategoryItem(navController, category)
         }
     }
 }
 
 @Composable
-fun RecipesGrid(recipes: List<Recipe>) {
+fun RecipesGrid(navController: NavHostController, recipes: List<Recipe>) {
     val chunkedRecipes = recipes.chunked(2)
     for (chunk in chunkedRecipes) {
         Row(
@@ -124,7 +123,7 @@ fun RecipesGrid(recipes: List<Recipe>) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             for (recipe in chunk) {
-                RecipeCard(recipe, Modifier.weight(1f).padding(0.dp))
+                DisplayCard(navController, recipe, Modifier.weight(1f).padding(0.dp))
             }
         }
     }

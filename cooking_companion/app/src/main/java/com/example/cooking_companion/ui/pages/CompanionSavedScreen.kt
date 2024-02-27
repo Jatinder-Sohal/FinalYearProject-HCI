@@ -15,11 +15,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -61,7 +56,7 @@ fun CompanionSavedScreen(navController: NavHostController, modifier: Modifier = 
                     if (collections.size % 2 != 0 && chunk == collections.chunked(2).last()) {
                         AddNewCollection(
                             onClick = {
-                                val newCollection = Collection("New List", 0)
+                                val newCollection = Collection("New List", 0, listOf())
                                 collections.add(newCollection)
                             }
                         )
@@ -78,7 +73,7 @@ fun CompanionSavedScreen(navController: NavHostController, modifier: Modifier = 
                     if (collections.size % 2 == 0) {
                         AddNewCollection(
                             onClick = {
-                                val newCollection = Collection("New", 0)
+                                val newCollection = Collection("New", 0, listOf())
                                 collections.add(newCollection)
                             }
                         )

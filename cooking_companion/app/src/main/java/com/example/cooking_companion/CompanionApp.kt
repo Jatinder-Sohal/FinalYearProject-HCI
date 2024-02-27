@@ -37,7 +37,9 @@ import com.example.cooking_companion.ui.pages.CompanionListsScreen
 import com.example.cooking_companion.ui.pages.CompanionSavedScreen
 import com.example.cooking_companion.ui.pages.CompanionSearchScreen
 import com.example.cooking_companion.ui.pages.CompanionSettingsScreen
+import com.example.cooking_companion.ui.pages.Results
 import com.example.cooking_companion.ui.pages.SavedCollection
+import com.example.cooking_companion.ui.pages.Search
 
 
 enum class CompanionScreen(val route: String){
@@ -65,8 +67,8 @@ fun CompanionApp() {
         }
     ) { innerPadding ->
         NavHost(navController, startDestination = CompanionScreen.Home.route, Modifier.padding(innerPadding)) {
-            composable(CompanionScreen.Home.route) { CompanionHomeScreen() }
-            composable(CompanionScreen.Search.route) { CompanionSearchScreen() }
+            composable(CompanionScreen.Home.route) { CompanionHomeScreen(navController) }
+            composable(CompanionScreen.Search.route) { CompanionSearchScreen(navController) }
             composable(CompanionScreen.Saved.route) { CompanionSavedScreen(navController) }
             composable(CompanionScreen.Lists.route) { CompanionListsScreen() }
             composable(CompanionScreen.Settings.route) { CompanionSettingsScreen() }
@@ -76,7 +78,18 @@ fun CompanionApp() {
             ) { backStackEntry ->
                 SavedCollection(navController, collectionPosts = backStackEntry.arguments?.getString("collectionPosts") ?: "")
             }
-
+            composable("Search"){ Search(navController)}
+            composable(
+                route = "Results/{tab}/{searchQuery}",
+                arguments = listOf(
+                    navArgument("tab"){type = NavType.StringType},
+                    navArgument("searchQuery"){type = NavType.StringType})
+            ) { backStackEntry ->
+            Results(
+                navController,
+                tab = backStackEntry.arguments?.getString("tab") ?: "",
+                query = backStackEntry.arguments?.getString("searchQuery") ?: "")
+            }
         }
     }
 }
@@ -85,7 +98,7 @@ fun CompanionApp() {
 fun BottomNavbar(navController: NavHostController, currentRoute: String) {
     NavigationBar{
         CompanionScreen.values().forEach { screen ->
-            val selected = currentRoute == screen.route || (currentRoute == "savedCollection/{collectionPosts}" && screen == CompanionScreen.Saved)
+            val selected = currentRoute == screen.route || (currentRoute == "savedCollection/{collectionPosts}" && screen == CompanionScreen.Saved)|| (currentRoute == "Search" && screen == CompanionScreen.Search) || (currentRoute == "Results/{tab}/{searchQuery}" && screen == CompanionScreen.Search)
             NavigationBarItem(
                 icon = { when (screen) {
                     CompanionScreen.Home -> {
@@ -108,7 +121,6 @@ fun BottomNavbar(navController: NavHostController, currentRoute: String) {
                         if (selected) Icon(Icons.Filled.Settings, contentDescription = "Settings", modifier = Modifier.size(32.dp), tint=Color(0xFFDE6B46))
                         else Icon(Icons.Outlined.Settings, modifier = Modifier.size(32.dp), contentDescription = "Settings")
                     }
-
                 } },
                 label = { Text(screen.name, color = getColor(selected)) },
                 selected = selected,

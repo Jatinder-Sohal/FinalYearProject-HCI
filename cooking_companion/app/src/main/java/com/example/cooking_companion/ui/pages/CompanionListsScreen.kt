@@ -37,8 +37,8 @@ import androidx.compose.ui.unit.dp
 import com.example.cooking_companion.ui.components.ChangeTitles
 import com.example.cooking_companion.ui.components.DeleteItemsDialog
 import com.example.cooking_companion.ui.components.Dropdown
-import com.example.cooking_companion.ui.components.ListsBottomSheet
 import com.example.cooking_companion.ui.components.OneInputDialog
+import com.example.cooking_companion.ui.components.SelectListsSheet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -135,7 +135,7 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                 onDismissRequest = { showBottomSheet = false },
                 sheetState = sheetState
             ) {
-                ListsBottomSheet(
+                SelectListsSheet(
                     onListSelected = {
                         itemSelected -> title = itemSelected
                         showBottomSheet = false

@@ -304,3 +304,54 @@ Future:		-Code Lists page with several elements: Top navbar, list items and add 
 		-Start coding settings page
 		-Add dropdown to filter saved page recipies and maybe add collections
 
+
+Week 5 (13/02/23)
+Completed:	-Created add new collection card that adjust for uneven chunk
+		-Figured out how to pass arguments from one route to another so I can filter datasource depending on collection
+		-Card design shows if less than 3 recipes through photos
+
+Problems: 	-Had a big issue with uneven chunk sizes and getting the spacing right with add collection card
+		-Changing route names to include arguments created a few bugs
+
+Future: 	-Change collection design to remove search bar with a top bar
+		-Start adding function to search bars on other pages
+		-Implement settings page design
+
+Week 5 (18/02/23)
+Completed: 	-Added top bar to collections page with several functional icons
+		-Moved mutabledata items to datasource file for global access and editing
+		-Started designing search page with a similar textfield
+
+Problems:	-Functionality of top bar was quite time consuming
+		-Only found out now mutable items can be stored in Object- limited progress for a while 
+
+Future: 	-Finish search page with some suggestions and recent searches
+		-Draw sigma prototype of results page and a result when clicked
+		-Start coding results page for search results
+
+Week 6 (21/02/24)
+Completed: 	-Added recent searches and pouplar
+		-Added a auto fill functionality for usability purposes
+		-Started coding results page that displays search query
+
+Problems: 	-Unsure on final design of results page- what to name subheadings and how cards should look
+		-Searchbar not appearing quite right on dofferent emulators
+
+Future:		-Created results card that shows results, likes, save and like button 
+		-Create a tab to view recipies and maybe categories
+		-Start linking other components to results page
+
+Week 6 (25/02/24)
+Completed: 	-Created 3 different sections on results page which adjusts to user input
+		-Shows an error message for unrecognised input
+		-Started redesigning original search page 
+	
+Problems: 	-Had a big problem styling error message - would not centre vertically
+		-Spent long time trying to create persistent bottom sheet but could not do
+		-Not sure how to fake for so many search results
+
+Future: 	-Implement design of a single recipe with all kinds of information like all ingredients, comments etc
+		-Start implementing setting page
+		-Link up all components on home and search page
+
+

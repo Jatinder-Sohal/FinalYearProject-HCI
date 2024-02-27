@@ -1,6 +1,7 @@
 package com.example.cooking_companion.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,15 +19,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Recipe
 
 
 @Composable
-fun RecipeCard(recipe: Recipe, modifier: Modifier = Modifier) {
+fun DisplayCard(navController: NavHostController, recipe: Recipe, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .padding(8.dp)
-            .height(240.dp),
+            .height(240.dp)
+            .clickable{navController.navigate("results/Recipes/${recipe.name}")},
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
             contentColor = Color.Black),
@@ -42,7 +45,6 @@ fun RecipeCard(recipe: Recipe, modifier: Modifier = Modifier) {
                     .fillMaxWidth()
                     .height(200.dp)
             )
-
         }
         Text(
             text = recipe.name,
@@ -52,7 +54,6 @@ fun RecipeCard(recipe: Recipe, modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 5.dp)
-
         )
     }
 }

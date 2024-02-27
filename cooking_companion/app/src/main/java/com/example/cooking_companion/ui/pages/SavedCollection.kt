@@ -89,7 +89,7 @@ fun SavedCollection(navController: NavHostController, collectionPosts: String, m
         onDismiss = { showChangeTitle = false },
         onConfirm = { newName ->
             collections.removeIf { it.posts == posts }
-            val newCollection = Collection(newName, posts)
+            val newCollection = Collection(newName, posts, listOf())
             collections.add(newCollection)
             title = newName
         },
