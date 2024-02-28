@@ -32,11 +32,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.cooking_companion.data.DataSource.recipesList
 import com.example.cooking_companion.ui.pages.CompanionHomeScreen
 import com.example.cooking_companion.ui.pages.CompanionListsScreen
 import com.example.cooking_companion.ui.pages.CompanionSavedScreen
 import com.example.cooking_companion.ui.pages.CompanionSearchScreen
 import com.example.cooking_companion.ui.pages.CompanionSettingsScreen
+import com.example.cooking_companion.ui.pages.Recipe
 import com.example.cooking_companion.ui.pages.Results
 import com.example.cooking_companion.ui.pages.SavedCollection
 import com.example.cooking_companion.ui.pages.Search
@@ -89,6 +91,14 @@ fun CompanionApp() {
                 navController,
                 tab = backStackEntry.arguments?.getString("tab") ?: "",
                 query = backStackEntry.arguments?.getString("searchQuery") ?: "")
+            }
+            composable(
+                route = "Recipe/{recipeName}",
+                arguments = listOf(navArgument("recipeName") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val recipeName = backStackEntry.arguments?.getString("recipeName") ?: ""
+                val recipe = recipesList.first { it.name == recipeName }
+                Recipe(recipe, navController)
             }
         }
     }

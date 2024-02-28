@@ -29,7 +29,8 @@ fun DisplayCard(navController: NavHostController, recipe: Recipe, modifier: Modi
         modifier = modifier
             .padding(8.dp)
             .height(240.dp)
-            .clickable{navController.navigate("results/Recipes/${recipe.name}")},
+            //.clickable{navController.navigate("results/Recipes/${recipe.name}")},
+            .clickable{navController.navigate("Recipe/${recipe.name}")},
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
             contentColor = Color.Black),
