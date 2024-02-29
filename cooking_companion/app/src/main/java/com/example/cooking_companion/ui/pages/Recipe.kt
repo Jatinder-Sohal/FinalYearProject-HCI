@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,9 +17,11 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material.icons.outlined.FavoriteBorder
@@ -64,8 +67,11 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
     val imageHeight = (screenHeight/2) + 50.dp
     val context = LocalContext.current
 
-    var ingredients by remember { mutableStateOf(listOf(" Cups Milk", " Eggs", "Grams of Sugar", "Slices of Bread")) }
+    val ingredients = listOf("Milk", "Eggs", "Sugar", "Bread")
     var ingredientsValues by remember { mutableStateOf(listOf(2, 5, 150, 4)) }
+    val ingredientType = listOf("Cups", "Whole", "Grams", "Slices")
+    var servings by remember { mutableIntStateOf(1) }
+
     Box(Modifier.fillMaxSize()) {
         Column(Modifier.verticalScroll(scrollState)) {
             Image(
@@ -221,15 +227,60 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                     fontSize = 20.sp,
                     modifier = modifier.padding(top = 16.dp)
                 )
-            }
-            Column {
-                ingredients.zip(ingredientsValues).forEach { (ingredient, amount) ->
-                    Row {
-                        Text(text = amount.toString()
-                        )
-                        Text(text = ingredient, modifier = Modifier.weight(1f)
-                        )
+                Spacer(modifier = Modifier.weight(1f))
+                IconButton(
+                    onClick = {
+                        if (servings > 1) {
+                            servings--
+                            ingredientsValues = ingredientsValues.map { it / 2 }
+                        }
+                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Remove,
+                        contentDescription = "Lower Servings",
+                        modifier = modifier
+                            .size(45.dp)
+                            .padding(top = 16.dp)
+                    )
+                }
+                Text(
+                    text = "$servings Serving",
+                    fontSize = 20.sp,
+                    modifier = modifier.padding(top = 16.dp)
+                )
+                IconButton(
+                    onClick = {
+                        servings++
+                        ingredientsValues = ingredientsValues.map { it * 2 }
+                    }
+                ) {
+                    Icon(
+                        imageVector =  Icons.Default.Add,
+                        contentDescription = "Add Servings",
+                        modifier = modifier
+                            .size(45.dp)
+                            .padding(top = 16.dp)
+                    )
+                }
 
+            }
+            Column (modifier = modifier.padding(horizontal = 16.dp)){
+                for (i in 0..3) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = "${ingredientsValues[i]} ${ingredientType[i]}",
+                            fontSize = 18.sp,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Text(
+                            text = ingredients[i],
+                            fontSize = 18.sp,
+                            modifier = Modifier.weight(1f)
+                        )
                     }
                 }
             }
