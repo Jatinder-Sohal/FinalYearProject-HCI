@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -42,12 +44,14 @@ import com.example.cooking_companion.data.Recipe
 fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier = Modifier) {
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
-    val screenHeight = LocalConfiguration.current.screenHeightDp.dp
+    val screenHeight = configuration.screenHeightDp.dp
+    val scrollState = rememberScrollState()
+
     Column (
-        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxSize()
             .padding()
+            .verticalScroll(scrollState)
     ){
         Image(
             painter = painterResource(id =  recipe.image),
@@ -62,7 +66,20 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Medium,
             fontSize = 30.sp,
-            modifier = modifier.padding(top = 16.dp)
+            modifier = modifier
+                .padding(top = 28.dp)
+                .align(Alignment.CenterHorizontally)
+        )
+        Text(
+            text = "A simple recipe that allows easy addition of any personal swaps or addition portion sizes",
+            textAlign = TextAlign.Center,
+            fontSize = 18.sp,
+            modifier = modifier
+                .padding(top = 6.dp, bottom = 6.dp)
+                .padding(horizontal = 16.dp)
+                .wrapContentSize()
+                .align(Alignment.CenterHorizontally)
+
         )
         Row(
             horizontalArrangement = Arrangement.SpaceEvenly,
@@ -129,7 +146,55 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                 }
             }
         }
+
         Divider(modifier.padding(top = 16.dp))
+        Row (
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = modifier
+                .padding(8.dp)
+                .padding(start = 8.dp)
+        ){
+            Text(
+                text = "Difficulty: ",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                modifier = modifier.padding(top = 16.dp)
+            )
+            Text(
+                text = "Easy",
+                fontSize = 20.sp,
+                modifier = modifier.padding(top = 16.dp)
+            )
+        }
+        Divider(modifier.padding(top = 16.dp))
+        Row (
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = modifier
+                .padding(8.dp)
+                .padding(start = 8.dp)
+        ){
+            Text(
+                text = "Time ",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                modifier = modifier.padding(top = 16.dp)
+            )
+        }
+        Divider(modifier.padding(top = 16.dp))
+        Row (
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = modifier
+                .padding(8.dp)
+                .padding(start = 8.dp)
+        ){
+            Text(
+                text = "Ingredients: ",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                modifier = modifier.padding(top = 16.dp)
+            )
+        }
+
     }
     IconButton(
         onClick = { navController.popBackStack() },
