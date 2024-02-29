@@ -1,5 +1,6 @@
 package com.example.cooking_companion.ui.pages
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,8 +20,8 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.icons.outlined.Bookmark
-import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.BookmarkBorder
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -30,28 +31,41 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Recipe
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier = Modifier) {
+    var bookmarked by remember { mutableStateOf(recipe.bookmarked) }
+    var liked by remember { mutableStateOf(recipe.bookmarked) }
+    var likesCount by remember { mutableIntStateOf(recipe.likes) }
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
     val screenHeight = configuration.screenHeightDp.dp
     val scrollState = rememberScrollState()
     val imageHeight = (screenHeight/2) + 50.dp
+    val context = LocalContext.current
 
+    var ingredients by remember { mutableStateOf(listOf(" Cups Milk", " Eggs", "Grams of Sugar", "Slices of Bread")) }
+    var ingredientsValues by remember { mutableStateOf(listOf(2, 5, 150, 4)) }
     Box(Modifier.fillMaxSize()) {
         Column(Modifier.verticalScroll(scrollState)) {
             Image(
@@ -89,33 +103,38 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                     .padding(top = 16.dp)
             ){
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        if (liked) {
+                            likesCount--
+                        }else likesCount++
+                        liked = !liked},
                     modifier.width(screenWidth/4)
                 ) {
                     Row (
                         verticalAlignment = Alignment.CenterVertically
                     ){
                         Icon(
-                            imageVector = if (recipe.bookmarked) Icons.Filled.Favorite else Icons.Outlined.Favorite,
+                            imageVector = if (liked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                             contentDescription = "Like Button",
-                            modifier.size(30.dp)
+                            tint = if (liked) Color.Red else Color.Black,
+                            modifier = modifier.size(30.dp)
                         )
                         Text(
-                            text = recipe.likes.toString(),
+                            text = likesCount.toString(),
                             fontSize = 18.sp,
                             modifier= modifier.padding(start=2.dp)
                         )
                     }
                 }
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { bookmarked = !bookmarked },
                     modifier.width(screenWidth/4)
                 ) {
                     Row (
                         verticalAlignment = Alignment.CenterVertically
                     ){
                         Icon(
-                            imageVector = if(recipe.bookmarked) Icons.Filled.Bookmark else Icons.Outlined.Bookmark,
+                            imageVector = if(bookmarked) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
                             contentDescription = "Bookmarked button",
                             modifier.size(30.dp)
                         )
@@ -127,7 +146,15 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                     }
                 }
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        val sendIntent: Intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT, recipe.name)
+                        type = "text/plain"
+                        }
+                        val shareIntent = Intent.createChooser(sendIntent, null)
+                        startActivity(context, shareIntent, null)
+                    },
                     modifier.width(screenWidth/4)
                 ) {
                     Row (
@@ -175,7 +202,7 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                     .padding(start = 8.dp)
             ){
                 Text(
-                    text = "Time ",
+                    text = "Time:  ",
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     modifier = modifier.padding(top = 16.dp)
@@ -194,6 +221,17 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                     fontSize = 20.sp,
                     modifier = modifier.padding(top = 16.dp)
                 )
+            }
+            Column {
+                ingredients.zip(ingredientsValues).forEach { (ingredient, amount) ->
+                    Row {
+                        Text(text = amount.toString()
+                        )
+                        Text(text = ingredient, modifier = Modifier.weight(1f)
+                        )
+
+                    }
+                }
             }
         }
         TopAppBar(

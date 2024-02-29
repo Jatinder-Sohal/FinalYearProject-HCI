@@ -16,7 +16,7 @@ object DataSource {
         Category("Italian", R.drawable.spaghetti_cat),
     )
     val recipesList = listOf(
-        Recipe("Chicken Curry", R.drawable.chickencurry_dishes, false, 100, "Jatinder Sohal"),
+        Recipe("Chicken Curry", R.drawable.chickencurry_dishes, true, 100, "Jatinder Sohal"),
         Recipe("Grilled Cheese", R.drawable.grilledcheese_dishes, false, 100, "Jatinder Sohal"),
         Recipe("Fried Noodles", R.drawable.noodles_dishes, false, 100, "Jatinder Sohal"),
         Recipe("BBQ Pie", R.drawable.bbqpie_dishes, false, 100, "Jatinder Sohal"),
