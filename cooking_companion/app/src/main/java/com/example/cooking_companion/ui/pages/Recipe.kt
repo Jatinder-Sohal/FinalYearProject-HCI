@@ -352,29 +352,8 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                     .padding(top = 0.dp, bottom = 4.dp)
                     .padding(horizontal = 16.dp)
             )
-            Row (
-                modifier
-                    .fillMaxWidth()
-                    .padding(start=32.dp, top = 16.dp)
-            ){
-                Box(
-                    modifier = modifier
-                        .size(47.dp)
-                        .clip(CircleShape)
-                        .background(Color(0xFFFCAC34))
-
-                ){
-                    Text(
-                        text = "J",
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        modifier = modifier
-                            .fillMaxWidth()
-                            .align(Alignment.Center)
-                    )
-                }
-            }
+            Review("Jeff Smith", "This is not a great recipe")
+            Review("Ana Williams","I am really not impressed by the recipe. Firstly the described time is not accurate and secondly I don't like the taste.")
             Spacer(modifier = modifier.height(50.dp))
         }
         TopAppBar(
@@ -391,5 +370,48 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                 titleContentColor = Color.White
             )
         )
+    }
+}
+@Composable
+fun Review(name: String, comment:String, modifier: Modifier = Modifier){
+    Row (
+        modifier
+            .fillMaxWidth()
+            .padding(start = 16.dp, top = 16.dp, bottom = 8.dp)
+    ){
+        Box(
+            modifier = modifier
+                .size(47.dp)
+                .clip(CircleShape)
+                .background(Color(0xFFFCAC34))
+
+        ){
+            Text(
+                text = name[0].toString(),
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                modifier = modifier
+                    .fillMaxWidth()
+                    .align(Alignment.Center)
+            )
+        }
+        Column {
+            Text(
+                text = name,
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+                modifier = modifier
+                    .padding(start = 8.dp, top = 4.dp)
+
+            )
+            Text(
+                text = comment,
+                modifier = modifier
+                    .padding(start = 8.dp)
+
+            )
+        }
+
     }
 }

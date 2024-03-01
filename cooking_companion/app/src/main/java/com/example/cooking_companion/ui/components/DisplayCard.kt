@@ -2,6 +2,7 @@ package com.example.cooking_companion.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,6 +26,7 @@ import com.example.cooking_companion.data.Recipe
 
 @Composable
 fun DisplayCard(navController: NavHostController, recipe: Recipe, modifier: Modifier = Modifier) {
+    val darkTheme = isSystemInDarkTheme()
     Card(
         modifier = modifier
             .padding(8.dp)
@@ -32,8 +34,9 @@ fun DisplayCard(navController: NavHostController, recipe: Recipe, modifier: Modi
             //.clickable{navController.navigate("results/Recipes/${recipe.name}")},
             .clickable{navController.navigate("Recipe/${recipe.name}")},
         colors = CardDefaults.cardColors(
-            containerColor = Color.White,
-            contentColor = Color.Black),
+            containerColor = if (darkTheme) Color.Black else Color.White,
+            contentColor = if (darkTheme) Color.White else Color.Black,
+        ),
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
     ) {
