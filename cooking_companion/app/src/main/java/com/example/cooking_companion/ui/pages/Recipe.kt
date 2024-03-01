@@ -2,6 +2,7 @@ package com.example.cooking_companion.ui.pages
 
 import android.content.Intent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -41,6 +43,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
@@ -80,8 +83,11 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
         "Add the cream cheese to the skillet in chunks, then stir until it has melted into the sauce. Top the pasta with sliced green onions and serve."
     )
 
-    Box(Modifier.fillMaxSize()) {
-        Column(Modifier.verticalScroll(scrollState)) {
+    Box(
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(scrollState)) {
+        Column{
             Image(
                 painter = painterResource(id = recipe.image),
                 contentDescription = recipe.name,
@@ -130,7 +136,7 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                         Icon(
                             imageVector = if (liked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                             contentDescription = "Like Button",
-                            tint = if (liked) Color.Red else Color.Black,
+                            tint = if (liked) Color(0xFFDE6B46) else Color.Black,
                             modifier = modifier.size(30.dp)
                         )
                         Text(
@@ -150,7 +156,8 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                         Icon(
                             imageVector = if(bookmarked) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
                             contentDescription = "Bookmarked button",
-                            modifier.size(30.dp)
+                            tint = if (bookmarked) Color(0xFFDE6B46) else Color.Black,
+                            modifier = modifier.size(30.dp)
                         )
                         Text(
                             text = "Save",
@@ -278,44 +285,95 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                 }
 
             }
-            Column (modifier = modifier.padding(horizontal = 16.dp)){
-                for (i in 0..3) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
+            for (i in 0..3) {
+                Row(
+                    modifier = modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+
                     ) {
-                        Text(
-                            text = "${ingredientsValues[i]} ${ingredientType[i]}",
-                            fontSize = 18.sp,
-                            modifier = Modifier.weight(1f)
-                        )
-                        Text(
-                            text = ingredients[i],
-                            fontSize = 18.sp,
-                            modifier = Modifier.weight(1f)
-                        )
-                    }
+                    Text(
+                        text = "${ingredientsValues[i]} ${ingredientType[i]}",
+                        fontSize = 18.sp,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Text(
+                        text = ingredients[i],
+                        fontSize = 18.sp,
+                        modifier = Modifier.weight(1f)
+                    )
                 }
             }
             Divider(modifier = modifier.padding(top = 16.dp))
-            Column (modifier = modifier.padding(horizontal = 16.dp)){
+            Text(
+                text = "Steps",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                modifier = modifier
+                    .padding(top = 16.dp, bottom = 4.dp)
+                    .padding(horizontal = 16.dp)
+            )
+            for (i in 1..5){
                 Text(
-                    text = "Steps",
+                    text = "Step $i",
+                    fontSize = 17.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.outline,
+                    modifier = modifier
+                        .padding(vertical = 16.dp)
+                        .padding(horizontal = 16.dp)
+                )
+                Text(text = steps[i], modifier = modifier.padding(horizontal = 16.dp))
+            }
+            Divider(modifier = modifier.padding(top = 16.dp))
+            Row{
+                Text(
+                    text = "Reviews",
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
-                    modifier = modifier.padding(top = 16.dp, bottom = 4.dp)
+                    modifier = modifier
+                        .padding(top = 16.dp, bottom = 4.dp)
+                        .padding(horizontal = 16.dp)
                 )
-                for (i in 1..5){
-                    Text(
-                        text = "Step $i",
-                        fontSize = 17.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.outline,
-                        modifier = modifier.padding(vertical = 16.dp)
-                    )
-                    Text(text = steps[i])
-                }
+                Spacer(modifier = modifier.weight(1f))
+                Text(
+                    text = "Read All",
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xFFDE6B46),
+                    modifier = modifier.padding(top = 32.dp, end = 16.dp)
+                )
+            }
+            
+            Text(
+                text = "200 Comments",
+                fontSize = 14.sp,
+                modifier = modifier
+                    .padding(top = 0.dp, bottom = 4.dp)
+                    .padding(horizontal = 16.dp)
+            )
+            Row (
+                modifier
+                    .fillMaxWidth()
+                    .padding(start=32.dp, top = 16.dp)
+            ){
+                Box(
+                    modifier = modifier
+                        .size(47.dp)
+                        .clip(CircleShape)
+                        .background(Color(0xFFFCAC34))
 
+                ){
+                    Text(
+                        text = "J",
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .align(Alignment.Center)
+                    )
+                }
             }
             Spacer(modifier = modifier.height(50.dp))
         }
