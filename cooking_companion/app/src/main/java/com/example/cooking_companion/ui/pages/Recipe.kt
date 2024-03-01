@@ -71,6 +71,14 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
     var ingredientsValues by remember { mutableStateOf(listOf(2, 5, 150, 4)) }
     val ingredientType = listOf("Cups", "Whole", "Grams", "Slices")
     var servings by remember { mutableIntStateOf(1) }
+    val steps = listOf(
+        "Combine the ingredients for the Cajun seasoning in a small bowl. Cut the chicken into half- to three-quarter-inch cubes. Place the cubed chicken in a bowl, pour the Cajun seasoning over top, and stir to coat the chicken in spices.",
+        "Add the olive oil and butter to a large deep skillet. Heat the oil and butter over medium-high until the skillet is very hot and the butter is melted and foamy. Add the seasoned chicken to the skillet and cook for a couple minutes on each side, or just until the outside gets some colour. The chicken does not need to be cooked through at this point.",
+        "Add the diced yellow onion to the skillet with more Cajun seasoning and continue to sauté for about two minutes more, or just until the onion begins to soften. Allow the moisture from the onion to dissolve any browned bits from the bottom of the skillet.",
+        "Next, add the pasta, fire roasted diced tomatoes (with the juices), salt and chicken broth to the skillet. Stir just until everything is evenly combined, then place a lid on top and allow the broth to come up to a boil.",
+        "Once boiling, turn the heat down to medium-low and let the pasta simmer for about 10 minutes, stirring every couple of minutes, until the pasta is tender and the liquid is thick and saucy.",
+        "Add the cream cheese to the skillet in chunks, then stir until it has melted into the sauce. Top the pasta with sliced green onions and serve."
+    )
 
     Box(Modifier.fillMaxSize()) {
         Column(Modifier.verticalScroll(scrollState)) {
@@ -213,6 +221,11 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                     fontSize = 20.sp,
                     modifier = modifier.padding(top = 16.dp)
                 )
+                Text(
+                    text = "2 Hours",
+                    fontSize = 20.sp,
+                    modifier = modifier.padding(top = 16.dp)
+                )
             }
             Divider(modifier.padding(top = 16.dp))
             Row (
@@ -284,6 +297,27 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                     }
                 }
             }
+            Divider(modifier = modifier.padding(top = 16.dp))
+            Column (modifier = modifier.padding(horizontal = 16.dp)){
+                Text(
+                    text = "Steps",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    modifier = modifier.padding(top = 16.dp, bottom = 4.dp)
+                )
+                for (i in 1..5){
+                    Text(
+                        text = "Step $i",
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.outline,
+                        modifier = modifier.padding(vertical = 16.dp)
+                    )
+                    Text(text = steps[i])
+                }
+
+            }
+            Spacer(modifier = modifier.height(50.dp))
         }
         TopAppBar(
             title = {},
@@ -293,18 +327,11 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                 }
             },
             colors =
-            if (scrollState.value.dp > imageHeight) {
-                TopAppBarDefaults.topAppBarColors(
-                containerColor = MaterialTheme.colorScheme.onBackground,
-                navigationIconContentColor = Color.White,
-                titleContentColor = Color.White
-                )
-            }else{TopAppBarDefaults.topAppBarColors(
+            TopAppBarDefaults.topAppBarColors(
                 containerColor = Color.Transparent,
                 navigationIconContentColor = Color.White,
                 titleContentColor = Color.White
-                )
-            },
+            )
         )
     }
 }
