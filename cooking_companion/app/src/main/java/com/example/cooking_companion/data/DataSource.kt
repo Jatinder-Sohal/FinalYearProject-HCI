@@ -1,6 +1,7 @@
 package com.example.cooking_companion.data
 
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import com.example.cooking_companion.R
 
 object DataSource {
@@ -61,4 +62,5 @@ object DataSource {
         Recipe("Chicken Curry", R.drawable.chickencurry_dishes, false, 87, "Jatinder Sohal"),
         Recipe("Saucy Pizza", R.drawable.bbqpie_dishes, false, 47, "Jatinder Sohal")
     )
+    val darkMode = mutableStateOf(false)
 }
