@@ -1,0 +1,42 @@
+.list {
+  background-color: #ebecf0;
+  border-radius: 3px;
+  width: 300px;
+  margin: 0 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  justify-content: space-between;
+}
+
+.list-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.list-action {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.add-card-btn {
+  background-color: #ffffff;
+  cursor: pointer;
+  padding: 10px 8px;
+  text-align: left;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+}
+
+.add-card-btn:hover {
+  background-color: #f4f5f7;
+}
