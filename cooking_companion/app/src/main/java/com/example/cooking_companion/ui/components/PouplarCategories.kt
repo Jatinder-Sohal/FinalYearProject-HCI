@@ -2,6 +2,7 @@ package com.example.cooking_companion.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,11 +21,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.DefaultTintColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Category
+import com.example.cooking_companion.data.DataSource.darkMode
 
 @Composable
 fun HorizontalCategoryItem(navController: NavHostController, category: Category, modifier: Modifier = Modifier) {
@@ -36,8 +39,8 @@ fun HorizontalCategoryItem(navController: NavHostController, category: Category,
         shape = RoundedCornerShape(15.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 15.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White,
-            contentColor = Color.Black
+            containerColor = if (darkMode.value) Color.Black else Color.White,
+            contentColor = if (darkMode.value) Color.White else Color.Black,
         )
     ) {
         Column(

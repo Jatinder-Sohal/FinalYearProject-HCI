@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -36,9 +37,11 @@ fun CompanionSavedScreen(navController: NavHostController, modifier: Modifier = 
         Text(
             text = "Saved Collections",
             style = MaterialTheme.typography.titleLarge,
-            fontSize = 35.sp,
+            fontSize = 37.sp,
             modifier = modifier
-                .padding(16.dp)
+                .padding(horizontal = 20.dp, vertical = 14.dp)
+                .padding(top = 20.dp)
+                .align(Alignment.Start)
         )
         LazyColumn(
             modifier = Modifier

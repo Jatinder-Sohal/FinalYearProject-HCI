@@ -61,7 +61,6 @@ fun CompanionSearchScreen(navController: NavHostController, modifier: Modifier =
                 modifier = modifier
                     .padding(horizontal = 20.dp, vertical = 4.dp)
                     .align(Alignment.Start)
-
             )
             SearchPageBar(navController)
             Text(
