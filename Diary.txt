@@ -354,4 +354,13 @@ Future: 	-Implement design of a single recipe with all kinds of information like
 		-Start implementing setting page
 		-Link up all components on home and search page
 
+Week 7 (29/02/24)
+Completed:	-Fixed problem with bottom sheet which allowed me to finish search page and link all elements up
+		-Start design actual recipe screen with picture, description and ingredients
+		-Add increase and decrease icons for servings
+
+Problems:	-Had problem with back arrow on recipe screen - when moving down could not get its background to change but now it is laggy
+		-Unsure of which elements to add to recipe screen as many different ideas e.g rating stars, reviews, save bottom sheet, author image
+		-
+
 

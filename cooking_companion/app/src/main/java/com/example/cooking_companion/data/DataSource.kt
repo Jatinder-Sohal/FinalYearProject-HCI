@@ -37,7 +37,7 @@ object DataSource {
     )
     val collections = mutableStateListOf(
         Collection("Collection One", 9, listOf(R.drawable.chickencurry_dishes, R.drawable.grilledcheese_dishes, R.drawable.chickenwaffles_dishes)),
-        Collection("12/02/24", 2, listOf(R.drawable.pizza_cat, R.drawable.pumpkinsoup_dishes)),
+        Collection("12/02/24", 2, listOf(R.drawable.fish_recent, R.drawable.pumpkinsoup_dishes)),
         Collection("List3", 1, listOf(R.drawable.raspberrycake_dishes))
     )
     val recommendations = listOf("Apple", "Apricot", "Apple Crumble", "Banana", "Cherry", "Chicken Soup", "Chicken Curry", "Cheese Pizza", "Date", "Egg fruit", "Fig", "Grapes")

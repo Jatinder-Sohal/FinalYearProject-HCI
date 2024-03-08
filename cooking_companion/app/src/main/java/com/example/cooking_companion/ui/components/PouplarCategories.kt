@@ -27,10 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Category
+import com.example.cooking_companion.data.DataSource.darkMode
 
 @Composable
 fun HorizontalCategoryItem(navController: NavHostController, category: Category, modifier: Modifier = Modifier) {
-    val darkTheme = isSystemInDarkTheme()
     Card(
         modifier = modifier
             .padding(8.dp)
@@ -39,8 +39,8 @@ fun HorizontalCategoryItem(navController: NavHostController, category: Category,
         shape = RoundedCornerShape(15.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 15.dp),
         colors = CardDefaults.cardColors(
-            containerColor = if (darkTheme) Color.Black else Color.White,
-            contentColor = if (darkTheme) Color.White else Color.Black,
+            containerColor = if (darkMode.value) Color.Black else Color.White,
+            contentColor = if (darkMode.value) Color.White else Color.Black,
         )
     ) {
         Column(
