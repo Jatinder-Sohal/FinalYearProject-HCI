@@ -121,7 +121,8 @@ class Cards:
                 move_left_button.pack(side='top', padx=10, pady=10, anchor='center')
                 move_left_button.configure(command=lambda card=card_data: Cards.move_card(card, context.on_hold_cards, context.finished_cards, context))
 
-    
+
+    @staticmethod
     def create_card(list_frame, cards_list, card_data):
         """
         Create a single card and initialize its data and elements.
@@ -216,6 +217,10 @@ class Cards:
         right_photo = ctk.CTkImage(right_img)
         move_right_button = ctk.CTkButton(card, text="Move right", fg_color="#3F72AF", hover_color="grey", text_color="white", image=right_photo, font=("Arial Bold", 15), width=100, compound=tk.RIGHT)
         move_right_button.pack(side='right', padx=10, pady=10, anchor='center')
+
+        card.bind("<Button-1>", lambda event, c=card: Cards.on_card_click(event, c))
+        card.bind("<B1-Motion>", lambda event, c=card: Cards.on_card_drag(event, c))
+        card.bind("<ButtonRelease-1>", lambda event, c=card: Cards.on_card_release(event, c))
         
         return card, move_left_button, move_right_button
 
@@ -235,3 +240,26 @@ class Cards:
         if response:
             cards_list.remove(card_data)  
             card.destroy()
+
+    @staticmethod
+    def on_card_click(event, card):
+            # Record the starting point of the drag
+            card._drag_start_x = event.x
+            card._drag_start_y = event.y
+            print(f"Drag start: {card._drag_start_x}, {card._drag_start_y}")
+
+    @staticmethod
+    def on_card_drag(event, card):
+        # Calculate the distance moved from the starting point
+        dx = event.x - card._drag_start_x
+        dy = event.y - card._drag_start_y
+        print(f"Dragging: dx={dx}, dy={dy}")
+
+    @staticmethod
+    def on_card_release(event, card):
+        # Finalize the drag operation
+        print("Drag finished")
+
+        # Reset drag start coordinates
+        card._drag_start_x = None
+        card._drag_start_y = None
