@@ -2,7 +2,7 @@ import React from 'react';
 import './list.css'; 
 import CardList from './cardList';
 
-const List = ({ title, cardList }) => {
+const List = ({ title, cardList, onAddCard}) => {
     return (
         <div className="list">
             <header className="list-header">
@@ -10,7 +10,7 @@ const List = ({ title, cardList }) => {
                 <button className="list-action">...</button>
             </header>
             <CardList cards={cardList} />
-            <button className="add-card-btn">
+            <button className="add-card-btn" onClick= {() => onAddCard("test")}>
                 <span className="plus-icon">+</span>
                 <span className="add-card-btn-text">Add a card</span>
             </button>
