@@ -1,8 +1,9 @@
 import React from 'react';
 import './list.css'; 
 import CardList from './cardList';
+import { Droppable } from 'react-beautiful-dnd';
 
-const List = ({ title, cardList, onAddCard}) => {
+const List = ({ title, cardList, onAddCard }) => {
     return (
         <div className="list">
             <header className="list-header">
@@ -10,7 +11,7 @@ const List = ({ title, cardList, onAddCard}) => {
                 <button className="list-action">...</button>
             </header>
             <CardList cards={cardList} />
-            <button className="add-card-btn" onClick= {() => onAddCard("test")}>
+            <button className="add-card-btn" onClick= {() => onAddCard("New Card Title")}>
                 <span className="plus-icon">+</span>
                 <span className="add-card-btn-text">Add a card</span>
             </button>
