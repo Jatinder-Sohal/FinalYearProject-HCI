@@ -1,26 +1,15 @@
 import React from 'react';
-import { useState } from 'react';
 import './list.css'; 
+import CardList from './cardList';
 
-const List = ({ title }) => {
-    const [todoCards, setCards] = useState([
-      { id: 1, title: 'Sample Card' }, 
-      { id: 2, title: 'Testing a longer card and text to see if overflow works' }, 
-    ]);
-    
-    
+const List = ({ title, cardList }) => {
     return (
         <div className="list">
             <header className="list-header">
                 <h2>{title}</h2>
                 <button className="list-action">...</button>
             </header>
-        
-            {todoCards.map(card => (
-                <div key={card.id} className="card">
-                    {card.title}
-                </div>
-            ))}
+            <CardList cards={cardList} />
             <button className="add-card-btn">
                 <span className="plus-icon">+</span>
                 <span className="add-card-btn-text">Add a card</span>
