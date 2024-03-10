@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import './list.css'; 
-import CardList from './cardList';
+import './List.css'; 
+import CardList from './Cards';
 import Cancel from '../images/cancel-svgrepo-com.png';
 
-const List = ({ title, listTitle, cardList, onAddButton }) => {
+const List = ({ title, listTitle, cardList, onAddButton, cardClick }) => {
     const [isAddingCard, setIsAddingCard] = useState(false);
     const [newCardTitle, setNewCardTitle] = useState('');
   
@@ -22,7 +22,7 @@ const List = ({ title, listTitle, cardList, onAddButton }) => {
                 <h2>{title}</h2>
                 <button className="list-action">...</button>
             </header>
-            <CardList cards={cardList} title={listTitle}/>
+            <CardList cards={cardList} title={listTitle} cardClick={cardClick}/>
             {isAddingCard ? (
                 <>
                 <textarea className="new-card-input" onChange={(e) => setNewCardTitle(e.target.value)} placeholder="Enter a title for this card..."></textarea>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import './list.css'; 
+import './List.css'; 
 
-const CardList = ({ cards, title }) => {
+const Cards = ({ cards, title, cardClick }) => {
   return (
     <Droppable droppableId={`${title}`}>
       {(provided) => (
@@ -10,7 +10,7 @@ const CardList = ({ cards, title }) => {
           {cards.map((card, index) => (
             <Draggable key={card.id} draggableId={String(card.id)} index={index}>
               {(provided) => (
-                <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="card">
+                <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} onClick={cardClick} className="card">
                   {card.title}
                 </div>
               )}
@@ -23,4 +23,4 @@ const CardList = ({ cards, title }) => {
   );
 };
 
-export default CardList;
+export default Cards;

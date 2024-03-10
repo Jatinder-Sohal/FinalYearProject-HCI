@@ -1,10 +1,27 @@
 import React from "react";
-import List from "./components/list"; 
+import List from "./components/List"; 
 import { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
+import Modal from './components/Modal';
+import './App.css'
+
 
 var todoID = 7;
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCard(null);
+  };
+
+
   const [todoCards, setTodo] = useState([
     { id: 1, title: 'Sample Card' }, 
     { id: 2, title: 'Testing a longer card and text to see if overflow works' }, 
@@ -100,13 +117,18 @@ function App() {
   }
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <div style={{ display: 'flex', alignItems: "flex-start"}}>
-        <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddButton={addCard}/>
-        <List title="In Progress" listTitle="progressCards" cardList={progressCards} onAddButton={addCard}/>
-        <List title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard}/>
-      </div>
-    </DragDropContext>
+    <>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <div style={{ display: 'flex', alignItems: "flex-start"}}>
+          <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+          <List title="In Progress" listTitle="progressCards" cardList={progressCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+          <List title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+        </div>
+      </DragDropContext>
+      {isModalOpen && (
+        <Modal card={selectedCard} onClose={closeModal} />
+      )}
+    </>
   );
 }
 

@@ -68,6 +68,7 @@
     margin-right: 3px;
     padding-inline: 14px;
     line-height: 1.5;
+    overflow-wrap: break-word;
   }
 .new-card-input{
     box-shadow: 0 1px 0 rgba(9,30,66,.25);
