@@ -3,7 +3,7 @@ import List from "./components/list";
 import { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 
-
+var todoID = 7;
 function App() {
   const [todoCards, setTodo] = useState([
     { id: 1, title: 'Sample Card' }, 
@@ -11,7 +11,6 @@ function App() {
   ]);
 
   function addTodoCard(title) {
-    var todoID = 7;
     const newCard = { id: todoID, title }; 
     todoID++
     setTodo([...todoCards, newCard]);
@@ -41,6 +40,19 @@ function App() {
   
     return result;
   }
+  function move(sourceList, destinationList, droppableSource, droppableDestination) {
+    const source = Array.from(sourceList);
+    const dest = Array.from(destinationList);
+    const [removed] = source.splice(droppableSource.index, 1);
+  
+    dest.splice(droppableDestination.index, 0, removed);
+  
+    const result = {};
+    result[droppableSource.droppableId] = source;
+    result[droppableDestination.droppableId] = dest;
+  
+    return result;
+  }
 
   function onDragEnd(result) {
     const { source, destination } = result;
@@ -60,8 +72,26 @@ function App() {
       } else if (source.droppableId === "doneCards") {
         setDone(items);
       }
+    }else{
+      const result = move(
+        getList(source.droppableId),
+        getList(destination.droppableId),
+        source,
+        destination
+      );
+  
+      if (result.todoCards) {
+        setTodo(result.todoCards);
+      }
+      if (result.progressCards) {
+        setProgress(result.progressCards);
+      }
+      if (result.doneCards) {
+        setDone(result.doneCards);
+      }
     }
   }
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div style={{ display: 'flex', alignItems: "flex-start"}}>
