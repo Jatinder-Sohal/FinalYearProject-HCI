@@ -2,8 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import './list.css'; 
 import CardList from './cardList';
+import Cancel from '../images/cancel-svgrepo-com.png';
 
-const List = ({ title, listTitle, cardList, onAddButton }) => {const [isAddingCard, setIsAddingCard] = useState(false);
+const List = ({ title, listTitle, cardList, onAddButton }) => {
+    const [isAddingCard, setIsAddingCard] = useState(false);
     const [newCardTitle, setNewCardTitle] = useState('');
   
     const handleAddCard = () => {
@@ -23,15 +25,11 @@ const List = ({ title, listTitle, cardList, onAddButton }) => {const [isAddingCa
             <CardList cards={cardList} title={listTitle}/>
             {isAddingCard ? (
                 <>
-                <input
-                    className="new-card-input"
-                    value={newCardTitle}
-                    onChange={(e) => setNewCardTitle(e.target.value)}
-                    placeholder="Enter a title for this card..."
-                    autoFocus
-                />
-                <button onClick={handleAddCard}>Add</button>
-                <button onClick={() => setIsAddingCard(false)}>Cancel</button>
+                <textarea className="new-card-input" onChange={(e) => setNewCardTitle(e.target.value)} placeholder="Enter a title for this card..."></textarea>
+                <div style={{ display: 'flex', marginTop:'2px', alignItems: 'center'}}>
+                    <button className="btn btn-primary confirm-card-button" onClick={handleAddCard}>Add Card</button>
+                    <img src={Cancel} className="cancel-card-button" onClick={() => setIsAddingCard(false)}  alt="Cancel card" />
+                </div>
                 </>
             ) : (
                 <button className="add-card-btn" onClick={() => setIsAddingCard(true)}>

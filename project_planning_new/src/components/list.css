@@ -69,3 +69,34 @@
     padding-inline: 14px;
     line-height: 1.5;
   }
+.new-card-input{
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    padding: 10px;
+    padding-bottom: 13px;
+    padding-inline: 14px;
+    margin-bottom: 5px;
+    border-radius: 7px;
+    border: none;
+    line-height: 1.5;
+    font-family: sans-serif;
+    resize: none;
+    
+}
+.new-card-input:focus{
+    border: none;
+}
+
+.cancel-card-button{
+    width: 22px;
+    height: 22px;
+    background-color: transparent;
+    margin-left: 8px;
+}
+.confirm-card-button{
+    height: 35px;
+    width: 81px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(24, 165, 170);
+    margin-left: 8px;
+}
