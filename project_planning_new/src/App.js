@@ -9,12 +9,6 @@ function App() {
     { id: 1, title: 'Sample Card' }, 
     { id: 2, title: 'Testing a longer card and text to see if overflow works' }, 
   ]);
-
-  function addTodoCard(title) {
-    const newCard = { id: todoID, title }; 
-    todoID++
-    setTodo([...todoCards, newCard]);
-  };
   const [progressCards, setProgress] = useState([
     { id: 3, title: 'Testing a longer card and text to see if overflow works' }, 
     { id: 5, title: 'Testing a longer card and text to see if overflow works' }, 
@@ -23,6 +17,19 @@ function App() {
     { id: 4, title: 'Sample Card' }, 
     { id: 6, title: 'Testing a longer card and text to see if overflow works' }, 
   ]);
+
+  function addCard(title, listTitle) {
+    const newCard = { id: todoID, title }; 
+    todoID++
+    if (listTitle === "todoCards") {
+      setTodo([...todoCards, newCard]);
+    } else if (listTitle === "progressCards") {
+      setProgress([...progressCards, newCard]);
+    } else if (listTitle === "doneCards") {
+      setDone([...doneCards, newCard]);
+    } 
+    
+  };
 
   function getList(listId) {
     if (listId === "todoCards") {
@@ -43,8 +50,8 @@ function App() {
   function move(sourceList, destinationList, droppableSource, droppableDestination) {
     const source = Array.from(sourceList);
     const dest = Array.from(destinationList);
+
     const [removed] = source.splice(droppableSource.index, 1);
-  
     dest.splice(droppableDestination.index, 0, removed);
   
     const result = {};
@@ -95,9 +102,9 @@ function App() {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div style={{ display: 'flex', alignItems: "flex-start"}}>
-        <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddCard={addTodoCard}/>
-        <List title="In Progress" listTitle="progressCards" cardList={progressCards} onAddCard={addTodoCard}/>
-        <List title="Done" listTitle="doneCards" cardList={doneCards} onAddCard={addTodoCard}/>
+        <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddButton={addCard}/>
+        <List title="In Progress" listTitle="progressCards" cardList={progressCards} onAddButton={addCard}/>
+        <List title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard}/>
       </div>
     </DragDropContext>
   );
