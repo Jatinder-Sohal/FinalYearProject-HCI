@@ -2,9 +2,9 @@ import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import './list.css'; 
 
-const CardList = ({ cards }) => {
+const CardList = ({ cards, title }) => {
   return (
-    <Droppable droppableId="droppable">
+    <Droppable droppableId={`${title}`}>
       {(provided) => (
         <div {...provided.droppableProps} ref={provided.innerRef}>
           {cards.map((card, index) => (
