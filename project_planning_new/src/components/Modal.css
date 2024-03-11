@@ -17,7 +17,7 @@
     width: 650px;  
     border-radius: 10px;
     z-index: 1001; 
-    
+    overflow-y:auto
 }
 .modal-title{
     padding-inline: 10px;
@@ -42,5 +42,25 @@
     padding-left: 22px;
     font-size: 1rem;
     font-family: sans-serif;
-    font-weight: normal;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.564);
+}
+.title-description{
+    font-family: sans-serif;
+    font-size: 1.05rem;
+    padding-left: 22px;
+    margin-top: 6%;
+}
+.modal-description{
+    background-color: #ebecf0;
+    border-radius: 6px;
+    margin-left: 20px;
+    border: none;
+    resize: none;
+    width: 550px;
+    height: 300px;
+    font-family: sans-serif;
+    font-size: 1rem;
+    padding: 10px;
+    line-height: 1.5;
 }
