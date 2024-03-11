@@ -13,7 +13,34 @@
   
 .modal-content {
     background-color: white;
-    padding: 20px;
-    border-radius: 5px;
+    height: 700px;
+    width: 650px;  
+    border-radius: 10px;
     z-index: 1001; 
+    
+}
+.modal-title{
+    padding-inline: 10px;
+    padding-inline-start: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+    width: 600px;
+    margin-top: 24px;
+    color:black;
+}
+.modal-close{
+    padding-top: 20px;
+    padding-right: 25px;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    margin-left: 8px;
+}
+.modal-listFrom{
+    margin-top: -0.5%;
+    padding-left: 22px;
+    font-size: 1rem;
+    font-family: sans-serif;
+    font-weight: normal;
 }

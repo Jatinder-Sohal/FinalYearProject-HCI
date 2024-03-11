@@ -22,7 +22,7 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick }) => {
                 <h2>{title}</h2>
                 <button className="list-action">...</button>
             </header>
-            <CardList cards={cardList} title={listTitle} cardClick={cardClick}/>
+            <CardList cards={cardList} title={title} listTitle={listTitle} cardClick={cardClick}/>
             {isAddingCard ? (
                 <>
                 <textarea className="new-card-input" onChange={(e) => setNewCardTitle(e.target.value)} placeholder="Enter a title for this card..."></textarea>

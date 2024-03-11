@@ -10,9 +10,11 @@ var todoID = 7;
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [listWithCard, setCurrentList] = useState(null);
 
-  const handleCardClick = (card) => {
+  const handleCardClick = (card, currentList) => {
     setSelectedCard(card);
+    setCurrentList(currentList)
     setIsModalOpen(true);
   };
 
@@ -126,7 +128,7 @@ function App() {
         </div>
       </DragDropContext>
       {isModalOpen && (
-        <Modal card={selectedCard} onClose={closeModal} />
+        <Modal card={selectedCard} onClose={closeModal} listTitle={listWithCard} />
       )}
     </>
   );
