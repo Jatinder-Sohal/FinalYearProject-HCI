@@ -3,6 +3,7 @@ import List from "./components/List";
 import { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import Modal from './components/Modal';
+import Topbar from './components/Topbar'
 import './App.css'
 
 
@@ -120,6 +121,7 @@ function App() {
 
   return (
     <>
+      <Topbar/>
       <DragDropContext onDragEnd={onDragEnd}>
         <div style={{ display: 'flex', alignItems: "flex-start"}}>
           <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddButton={addCard} cardClick ={handleCardClick}/>
