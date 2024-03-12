@@ -1,0 +1,8 @@
+.Toolbar{
+    width: 85px;
+    height: 500px;
+    margin-right: 25px;
+    margin-top: 175px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

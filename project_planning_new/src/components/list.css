@@ -1,3 +1,6 @@
+body {
+    padding-left: 300px; 
+  }
 .list {
     background-color: #97f0ff;
     border-radius: 18px;
@@ -8,8 +11,7 @@
     padding-left: 8px;
     padding-right: 8px;
     padding-bottom: 8px;
-    margin-top: 65px;
-    
+    margin-top: 85px;
 }
 .list-header {
     display: flex;

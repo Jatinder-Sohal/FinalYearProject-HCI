@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import Modal from './components/Modal';
 import Topbar from './components/Topbar'
+import Sidebar from "./components/Sidebar";
+import Toolbar from "./components/Toolbar";
 import './App.css'
 
 
@@ -121,14 +123,19 @@ function App() {
 
   return (
     <>
+      <Sidebar />
       <Topbar/>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <div style={{ display: 'flex', alignItems: "flex-start"}}>
-          <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddButton={addCard} cardClick ={handleCardClick}/>
-          <List title="In Progress" listTitle="progressCards" cardList={progressCards} onAddButton={addCard} cardClick ={handleCardClick}/>
-          <List title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard} cardClick ={handleCardClick}/>
-        </div>
-      </DragDropContext>
+      <div style={{ display: 'flex'}}>
+        <Toolbar />
+        <DragDropContext onDragEnd={onDragEnd}>
+          <div style={{ display: 'flex', alignItems: "flex-start"}}>
+            <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+            <List title="In Progress" listTitle="progressCards" cardList={progressCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+            <List title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+          </div>
+        </DragDropContext>
+      </div>
+      
       {isModalOpen && (
         <Modal card={selectedCard} onClose={closeModal} listTitle={listWithCard} />
       )}
