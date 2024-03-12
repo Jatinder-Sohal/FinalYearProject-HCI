@@ -1,8 +1,34 @@
 .Toolbar{
-    width: 85px;
-    height: 500px;
+    width: 70px;
+    height: 450px;
     margin-right: 25px;
     margin-top: 175px;
     border-radius: 15px;
+    
+}
+.Main-Toolbar{
+    height: 350px;
+    width: 70px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content:space-around
+}
+.Single-Toolbar{
+    height: 75px;
+    width: 70px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+
+}
+.Item-Toolbar{
+    width: 32px;
+    height: 32px;
 }
