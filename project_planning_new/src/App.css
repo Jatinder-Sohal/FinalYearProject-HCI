@@ -1,3 +1,11 @@
 body {
     background-color:rgb(255, 255, 255)
-  }
+}
+.Root {
+}
+
+.Content {
+  display: flex;
+  overflow-x:auto; 
+  overflow-y: hidden;
+}

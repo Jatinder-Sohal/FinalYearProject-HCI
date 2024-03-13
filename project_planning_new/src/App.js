@@ -6,6 +6,7 @@ import Modal from './components/Modal';
 import Topbar from './components/Topbar'
 import Sidebar from "./components/Sidebar";
 import Toolbar from "./components/Toolbar";
+import NewList from "./components/NewList"
 import './App.css'
 
 
@@ -122,24 +123,27 @@ function App() {
   }
 
   return (
-    <>
-      <Sidebar />
-      <Topbar/>
-      <div style={{ display: 'flex'}}>
-        <Toolbar />
-        <DragDropContext onDragEnd={onDragEnd}>
-          <div style={{ display: 'flex', alignItems: "flex-start"}}>
-            <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddButton={addCard} cardClick ={handleCardClick}/>
-            <List title="In Progress" listTitle="progressCards" cardList={progressCards} onAddButton={addCard} cardClick ={handleCardClick}/>
-            <List title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard} cardClick ={handleCardClick}/>
-          </div>
-        </DragDropContext>
+    <div className="Root">
+      <Topbar />
+      <div className="Content">
+        <Sidebar/>
+        <div style={{ display: 'flex'}}>
+          <Toolbar />
+          <DragDropContext onDragEnd={onDragEnd}>
+            <div style={{ display: 'flex', alignItems: "flex-start"}}>
+              <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+              <List title="In Progress" listTitle="progressCards" cardList={progressCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+              <List title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+            </div>
+          </DragDropContext>
+          <NewList />
+        </div>
+        
+        {isModalOpen && (
+          <Modal card={selectedCard} onClose={closeModal} listTitle={listWithCard} />
+        )}
       </div>
-      
-      {isModalOpen && (
-        <Modal card={selectedCard} onClose={closeModal} listTitle={listWithCard} />
-      )}
-    </>
+    </div>
   );
 }
 
