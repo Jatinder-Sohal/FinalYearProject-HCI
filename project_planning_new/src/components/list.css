@@ -81,6 +81,7 @@ body {
     margin-bottom: 5px;
     border-radius: 7px;
     border: none;
+    outline: none;
     line-height: 1.5;
     font-family: sans-serif;
     resize: none;
@@ -88,6 +89,7 @@ body {
 }
 .new-card-input:focus{
     border: none;
+    outline: none;
 }
 
 .cancel-card-button{

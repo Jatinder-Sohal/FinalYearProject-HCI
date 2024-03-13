@@ -1,13 +1,13 @@
 .Toolbar{
     width: 70px;
-    height: 450px;
-    margin-right: 25px;
+    height: 513px;
+    margin-right: 85px;
     margin-top: 175px;
     border-radius: 15px;
     
 }
 .Main-Toolbar{
-    height: 350px;
+    height: 438px;
     width: 70px;
     box-shadow: 0 0px 16px rgba(0,0,0,0.1);
     margin-bottom: 15px;

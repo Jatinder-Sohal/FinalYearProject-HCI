@@ -48,4 +48,38 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-right: 10px;
+}
+.right-Icon{
+    width: 42px;
+    height: 42px;
+    margin-left: 5px;
+}
+.help-icon{
+    margin-left: 10px;
+}
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    padding: 3px;
+    border: 2px solid;
+}
+.search-icon {
+  height: 20px;
+  width: 20px;
+  margin-left: 2px;
+}
+.search-input {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 175px;
+  background-color: transparent;
+  font-size: 16px;
+
+}
+input::placeholder {
+  color: #000;
 }
