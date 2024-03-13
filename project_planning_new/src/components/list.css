@@ -1,5 +1,8 @@
+body {
+    padding-left: 300px; 
+  }
 .list {
-    background-color: #ebecf0;
+    background-color: #97f0ff;
     border-radius: 18px;
     width: 270px;
     margin: 0 8px;
@@ -8,7 +11,7 @@
     padding-left: 8px;
     padding-right: 8px;
     padding-bottom: 8px;
-    
+    margin-top: 85px;
 }
 .list-header {
     display: flex;
@@ -40,7 +43,7 @@
 }
 
 .add-card-btn {
-    background-color: #ebecf0;
+    background-color: #97f0ff;
     color:rgba(0, 0, 0, 0.811);
     cursor: pointer;
     padding: 4px 8px;
@@ -62,7 +65,7 @@
     font-size: 0.88rem;
     padding: 10px;
     margin-bottom: 8px;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 8px;
     margin-left: 3px;
     margin-right: 3px;
@@ -78,6 +81,7 @@
     margin-bottom: 5px;
     border-radius: 7px;
     border: none;
+    outline: none;
     line-height: 1.5;
     font-family: sans-serif;
     resize: none;
@@ -85,6 +89,7 @@
 }
 .new-card-input:focus{
     border: none;
+    outline: none;
 }
 
 .cancel-card-button{
@@ -94,10 +99,11 @@
     margin-left: 8px;
 }
 .confirm-card-button{
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
     height: 35px;
     width: 81px;
     border-radius: 5px;
     border: none;
-    background-color: rgb(24, 165, 170);
+    background-color: #dae2ff;
     margin-left: 8px;
 }

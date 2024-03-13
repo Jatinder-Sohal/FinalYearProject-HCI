@@ -56,6 +56,7 @@
     border-radius: 6px;
     margin-left: 20px;
     border: none;
+    outline: none;
     resize: none;
     width: 550px;
     height: 300px;
