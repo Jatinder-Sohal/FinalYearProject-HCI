@@ -16,12 +16,31 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick }) => {
       }
     };
 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
     return (
         <div className="list">
             <header className="list-header">
                 <h2>{title}</h2>
-                <button className="list-action">...</button>
+                <button className="list-action" onClick={toggleDropdown}>...</button>
+                {isDropdownOpen && (
+                    <div className="dropdown">
+                        <div className='dropdown-header'>
+                            <h3 className='dropdown-title'>List actions</h3>
+                            <img src={Cancel} className="close-dropdown" onClick={toggleDropdown}  alt="Close dropdown" />
+                        </div>
+                        <ul>
+                            <li>Add card</li>
+                            <li>Copy list</li>
+                            <li>Sort by...</li>
+                        </ul>
+                    </div>
+                )}
             </header>
+            
             <CardList cards={cardList} title={title} listTitle={listTitle} cardClick={cardClick}/>
             {isAddingCard ? (
                 <>
