@@ -122,6 +122,13 @@ function App() {
     }
   }
 
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  function toggle() {
+    setIsOpen((isOpen) => !isOpen);
+  }
+
   return (
     <div className="Root">
       <Topbar />
@@ -134,9 +141,12 @@ function App() {
               <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddButton={addCard} cardClick ={handleCardClick}/>
               <List title="In Progress" listTitle="progressCards" cardList={progressCards} onAddButton={addCard} cardClick ={handleCardClick}/>
               <List title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+              {isOpen && 
+              <List hidden title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+              }
             </div>
           </DragDropContext>
-          <NewList />
+          <NewList addList={toggle} />
         </div>
         
         {isModalOpen && (
