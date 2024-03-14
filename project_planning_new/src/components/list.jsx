@@ -33,9 +33,10 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick }) => {
                             <img src={Cancel} className="close-dropdown" onClick={toggleDropdown}  alt="Close dropdown" />
                         </div>
                         <ul>
-                            <li>Add card</li>
-                            <li>Copy list</li>
+                            <li>Duplicate List</li>
+                            <li>Filter by...</li>
                             <li>Sort by...</li>
+                            <li>Delete List</li>
                         </ul>
                     </div>
                 )}
