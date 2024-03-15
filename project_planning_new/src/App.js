@@ -122,7 +122,6 @@ function App() {
     }
   }
 
-
   const [isOpen, setIsOpen] = useState(false);
 
   function toggle() {

@@ -114,3 +114,25 @@
     height: 24px;
     width: 24px;
 }
+.checkbox-add-button{
+    height: 40px;
+    width: 100px;
+    border: none;
+    font-size: 0.95rem;
+    font-family: sans-serif;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-left: 26px;
+}
+.checkbox-add-input{
+    width: 90%;
+    border-radius: 2px;
+    padding: 8px;
+    font-size: 0.96rem;
+    margin-inline-start: 8px;
+    margin-left: 32px;
+    margin-top: 4px;
+    border-style: solid;
+    border-color: black;
+    
+}

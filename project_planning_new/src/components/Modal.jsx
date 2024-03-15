@@ -13,6 +13,11 @@ const Modal = ({ card, onClose, listTitle }) => {
       { id: 2, label: 'Scalesdfdf', checked: false },
       { id: 3, label: 'Scalesdfdf', checked: false },
     ]);
+    const [isAddItemOpen, setIsAddItemOpen] = useState(false);
+
+    const toggleAdd = () => {
+      setIsAddItemOpen(!isAddItemOpen);
+    };
     return (
       <div className="modal-backdrop">
         <div className="modal-content">
@@ -37,6 +42,13 @@ const Modal = ({ card, onClose, listTitle }) => {
                     <img src={Bin} className="checkbox-delete" alt="Delete checkbox row" />
                   </div>
                 ))}
+                {isAddItemOpen ? (
+                  <div>
+                    <input className='checkbox-add-input' placeholder='Add an item'/>
+                  </div>
+                ) : (
+                  <button className='checkbox-add-button' onClick={toggleAdd}>Add an item</button>
+                )}
               </div>
               
             </div>

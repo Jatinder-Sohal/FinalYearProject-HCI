@@ -4,6 +4,7 @@ import './NewList.css'
 import Cancel from '../images/cancel-svgrepo-com.png';
 
 function NewList({addList}){
+    //refactor names and reused from last class
     const [isAddingCard, setIsAddingCard] = useState(false);
 
     return(
