@@ -89,3 +89,28 @@
     margin-right: 10px;
     margin-left: 2px;
 }
+.checkbox-container{
+    margin-left: 20px;
+}
+.checkbox{
+    height: 18px;
+    width: 18px;
+    margin-bottom: 6px;
+    margin-right: 10px;
+}
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-bottom: 12px; 
+}
+.checkbox-label {
+    display: flex;
+    align-items: center; 
+    margin-left: 10px;
+    font-size: 1.1rem;
+}
+.checkbox-delete{
+    height: 24px;
+    width: 24px;
+}

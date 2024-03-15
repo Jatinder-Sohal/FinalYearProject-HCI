@@ -1,4 +1,5 @@
 import './Modal.css'
+import { useState } from 'react';
 import Cancel from '../images/cancel-svgrepo-com.png';
 import MoveLeft from '../images/left-arrow.png'
 import MoveRight from '../images/right-arrow.png'
@@ -7,6 +8,11 @@ import Share from '../images/share.png'
 import Copy from '../images/copy.png'
 
 const Modal = ({ card, onClose, listTitle }) => {
+    const [checklistItems, setChecklistItems] = useState([
+      { id: 1, label: 'Scales', checked: true },
+      { id: 2, label: 'Scalesdfdf', checked: false },
+      { id: 3, label: 'Scalesdfdf', checked: false },
+    ]);
     return (
       <div className="modal-backdrop">
         <div className="modal-content">
@@ -21,10 +27,18 @@ const Modal = ({ card, onClose, listTitle }) => {
               <textarea className="modal-description"  placeholder="Enter a description for this card..."></textarea>
               
               <h3 className='title-description'>Checklist</h3>
-              <input type="checkbox" checked />
-              <label>Scales</label> <br />
-              <input type="checkbox"  />
-              <label>Scales</label>
+              <div className='checkbox-container'>
+                {checklistItems.map(item => (
+                  <div className="checkbox-row" key={item.id}>
+                    <label className="checkbox-label">
+                      <input type="checkbox" className='checkbox' checked={item.checked} />
+                      {item.label}
+                    </label>
+                    <img src={Bin} className="checkbox-delete" alt="Delete checkbox row" />
+                  </div>
+                ))}
+              </div>
+              
             </div>
             <div style={{marginLeft:"22px", marginTop:"25px"}}>
                 <h4 className='modal-subtitle'>Card actions</h4>
