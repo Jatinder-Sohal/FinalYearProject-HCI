@@ -13,11 +13,24 @@ const Modal = ({ card, onClose, listTitle }) => {
       { id: 2, label: 'Scalesdfdf', checked: false },
       { id: 3, label: 'Scalesdfdf', checked: false },
     ]);
+    var id = 4;
     const [isAddItemOpen, setIsAddItemOpen] = useState(false);
-
+    const [newItem, setNewItem] = useState('');
+    
     const toggleAdd = () => {
       setIsAddItemOpen(!isAddItemOpen);
     };
+    function handleAddItem(){
+      if (newItem.trim() !== '') {
+        setChecklistItems([...checklistItems, { id: id, label: newItem, checked: false }]);
+        setNewItem(''); 
+        setIsAddItemOpen(false);
+        id++;
+      }else{
+        alert("Please enter a checkbox value")
+      }
+    };
+
     return (
       <div className="modal-backdrop">
         <div className="modal-content">
@@ -29,7 +42,7 @@ const Modal = ({ card, onClose, listTitle }) => {
             <div>
               <h2 className='modal-listFrom'>In list: {listTitle}</h2>
               <h3 className='title-description'>Description</h3>
-              <textarea className="modal-description"  placeholder="Enter a description for this card..."></textarea>
+              <textarea className="modal-description"  placeholder="Enter a description for this card..." ></textarea>
               
               <h3 className='title-description'>Checklist</h3>
               <div className='checkbox-container'>
@@ -44,7 +57,11 @@ const Modal = ({ card, onClose, listTitle }) => {
                 ))}
                 {isAddItemOpen ? (
                   <div>
-                    <input className='checkbox-add-input' placeholder='Add an item'/>
+                    <input className='checkbox-add-input' placeholder='Add an item' value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
+                    <div style={{ display: 'flex', marginTop:'7px', alignItems: 'center'}}>
+                        <button className="checkbox-add-confirm" onClick={handleAddItem}>Add</button>
+                        <img src={Cancel} className="cancel-card-button" alt="Cancel card" onClick={() => setIsAddItemOpen(false)} />
+                    </div>
                   </div>
                 ) : (
                   <button className='checkbox-add-button' onClick={toggleAdd}>Add an item</button>
