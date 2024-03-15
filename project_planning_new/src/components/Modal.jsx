@@ -9,9 +9,9 @@ import Copy from '../images/copy.png'
 
 const Modal = ({ card, onClose, listTitle }) => {
     const [checklistItems, setChecklistItems] = useState([
-      { id: 1, label: 'Scales', checked: true },
-      { id: 2, label: 'Scalesdfdf', checked: false },
-      { id: 3, label: 'Scalesdfdf', checked: false },
+      { id: 1, label: 'Task 1', checked: true },
+      { id: 2, label: 'Task 2', checked: false },
+      { id: 3, label: 'Task 3', checked: false },
     ]);
     var id = 4;
     const [isAddItemOpen, setIsAddItemOpen] = useState(false);
@@ -30,6 +30,17 @@ const Modal = ({ card, onClose, listTitle }) => {
         alert("Please enter a checkbox value")
       }
     };
+    function handleDeleteItem(id){
+      setChecklistItems(checklistItems.filter(item => item.id !== id));
+    }
+    function handleCheckboxClick(id){
+      setChecklistItems(checklistItems.map(item => {
+        if (item.id === id) {
+          return {...item,checked: !item.checked };
+        }
+        return item;
+      }));
+    }
 
     return (
       <div className="modal-backdrop">
@@ -49,10 +60,10 @@ const Modal = ({ card, onClose, listTitle }) => {
                 {checklistItems.map(item => (
                   <div className="checkbox-row" key={item.id}>
                     <label className="checkbox-label">
-                      <input type="checkbox" className='checkbox' checked={item.checked} />
+                      <input type="checkbox" className='checkbox' checked={item.checked} onClick={() => handleCheckboxClick(item.id)} />
                       {item.label}
                     </label>
-                    <img src={Bin} className="checkbox-delete" alt="Delete checkbox row" />
+                    <img src={Bin} className="checkbox-delete" alt="Delete checkbox row" onClick={() => handleDeleteItem(item.id)} />
                   </div>
                 ))}
                 {isAddItemOpen ? (
