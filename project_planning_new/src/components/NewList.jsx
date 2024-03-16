@@ -13,7 +13,7 @@ function NewList({addList}){
                 <div className="NewList">
                     <textarea className="new-list-input" placeholder="Enter list title..."></textarea>
                     <div style={{ display: 'flex', marginTop:'2px', alignItems: 'center'}}>
-                        <button className="btn btn-primary confirm-card-button" onClick={addList}>Add Card</button>
+                        <button className="btn btn-primary confirm-card-button" onClick={addList}>Add List</button>
                         <img src={Cancel} className="cancel-card-button"   alt="Cancel card" />
                     </div>
                 </div>

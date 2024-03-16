@@ -7,6 +7,7 @@
     background-color: rgb(255, 255, 255);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding-top: 70px; 
+    background-color: #CBF1F5;
 }
 
 .fav-section,
@@ -22,13 +23,13 @@
 .all-section-header,
 .fav-section-header {
     padding: 10px;
-    background-color: #eee;
+    background-color: white;
     cursor: pointer;
     border-radius: 8px;
     margin-bottom: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
+
 }
 
 .lists, .section-item {
@@ -54,11 +55,17 @@
 .dropdown-images{
     width: 32px;
     height: 32px;
-
+    margin-left: 8px;
+    margin-right: 20px;
 }
 .dropdown-item-images{
     width: 26px;
     height: 26px;
+}
+.sidebar-star:hover{
+    transition: 0.2s; 
+    content: url('../images/star-border.png'); 
+    transform: scale(1.2);
 }
 
 

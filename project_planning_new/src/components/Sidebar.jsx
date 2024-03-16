@@ -8,70 +8,76 @@ import StarBorder from '../images/star-border.png'
 import BinBlack from '../images/bin-black.png'
 
 function Sidebar(){
-  const favoriteBoards = ['Board 1', 'Board 2']; 
-  const allBoards = ['Board 3', 'Board 4', 'Board 5'];
-  
-  const [isAllOpen, setIsAllOpen] = useState(true);
-  const [isFavoriteOpen, setIsFavOpen] = useState(true);
-  const [favImage, setFavImage] = useState(DropdownUp);
-  const [allImage, setAllImage] = useState(DropdownUp);
+    const [favoriteBoards, setFavoriteBoards] = useState(['Board 1', 'Board 2']);
+    const [allBoards, setAllBoards] = useState(['Board 3', 'Board 4', 'Board 5']);
 
-  const toggleAllSection = () => {
-    setIsAllOpen(!isAllOpen);
-    if (allImage == DropdownDown){
-        setAllImage(DropdownUp)
-    }else{
-        setAllImage(DropdownDown)
-    }
-  };
-  const toggleFavSection = () => {
-    setIsFavOpen(!isFavoriteOpen);
-    if (favImage == DropdownDown){
-        setFavImage(DropdownUp)
-    }else{
-        setFavImage(DropdownDown)
-    }
-  };
+    const [isAllOpen, setIsAllOpen] = useState(true);
+    const [isFavoriteOpen, setIsFavOpen] = useState(true);
+    const [favImage, setFavImage] = useState(DropdownUp);
+    const [allImage, setAllImage] = useState(DropdownUp);
 
-  return (
-    <div className="sidebar">
-        <div>
-            <div className="fav-section">
-                <div className="fav-section-header" onClick={toggleFavSection}>
-                    <img className="dropdown-images" src={favImage}/>
-                    {"Favorite Boards"}
-                </div>
-                {isFavoriteOpen &&
-                    <ul className='lists'>
-                        {favoriteBoards.map(board => (
-                            <div className="section-item" key={board}>
-                                {board}
-                                <img className="dropdown-item-images" src={StarFilled}/>
-                            </div>
-                        ))}
-                    </ul>
-                }                    
-            </div>   
-            <div className="all-section">
-                <div className="all-section-header" onClick={toggleAllSection}>
-                    <img className="dropdown-images" src={allImage}/>
-                    {"All Boards"}
-                </div>
-                {isAllOpen &&
-                    <ul className='lists'>
-                        {allBoards.map(board => (
-                            <div className="section-item" key={board}>
-                                {board}
-                                <img className="dropdown-item-images" src={BinBlack}/>
-                            </div>
-                            
-                        ))}
-                    </ul>
-                }                    
-            </div> 
+    const toggleAllSection = () => {
+        setIsAllOpen(!isAllOpen);
+        if (allImage == DropdownDown){
+            setAllImage(DropdownUp)
+        }else{
+            setAllImage(DropdownDown)
+        }
+    };
+    const toggleFavSection = () => {
+        setIsFavOpen(!isFavoriteOpen);
+        if (favImage == DropdownDown){
+            setFavImage(DropdownUp)
+        }else{
+            setFavImage(DropdownDown)
+        }
+    };
+    function removeFavorite(clickedBoard){
+        setFavoriteBoards(prevBoards => prevBoards.filter(board => board !== clickedBoard));
+    }
+    function removeAll(clickedBoard){
+        setAllBoards(prevBoards => prevBoards.filter(board => board !== clickedBoard));
+    }
+
+    return (
+        <div className="sidebar">
+            <div>
+                <div className="fav-section">
+                    <div className="fav-section-header" onClick={toggleFavSection}>
+                        <img className="dropdown-images" src={favImage}/>
+                        {"Favorite Boards"}
+                    </div>
+                    {isFavoriteOpen &&
+                        <ul className='lists'>
+                            {favoriteBoards.map(board => (
+                                <div className="section-item" key={board}>
+                                    {board}
+                                    <img className="sidebar-star dropdown-item-images" onClick={()=> removeFavorite(board)} src={StarFilled}/>
+                                </div>
+                            ))}
+                        </ul>
+                    }                    
+                </div>   
+                <div className="all-section">
+                    <div className="all-section-header" onClick={toggleAllSection}>
+                        <img className="dropdown-images" src={allImage}/>
+                        {"All Boards"}
+                    </div>
+                    {isAllOpen &&
+                        <ul className='lists'>
+                            {allBoards.map(board => (
+                                <div className="section-item" key={board}>
+                                    {board}
+                                    <img className="checkbox-delete dropdown-item-images" onClick={()=> removeAll(board)} src={BinBlack}/>
+                                </div>
+                                
+                            ))}
+                        </ul>
+                    }                    
+                </div> 
+            </div>
         </div>
-    </div>
-  );
+    );
 };
 
 export default Sidebar;
