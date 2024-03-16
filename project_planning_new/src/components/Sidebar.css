@@ -1,12 +1,32 @@
-.Sidebar{
+.sidebar{
     position: fixed;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     top: 0;
     left: 0;
     height:100%;
     width: 255px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.fav-section-header {
+    padding: 12px;
+    background-color: #eee; 
+    cursor: pointer; 
+    width: 180px;
+    
+    font-family: sans-serif;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+  
+.fav-section-content {
+    padding: 10px;
+}
+  
+  
+.fav-section-content {
+    display: block;
 }
