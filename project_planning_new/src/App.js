@@ -28,39 +28,53 @@ function App() {
   };
 
 
-  const [todoCards, setTodo] = useState([
+  const [listOne, setListOne] = useState([
     { id: 1, title: 'Sample Card' }, 
     { id: 2, title: 'Testing a longer card and text to see if overflow works' }, 
   ]);
-  const [progressCards, setProgress] = useState([
+  const [listTwo, setListTwo] = useState([
     { id: 3, title: 'Testing a longer card and text to see if overflow works' }, 
     { id: 5, title: 'Testing a longer card and text to see if overflow works' }, 
   ]);
-  const [doneCards, setDone] = useState([
+  const [listThree, setListThree] = useState([
     { id: 4, title: 'Sample Card' }, 
     { id: 6, title: 'Testing a longer card and text to see if overflow works' }, 
   ]);
+  const [listFour, setListFour] = useState([
+  ]);
+  const [listFive, setListFive] = useState([
+  ]);
+  const [listOneName, setListOneName] = useState("To Do");
+  const [listTwoName, setListTwoName] = useState("In Progress")
+  const [listThreeName, setListThreeName] = useState("Done")
+  const [listFourName, setListFourName] = useState("")
+  const [listFiveName, setListFiveName] = useState("")
+
 
   function addCard(title, listTitle) {
     const newCard = { id: todoID, title }; 
     todoID++
-    if (listTitle === "todoCards") {
-      setTodo([...todoCards, newCard]);
-    } else if (listTitle === "progressCards") {
-      setProgress([...progressCards, newCard]);
-    } else if (listTitle === "doneCards") {
-      setDone([...doneCards, newCard]);
+    if (listTitle === "listOne") {
+      setListOne([...listOne, newCard]);
+    } else if (listTitle === "listTwo") {
+      setListTwo([...listTwo, newCard]);
+    } else if (listTitle === "listThree") {
+      setListThree([...listThree, newCard]);
+    } else if (listTitle === "listFour") {
+      setListFour([...listFour, newCard]);
+    } else if (listTitle === "listFive") {
+      setListFive([...listFive, newCard]);
     } 
     
   };
 
   function getList(listId) {
-    if (listId === "todoCards") {
-      return todoCards;
-    } else if (listId === "progressCards") {
-      return progressCards;
-    } else if (listId === "doneCards") {
-      return doneCards;
+    if (listId === "listOne") {
+      return listOne;
+    } else if (listId === "listTwo") {
+      return listTwo;
+    } else if (listId === "listThree") {
+      return listThree;
     } 
   }
   function reorder(list, startIndex, endIndex) {
@@ -95,12 +109,12 @@ function App() {
         destination.index 
       );
     
-      if (source.droppableId === "todoCards") {
-        setTodo(items);
-      } else if (source.droppableId === "progressCards") {
-        setProgress(items);
-      } else if (source.droppableId === "doneCards") {
-        setDone(items);
+      if (source.droppableId === "listOne") {
+        setListOne(items);
+      } else if (source.droppableId === "listTwo") {
+        setListTwo(items);
+      } else if (source.droppableId === "listThree") {
+        setListThree(items);
       }
     }else{
       const result = move(
@@ -110,14 +124,14 @@ function App() {
         destination
       );
   
-      if (result.todoCards) {
-        setTodo(result.todoCards);
+      if (result.listOne) {
+        setListOne(result.listOne);
       }
-      if (result.progressCards) {
-        setProgress(result.progressCards);
+      if (result.listTwo) {
+        setListTwo(result.listTwo);
       }
-      if (result.doneCards) {
-        setDone(result.doneCards);
+      if (result.listThree) {
+        setListThree(result.listThree);
       }
     }
   }
@@ -137,11 +151,11 @@ function App() {
           <Toolbar />
           <DragDropContext onDragEnd={onDragEnd}>
             <div style={{ display: 'flex', alignItems: "flex-start"}}>
-              <List title="To Do" listTitle="todoCards" cardList={todoCards} onAddButton={addCard} cardClick ={handleCardClick}/>
-              <List title="In Progress" listTitle="progressCards" cardList={progressCards} onAddButton={addCard} cardClick ={handleCardClick}/>
-              <List title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+              <List title={listOneName} listTitle="listOne" cardList={listOne} onAddButton={addCard} cardClick ={handleCardClick}/>
+              <List title={listTwoName} listTitle="listTwo" cardList={listTwo} onAddButton={addCard} cardClick ={handleCardClick}/>
+              <List title={listThreeName} listTitle="listThree" cardList={listThree} onAddButton={addCard} cardClick ={handleCardClick}/>
               {isOpen && 
-              <List hidden title="Done" listTitle="doneCards" cardList={doneCards} onAddButton={addCard} cardClick ={handleCardClick}/>
+              <List hidden title={listFourName} listTitle="listFour" cardList={listFour} onAddButton={addCard} cardClick ={handleCardClick}/>
               }
             </div>
           </DragDropContext>
