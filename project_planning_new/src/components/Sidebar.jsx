@@ -16,23 +16,34 @@ function Sidebar(){
   const toggleFavSection = () => {
     setIsFavOpen(!isFavoriteOpen);
   };
-  
+
   return (
     <div className="sidebar">
-        <div style={{marginTop: "70px"}}>
+        <div>
             <div className="fav-section">
                 <div className="fav-section-header" onClick={toggleFavSection}>
                     {"Favorite Boards"}
                 </div>
                 {isFavoriteOpen &&
-                    <ul>
+                    <ul className='lists'>
                         {favoriteBoards.map(board => (
-                            <li key={board}>{board}</li>
+                            <div className="section-item" key={board}>{board}</div>
                         ))}
                     </ul>
                 }                    
             </div>   
-            
+            <div className="all-section">
+                <div className="all-section-header" onClick={toggleAllSection}>
+                    {"All Boards"}
+                </div>
+                {isAllOpen &&
+                    <ul className='lists'>
+                        {allBoards.map(board => (
+                            <div className="section-item" key={board}>{board}</div>
+                        ))}
+                    </ul>
+                }                    
+            </div> 
         </div>
     </div>
   );
