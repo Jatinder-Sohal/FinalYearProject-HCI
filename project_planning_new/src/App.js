@@ -11,6 +11,7 @@ import './App.css'
 
 
 var todoID = 7;
+var listShown = 3;
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
@@ -65,7 +66,6 @@ function App() {
     } else if (listTitle === "listFive") {
       setListFive([...listFive, newCard]);
     } 
-    
   };
 
   function getList(listId) {
@@ -75,6 +75,10 @@ function App() {
       return listTwo;
     } else if (listId === "listThree") {
       return listThree;
+    } else if (listId === "listFour") {
+      return listFour;
+    } else if (listId === "listFive") {
+      return listFive;
     } 
   }
   function reorder(list, startIndex, endIndex) {
@@ -115,15 +119,18 @@ function App() {
         setListTwo(items);
       } else if (source.droppableId === "listThree") {
         setListThree(items);
+      } else if (source.droppableId === "listFour") {
+        setListFour(items);
+      } else if (source.droppableId === "listFive") {
+        setListFive(items);
       }
-    }else{
+    } else{
       const result = move(
         getList(source.droppableId),
         getList(destination.droppableId),
         source,
         destination
       );
-  
       if (result.listOne) {
         setListOne(result.listOne);
       }
@@ -133,13 +140,28 @@ function App() {
       if (result.listThree) {
         setListThree(result.listThree);
       }
+      if (result.listFour) {
+        setListFour(result.listFour);
+      }
+      if (result.listFive) {
+        setListFive(result.listFive);
+      }
     }
   }
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isFourOpen, setIsFourOpen] = useState(false);
+  const [isFiveOpen, setIsFiveOpen] = useState(false);
 
   function toggle() {
-    setIsOpen((isOpen) => !isOpen);
+    listShown++;
+    if (listShown == 4){
+      setIsFourOpen((isFourOpen) => !isFourOpen);
+    }else if (listShown == 5) {
+      setIsFiveOpen((isFiveOpen) => !isFiveOpen);
+    }else{
+      listShown = 5;
+      alert("You cannot add any more lists!")
+    }
   }
 
   return (
@@ -154,8 +176,11 @@ function App() {
               <List title={listOneName} listTitle="listOne" cardList={listOne} onAddButton={addCard} cardClick ={handleCardClick}/>
               <List title={listTwoName} listTitle="listTwo" cardList={listTwo} onAddButton={addCard} cardClick ={handleCardClick}/>
               <List title={listThreeName} listTitle="listThree" cardList={listThree} onAddButton={addCard} cardClick ={handleCardClick}/>
-              {isOpen && 
-              <List hidden title={listFourName} listTitle="listFour" cardList={listFour} onAddButton={addCard} cardClick ={handleCardClick}/>
+              {isFourOpen && 
+              <List title={listFourName} listTitle="listFour" cardList={listFour} onAddButton={addCard} cardClick ={handleCardClick}/>
+              }
+              {isFiveOpen && 
+              <List title={listFiveName} listTitle="listFive" cardList={listFive} onAddButton={addCard} cardClick ={handleCardClick}/>
               }
             </div>
           </DragDropContext>
