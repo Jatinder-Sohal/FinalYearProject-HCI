@@ -16,15 +16,19 @@
     text-align: center; 
     border-radius: 8px;
     font-family: sans-serif;
+    margin-bottom: 20px;
 }
 
 .all-section-header,
 .fav-section-header {
-    padding: 12px;
+    padding: 10px;
     background-color: #eee;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lists, .section-item {
@@ -38,11 +42,23 @@
     border-top: 1px solid #ccc; 
     text-align: start;
     padding-inline-start: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
 }
 
 .section-item:first-child {
     border-top: none;
+}
+.dropdown-images{
+    width: 32px;
+    height: 32px;
+
+}
+.dropdown-item-images{
+    width: 26px;
+    height: 26px;
 }
 
 
