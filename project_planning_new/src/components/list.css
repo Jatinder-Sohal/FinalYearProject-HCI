@@ -23,6 +23,17 @@
     padding-left: 18px;
     padding-top: 10px;
 }
+.list-title-input{
+    font-family: sans-serif;
+    font-size: 15px;
+    padding-left: 12px;
+    height: 30px;
+    width: 210px;
+    margin-top: 13px;
+    margin-left: 5px;
+    margin-bottom: 4px;
+    background-color: #97f0ff;
+}
 .plus-icon{
     font-size: 26px;
     margin-right: 9px;

@@ -10,18 +10,11 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick, updateTitle 
     function titleClick(){
         setIsEditingTitle(true);
     };
-    function titleUpdate(){
-        if (currentTitle.trim() === '') {
-            setCurrentTitle(title);
-        } else {
-            updateTitle(currentTitle);
-        }
-        setIsEditingTitle(false);
-    };
-    const handleBlur = () => {
+    function handleInput(){
         setIsEditingTitle(false);
         updateTitle(currentTitle);
     };
+    
 
     const [isAddingCard, setIsAddingCard] = useState(false);
     const [newCardTitle, setNewCardTitle] = useState('');
@@ -48,9 +41,9 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick, updateTitle 
                     type="text" 
                     value={currentTitle} 
                     onChange={(e) => setCurrentTitle(e.target.value)}
-                    onBlur={handleBlur}
-                    autoFocus
-                        
+                    onBlur={handleInput}
+                    onKeyDown={(e) => { if (e.key === 'Enter') { handleInput() } }}
+                    autoFocus 
                     />
                 ) : (
                     <h2 onClick={titleClick}>{currentTitle}</h2>
