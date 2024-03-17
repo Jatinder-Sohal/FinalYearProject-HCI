@@ -4,7 +4,25 @@ import './List.css';
 import CardList from './Cards';
 import Cancel from '../images/cancel-svgrepo-com.png';
 
-const List = ({ title, listTitle, cardList, onAddButton, cardClick }) => {
+const List = ({ title, listTitle, cardList, onAddButton, cardClick, updateTitle }) => {
+    const [isEditingTitle, setIsEditingTitle] = useState(false);
+    const [currentTitle, setCurrentTitle] = useState(title);
+    function titleClick(){
+        setIsEditingTitle(true);
+    };
+    function titleUpdate(){
+        if (currentTitle.trim() === '') {
+            setCurrentTitle(title);
+        } else {
+            updateTitle(currentTitle);
+        }
+        setIsEditingTitle(false);
+    };
+    const handleBlur = () => {
+        setIsEditingTitle(false);
+        updateTitle(currentTitle);
+    };
+
     const [isAddingCard, setIsAddingCard] = useState(false);
     const [newCardTitle, setNewCardTitle] = useState('');
   
@@ -24,7 +42,19 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick }) => {
     return (
         <div className="list">
             <header className="list-header">
-                <h2>{title}</h2>
+                {isEditingTitle ? (
+                <input 
+                    className="list-title-input" 
+                    type="text" 
+                    value={currentTitle} 
+                    onChange={(e) => setCurrentTitle(e.target.value)}
+                    onBlur={handleBlur}
+                    autoFocus
+                        
+                    />
+                ) : (
+                    <h2 onClick={titleClick}>{currentTitle}</h2>
+                )}
                 <button className="list-action" onClick={toggleDropdown}>...</button>
                 {isDropdownOpen && (
                     <div className="dropdown">

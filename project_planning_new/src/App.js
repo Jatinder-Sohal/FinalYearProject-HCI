@@ -152,11 +152,13 @@ function App() {
   const [isFourOpen, setIsFourOpen] = useState(false);
   const [isFiveOpen, setIsFiveOpen] = useState(false);
 
-  function toggle() {
+  function toggle(listName) {
     listShown++;
     if (listShown == 4){
+      setListFourName(listName)
       setIsFourOpen((isFourOpen) => !isFourOpen);
     }else if (listShown == 5) {
+      setListFiveName(listName)
       setIsFiveOpen((isFiveOpen) => !isFiveOpen);
     }else{
       listShown = 5;
@@ -173,14 +175,14 @@ function App() {
           <Toolbar />
           <DragDropContext onDragEnd={onDragEnd}>
             <div style={{ display: 'flex', alignItems: "flex-start"}}>
-              <List title={listOneName} listTitle="listOne" cardList={listOne} onAddButton={addCard} cardClick ={handleCardClick}/>
-              <List title={listTwoName} listTitle="listTwo" cardList={listTwo} onAddButton={addCard} cardClick ={handleCardClick}/>
-              <List title={listThreeName} listTitle="listThree" cardList={listThree} onAddButton={addCard} cardClick ={handleCardClick}/>
+              <List title={listOneName} listTitle="listOne" cardList={listOne} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListOneName}/>
+              <List title={listTwoName} listTitle="listTwo" cardList={listTwo} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListTwoName}/>
+              <List title={listThreeName} listTitle="listThree" cardList={listThree} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListThreeName}/>
               {isFourOpen && 
-              <List title={listFourName} listTitle="listFour" cardList={listFour} onAddButton={addCard} cardClick ={handleCardClick}/>
+              <List title={listFourName} listTitle="listFour" cardList={listFour} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListFourName}/>
               }
               {isFiveOpen && 
-              <List title={listFiveName} listTitle="listFive" cardList={listFive} onAddButton={addCard} cardClick ={handleCardClick}/>
+              <List title={listFiveName} listTitle="listFive" cardList={listFive} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListFiveName}/>
               }
             </div>
           </DragDropContext>
