@@ -14,7 +14,6 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick, updateTitle 
         setIsEditingTitle(false);
         updateTitle(currentTitle);
     };
-    
 
     const [isAddingCard, setIsAddingCard] = useState(false);
     const [newCardTitle, setNewCardTitle] = useState('');
@@ -33,52 +32,54 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick, updateTitle 
         setIsDropdownOpen(!isDropdownOpen);
     };
     return (
-        <div className="list">
-            <header className="list-header">
-                {isEditingTitle ? (
-                <input 
-                    className="list-title-input" 
-                    type="text" 
-                    value={currentTitle} 
-                    onChange={(e) => setCurrentTitle(e.target.value)}
-                    onBlur={handleInput}
-                    onKeyDown={(e) => { if (e.key === 'Enter') { handleInput() } }}
-                    autoFocus 
-                    />
-                ) : (
-                    <h2 onClick={titleClick}>{currentTitle}</h2>
-                )}
-                <button className="list-action" onClick={toggleDropdown}>...</button>
-                {isDropdownOpen && (
-                    <div className="dropdown">
-                        <div className='dropdown-header'>
-                            <h3 className='dropdown-title'>List actions</h3>
-                            <img src={Cancel} className="close-dropdown" onClick={toggleDropdown}  alt="Close dropdown" />
-                        </div>
-                        <ul>
-                            <li>Duplicate List</li>
-                            <li>Filter by...</li>
-                            <li>Sort by...</li>
-                            <li>Delete List</li>
-                        </ul>
+        <div>
+            <div className="list">
+                <header className="list-header">
+                    {isEditingTitle ? (
+                    <input 
+                        className="list-title-input" 
+                        type="text" 
+                        value={currentTitle} 
+                        onChange={(e) => setCurrentTitle(e.target.value)}
+                        onBlur={handleInput}
+                        onKeyDown={(e) => { if (e.key === 'Enter') { handleInput() } }}
+                        autoFocus 
+                        />
+                    ) : (
+                        <h2 onClick={titleClick}>{currentTitle}</h2>
+                    )}
+                    <button className="list-action" onClick={toggleDropdown}>...</button>
+                </header>
+                
+                <CardList cards={cardList} title={title} listTitle={listTitle} cardClick={cardClick}/>
+                {isAddingCard ? (
+                    <>
+                    <textarea className="new-card-input" onChange={(e) => setNewCardTitle(e.target.value)} placeholder="Enter a title for this card..."></textarea>
+                    <div style={{ display: 'flex', marginTop:'2px', alignItems: 'center'}}>
+                        <button className="btn btn-primary confirm-card-button" onClick={handleAddCard}>Add Card</button>
+                        <img src={Cancel} className="cancel-card-button" onClick={() => setIsAddingCard(false)}  alt="Cancel card" />
                     </div>
+                    </>
+                ) : (
+                    <button className="add-card-btn" onClick={() => setIsAddingCard(true)}>
+                        <span className="plus-icon">+</span>
+                        <span className="add-card-btn-text">Add a card</span>
+                    </button>
                 )}
-            </header>
-            
-            <CardList cards={cardList} title={title} listTitle={listTitle} cardClick={cardClick}/>
-            {isAddingCard ? (
-                <>
-                <textarea className="new-card-input" onChange={(e) => setNewCardTitle(e.target.value)} placeholder="Enter a title for this card..."></textarea>
-                <div style={{ display: 'flex', marginTop:'2px', alignItems: 'center'}}>
-                    <button className="btn btn-primary confirm-card-button" onClick={handleAddCard}>Add Card</button>
-                    <img src={Cancel} className="cancel-card-button" onClick={() => setIsAddingCard(false)}  alt="Cancel card" />
+            </div>
+            {isDropdownOpen && (
+                <div className="dropdown">
+                    <div className='dropdown-header'>
+                        <h3 className='dropdown-title'>List actions</h3>
+                        <img src={Cancel} className="close-dropdown" onClick={toggleDropdown}  alt="Close dropdown" />
+                    </div>
+                    <ul>
+                        <li>Duplicate List</li>
+                        <li>Filter by...</li>
+                        <li>Sort by...</li>
+                        <li>Delete List</li>
+                    </ul>
                 </div>
-                </>
-            ) : (
-                <button className="add-card-btn" onClick={() => setIsAddingCard(true)}>
-                    <span className="plus-icon">+</span>
-                    <span className="add-card-btn-text">Add a card</span>
-                </button>
             )}
         </div>
     );
