@@ -110,3 +110,12 @@ input::placeholder {
 .settings-dropdown:hover{
     display: block; 
 }
+.topbar-title-input{
+    font-family: sans-serif;
+    font-size: 20px;
+    height: 30px;
+    width: 210px;
+    margin-top: 13px;
+    margin-bottom: 14px;
+    margin-left: 28px;
+}

@@ -7,10 +7,7 @@ import Star from '../images/filled-star.png'
 import StarBorder from '../images/star-border.png'
 import BinBlack from '../images/bin-black.png'
 
-function Sidebar({currentTitle}){
-    const [favoriteBoards, setFavoriteBoards] = useState([currentTitle, 'Board 2']);
-    const [allBoards, setAllBoards] = useState([currentTitle, 'Board 2', 'Board 3']);
-
+function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards}){
     const [isAllOpen, setIsAllOpen] = useState(true);
     const [isFavoriteOpen, setIsFavOpen] = useState(true);
     const [favImage, setFavImage] = useState(DropdownUp);

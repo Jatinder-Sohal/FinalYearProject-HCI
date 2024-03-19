@@ -18,13 +18,25 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [listWithCard, setCurrentList] = useState(null);
 
-  const handleCardClick = (card, currentList) => {
+  const [favoriteBoards, setFavoriteBoards] = useState([boardTitle, 'Board 2']);
+  const [allBoards, setAllBoards] = useState([boardTitle, 'Board 2', 'Board 3']);
+  function updateSidebar(newTitle){
+    setBoardTitle(newTitle)
+    setFavoriteBoards(boards =>
+      boards.map((board, i) => (i === 0 ? newTitle : board))
+    );
+    setAllBoards(boards =>
+      boards.map((board, i) => (i === 0 ? newTitle : board))
+    );
+  }
+
+  function handleCardClick(card, currentList){
     setSelectedCard(card);
     setCurrentList(currentList)
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
+  function closeModal() {
     setIsModalOpen(false);
     setSelectedCard(null);
   };
@@ -169,9 +181,9 @@ function App() {
 
   return (
     <div className="Root">
-      <Topbar title={boardTitle} updateTitle={setBoardTitle}/>
+      <Topbar title={boardTitle} updateTitle={updateSidebar}/>
       <div className="Content">
-        <Sidebar currentTitle={boardTitle}/>
+        <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards}/>
         <div style={{ display: 'flex'}}>
           <Toolbar />
           <DragDropContext onDragEnd={onDragEnd}>
@@ -189,7 +201,6 @@ function App() {
           </DragDropContext>
           <NewList addList={toggle} />
         </div>
-        
         {isModalOpen && (
           <Modal card={selectedCard} onClose={closeModal} listTitle={listWithCard} />
         )}
