@@ -44,10 +44,16 @@ function Topbar({title, updateTitle}){
                     <img src={Search} className="search-icon" alt="Favourite Board" />
                     <input type="text" class="search-input" placeholder="Search" />
                 </div>
-                <img src={Help} className="right-Icon help-icon" alt="Help icon" />
+                <div className="help-container">
+                    <img src={Help} className="right-Icon help-icon" alt="Help icon" />
+                    <div className="topbar-dropown help-dropdown">
+                        <h1>test</h1>
+                    </div>
+                </div>
+                
                 <div className="settings-container">
                     <img src={Settings} className="settings-icon" alt="Settings Icon" />
-                    <div className="settings-dropdown">
+                    <div className="topbar-dropown settings-dropdown">
                         <h1>test</h1>
                     </div>
                 </div>

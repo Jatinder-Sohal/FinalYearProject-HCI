@@ -77,8 +77,8 @@
 
 .close-dropdown{
     position: absolute; 
-    top: 8px; 
-    right: 8px;
+    top: 3px; 
+    right: 12px;
     width: 22px;
     height: 22px;
 }
@@ -138,12 +138,17 @@
     background-color: transparent;
     margin-left: 8px;
 }
+
 .confirm-card-button{
     box-shadow: 0 1px 0 rgba(9,30,66,.25);
     height: 35px;
     width: 81px;
     border-radius: 5px;
     border: none;
-    background-color: #dae2ff;
+    background-color: #006874;
     margin-left: 8px;
+    color: white;
+}
+.confirm-card-button:hover{
+    background-color: #b1cbd0;
 }

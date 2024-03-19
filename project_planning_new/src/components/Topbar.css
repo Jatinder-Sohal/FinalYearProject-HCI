@@ -44,6 +44,15 @@
     font-family: sans-serif;
     font-size: 1.7rem;
 }
+.topbar-title-input{
+    font-family: sans-serif;
+    font-size: 20px;
+    height: 30px;
+    width: 210px;
+    margin-top: 13px;
+    margin-bottom: 14px;
+    margin-left: 28px;
+}
 
 .right-Topbar{
     display: flex;
@@ -85,10 +94,9 @@ input::placeholder {
   color: #000;
 }
 
-.settings-dropdown{
+.topbar-dropown{
     position: absolute;
-    top: 100%; 
-    right: 0;
+    top: 100%;
     background: white;
     border: 1px solid #e6e6e6;
     border-radius: 8px;
@@ -101,21 +109,21 @@ input::placeholder {
     color: black;
     margin-top: -10px;
 }
+.settings-dropdown{
+    right: 20px;
+}
 .settings-icon{
     width: 42px;
     height: 42px;
     cursor: pointer; 
 }
 .settings-container:hover .settings-dropdown,
-.settings-dropdown:hover{
+.settings-dropdown:hover,
+.help-container:hover .help-dropdown,
+.help-dropdown:hover{
     display: block; 
 }
-.topbar-title-input{
-    font-family: sans-serif;
-    font-size: 20px;
-    height: 30px;
-    width: 210px;
-    margin-top: 13px;
-    margin-bottom: 14px;
-    margin-left: 28px;
+
+.help-dropdown{ 
+    right: 40px;
 }

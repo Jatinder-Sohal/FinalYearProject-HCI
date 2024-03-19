@@ -13,7 +13,7 @@ import './App.css'
 var todoID = 7;
 var listShown = 3;
 function App() {
-  const [boardTitle, setBoardTitle] = useState('tes')
+  const [boardTitle, setBoardTitle] = useState('Kanban Board')
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [listWithCard, setCurrentList] = useState(null);

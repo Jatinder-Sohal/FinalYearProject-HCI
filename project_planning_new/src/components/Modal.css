@@ -156,6 +156,8 @@
     margin-right: 5px;
 }
 
+.close-dropdown:hover,
+.list-action:hover,
 .modal-close:hover,
 .cancel-card-button:hover{
     transition: 0.2s; 
