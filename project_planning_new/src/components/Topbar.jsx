@@ -1,10 +1,21 @@
+import { useState } from 'react';
 import './Topbar.css'
 import Help from '../images/help.png';
 import Settings from '../images/settings.png';
 import Share from '../images/share.png';
 import Search from '../images/search.png'
 
-function Topbar(){
+function Topbar({title, updateTitle}){
+    const [isEditingTitle, setIsEditingTitle] = useState(false);
+    const [currentTitle, setCurrentTitle] = useState(title);
+    function titleClick(){
+        setIsEditingTitle(true);
+    };
+    function handleInput(){
+        setIsEditingTitle(false);
+        updateTitle(currentTitle);
+    };
+
     return(
         <div className='Topbar'>
             <div className='left-Topbar'>
@@ -14,7 +25,19 @@ function Topbar(){
                 </div>
             </div>
             <div className='middle-Topbar'>
-                <h1 className='Topbar-Title'>Kanban Board</h1>
+                {isEditingTitle ? (
+                    <input 
+                        className="topbar-title-input" 
+                        type="text" 
+                        value={currentTitle} 
+                        onChange={(e) => setCurrentTitle(e.target.value)}
+                        onBlur={handleInput}
+                        onKeyDown={(e) => { if (e.key === 'Enter') { handleInput() } }}
+                        autoFocus 
+                    />
+                ) : (
+                    <h1 onClick={titleClick} className='Topbar-Title'>{title}</h1>
+                )}
             </div>
             <div className='right-Topbar'>
                 <div class="search-bar-container">

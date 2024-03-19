@@ -13,6 +13,7 @@ import './App.css'
 var todoID = 7;
 var listShown = 3;
 function App() {
+  const [boardTitle, setBoardTitle] = useState('tes')
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [listWithCard, setCurrentList] = useState(null);
@@ -168,9 +169,9 @@ function App() {
 
   return (
     <div className="Root">
-      <Topbar />
+      <Topbar title={boardTitle} updateTitle={setBoardTitle}/>
       <div className="Content">
-        <Sidebar/>
+        <Sidebar currentTitle={boardTitle}/>
         <div style={{ display: 'flex'}}>
           <Toolbar />
           <DragDropContext onDragEnd={onDragEnd}>
