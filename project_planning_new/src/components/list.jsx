@@ -3,6 +3,10 @@ import { useState } from 'react';
 import './List.css'; 
 import CardList from './Cards';
 import Cancel from '../images/cancel-svgrepo-com.png';
+import Delete from '../images/bin-black.png'
+import Sort from '../images/sort.png';
+import Filter from '../images/filter.png';
+import Copy from '../images/copy.png'
 
 const List = ({ title, listTitle, cardList, onAddButton, cardClick, updateTitle }) => {
     const [isEditingTitle, setIsEditingTitle] = useState(false);
@@ -33,6 +37,32 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick, updateTitle 
     };
     return (
         <div>
+        {isDropdownOpen && (
+                <div className="dropdown">
+                    <div className='dropdown-header'>
+                        <h3 className='dropdown-title'>List actions</h3>
+                        <img src={Cancel} className="close-dropdown" onClick={toggleDropdown}  alt="Close dropdown" />
+                    </div>
+                    <div style={{padding: '16px'}}>
+                        <div className='dropdown-section'>
+                            Duplicate List
+                            <img className='dropdown-icon' src={Copy} />
+                        </div>
+                        <div className='dropdown-section'>
+                            Filter by...
+                            <img className='dropdown-icon' src={Filter} />
+                        </div>
+                        <div className='dropdown-section'>
+                            Sort by...
+                            <img className='dropdown-icon' src={Sort} />
+                        </div>
+                        <div className='dropdown-section'>
+                            Delete List
+                            <img className='dropdown-icon' src={Delete} />
+                        </div>
+                    </div>
+                </div>
+            )}
             <div className="list">
                 <header className="list-header">
                     {isEditingTitle ? (
@@ -67,20 +97,7 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick, updateTitle 
                     </button>
                 )}
             </div>
-            {isDropdownOpen && (
-                <div className="dropdown">
-                    <div className='dropdown-header'>
-                        <h3 className='dropdown-title'>List actions</h3>
-                        <img src={Cancel} className="close-dropdown" onClick={toggleDropdown}  alt="Close dropdown" />
-                    </div>
-                    <ul>
-                        <li>Duplicate List</li>
-                        <li>Filter by...</li>
-                        <li>Sort by...</li>
-                        <li>Delete List</li>
-                    </ul>
-                </div>
-            )}
+            
         </div>
     );
 };
