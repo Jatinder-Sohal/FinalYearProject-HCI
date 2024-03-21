@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import './List.css'; 
+import '../css/List.css'; 
 import CardList from './Cards';
 import Cancel from '../images/cancel-svgrepo-com.png';
 import Delete from '../images/bin-black.png'

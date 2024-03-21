@@ -1,4 +1,4 @@
-import './Toolbar.css'
+import '../css/Toolbar.css'
 import Delete from '../images/bin.png';
 import Undo from '../images/undo.png';
 import Redo from '../images/redo.png';

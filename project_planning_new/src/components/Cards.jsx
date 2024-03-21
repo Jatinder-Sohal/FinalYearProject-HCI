@@ -1,6 +1,6 @@
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import './List.css'; 
+import '../css/List.css'; 
 
 const Cards = ({ cards, title, listTitle, cardClick }) => {
   return (

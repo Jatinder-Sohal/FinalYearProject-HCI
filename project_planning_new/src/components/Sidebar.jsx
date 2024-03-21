@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Sidebar.css';
+import '../css/Sidebar.css';
 import DropdownUp from '../images/dropdown-up.png';
 import DropdownDown from '../images/dropdown-down.png';
 import StarFilled from '../images/star.png'

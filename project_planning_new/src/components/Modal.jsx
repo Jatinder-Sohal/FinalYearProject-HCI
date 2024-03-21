@@ -1,4 +1,4 @@
-import './Modal.css'
+import '../css/Modal.css'
 import { useState } from 'react';
 import Cancel from '../images/cancel-svgrepo-com.png';
 import MoveLeft from '../images/left-arrow.png'
