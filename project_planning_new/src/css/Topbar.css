@@ -101,13 +101,35 @@ input::placeholder {
     border: 1px solid #e6e6e6;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 200px; 
+    width: 220px; 
     height: 400px;
-    padding: 15px;
+    padding-inline-start: 16px;
     display: none;
     z-index: 1008;
     color: black;
     margin-top: -10px;
+    font-family: sans-serif;
+}
+.dropdown-option{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 7px;
+}
+.topbarDropdown-title{
+    font-family: sans-serif;
+    margin-left: 0px;
+}
+#label{
+    font-size: 25px;
+}
+.text-size-slider{
+    width: 180px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.background-color-picker{
+    margin-right: 10px;
 }
 .settings-dropdown{
     right: 20px;
@@ -126,4 +148,13 @@ input::placeholder {
 
 .help-dropdown{ 
     right: 40px;
+}
+.dropdown-checkbox{
+    margin-right: 28px;
+    width: 20px;
+    height: 20px;
+}
+.textSize-label{
+    margin-top: 15px;
+    margin-bottom: 35px;
 }

@@ -54,7 +54,50 @@ function Topbar({title, updateTitle}){
                 <div className="settings-container">
                     <img src={Settings} className="settings-icon" alt="Settings Icon" />
                     <div className="topbar-dropown settings-dropdown">
-                        <h1>test</h1>
+                        <h1 className='topbarDropdown-title'>Settings</h1>
+                        <div className="dropdown-option">
+                            <label>Background Color:</label>
+                            <input
+                                className="background-color-picker"
+                                type="color"
+                            />
+                        </div>
+                        <div className="dropdown-option">
+                            <label>Content Color:</label>
+                            <input
+                                className="background-color-picker"
+                                type="color"
+                            />
+                        </div>
+                        <div className="dropdown-option">
+                        <label>Color Blind Mode:</label>
+                        <input
+                            type="checkbox"
+                            className='dropdown-checkbox' />
+                            
+                        </div>
+                        <div className="dropdown-option">
+                            <label>Content Color:</label>
+                            <input
+                            type="checkbox"
+                            className='dropdown-checkbox' />
+                        </div>   
+                        <div className="dropdown-option">
+                            <label>Content Color:</label>
+                            <input
+                            type="checkbox"
+                            className='dropdown-checkbox' />
+                        </div>       
+                        <div style={{marginTop: "15px"}}>
+                            <label >Text Size:  5px</label> <br/>
+                            <input
+                                className="text-size-slider"
+                                type="range"
+                                min="12"
+                                max="24"
+                            />
+                            
+                        </div>
                     </div>
                 </div>
             </div>
