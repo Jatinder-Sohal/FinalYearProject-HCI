@@ -46,14 +46,22 @@ function Topbar({title, updateTitle}){
                 </div>
                 <div className="help-container">
                     <img src={Help} className="right-Icon help-icon" alt="Help icon" />
-                    <div className="topbar-dropown help-dropdown">
-                        <h1>test</h1>
+                    <div className="topbar-dropdown help-dropdown">
+                        <h1>Contact Us</h1>
+                        <h2 className=''>Email:</h2> 
+                        <h3 className='topbar-dropdown-contact'>ProjectPlanning@gmail.com</h3>
+                        <h2>Phone:</h2>
+                        <h3 className='topbar-dropdown-contact'>+449848436078</h3>
+                        <h2>Twitter:</h2>
+                        <h3 className='topbar-dropdown-contact'>@ProjectPlanningUK</h3>
+                        <h2>Facebook:</h2>
+                        <h3 className='topbar-dropdown-contact'>@ProjectPlanningUK</h3>
                     </div>
                 </div>
                 
                 <div className="settings-container">
                     <img src={Settings} className="settings-icon" alt="Settings Icon" />
-                    <div className="topbar-dropown settings-dropdown">
+                    <div className="topbar-dropdown settings-dropdown">
                         <h1 className='topbarDropdown-title'>Settings</h1>
                         <div className="dropdown-option">
                             <label>Background Color:</label>
@@ -70,20 +78,20 @@ function Topbar({title, updateTitle}){
                             />
                         </div>
                         <div className="dropdown-option">
-                        <label>Color Blind Mode:</label>
+                        <label>Dark Mode:</label>
                         <input
                             type="checkbox"
                             className='dropdown-checkbox' />
                             
                         </div>
                         <div className="dropdown-option">
-                            <label>Content Color:</label>
+                            <label>Contrast Mode:</label>
                             <input
                             type="checkbox"
                             className='dropdown-checkbox' />
                         </div>   
                         <div className="dropdown-option">
-                            <label>Content Color:</label>
+                            <label>Color Blind Mode:</label>
                             <input
                             type="checkbox"
                             className='dropdown-checkbox' />
