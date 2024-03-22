@@ -33,6 +33,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.cooking_companion.data.DataSource.recipesList
+import com.example.cooking_companion.data.DataSource.tomatoIngredient
+import com.example.cooking_companion.data.DataSource.tomatoRecipes
+import com.example.cooking_companion.data.DataSource.veganRecipes
 import com.example.cooking_companion.ui.pages.CompanionHomeScreen
 import com.example.cooking_companion.ui.pages.CompanionListsScreen
 import com.example.cooking_companion.ui.pages.CompanionSavedScreen
@@ -93,11 +96,21 @@ fun CompanionApp() {
                 query = backStackEntry.arguments?.getString("searchQuery") ?: "")
             }
             composable(
-                route = "Recipe/{recipeName}",
-                arguments = listOf(navArgument("recipeName") { type = NavType.StringType })
+                route = "Recipe/{recipeName}/{listName}",
+                arguments = listOf(
+                    navArgument("recipeName") { type = NavType.StringType },
+                    navArgument("listName") { type = NavType.StringType }
+                )
             ) { backStackEntry ->
                 val recipeName = backStackEntry.arguments?.getString("recipeName") ?: ""
-                val recipe = recipesList.first { it.name == recipeName }
+                val listName = backStackEntry.arguments?.getString("listName") ?: ""
+                val recipe = when (listName){
+                    "recipesList" -> recipesList.first { it.name == recipeName }
+                    "veganRecipes" -> veganRecipes.first { it.name == recipeName }
+                    "tomatoIngredient" -> tomatoIngredient.first{it.name == recipeName}
+                    else -> { tomatoRecipes.first{it.name == recipeName}}
+                }
+
                 Recipe(recipe, navController)
             }
         }

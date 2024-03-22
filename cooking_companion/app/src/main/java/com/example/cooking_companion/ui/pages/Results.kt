@@ -179,13 +179,13 @@ fun Results(navController: NavHostController, tab:String, query:String, modifier
         }
         when (selectedTab) {
             "Recipes" -> {
-                DisplayGrid(recipes) { recipe -> RecipeCard(recipe) }
+                DisplayGrid(recipes) { recipe -> RecipeCard(recipe, navController, "veganRecipes") }
             }
             "Collections" -> {
                 DisplayGrid(collection) { collection -> CollectionOption(collection, navController) }
             }
             "Ingredient" -> {
-                DisplayGrid(ingredient) { recipe -> RecipeCard(recipe) }
+                DisplayGrid(ingredient) { recipe -> RecipeCard(recipe, navController, "tomatoIngredient") }
             }
         }
     }
