@@ -59,10 +59,12 @@ fun Results(navController: NavHostController, tab:String, query:String, modifier
 
     val recipes = when (searchQuery){
         "Vegan" -> DataSource.veganRecipes
+        "Tomato" -> DataSource.tomatoRecipes
         else -> { listOf() }
     }
     val collection = when (searchQuery){
         "Vegan" -> DataSource.veganCollection
+        "Tomato" -> DataSource.tomatoCollection
         else -> { listOf() }
     }
     val ingredient = when (searchQuery){
@@ -73,11 +75,13 @@ fun Results(navController: NavHostController, tab:String, query:String, modifier
     Column(
         modifier
             .fillMaxHeight()
+
             .verticalScroll(scrollState)) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = modifier
                 .padding(top = 17.dp)
+                .fillMaxWidth()
         ) {
             IconButton(onClick = { navController.popBackStack() }, modifier = modifier.size(47.dp)) {
                 Icon(
@@ -138,13 +142,13 @@ fun Results(navController: NavHostController, tab:String, query:String, modifier
                     .padding(start = 26.dp, end = 10.dp)
                     .width(220.dp)
             )
-            IconButton(onClick = {  }) {
+            IconButton(onClick = {  }, modifier = modifier.width(73.dp)) {
                 Icon(
                     imageVector = Icons.Default.Tune,
                     contentDescription = "Filter Search Results",
                     tint = MaterialTheme.colorScheme.primary,
                     modifier = modifier
-                        .size(30.dp)
+                        .size(32.dp)
                 )
             }
         }
