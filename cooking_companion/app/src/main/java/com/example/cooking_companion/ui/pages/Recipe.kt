@@ -1,6 +1,7 @@
 package com.example.cooking_companion.ui.pages
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +26,8 @@ import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.Stop
+import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Divider
@@ -55,6 +58,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavHostController
+import com.example.cooking_companion.R
 import com.example.cooking_companion.data.Recipe
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -83,6 +87,9 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
         "Add the cream cheese to the skillet in chunks, then stir until it has melted into the sauce. Top the pasta with sliced green onions and serve."
     )
 
+    val mContext = LocalContext.current
+    val mMediaPlayer = MediaPlayer.create(mContext, R.raw.recipie_audio)
+    var playing by remember { mutableStateOf(false) }
     Box(
         Modifier
             .fillMaxSize()
@@ -362,6 +369,38 @@ fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier 
                 IconButton(onClick = { navController.popBackStack() }) {
                     Icon(Icons.Filled.ArrowBack, "Back")
                 }
+            },
+            actions = {
+                if (playing){
+                    IconButton(
+                        onClick = {
+                            mMediaPlayer.stop()
+                            playing = false
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Stop,
+                            contentDescription = "",
+                            tint = Color.White,
+                            modifier = Modifier.size(40.dp)
+                        )
+                    }
+                }else{
+                    IconButton(
+                        onClick = {
+                            mMediaPlayer.start()
+                            playing = true
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.VolumeUp,
+                            contentDescription = "",
+                            tint = Color.White,
+                            modifier = Modifier.size(40.dp)
+                        )
+                    }
+                }
+
             },
             colors =
             TopAppBarDefaults.topAppBarColors(
