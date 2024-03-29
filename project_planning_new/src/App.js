@@ -43,16 +43,16 @@ function App() {
 
 
   const [listOne, setListOne] = useState([
-    { id: 1, title: 'Sample Card' }, 
-    { id: 2, title: 'Testing a longer card and text to see if overflow works' }, 
+    { id: 1, title: 'Add tasks to git' }, 
+    { id: 2, title: 'Create teams meeting' }, 
   ]);
   const [listTwo, setListTwo] = useState([
-    { id: 3, title: 'Testing a longer card and text to see if overflow works' }, 
-    { id: 5, title: 'Testing a longer card and text to see if overflow works' }, 
+    { id: 3, title: 'Link menu class to order' }, 
+    { id: 5, title: 'Accept different forms of payment' }, 
   ]);
   const [listThree, setListThree] = useState([
-    { id: 4, title: 'Sample Card' }, 
-    { id: 6, title: 'Testing a longer card and text to see if overflow works' }, 
+    { id: 4, title: 'Set up Project' }, 
+    { id: 6, title: 'Creating menu class using TDD and uploaded files to git' },  
   ]);
   const [listFour, setListFour] = useState([
   ]);
