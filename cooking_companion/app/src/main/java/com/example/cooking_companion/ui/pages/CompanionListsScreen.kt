@@ -21,6 +21,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -29,6 +33,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -39,6 +44,7 @@ import com.example.cooking_companion.ui.components.DeleteItemsDialog
 import com.example.cooking_companion.ui.components.Dropdown
 import com.example.cooking_companion.ui.components.OneInputDialog
 import com.example.cooking_companion.ui.components.SelectListsSheet
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,6 +56,9 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
     var listTwoItems by remember { mutableStateOf(listOf("Lemons")) }
     var listOneExpanded by remember { mutableStateOf(false) }
     var listTwoExpanded by remember { mutableStateOf(false) }
+
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
 
     var showChangeTitle by remember { mutableStateOf(false) }
     var showAddNewItem by remember { mutableStateOf(false) }
@@ -92,6 +101,9 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
     var showBottomSheet by remember { mutableStateOf(false) }
 
     Scaffold(
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             MediumTopAppBar(
@@ -168,8 +180,24 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                     listOneItems = listOneItems - item
                     listTwoItems = listTwoItems + item
                 },
-                deleteItem = { item ->
+                deleteItem = {
+                    item ->
                     listOneItems = listOneItems - item
+                    scope.launch {
+                        val result = snackbarHostState
+                            .showSnackbar(
+                                message = "$item has been deleted from the list",
+                                actionLabel = "Undo",
+                                duration = SnackbarDuration.Short
+                            )
+                        when (result) {
+                            SnackbarResult.ActionPerformed -> {
+                                listOneItems = listOneItems + item
+                            }
+                            SnackbarResult.Dismissed -> {
+                            }
+                        }
+                    }
                 },
                 checked = false
             )
@@ -182,8 +210,24 @@ fun CompanionListsScreen(modifier: Modifier = Modifier) {
                     listOneItems = listOneItems + item
                     listTwoItems = listTwoItems - item
                 },
-                deleteItem = { item ->
+                deleteItem = {
+                    item ->
                     listTwoItems = listTwoItems - item
+                    scope.launch {
+                        val result = snackbarHostState
+                            .showSnackbar(
+                                message = "$item has been deleted from the list",
+                                actionLabel = "Undo",
+                                duration = SnackbarDuration.Short
+                            )
+                        when (result) {
+                            SnackbarResult.ActionPerformed -> {
+                                listTwoItems = listTwoItems + item
+                            }
+                            SnackbarResult.Dismissed -> {
+                            }
+                        }
+                    }
                 },
                 checked = true
             )

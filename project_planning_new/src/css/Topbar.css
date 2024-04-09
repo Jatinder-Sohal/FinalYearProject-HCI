@@ -1,0 +1,165 @@
+.Topbar{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 55px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1001;
+}
+
+.left-Topbar{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 10px
+}
+.Board-Information{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+    margin-right: 25px;
+}
+.Star{
+    width: 32px;
+    height: 32px;
+}
+.date{
+    font-size: smaller;
+    height: 0px;
+    font-family: sans-serif;
+    color: rgba(0, 0, 0, 0.564);
+}
+
+.middle-Topbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Topbar-Title{
+    font-family: sans-serif;
+    font-size: 1.7rem;
+}
+.topbar-title-input{
+    font-family: sans-serif;
+    font-size: 20px;
+    height: 30px;
+    width: 210px;
+    margin-top: 13px;
+    margin-bottom: 14px;
+    margin-left: 28px;
+}
+
+.right-Topbar{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+.right-Icon{
+    width: 42px;
+    height: 42px;
+    margin-left: 5px;
+}
+.help-icon{
+    margin-left: 10px;
+}
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    padding: 3px;
+    border: 3.2px solid;
+}
+.search-icon {
+  height: 20px;
+  width: 20px;
+  margin-left: 2px;
+}
+.search-input {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 175px;
+  background-color: transparent;
+  font-size: 16px;
+
+}
+input::placeholder {
+  color: #000;
+}
+
+.topbar-dropdown{
+    position: absolute;
+    top: 100%;
+    background: white;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 400px;
+    padding-inline-start: 16px;
+    display: none;
+    z-index: 1008;
+    color: black;
+    margin-top: -10px;
+    font-family: sans-serif;
+}
+.dropdown-option{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.topbarDropdown-title{
+    font-family: sans-serif;
+    margin-left: 0px;
+}
+#label{
+    font-size: 25px;
+}
+.text-size-slider{
+    width: 180px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.background-color-picker{
+    margin-right: 10px;
+}
+.settings-dropdown{
+    width: 250px; 
+    right: 20px;
+}
+.settings-icon{
+    width: 42px;
+    height: 42px;
+    cursor: pointer; 
+}
+.settings-container:hover .settings-dropdown,
+.settings-dropdown:hover,
+.help-container:hover .help-dropdown,
+.help-dropdown:hover{
+    display: block; 
+}
+
+.help-dropdown{ 
+    right: 40px;
+    width: 250px; 
+}
+.dropdown-checkbox{
+    margin-right: 28px;
+    width: 20px;
+    height: 20px;
+}
+.textSize-label{
+    margin-top: 15px;
+    margin-bottom: 35px;
+}
+.topbar-dropdown-contact{
+    font-size: 17px;
+    margin-top: -10px;
+}

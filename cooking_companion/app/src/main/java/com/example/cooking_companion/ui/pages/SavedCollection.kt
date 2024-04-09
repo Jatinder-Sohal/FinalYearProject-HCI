@@ -23,6 +23,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -31,6 +35,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,6 +53,7 @@ import com.example.cooking_companion.ui.components.CollectionItem
 import com.example.cooking_companion.ui.components.DeleteItemsDialog
 import com.example.cooking_companion.ui.components.OneInputDialog
 import com.example.cooking_companion.ui.components.SavedFiltersSheet
+import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -60,9 +66,19 @@ fun SavedCollection(navController: NavHostController, collectionPosts: String, m
 
     val posts = collectionPosts.toInt()
     val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(filterRecipes(currentFilter, DataSource.bookmarkedRecipes.subList(0, posts)))}
-    val onBookmarkClick = { bookmark: Bookmark ->
+
+
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState()}
+    var removedRecipe by remember { mutableStateOf<Bookmark?>(null) }
+    val onBookmarkClick = {
+        bookmark: Bookmark ->
         setBookmarkedRecipes(bookmarkedRecipes.filter { it.id != bookmark.id })
+        removedRecipe = bookmark
     }
+
+
+
     val scrollState = rememberScrollState()
     var title = when (collectionPosts){
         "9" -> "Collection One"
@@ -95,6 +111,9 @@ fun SavedCollection(navController: NavHostController, collectionPosts: String, m
         },
     )
     Scaffold(
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        },
         topBar = {
             CenterAlignedTopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -202,7 +221,29 @@ fun SavedCollection(navController: NavHostController, collectionPosts: String, m
                     }
                     for (bookmark in bookmarkedRecipes) {
                         if (bookmark.isBookmarked) {
-                            CollectionItem(bookmark, onBookmarkClick = { onBookmarkClick(bookmark) })
+                            CollectionItem(
+                                bookmark,
+                                onBookmarkClick = {
+                                    onBookmarkClick(bookmark);
+                                    scope.launch {
+                                        val result = snackbarHostState
+                                            .showSnackbar(
+                                                message = bookmark.title + " has been removed from this collection",
+                                                actionLabel = "Undo",
+                                                duration = SnackbarDuration.Short
+                                            )
+                                        when (result) {
+                                            SnackbarResult.ActionPerformed -> {
+                                                removedRecipe?.let {
+                                                    setBookmarkedRecipes(bookmarkedRecipes + it)
+                                                }
+                                            }
+                                            SnackbarResult.Dismissed -> {
+                                            }
+                                        }
+                                    }
+                                }
+                            )
                         }
                     }
                 }

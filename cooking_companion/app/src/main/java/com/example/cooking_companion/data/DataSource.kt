@@ -1,5 +1,6 @@
 package com.example.cooking_companion.data
 
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import com.example.cooking_companion.R
@@ -40,16 +41,21 @@ object DataSource {
         Collection("12/02/24", 2, listOf(R.drawable.fish_recent, R.drawable.pumpkinsoup_dishes)),
         Collection("List3", 1, listOf(R.drawable.raspberrycake_dishes))
     )
-    val recommendations = listOf("Apple", "Apricot", "Apple Crumble", "Banana", "Cherry", "Chicken Soup", "Chicken Curry", "Cheese Pizza", "Date", "Egg fruit", "Fig", "Grapes")
-
+    val recommendations = listOf("Apple", "Apricot", "Apple Crumble", "Banana", "Cherry", "Chicken Soup", "Chicken Curry", "Cheese Pizza", "Date", "Egg fruit", "Fig", "Vegan", "Tomato", "Vegatables", "Toast", "Tiramasu" , "Tacos", "Grapes")
+    val tomatoRecipes = mutableListOf(
+        Recipe("Chesse and Tomato pizza", R.drawable.chickencurry_dishes, false, 98, "Jatinder Sohal"),
+        Recipe("Homemade Tomato Sauce", R.drawable.chickencurry_dishes, false, 935, "Liam Williamson"))
     val veganRecipes = mutableListOf(
-        Recipe("Vegan Curry", R.drawable.chickencurry_dishes, false, 87, "Jatinder Sohal"),
-        Recipe("Pie (Vegan)", R.drawable.bbqpie_dishes, true, 74, "Jatinder Sohal"),
-        Recipe("Cake vegan", R.drawable.raspberrycake_dishes, false, 94, "Jatinder Sohal"),
-        Recipe("Vegan Waffles ", R.drawable.chickenwaffles_dishes, false, 47, "Jatinder Sohal"),
-        Recipe("Vegan Pancakes", R.drawable.pancakes_recent, false, 47, "Jatinder Sohal"),
-        Recipe("Vegan Noodles", R.drawable.noodles_dishes, false, 47, "Jatinder Sohal"),
-        )
+        Recipe("Vegan Curry", R.drawable.chickencurry_dishes, false, 87, "Arjun Dhoot"),
+        Recipe("Pie (Vegan)", R.drawable.bbqpie_dishes, true, 74, "Carl Smith"),
+        Recipe("Cake vegan", R.drawable.raspberrycake_dishes, false, 94, "Bob williams"),
+        Recipe("Vegan Waffles ", R.drawable.chickenwaffles_dishes, false, 47, "Shivam Bhalla"),
+        Recipe("Vegan Pancakes", R.drawable.pancakes_recent, false, 96, "Omar Mohammed"),
+        Recipe("Vegan Noodles", R.drawable.noodles_dishes, false, 27, "Sam Gerab") )
+
+    val tomatoCollection = mutableListOf(
+        Collection("No tomato", 3, listOf(R.drawable.oreosunday_dishes, R.drawable.pumpkinsoup_dishes, R.drawable.raspberrycake_dishes)),
+        Collection("Use Tomato Sauce", 12, listOf(R.drawable.oreosunday_dishes, R.drawable.pumpkinsoup_dishes, R.drawable.raspberrycake_dishes)))
     val veganCollection = mutableListOf(
         Collection("Vegan Recipes", 6, listOf(R.drawable.oreosunday_dishes, R.drawable.pumpkinsoup_dishes, R.drawable.raspberrycake_dishes)),
         Collection("Quick Vegan", 4, listOf(R.drawable.guacamolesalad_dishes, R.drawable.grilledcheese_dishes, R.drawable.chickenwaffles_dishes)),
@@ -63,4 +69,6 @@ object DataSource {
         Recipe("Saucy Pizza", R.drawable.bbqpie_dishes, false, 47, "Jatinder Sohal")
     )
     val darkMode = mutableStateOf(false)
+    var headerFont = mutableIntStateOf(20)
+    val settingFont = mutableIntStateOf(16)
 }

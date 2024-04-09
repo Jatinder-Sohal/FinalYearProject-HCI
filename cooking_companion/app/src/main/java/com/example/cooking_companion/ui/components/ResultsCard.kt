@@ -1,6 +1,7 @@
 package com.example.cooking_companion.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -36,11 +37,12 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Recipe
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RecipeCard(recipe: Recipe, modifier : Modifier = Modifier){
+fun RecipeCard(recipe: Recipe, navController: NavHostController, originList:String, modifier : Modifier = Modifier){
     var bookmarked by remember { mutableStateOf(recipe.bookmarked) }
     val width = LocalConfiguration.current.screenWidthDp.dp/2
 
@@ -51,7 +53,8 @@ fun RecipeCard(recipe: Recipe, modifier : Modifier = Modifier){
         modifier = modifier
             .padding(horizontal = 6.dp)
             .height(240.dp)
-            .width(width - 20.dp),
+            .width(width - 20.dp)
+            .clickable{navController.navigate("Recipe/${recipe.name}/${originList}")},
         colors = CardDefaults.cardColors(
             containerColor = Color.Transparent
         ),
