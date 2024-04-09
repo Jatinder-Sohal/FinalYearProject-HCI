@@ -49,6 +49,9 @@
     justify-content: space-between;
 
 }
+.section-item:hover{
+    cursor: pointer;
+}
 
 .section-item:first-child {
     border-top: none;

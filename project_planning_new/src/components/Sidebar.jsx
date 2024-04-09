@@ -9,7 +9,9 @@ import BinBlack from '../images/bin-black.png'
 
 function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, sidebarItemClick}){
     function handleSidebarClick(name){
-        sidebarItemClick(name)
+        if (window.confirm(name + " will be loaded") == true) {
+            sidebarItemClick(name)
+          } else {}
     }
 
     const [isAllOpen, setIsAllOpen] = useState(true);
@@ -53,9 +55,9 @@ function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, si
                     {isFavoriteOpen &&
                         <ul className='lists'>
                             {favoriteBoards.map(board => (
-                                <div className="section-item" key={board}>
+                                <div onClick={()=>handleSidebarClick(board)} className="section-item" key={board}>
                                     {board}
-                                    <img className="sidebar-star dropdown-item-images" onClick={(event)=> removeAll(event, board)} src={StarFilled}/>
+                                    <img className="sidebar-star dropdown-item-images" onClick={(event)=> removeFavorite(event, board)} src={StarFilled}/>
                                 </div>
                             ))}
                         </ul>

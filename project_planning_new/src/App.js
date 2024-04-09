@@ -180,6 +180,21 @@ function App() {
   }
   function sidebarItemClick(itemName){
     setBoardTitle(itemName)
+    setListOne([
+      { id: todoID, title: 'Add setting pages' },  
+    ])
+    setListTwo([
+      { id: todoID+1, title: 'Set up navigation bar on all pages' }, 
+      { id: todoID+2, title: 'Remove boilerplate code from documentation' },  
+      { id: todoID+3, title: 'Add carousel from Bootstrap library' },
+      { id: todoID+4, title: 'Write 5 unit tests' },
+      { id: todoID+5, title: 'Refactor bottom sheet to include more categories' },
+    ])
+    setListThree([
+      { id: todoID+6, title: 'Set up Jetpack compose' }, 
+      { id: todoID+7, title: 'Install needed libararies and GIT repo' },  
+    ])
+    todoID = todoID + 8;
   }
 
   return (
