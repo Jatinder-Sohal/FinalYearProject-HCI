@@ -37,3 +37,7 @@
     transition: 0.2s; 
     transform: scale(1.2);
 }
+.StarFilled:hover{
+    transition: 0.2s; 
+    transform: scale(1.2);
+}

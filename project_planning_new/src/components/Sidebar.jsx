@@ -7,7 +7,11 @@ import Star from '../images/filled-star.png'
 import StarBorder from '../images/star-border.png'
 import BinBlack from '../images/bin-black.png'
 
-function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards}){
+function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, sidebarItemClick}){
+    function handleSidebarClick(name){
+        sidebarItemClick(name)
+    }
+
     const [isAllOpen, setIsAllOpen] = useState(true);
     const [isFavoriteOpen, setIsFavOpen] = useState(true);
     const [favImage, setFavImage] = useState(DropdownUp);
@@ -29,10 +33,12 @@ function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards}){
             setFavImage(DropdownDown)
         }
     };
-    function removeFavorite(clickedBoard){
+    function removeFavorite(event, clickedBoard){
+        event.stopPropagation();
         setFavoriteBoards(prevBoards => prevBoards.filter(board => board !== clickedBoard));
     }
-    function removeAll(clickedBoard){
+    function removeAll(event, clickedBoard){
+        event.stopPropagation();
         setAllBoards(prevBoards => prevBoards.filter(board => board !== clickedBoard));
     }
 
@@ -49,7 +55,7 @@ function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards}){
                             {favoriteBoards.map(board => (
                                 <div className="section-item" key={board}>
                                     {board}
-                                    <img className="sidebar-star dropdown-item-images" onClick={()=> removeFavorite(board)} src={StarFilled}/>
+                                    <img className="sidebar-star dropdown-item-images" onClick={(event)=> removeAll(event, board)} src={StarFilled}/>
                                 </div>
                             ))}
                         </ul>
@@ -63,9 +69,9 @@ function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards}){
                     {isAllOpen &&
                         <ul className='lists'>
                             {allBoards.map(board => (
-                                <div className="section-item" key={board}>
+                                <div onClick={()=>handleSidebarClick(board)} className="section-item" key={board}>
                                     {board}
-                                    <img className="checkbox-delete dropdown-item-images" onClick={()=> removeAll(board)} src={BinBlack}/>
+                                    <img className="checkbox-delete dropdown-item-images" onClick={(event)=> removeAll(event, board)} src={BinBlack}/>
                                 </div>
                                 
                             ))}

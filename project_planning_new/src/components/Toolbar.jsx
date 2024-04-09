@@ -1,16 +1,26 @@
 import '../css/Toolbar.css'
+import { useState } from 'react';
 import Delete from '../images/bin.png';
 import Undo from '../images/undo.png';
 import Redo from '../images/redo.png';
 import Sort from '../images/sort.png';
 import Filter from '../images/filter.png';
-import Star from '../images/star.png';
+import StarFilled from '../images/star.png';
+import StarBorder from '../images/filled-star.png';
 
 function Toolbar(){
+    const [star, setStar] = useState(StarFilled);
+    function starClick(){
+        if (star == StarFilled){
+            setStar(StarBorder)
+        }else{
+            setStar(StarFilled)
+        }
+    }
     return(
         <div className='Toolbar'>
             <div className='Main-Toolbar'>
-                <img src={Star} className="Star" alt="Favourite Board" />
+                <img src={star} className="toolbar-star Item-Toolbar" onClick={starClick} alt="Favourite Board" />
                 <img src={Undo} className="Item-Toolbar" alt="Undo last actions" />
                 <img src={Redo} className="Item-Toolbar" alt="Redo last actions" />
                 <img src={Sort} className="Item-Toolbar" alt="Sort cards" />

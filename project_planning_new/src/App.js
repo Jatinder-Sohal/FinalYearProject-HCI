@@ -178,12 +178,15 @@ function App() {
       alert("You cannot add any more lists!")
     }
   }
+  function sidebarItemClick(itemName){
+    setBoardTitle(itemName)
+  }
 
   return (
     <div className="Root">
       <Topbar title={boardTitle} updateTitle={updateSidebar}/>
       <div className="Content">
-        <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards}/>
+        <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards} sidebarItemClick={sidebarItemClick}/>
         <div style={{ display: 'flex'}}>
           <Toolbar />
           <DragDropContext onDragEnd={onDragEnd}>
