@@ -27,7 +27,7 @@ import com.example.cooking_companion.ui.components.CollectionOption
 
 
 @Composable
-fun CompanionSavedScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+fun NavbarSaved(navController: NavHostController, modifier: Modifier = Modifier) {
     val collections = DataSource.collections
     Column(
         modifier = modifier

@@ -58,7 +58,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SavedCollection(navController: NavHostController, collectionPosts: String, modifier: Modifier = Modifier) {
+fun Collection(navController: NavHostController, collectionPosts: String, modifier: Modifier = Modifier) {
     var currentFilter by remember { mutableStateOf("A to Z") }
     val filterOptions = listOf("A to Z", "Difficulty", "Quickest", "Slowest")
     val sheetState = rememberModalBottomSheetState()

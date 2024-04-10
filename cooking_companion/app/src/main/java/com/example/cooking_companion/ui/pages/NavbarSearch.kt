@@ -29,7 +29,7 @@ import com.example.cooking_companion.ui.components.VerticalCategoryCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CompanionSearchScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+fun NavbarSearch(navController: NavHostController, modifier: Modifier = Modifier) {
     BottomSheetScaffold(
         sheetContent = {
             Text(

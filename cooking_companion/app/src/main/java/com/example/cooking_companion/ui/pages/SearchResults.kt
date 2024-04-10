@@ -52,7 +52,7 @@ import com.example.cooking_companion.ui.components.CollectionOption
 import com.example.cooking_companion.ui.components.RecipeCard
 
 @Composable
-fun Results(navController: NavHostController, tab:String, query:String, modifier: Modifier = Modifier) {
+fun SearchResults(navController: NavHostController, tab:String, query:String, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     var searchQuery by remember { mutableStateOf(query) }
     var selectedTab by remember { mutableStateOf(tab) }

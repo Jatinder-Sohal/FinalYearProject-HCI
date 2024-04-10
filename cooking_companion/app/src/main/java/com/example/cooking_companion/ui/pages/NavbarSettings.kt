@@ -2,9 +2,7 @@ package com.example.cooking_companion.ui.pages
 
 
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -29,7 +27,7 @@ import com.example.cooking_companion.data.DataSource.headerFont
 import com.example.cooking_companion.data.DataSource.settingFont
 
 @Composable
-fun CompanionSettingsScreen(modifier: Modifier = Modifier) {
+fun NavbarSettings(modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     val notificationsEnabled = remember { mutableStateOf(true) }
     var darkThemeEnabled = remember { mutableStateOf(darkMode.value) }

@@ -63,7 +63,7 @@ import com.example.cooking_companion.data.Recipe
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Recipe(recipe: Recipe, navController: NavHostController, modifier: Modifier = Modifier) {
+fun RecipeExpanded(recipe: Recipe, navController: NavHostController, modifier: Modifier = Modifier) {
     var bookmarked by remember { mutableStateOf(recipe.bookmarked) }
     var liked by remember { mutableStateOf(recipe.bookmarked) }
     var likesCount by remember { mutableIntStateOf(recipe.likes) }

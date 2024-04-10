@@ -33,7 +33,7 @@ import com.example.cooking_companion.ui.components.HorizontalCategoryItem
 import com.example.cooking_companion.ui.components.TopSearchBar
 
 @Composable
-fun CompanionHomeScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+fun NavbarHome(navController: NavHostController, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
 
     val configuration = LocalConfiguration.current

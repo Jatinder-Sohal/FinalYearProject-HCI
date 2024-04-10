@@ -48,7 +48,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CompanionListsScreen(modifier: Modifier = Modifier) {
+fun NavbarLists(modifier: Modifier = Modifier) {
     var title by remember { mutableStateOf("Shopping List") }
     var listOneName by remember {mutableStateOf("To buy") }
     var listTwoName by remember {mutableStateOf("Bought") }

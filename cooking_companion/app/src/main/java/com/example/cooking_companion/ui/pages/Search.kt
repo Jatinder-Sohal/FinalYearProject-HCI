@@ -37,7 +37,7 @@ import com.example.cooking_companion.data.DataSource.recommendations
 
 
 @Composable
-fun Search(navController: NavHostController, modifier: Modifier = Modifier) {
+fun Searching(navController: NavHostController, modifier: Modifier = Modifier) {
     var searchQuery by remember { mutableStateOf("") }
     val recentSearches = listOf("Chicken Soup", "Tomato", "Grilled Cheese")
     val popularSearches = listOf("Oreo Sundae", "Cheese", "Mince", "Chicken", "Pasta")
