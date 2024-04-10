@@ -7,7 +7,7 @@ import Star from '../images/filled-star.png'
 import StarBorder from '../images/star-border.png'
 import BinBlack from '../images/bin-black.png'
 
-function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, sidebarItemClick, addNewBoard}){
+function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, sidebarItemClick, addNewBoard, boardTitle}){
     function handleSidebarClick(name){
         if (window.confirm(name + " will be loaded") == true) {
             sidebarItemClick(name)
@@ -41,8 +41,15 @@ function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, si
     }
     function removeAll(event, clickedBoard){
         event.stopPropagation();
-        setAllBoards(prevBoards => prevBoards.filter(board => board !== clickedBoard));
+        if (window.confirm("This will DELETE " + clickedBoard) == true) {
+            if(boardTitle == clickedBoard){
+                alert("Error -  You cannot delete an open board!")
+            }else{
+                setAllBoards(prevBoards => prevBoards.filter(board => board !== clickedBoard));
+            }
+        }
     }
+        
 
     return (
         <div className="sidebar">

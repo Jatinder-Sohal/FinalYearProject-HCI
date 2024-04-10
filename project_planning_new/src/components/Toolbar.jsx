@@ -38,25 +38,28 @@ function Toolbar({starBoard, deleteCards, sortLists}){
         <div className='Toolbar'>
             {isSortOpen && (
                 <div className="sort-dropdown">
-                <div>
-                    <h3 className='toolbar-dropdown-title'>Sort By:</h3>
-                    <img src={Cancel} className="close-dropdown close-toolbar-dropdown" onClick={toggleSort}  alt="Close dropdown" />
-                </div>
-                <ul className='toolbar-dropdown-list'>
-                    <h3 className='toolbar-dropdown-item' onClick={() => sortLists("ID")}>First added</h3>
-                    <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("AZ")}>A - Z</h3>
-                    <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("ZA")}>Z - A</h3>
-                </ul>
+                    <div>
+                        <h3 className='toolbar-dropdown-title'>Sort By:</h3>
+                        <img src={Cancel} className="close-dropdown close-toolbar-dropdown" onClick={toggleSort}  alt="Close dropdown" />
+                    </div>
+                    <ul className='toolbar-dropdown-list'>
+                        <h3 className='toolbar-dropdown-item' onClick={() => sortLists("ID")}>First added</h3>
+                        <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("AZ")}>A - Z</h3>
+                        <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("ZA")}>Z - A</h3>
+                    </ul>
                 </div>
             )}
             {isFilterOpen && (
                 <div className="filter-dropdown">
-                <img src={Cancel} className="close-dropdown close-toolbar-dropdown" onClick={toggleFilter}  alt="Close dropdown" />
-                <ul className='toolbar-dropdown-list'>
-                    <h3 className='toolbar-dropdown-item'></h3>
-                    <h3 className='toolbar-dropdown-item'>test</h3>
-                    <h3 className='toolbar-dropdown-item'>test</h3>
-                </ul>
+                    <div>
+                        <h3 className='toolbar-dropdown-title'>Filter by:</h3>
+                        <img src={Cancel} className="close-dropdown close-toolbar-dropdown" onClick={toggleFilter}  alt="Close dropdown" />
+                    </div>
+                    <ul className='toolbar-dropdown-list'>
+                        <h3 className='toolbar-dropdown-item'>All</h3>
+                        <h3 className='toolbar-dropdown-item'>Original</h3>
+                        <h3 className='toolbar-dropdown-item'>Newly added</h3>
+                    </ul>
                 </div>
             )}
             <div className='Main-Toolbar'>

@@ -12,6 +12,7 @@ import './App.css'
 
 var todoID = 7;
 var listShown = 3;
+var newBoard = 0;
 function App() {
   const [boardTitle, setBoardTitle] = useState('Kanban Board')
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -178,7 +179,8 @@ function App() {
   }
 
   function addNewBoard(){
-    setAllBoards(prevBoards => [...prevBoards, "New Board"])
+    setAllBoards(prevBoards => [...prevBoards, "New Board "+newBoard])
+    newBoard++
   }
   function sidebarItemClick(itemName){
     setBoardTitle(itemName)
@@ -235,7 +237,7 @@ function App() {
     <div className="Root">
       <Topbar title={boardTitle} updateTitle={updateSidebar}/>
       <div className="Content">
-        <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards} sidebarItemClick={sidebarItemClick} addNewBoard={addNewBoard}/>
+        <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards} sidebarItemClick={sidebarItemClick} addNewBoard={addNewBoard} boardTitle={boardTitle}/>
         <div style={{ display: 'flex'}}>
           <Toolbar starBoard={starBoard} deleteCards={deleteCards} sortLists={sortLists}/>
           <DragDropContext onDragEnd={onDragEnd}>
