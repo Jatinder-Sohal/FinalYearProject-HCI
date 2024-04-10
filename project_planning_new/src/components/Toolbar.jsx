@@ -9,7 +9,7 @@ import StarFilled from '../images/star.png';
 import StarBorder from '../images/filled-star.png';
 import Cancel from '../images/cancel-svgrepo-com.png';
 
-function Toolbar({starBoard, deleteCards}){
+function Toolbar({starBoard, deleteCards, sortLists}){
     const [star, setStar] = useState(StarBorder);
     function starClick(){
         if (star == StarFilled){
@@ -38,11 +38,14 @@ function Toolbar({starBoard, deleteCards}){
         <div className='Toolbar'>
             {isSortOpen && (
                 <div className="sort-dropdown">
-                <img src={Cancel} className="close-dropdown close-toolbar-dropdown" onClick={toggleSort}  alt="Close dropdown" />
+                <div>
+                    <h3 className='toolbar-dropdown-title'>Sort By:</h3>
+                    <img src={Cancel} className="close-dropdown close-toolbar-dropdown" onClick={toggleSort}  alt="Close dropdown" />
+                </div>
                 <ul className='toolbar-dropdown-list'>
-                    <h3 className='toolbar-dropdown-item'>test</h3>
-                    <h3 className='toolbar-dropdown-item'>test</h3>
-                    <h3 className='toolbar-dropdown-item'>test</h3>
+                    <h3 className='toolbar-dropdown-item' onClick={() => sortLists("All", "ID")}>First added</h3>
+                    <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("All", "AZ")}>A - Z</h3>
+                    <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("All", "ZA")}>Z - A</h3>
                 </ul>
                 </div>
             )}
@@ -50,7 +53,7 @@ function Toolbar({starBoard, deleteCards}){
                 <div className="filter-dropdown">
                 <img src={Cancel} className="close-dropdown close-toolbar-dropdown" onClick={toggleFilter}  alt="Close dropdown" />
                 <ul className='toolbar-dropdown-list'>
-                    <h3 className='toolbar-dropdown-item'>test</h3>
+                    <h3 className='toolbar-dropdown-item'></h3>
                     <h3 className='toolbar-dropdown-item'>test</h3>
                     <h3 className='toolbar-dropdown-item'>test</h3>
                 </ul>

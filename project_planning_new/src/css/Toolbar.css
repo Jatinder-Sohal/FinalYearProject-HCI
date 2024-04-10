@@ -48,7 +48,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     width: 160px; 
-    height: 160px;
+    height: 180px;
     margin-top: 280px;
     margin-left: -100px;
     z-index: 1200; 
@@ -61,7 +61,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     width: 160px; 
-    height: 160px;
+    height: 180px;
     margin-top: 380px;
     margin-left: -100px;
     z-index: 1200; 
@@ -77,8 +77,16 @@
     margin: 0;
     margin-left: -35px;
     padding: 8px 10px; 
+    font-weight: normal;
     
 }
+.toolbar-dropdown-item:hover{
+    background-color: gainsboro;
+}
 .toolbar-dropdown-list{
-    margin-top: 40px;
+    margin-top: -10px;
+}
+.toolbar-dropdown-title{
+    font-family: sans-serif;
+    margin-left: 15px;
 }

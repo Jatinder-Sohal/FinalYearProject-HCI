@@ -208,13 +208,26 @@ function App() {
     setListTwo([])
     setListThree([])
   }
+  function sortLists(List, sortBy){
+    if (sortBy == "ID"){
+      const sortedList = [...listOne].sort((a, b) => a.id - b.id);
+      setListOne(sortedList);
+    }else if (sortBy == "AZ"){
+      const sortedList = [...listOne].sort((a, b) => a.title.localeCompare(b.title));
+      setListOne(sortedList);
+    }else{
+      const sortedList = [...listOne].sort((a, b) => b.title.localeCompare(a.title));
+      setListOne(sortedList);
+    }
+    
+  }
   return (
     <div className="Root">
       <Topbar title={boardTitle} updateTitle={updateSidebar}/>
       <div className="Content">
         <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards} sidebarItemClick={sidebarItemClick}/>
         <div style={{ display: 'flex'}}>
-          <Toolbar starBoard={starBoard} deleteCards={deleteCards}/>
+          <Toolbar starBoard={starBoard} deleteCards={deleteCards} sortLists={sortLists}/>
           <DragDropContext onDragEnd={onDragEnd}>
             <div style={{ display: 'flex', alignItems: "flex-start"}}>
               <List title={listOneName} listTitle="listOne" cardList={listOne} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListOneName}/>

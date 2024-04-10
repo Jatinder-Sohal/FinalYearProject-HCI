@@ -82,6 +82,9 @@
     border-top: 1px solid #ccc;
     padding-top: 10px;
 }
+.dropdown-section:hover{
+    background-color: gainsboro;
+}
 .dropdown-icon{
     height: 28px;
     width: 28px;
