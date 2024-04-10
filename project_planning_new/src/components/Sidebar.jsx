@@ -11,7 +11,7 @@ function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, si
     function handleSidebarClick(name){
         if (window.confirm(name + " will be loaded") == true) {
             sidebarItemClick(name)
-          } else {}
+        } else {}
     }
 
     const [isAllOpen, setIsAllOpen] = useState(true);

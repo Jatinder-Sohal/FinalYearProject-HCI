@@ -18,12 +18,12 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [listWithCard, setCurrentList] = useState(null);
 
-  const [favoriteBoards, setFavoriteBoards] = useState([boardTitle, 'Board 2']);
+  const [favoriteBoards, setFavoriteBoards] = useState(['Board 2']);
   const [allBoards, setAllBoards] = useState([boardTitle, 'Board 2', 'Board 3']);
   function updateSidebar(newTitle){
     setBoardTitle(newTitle)
     setFavoriteBoards(boards =>
-      boards.map((board, i) => (i === 0 ? newTitle : board))
+      boards.map((board, i) => (i === 1 ? newTitle : board))
     );
     setAllBoards(boards =>
       boards.map((board, i) => (i === 0 ? newTitle : board))
@@ -196,14 +196,25 @@ function App() {
     ])
     todoID = todoID + 8;
   }
-
+  function starBoard(action){
+    if (action == "star"){
+      setFavoriteBoards(['Board 2', boardTitle]);
+    }else{
+      setFavoriteBoards(['Board 2']);
+    }
+  }
+  function deleteCards(){
+    setListOne([])
+    setListTwo([])
+    setListThree([])
+  }
   return (
     <div className="Root">
       <Topbar title={boardTitle} updateTitle={updateSidebar}/>
       <div className="Content">
         <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards} sidebarItemClick={sidebarItemClick}/>
         <div style={{ display: 'flex'}}>
-          <Toolbar />
+          <Toolbar starBoard={starBoard} deleteCards={deleteCards}/>
           <DragDropContext onDragEnd={onDragEnd}>
             <div style={{ display: 'flex', alignItems: "flex-start"}}>
               <List title={listOneName} listTitle="listOne" cardList={listOne} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListOneName}/>
