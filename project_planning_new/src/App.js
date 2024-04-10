@@ -80,7 +80,6 @@ function App() {
       setListFive([...listFive, newCard]);
     } 
   };
-
   function getList(listId) {
     if (listId === "listOne") {
       return listOne;
@@ -114,7 +113,6 @@ function App() {
   
     return result;
   }
-
   function onDragEnd(result) {
     const { source, destination } = result;
     if (!destination) return;
@@ -178,6 +176,10 @@ function App() {
       alert("You cannot add any more lists!")
     }
   }
+
+  function addNewBoard(){
+    setAllBoards(prevBoards => [...prevBoards, "New Board"])
+  }
   function sidebarItemClick(itemName){
     setBoardTitle(itemName)
     setListOne([
@@ -233,7 +235,7 @@ function App() {
     <div className="Root">
       <Topbar title={boardTitle} updateTitle={updateSidebar}/>
       <div className="Content">
-        <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards} sidebarItemClick={sidebarItemClick}/>
+        <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards} sidebarItemClick={sidebarItemClick} addNewBoard={addNewBoard}/>
         <div style={{ display: 'flex'}}>
           <Toolbar starBoard={starBoard} deleteCards={deleteCards} sortLists={sortLists}/>
           <DragDropContext onDragEnd={onDragEnd}>

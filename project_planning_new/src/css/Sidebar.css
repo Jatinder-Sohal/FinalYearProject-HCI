@@ -20,6 +20,21 @@
     font-family: sans-serif;
     margin-bottom: 20px;
 }
+.add-board{
+    width: 90%; 
+    margin-left: 10px;
+    height: 40px;
+    background-color:  #006874;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+}
 
 .all-section-header,
 .fav-section-header {

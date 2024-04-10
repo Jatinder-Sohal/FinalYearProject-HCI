@@ -7,7 +7,7 @@ import Star from '../images/filled-star.png'
 import StarBorder from '../images/star-border.png'
 import BinBlack from '../images/bin-black.png'
 
-function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, sidebarItemClick}){
+function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, sidebarItemClick, addNewBoard}){
     function handleSidebarClick(name){
         if (window.confirm(name + " will be loaded") == true) {
             sidebarItemClick(name)
@@ -47,6 +47,9 @@ function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, si
     return (
         <div className="sidebar">
             <div>
+                <div className="add-board" onClick={() => addNewBoard()}> 
+                    <h3 style={{fontWeight:"normal"}}>Add New Board</h3>
+                </div>
                 <div className="fav-section">
                     <div className="fav-section-header" onClick={toggleFavSection}>
                         <img className="dropdown-images" src={favImage}/>
