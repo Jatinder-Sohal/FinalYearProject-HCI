@@ -43,9 +43,9 @@ function Toolbar({starBoard, deleteCards, sortLists}){
                     <img src={Cancel} className="close-dropdown close-toolbar-dropdown" onClick={toggleSort}  alt="Close dropdown" />
                 </div>
                 <ul className='toolbar-dropdown-list'>
-                    <h3 className='toolbar-dropdown-item' onClick={() => sortLists("All", "ID")}>First added</h3>
-                    <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("All", "AZ")}>A - Z</h3>
-                    <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("All", "ZA")}>Z - A</h3>
+                    <h3 className='toolbar-dropdown-item' onClick={() => sortLists("ID")}>First added</h3>
+                    <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("AZ")}>A - Z</h3>
+                    <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("ZA")}>Z - A</h3>
                 </ul>
                 </div>
             )}

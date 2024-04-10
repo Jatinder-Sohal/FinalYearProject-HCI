@@ -208,18 +208,26 @@ function App() {
     setListTwo([])
     setListThree([])
   }
-  function sortLists(List, sortBy){
+  function sortLists(sortBy){
+    var sortedListOne = []
+    var sortedListTwo = []
+    var sortedListThree =[]
     if (sortBy == "ID"){
-      const sortedList = [...listOne].sort((a, b) => a.id - b.id);
-      setListOne(sortedList);
+      sortedListOne = [...listOne].sort((a, b) => a.id - b.id);
+      sortedListTwo= [...listTwo].sort((a, b) => a.id - b.id);
+      sortedListThree = [...listThree].sort((a, b) => a.id - b.id);
     }else if (sortBy == "AZ"){
-      const sortedList = [...listOne].sort((a, b) => a.title.localeCompare(b.title));
-      setListOne(sortedList);
+      sortedListOne = [...listOne].sort((a, b) => a.title.localeCompare(b.title));
+      sortedListTwo = [...listTwo].sort((a, b) => a.title.localeCompare(b.title));
+      sortedListThree = [...listThree].sort((a, b) => a.title.localeCompare(b.title));
     }else{
-      const sortedList = [...listOne].sort((a, b) => b.title.localeCompare(a.title));
-      setListOne(sortedList);
-    }
-    
+      sortedListOne = [...listOne].sort((a, b) => b.title.localeCompare(a.title));
+      sortedListTwo = [...listTwo].sort((a, b) => b.title.localeCompare(a.title));
+      sortedListThree = [...listThree].sort((a, b) => b.title.localeCompare(a.title));
+    }   
+    setListOne(sortedListOne);
+    setListTwo(sortedListTwo)
+    setListThree(sortedListThree)
   }
   return (
     <div className="Root">
