@@ -15,7 +15,14 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBackIos
+import androidx.compose.material.icons.filled.ArrowForwardIos
+import androidx.compose.material.icons.filled.VolumeUp
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -24,6 +31,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.cooking_companion.R
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -34,6 +42,7 @@ fun RecipeCarousel(modifier : Modifier = Modifier) {
         R.drawable.pancakes_recent
     )
     val pagerState = rememberPagerState(pageCount = {images.size})
+    val coroutineScope = rememberCoroutineScope()
 
     HorizontalPager(
         state = pagerState,
@@ -58,11 +67,36 @@ fun RecipeCarousel(modifier : Modifier = Modifier) {
     ) {
         Row(
             horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .align(Alignment.Center)
         ) {
+            IconButton(onClick= {
+                coroutineScope.launch {
+                    val previousPage = (pagerState.currentPage - 1).coerceAtLeast(0)
+                    pagerState.animateScrollToPage(previousPage)
+                }
+            }){
+                Icon(
+                    imageVector = Icons.Filled.ArrowBackIos,
+                    contentDescription = "",
+                    modifier = Modifier.size(28.dp)
+                )
+            }
             images.forEachIndexed { index, _ ->
                 CarouselIndicator(isSelected = pagerState.currentPage == index)
+            }
+            IconButton(onClick={
+                coroutineScope.launch {
+                    val nextPage = (pagerState.currentPage + 1).coerceAtMost(images.lastIndex)
+                    pagerState.animateScrollToPage(nextPage)
+                }
+            }){
+                Icon(
+                    imageVector = Icons.Filled.ArrowForwardIos,
+                    contentDescription = "",
+                    modifier = Modifier.size(28.dp)
+                )
             }
         }
     }
