@@ -5,7 +5,7 @@ import Settings from '../images/settings.png';
 import Share from '../images/share.png';
 import Search from '../images/search.png'
 
-function Topbar({title, updateTitle}){
+function Topbar({title, updateTitle, contentColour, setContentColour}){
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [currentTitle, setCurrentTitle] = useState(title);
     function titleClick(){
@@ -16,6 +16,9 @@ function Topbar({title, updateTitle}){
         updateTitle(currentTitle);
     };
 
+    const handleContentColorChange = (event) => {
+        setContentColour(event.target.value);
+    };
     return(
         <div className='Topbar'>
             <div className='left-Topbar'>
@@ -68,6 +71,7 @@ function Topbar({title, updateTitle}){
                             <input
                                 className="background-color-picker"
                                 type="color"
+                                value="#ffffff"
                             />
                         </div>
                         <div className="dropdown-option">
@@ -75,6 +79,8 @@ function Topbar({title, updateTitle}){
                             <input
                                 className="background-color-picker"
                                 type="color"
+                                value={contentColour}
+                                onChange={handleContentColorChange}
                             />
                         </div>
                         <div className="dropdown-option">

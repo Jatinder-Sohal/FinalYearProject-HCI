@@ -8,7 +8,7 @@ import Sort from '../images/sort.png';
 import Filter from '../images/filter.png';
 import Copy from '../images/copy.png'
 
-const List = ({ title, listTitle, cardList, onAddButton, cardClick, updateTitle }) => {
+const List = ({ contentColour, title, listTitle, cardList, onAddButton, cardClick, updateTitle }) => {
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [currentTitle, setCurrentTitle] = useState(title);
     function titleClick(){
@@ -63,7 +63,7 @@ const List = ({ title, listTitle, cardList, onAddButton, cardClick, updateTitle 
                     </div>
                 </div>
             )}
-            <div className="list">
+            <div className="list" style={{ backgroundColor: contentColour }}>
                 <header className="list-header">
                     {isEditingTitle ? (
                     <input 

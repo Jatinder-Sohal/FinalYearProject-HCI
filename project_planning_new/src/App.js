@@ -14,6 +14,8 @@ var todoID = 7;
 var listShown = 3;
 var newBoard = 0;
 function App() {
+  const [contentColour, setContentColour] = useState('#97f0ff');
+
   const [boardTitle, setBoardTitle] = useState('Kanban Board')
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
@@ -246,21 +248,21 @@ function App() {
   }
   return (
     <div className="Root">
-      <Topbar title={boardTitle} updateTitle={updateSidebar}/>
+      <Topbar title={boardTitle} updateTitle={updateSidebar} contentColour={contentColour} setContentColour={setContentColour}/>
       <div className="Content">
         <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards} sidebarItemClick={sidebarItemClick} addNewBoard={addNewBoard} boardTitle={boardTitle}/>
         <div style={{ display: 'flex'}}>
           <Toolbar starBoard={starBoard} deleteCards={deleteCards} sortLists={sortLists}/>
           <DragDropContext onDragEnd={onDragEnd}>
             <div style={{ display: 'flex', alignItems: "flex-start"}}>
-              <List title={listOneName} listTitle="listOne" cardList={listOne} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListOneName}/>
-              <List title={listTwoName} listTitle="listTwo" cardList={listTwo} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListTwoName}/>
-              <List title={listThreeName} listTitle="listThree" cardList={listThree} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListThreeName}/>
+              <List contentColour={contentColour} title={listOneName} listTitle="listOne" cardList={listOne} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListOneName}/>
+              <List contentColour={contentColour} title={listTwoName} listTitle="listTwo" cardList={listTwo} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListTwoName}/>
+              <List contentColour={contentColour} title={listThreeName} listTitle="listThree" cardList={listThree} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListThreeName}/>
               {isFourOpen && 
-              <List title={listFourName} listTitle="listFour" cardList={listFour} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListFourName}/>
+              <List contentColour={contentColour} title={listFourName} listTitle="listFour" cardList={listFour} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListFourName}/>
               }
               {isFiveOpen && 
-              <List title={listFiveName} listTitle="listFive" cardList={listFive} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListFiveName}/>
+              <List contentColour={contentColour} title={listFiveName} listTitle="listFive" cardList={listFive} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListFiveName}/>
               }
             </div>
           </DragDropContext>
