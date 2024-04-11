@@ -68,6 +68,7 @@ const List = ({ contentColour, title, listTitle, cardList, onAddButton, cardClic
                     {isEditingTitle ? (
                     <input 
                         className="list-title-input" 
+                        style={{ backgroundColor: contentColour }}
                         type="text" 
                         value={currentTitle} 
                         onChange={(e) => setCurrentTitle(e.target.value)}
@@ -78,7 +79,7 @@ const List = ({ contentColour, title, listTitle, cardList, onAddButton, cardClic
                     ) : (
                         <h2 onClick={titleClick}>{currentTitle}</h2>
                     )}
-                    <button className="list-action" onClick={toggleDropdown}>...</button>
+                    <button className="list-action"  onClick={toggleDropdown}>...</button>
                 </header>
                 
                 <CardList cards={cardList} title={title} listTitle={listTitle} cardClick={cardClick}/>
@@ -91,7 +92,7 @@ const List = ({ contentColour, title, listTitle, cardList, onAddButton, cardClic
                     </div>
                     </>
                 ) : (
-                    <button className="add-card-btn" onClick={() => setIsAddingCard(true)}>
+                    <button className="add-card-btn" style={{ backgroundColor: contentColour }} onClick={() => setIsAddingCard(true)}>
                         <span className="plus-icon">+</span>
                         <span className="add-card-btn-text">Add a card</span>
                     </button>

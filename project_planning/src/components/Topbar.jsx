@@ -67,7 +67,7 @@ function Topbar({title, updateTitle, contentColour, setContentColour}){
                     <div className="topbar-dropdown settings-dropdown">
                         <h1 className='topbarDropdown-title'>Settings</h1>
                         <div className="dropdown-option">
-                            <label>Background Color:</label>
+                            <label>Background Colour:</label>
                             <input
                                 className="background-color-picker"
                                 type="color"
@@ -75,7 +75,7 @@ function Topbar({title, updateTitle, contentColour, setContentColour}){
                             />
                         </div>
                         <div className="dropdown-option">
-                            <label>Content Color:</label>
+                            <label>Content Colour:</label>
                             <input
                                 className="background-color-picker"
                                 type="color"
@@ -97,7 +97,7 @@ function Topbar({title, updateTitle, contentColour, setContentColour}){
                             className='dropdown-checkbox' />
                         </div>   
                         <div className="dropdown-option">
-                            <label>Color Blind Mode:</label>
+                            <label>Colour Blind Mode:</label>
                             <input
                             type="checkbox"
                             className='dropdown-checkbox' />
@@ -109,6 +109,7 @@ function Topbar({title, updateTitle, contentColour, setContentColour}){
                                 type="range"
                                 min="12"
                                 max="24"
+                                value={15}
                             />
                             
                         </div>
