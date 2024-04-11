@@ -86,14 +86,14 @@ fun SelectCollectionSheet(onCollectionSelected: () -> Unit) {
     }
 }
 @Composable
-fun SavedFiltersSheet(filterOptions: List<String>, currentFilter: String, onFilterSelected: (String) -> Unit, modifier: Modifier = Modifier) {
+fun SavedFiltersSheet(title:String, filterOptions: List<String>, currentFilter: String, onFilterSelected: (String) -> Unit, modifier: Modifier = Modifier) {
     Column (
         modifier = modifier
             .padding(bottom = 35.dp)
 
     ){
         Text(
-            text = "Sort Saved Recipes by",
+            text = title,
             style = MaterialTheme.typography.headlineSmall,
             modifier = modifier.padding(start = 16.dp, bottom = 16.dp)
         )

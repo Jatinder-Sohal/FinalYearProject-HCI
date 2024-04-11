@@ -83,7 +83,7 @@ fun VerticalCategoryCard(navController: NavHostController, category: Category, m
             .height(148.dp)
             .clickable{navController.navigate("results/Collections/${category.name}")},
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFFFF6E4),
+            containerColor = Color(0xFFC4F0F3),
             contentColor = Color.Black),
         shape = RoundedCornerShape(20.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.1.dp)

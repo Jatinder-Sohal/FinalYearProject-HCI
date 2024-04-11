@@ -26,12 +26,15 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.ReportProblem
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -50,7 +53,9 @@ import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.DataSource
 import com.example.cooking_companion.ui.components.CollectionOption
 import com.example.cooking_companion.ui.components.RecipeCard
+import com.example.cooking_companion.ui.components.SavedFiltersSheet
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchResults(navController: NavHostController, tab:String, query:String, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
@@ -72,6 +77,8 @@ fun SearchResults(navController: NavHostController, tab:String, query:String, mo
         else -> { listOf() }
     }
 
+    val sheetState = rememberModalBottomSheetState()
+    var showBottomSheet by remember { mutableStateOf(false) }
     Column(
         modifier
             .fillMaxHeight()
@@ -142,7 +149,7 @@ fun SearchResults(navController: NavHostController, tab:String, query:String, mo
                     .padding(start = 26.dp, end = 10.dp)
                     .width(220.dp)
             )
-            IconButton(onClick = {  }, modifier = modifier.width(73.dp)) {
+            IconButton(onClick = { showBottomSheet = true }, modifier = modifier.width(73.dp)) {
                 Icon(
                     imageVector = Icons.Default.Tune,
                     contentDescription = "Filter Search Results",
@@ -187,6 +194,19 @@ fun SearchResults(navController: NavHostController, tab:String, query:String, mo
             "Ingredient" -> {
                 DisplayGrid(ingredient) { recipe -> RecipeCard(recipe, navController, "tomatoIngredient") }
             }
+        }
+    }
+    if (showBottomSheet) {
+        ModalBottomSheet(
+            onDismissRequest = { showBottomSheet = false },
+            sheetState = sheetState
+        ) {
+            SavedFiltersSheet(
+                title="Sort Search Results by",
+                filterOptions = listOf("Likes", "Difficulty", "Quickest", "A to Z"),
+                currentFilter = "Likes",
+                onFilterSelected = {showBottomSheet=false}
+            )
         }
     }
 }

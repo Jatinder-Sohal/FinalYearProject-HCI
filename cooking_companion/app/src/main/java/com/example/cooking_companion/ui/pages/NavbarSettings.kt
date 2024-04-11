@@ -5,9 +5,7 @@ package com.example.cooking_companion.ui.pages
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -52,13 +50,7 @@ fun NavbarSettings(modifier: Modifier = Modifier) {
     var themeExpanded by remember { mutableStateOf(false) }
     var measurementsExpanded by remember { mutableStateOf(false) }
 
-    if (contrastEnabled.value){
-        darkThemeEnabled.value = false;
-        darkMode.value = true;
-    }else{
-        darkMode.value = false;
-        darkThemeEnabled = remember { mutableStateOf(darkMode.value) }
-    }
+
     Column(
         modifier = modifier
             .padding(horizontal = 16.dp, vertical = 4.dp)
@@ -173,7 +165,15 @@ fun NavbarSettings(modifier: Modifier = Modifier) {
             trailingContent = {
                 Switch(
                     checked = contrastEnabled.value,
-                    onCheckedChange = { contrastEnabled.value = it },
+                    onCheckedChange = {
+                        if (it){
+                            darkThemeEnabled.value = false
+                            darkMode.value = true
+                        }else{
+                            darkMode.value = false
+                        }
+                        contrastEnabled.value = it
+                                      },
                     colors = if (contrastEnabled.value){
                         SwitchDefaults.colors(
                             checkedThumbColor = Color.Yellow ,

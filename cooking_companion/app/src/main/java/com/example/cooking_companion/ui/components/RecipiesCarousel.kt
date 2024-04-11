@@ -18,9 +18,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.material.icons.filled.ArrowForwardIos
-import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -48,7 +48,7 @@ fun RecipeCarousel(modifier : Modifier = Modifier) {
         state = pagerState,
         modifier = modifier
             .fillMaxWidth()
-            .height(230.dp)
+            .height(220.dp)
     ) { page ->
         Image(
             painter = painterResource(id = images[page]),
@@ -111,7 +111,7 @@ fun CarouselIndicator(isSelected: Boolean, modifier : Modifier = Modifier) {
                 .width(45.dp)
                 .height(14.dp)
                 .clip(RoundedCornerShape(percent = 50))
-                .background(Color.Black),
+                .background(MaterialTheme.colorScheme.onBackground),
         )
     else
         Box(

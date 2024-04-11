@@ -67,7 +67,6 @@ fun Collection(navController: NavHostController, collectionPosts: String, modifi
     val posts = collectionPosts.toInt()
     val (bookmarkedRecipes, setBookmarkedRecipes) = remember { mutableStateOf(filterRecipes(currentFilter, DataSource.bookmarkedRecipes.subList(0, posts)))}
 
-
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState()}
     var removedRecipe by remember { mutableStateOf<Bookmark?>(null) }
@@ -209,6 +208,7 @@ fun Collection(navController: NavHostController, collectionPosts: String, modifi
                             sheetState = sheetState
                         ) {
                             SavedFiltersSheet(
+                                title = "Sort Saved Recipes by",
                                 filterOptions = filterOptions,
                                 currentFilter = currentFilter,
                                 onFilterSelected = {filter ->
