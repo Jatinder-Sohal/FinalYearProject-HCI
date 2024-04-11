@@ -7,7 +7,7 @@ import Bin from '../images/bin-black.png'
 import Share from '../images/share.png'
 import Copy from '../images/copy.png'
 
-const Modal = ({ card, onClose, listTitle }) => {
+const Modal = ({ card, onClose, listTitle, deleteCard }) => {
   const [checklistItems, setChecklistItems] = useState([
     { id: 1, label: 'Task 1', checked: true },
     { id: 2, label: 'Task 2', checked: false },
@@ -111,7 +111,7 @@ const Modal = ({ card, onClose, listTitle }) => {
                   <img src={Share} className="modal-icon" alt="Share card" />
                   <span className="modal-Button-Text">Share</span>
               </button>
-              <button className="modal-Button" >
+              <button className="modal-Button" onClick={() => deleteCard(card.id, listTitle)} >
                   <img src={Bin} className="modal-icon" alt="Delete Card" />
                   <span className="modal-Button-Text">Delete</span>
               </button>

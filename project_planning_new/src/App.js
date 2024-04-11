@@ -233,6 +233,17 @@ function App() {
     setListTwo(sortedListTwo)
     setListThree(sortedListThree)
   }
+  function deleteCard(cardId, listTitle) {
+    console.log(`Deleting card ${cardId} from ${listTitle}`);
+    if (listTitle === "To Do") {
+      setListOne(prevList => prevList.filter(card => card.id !== cardId));
+    } else if (listTitle === "In Progress") {
+      setListTwo(prevList => prevList.filter(card => card.id !== cardId));
+    } else if (listTitle === "Done") {
+      setListThree(prevList => prevList.filter(card => card.id !== cardId));
+    }
+    closeModal();
+  }
   return (
     <div className="Root">
       <Topbar title={boardTitle} updateTitle={updateSidebar}/>
@@ -256,7 +267,7 @@ function App() {
           <NewList addList={toggle} />
         </div>
         {isModalOpen && (
-          <Modal card={selectedCard} onClose={closeModal} listTitle={listWithCard} />
+          <Modal card={selectedCard} onClose={closeModal} listTitle={listWithCard} listName deleteCard={deleteCard}/>
         )}
       </div>
     </div>

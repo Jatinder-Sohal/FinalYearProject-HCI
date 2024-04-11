@@ -36,6 +36,7 @@
 .Item-Toolbar:hover{
     transition: 0.2s; 
     transform: scale(1.2);
+    cursor: pointer;
 }
 .StarFilled:hover{
     transition: 0.2s; 
