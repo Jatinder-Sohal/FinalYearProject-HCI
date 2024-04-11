@@ -19,7 +19,20 @@
         </State>
       </entry>
       <entry key="bottomNavBar_navigationWorks()">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\j4tty\.android\avd\Copy_of_Pixel_3a_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-04-11T11:52:58.006229600Z" />
+        </State>
       </entry>
     </value>
   </component>
