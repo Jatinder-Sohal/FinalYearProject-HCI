@@ -6,7 +6,15 @@ plugins {
 android {
     namespace = "com.example.cooking_companion"
     compileSdk = 34
-
+    tasks.register("dokkaHtml", org.jetbrains.dokka.gradle.DokkaTask::class) {
+        outputDirectory.set(buildDir.resolve("docs"))
+        // Add additional configuration for dokka here
+        dokkaSourceSets {
+            named("main") {
+                // You can specify source directories, per-package options, and more
+            }
+        }
+    }
     defaultConfig {
         applicationId = "com.example.cooking_companion"
         minSdk = 24
@@ -47,6 +55,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -77,4 +86,5 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
+
 }

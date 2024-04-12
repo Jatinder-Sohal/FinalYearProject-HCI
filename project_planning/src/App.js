@@ -47,14 +47,14 @@ function App() {
 
   const [listOne, setListOne] = useState([
     { id: 1, title: 'Add tasks to git' }, 
-    { id: 2, title: 'Create teams meeting' }, 
+    { id: 2, title: 'Create teams meeting' },
+    { id: 3, title: 'Link menu class to order' },
   ]);
   const [listTwo, setListTwo] = useState([
-    { id: 3, title: 'Link menu class to order' }, 
     { id: 5, title: 'Accept different forms of payment' }, 
   ]);
-  const [listThree, setListThree] = useState([
-    { id: 4, title: 'Set up Project' }, 
+  const [listThree, setListThree] = useState([ 
+    { id: 4, title: 'Set up Project' },
     { id: 6, title: 'Creating menu class using TDD and uploaded files to git' },  
   ]);
   const [listFour, setListFour] = useState([

@@ -56,7 +56,9 @@ enum class CompanionScreen(val route: String){
 }
 
 
-
+/**
+ * teset
+ */
 @Composable
 fun CompanionApp() {
     val navController = rememberNavController()
@@ -117,6 +119,12 @@ fun CompanionApp() {
     }
 }
 
+/**
+ * Represents a navigation bar at the bottom of the screen.
+ *
+ * @param navController The controller for navigation.
+ * @param currentRoute The current route to be highlighted.
+ */
 @Composable
 fun BottomNavbar(navController: NavHostController, currentRoute: String) {
     NavigationBar{
