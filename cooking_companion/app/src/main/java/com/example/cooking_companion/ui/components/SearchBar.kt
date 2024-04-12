@@ -24,6 +24,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
+/**
+ * A search bar designed for the top of home screen.
+ * When clicked, it navigates the user to the searching screen.
+ *
+ * @param navController The navigation controller to handle routing to the search screen.
+ * @param modifier Modifiers to adjust the appearance and layout of the search bar.
+ */
 @Composable
 fun TopSearchBar(navController: NavHostController, modifier: Modifier = Modifier){
     Surface(
@@ -56,6 +63,14 @@ fun TopSearchBar(navController: NavHostController, modifier: Modifier = Modifier
         }
     }
 }
+
+/**
+ * A search bar displayed on the search page, which prompts users to type in their search queries.
+ * This bar also navigates the user to the searching screen when clicked.
+ *
+ * @param navController The navigation controller to handle interactions and routing.
+ * @param modifier Modifiers to adjust the appearance and layout of the search bar.
+ */
 @Composable
 fun SearchPageBar(navController: NavHostController, modifier: Modifier = Modifier){
     Surface(

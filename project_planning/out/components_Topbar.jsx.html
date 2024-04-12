@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Topbar.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Topbar.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState } from 'react';
+import '../css/Topbar.css'
+import Help from '../images/help.png';
+import Settings from '../images/settings.png';
+import Share from '../images/share.png';
+import Search from '../images/search.png'
+
+/**
+ * Top navigation bar component that provides user interaction for title editing, searching, and accessibility settings.
+ * 
+ * @param {Object} props - The properties passed to the component.
+ * @param {string} props.title - The current title of the board.
+ * @param {Function} props.updateTitle - Function to update the board title.
+ * @param {string} props.contentColour - Current color of the content area used for settings.
+ * @param {Function} props.setContentColour - Function to update the content color.
+ * @returns {JSX.Element} Rendered top bar with interactive elements.
+ */
+function Topbar({title, updateTitle, contentColour, setContentColour}){
+    const [isEditingTitle, setIsEditingTitle] = useState(false);
+    const [currentTitle, setCurrentTitle] = useState(title);
+    /**
+     * Enables the title editing mode.
+     */
+    function titleClick(){
+        setIsEditingTitle(true);
+    };
+    /**
+     * Handles title change on blur or Enter key press.
+     */
+    function handleInput(){
+        setIsEditingTitle(false);
+        updateTitle(currentTitle);
+    };
+
+    /**
+     * Handles changes to the content color from the color picker in settings.
+     * @param {Object} event - The event triggered by changing the color picker.
+     */
+    const handleContentColorChange = (event) => {
+        setContentColour(event.target.value);
+    };
+    return(
+        &lt;div className='Topbar'>
+            &lt;div className='left-Topbar'>
+                &lt;div className='Board-Information'>
+                    &lt;h2 className='date'>First Created: 5/03/2024&lt;/h2>
+                    &lt;h2 className='date' style={{marginBottom: "30px"}}>Last Accessed: 13/03/2024&lt;/h2>
+                &lt;/div>
+            &lt;/div>
+            &lt;div className='middle-Topbar'>
+                {isEditingTitle ? (
+                    &lt;input 
+                        className="topbar-title-input" 
+                        type="text" 
+                        value={currentTitle} 
+                        onChange={(e) => setCurrentTitle(e.target.value)}
+                        onBlur={handleInput}
+                        onKeyDown={(e) => { if (e.key === 'Enter') { handleInput() } }}
+                        autoFocus 
+                    />
+                ) : (
+                    &lt;h1 onClick={titleClick} className='Topbar-Title'>{title}&lt;/h1>
+                )}
+            &lt;/div>
+            &lt;div className='right-Topbar'>
+                &lt;div class="search-bar-container">
+                    &lt;img src={Search} className="search-icon" alt="Favourite Board" />
+                    &lt;input type="text" class="search-input" placeholder="Search" />
+                &lt;/div>
+                &lt;div className="help-container">
+                    &lt;img src={Help} className="right-Icon help-icon" alt="Help icon" />
+                    &lt;div className="topbar-dropdown help-dropdown">
+                        &lt;h1>Contact Us&lt;/h1>
+                        &lt;h2 className=''>Email:&lt;/h2> 
+                        &lt;h3 className='topbar-dropdown-contact'>ProjectPlanning@gmail.com&lt;/h3>
+                        &lt;h2>Phone:&lt;/h2>
+                        &lt;h3 className='topbar-dropdown-contact'>+449848436078&lt;/h3>
+                        &lt;h2>Twitter:&lt;/h2>
+                        &lt;h3 className='topbar-dropdown-contact'>@ProjectPlanningUK&lt;/h3>
+                        &lt;h2>Facebook:&lt;/h2>
+                        &lt;h3 className='topbar-dropdown-contact'>@ProjectPlanningUK&lt;/h3>
+                    &lt;/div>
+                &lt;/div>
+                
+                &lt;div className="settings-container">
+                    &lt;img src={Settings} className="settings-icon" alt="Settings Icon" />
+                    &lt;div className="topbar-dropdown settings-dropdown">
+                        &lt;h1 className='topbarDropdown-title'>Settings&lt;/h1>
+                        &lt;div className="dropdown-option">
+                            &lt;label>Background Colour:&lt;/label>
+                            &lt;input
+                                className="background-color-picker"
+                                type="color"
+                                value="#ffffff"
+                            />
+                        &lt;/div>
+                        &lt;div className="dropdown-option">
+                            &lt;label>Content Colour:&lt;/label>
+                            &lt;input
+                                className="background-color-picker"
+                                type="color"
+                                value={contentColour}
+                                onChange={handleContentColorChange}
+                            />
+                        &lt;/div>
+                        &lt;div className="dropdown-option">
+                        &lt;label>Dark Mode:&lt;/label>
+                        &lt;input
+                            type="checkbox"
+                            className='dropdown-checkbox' />
+                            
+                        &lt;/div>
+                        &lt;div className="dropdown-option">
+                            &lt;label>Contrast Mode:&lt;/label>
+                            &lt;input
+                            type="checkbox"
+                            className='dropdown-checkbox' />
+                        &lt;/div>   
+                        &lt;div className="dropdown-option">
+                            &lt;label>Colour Blind Mode:&lt;/label>
+                            &lt;input
+                            type="checkbox"
+                            className='dropdown-checkbox' />
+                        &lt;/div>       
+                        &lt;div style={{marginTop: "15px"}}>
+                            &lt;label >Text Size:  5px&lt;/label> &lt;br/>
+                            &lt;input
+                                className="text-size-slider"
+                                type="range"
+                                min="12"
+                                max="24"
+                                value={15}
+                            />
+                            
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    );
+}
+
+export default Topbar;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Cards">Cards</a></li><li><a href="global.html#List">List</a></li><li><a href="global.html#Modal">Modal</a></li><li><a href="global.html#NewList">NewList</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#Toolbar">Toolbar</a></li><li><a href="global.html#Topbar">Topbar</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Apr 12 2024 04:41:23 GMT+0100 (British Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

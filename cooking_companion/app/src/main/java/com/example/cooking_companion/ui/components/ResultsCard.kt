@@ -40,6 +40,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Recipe
 
+/**
+ * Displays a card for a recipe, which includes image, likes, and bookmark controls.
+ * The card can be tapped to navigate to a detailed view of the recipe. It also supports bookmarking
+ * recipes through a modal bottom sheet, allowing the user to add the recipe to their collection.
+ *
+ * @param recipe The recipe data to display.
+ * @param navController The navigation controller for handling navigation events.
+ * @param originList A string identifier of the list from which the recipe originates.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecipeCard(recipe: Recipe, navController: NavHostController, originList:String, modifier : Modifier = Modifier){

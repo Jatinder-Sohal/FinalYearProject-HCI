@@ -1,21 +1,22 @@
 Folder Structure
-I have created 2 interfaces at this point in time. The first is the folder financial_tracker and the second becing project_planning
+This Readme will explain the folders in this final submission. To find out how to deploy my projects please read the Installation Manual in my report - Section 9.1.
 
---Finance tracker website
-The folder financial_tracker contains several different files and folders.
+In this folder there are 3 interfaces. Due to React's requirments these folders are written in lowercase. Following this standard I named my Android application in a similar fashion.
 
-To deploy the project, you will first need to install npm and node.
-After this you just need to navigate inside the financial tracker folder and type: npm install.
-This will install all the required dependancies.
+The first interface is finance_tracker, which is a React project that contains package files, src, public and documentation files. The src contains the main files for the project, with public just containing boilerplate for launching the project.
 
-To run the project, once inside the financial tracker type: npm start
-And to test the project, type: npm test  - After 30 seconds a test suite will appear type: a -This will run all tests
+My second interface project_planning has the same folder structure. The src however does not contain any pages folder due to it being a single page application.
 
---Project planning application
-The folder project_planning contains 3 folders: main, test and resources. You can run the application by opening Main.py inside the main folder and pressing f5. But please make sure you have the required libraries installed (Check bottom).
+The third interface is cooking_companion and its directory looks a lot different due to it being a Jetpack Compose project. The src files are located in app/src/main. There are pages and components inside there, similar to the finance_tracker.
 
-The test folder contains test files the correspond to files in main. They can also be run by opening them and pressing f5.
+My final Report is named as Jatinder.Final.pdf and can be found in the root directory as a seperate pdf.
 
-The resources folder contains images that the main and test uses in its python files.
+There are two text files also in the root. One is the full diary and the other contains a link to a youtube video which shows the functionality of my interfaces.
 
-REQUIRED LIBRARIES: Each library can be installed using pip. The libraries include: Tkinter, Custom Tkinter, TKtooltip, and PIL
+The last item in the root folder is Documents. This contains 3 more folders inside 1)Sketches - my prototypes 2) Documentation of all my code 3) User testing for the final week of my project.
+
+
+
+
+
+

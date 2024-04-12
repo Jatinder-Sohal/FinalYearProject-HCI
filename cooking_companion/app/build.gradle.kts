@@ -6,7 +6,15 @@ plugins {
 android {
     namespace = "com.example.cooking_companion"
     compileSdk = 34
-
+    tasks.register("dokkaHtml", org.jetbrains.dokka.gradle.DokkaTask::class) {
+        outputDirectory.set(buildDir.resolve("docs"))
+        // Add additional configuration for dokka here
+        dokkaSourceSets {
+            named("main") {
+                // You can specify source directories, per-package options, and more
+            }
+        }
+    }
     defaultConfig {
         applicationId = "com.example.cooking_companion"
         minSdk = 24
@@ -47,6 +55,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -66,6 +75,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${rootProject.extra["lifecycle_version"]}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:${rootProject.extra["lifecycle_version"]}")
     implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.compose.ui:ui-test-junit4-android:1.6.5")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -74,4 +84,7 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
+
 }

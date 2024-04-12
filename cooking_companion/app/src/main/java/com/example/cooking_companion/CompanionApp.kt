@@ -36,15 +36,15 @@ import com.example.cooking_companion.data.DataSource.recipesList
 import com.example.cooking_companion.data.DataSource.tomatoIngredient
 import com.example.cooking_companion.data.DataSource.tomatoRecipes
 import com.example.cooking_companion.data.DataSource.veganRecipes
-import com.example.cooking_companion.ui.pages.CompanionHomeScreen
-import com.example.cooking_companion.ui.pages.CompanionListsScreen
-import com.example.cooking_companion.ui.pages.CompanionSavedScreen
-import com.example.cooking_companion.ui.pages.CompanionSearchScreen
-import com.example.cooking_companion.ui.pages.CompanionSettingsScreen
-import com.example.cooking_companion.ui.pages.Recipe
-import com.example.cooking_companion.ui.pages.Results
-import com.example.cooking_companion.ui.pages.SavedCollection
-import com.example.cooking_companion.ui.pages.Search
+import com.example.cooking_companion.ui.pages.NavbarHome
+import com.example.cooking_companion.ui.pages.NavbarLists
+import com.example.cooking_companion.ui.pages.NavbarSaved
+import com.example.cooking_companion.ui.pages.NavbarSearch
+import com.example.cooking_companion.ui.pages.NavbarSettings
+import com.example.cooking_companion.ui.pages.Collection
+import com.example.cooking_companion.ui.pages.RecipeExpanded
+import com.example.cooking_companion.ui.pages.SearchResults
+import com.example.cooking_companion.ui.pages.Searching
 
 
 enum class CompanionScreen(val route: String){
@@ -55,8 +55,12 @@ enum class CompanionScreen(val route: String){
     Settings("settings")
 }
 
-
-
+/**
+ * Main composable function for the Cooking Companion app's navigation and layout.
+ *
+ * Sets up the navigation for the entire app using a bottom navigation bar
+ * to switch between different screens like Home, Search, Saved, Lists, and Settings.
+ */
 @Composable
 fun CompanionApp() {
     val navController = rememberNavController()
@@ -72,25 +76,25 @@ fun CompanionApp() {
         }
     ) { innerPadding ->
         NavHost(navController, startDestination = CompanionScreen.Home.route, Modifier.padding(innerPadding)) {
-            composable(CompanionScreen.Home.route) { CompanionHomeScreen(navController) }
-            composable(CompanionScreen.Search.route) { CompanionSearchScreen(navController) }
-            composable(CompanionScreen.Saved.route) { CompanionSavedScreen(navController) }
-            composable(CompanionScreen.Lists.route) { CompanionListsScreen() }
-            composable(CompanionScreen.Settings.route) { CompanionSettingsScreen() }
+            composable(CompanionScreen.Home.route) { NavbarHome(navController) }
+            composable(CompanionScreen.Search.route) { NavbarSearch(navController) }
+            composable(CompanionScreen.Saved.route) { NavbarSaved(navController) }
+            composable(CompanionScreen.Lists.route) { NavbarLists() }
+            composable(CompanionScreen.Settings.route) { NavbarSettings() }
             composable(
                 route = "savedCollection/{collectionPosts}",
                 arguments = listOf(navArgument("collectionPosts"){type = NavType.StringType})
             ) { backStackEntry ->
-                SavedCollection(navController, collectionPosts = backStackEntry.arguments?.getString("collectionPosts") ?: "")
+                Collection(navController, collectionPosts = backStackEntry.arguments?.getString("collectionPosts") ?: "")
             }
-            composable("Search"){ Search(navController)}
+            composable("Search"){ Searching(navController)}
             composable(
                 route = "Results/{tab}/{searchQuery}",
                 arguments = listOf(
                     navArgument("tab"){type = NavType.StringType},
                     navArgument("searchQuery"){type = NavType.StringType})
             ) { backStackEntry ->
-            Results(
+            SearchResults(
                 navController,
                 tab = backStackEntry.arguments?.getString("tab") ?: "",
                 query = backStackEntry.arguments?.getString("searchQuery") ?: "")
@@ -103,20 +107,25 @@ fun CompanionApp() {
                 )
             ) { backStackEntry ->
                 val recipeName = backStackEntry.arguments?.getString("recipeName") ?: ""
-                val listName = backStackEntry.arguments?.getString("listName") ?: ""
-                val recipe = when (listName){
+                val recipe = when (backStackEntry.arguments?.getString("listName") ?: ""){
                     "recipesList" -> recipesList.first { it.name == recipeName }
                     "veganRecipes" -> veganRecipes.first { it.name == recipeName }
                     "tomatoIngredient" -> tomatoIngredient.first{it.name == recipeName}
                     else -> { tomatoRecipes.first{it.name == recipeName}}
                 }
 
-                Recipe(recipe, navController)
+                RecipeExpanded(recipe, navController)
             }
         }
     }
 }
 
+/**
+ * Constructs the bottom navigation bar for the app.
+ *
+ * @param navController The navigation controller managing app navigation.
+ * @param currentRoute The current route string to manage active states of navigation items.
+ */
 @Composable
 fun BottomNavbar(navController: NavHostController, currentRoute: String) {
     NavigationBar{
@@ -159,6 +168,13 @@ fun BottomNavbar(navController: NavHostController, currentRoute: String) {
         }
     }
 }
+
+/**
+ * Provides the appropriate icon colour for each navigation item.
+ *
+ * @param selected Boolean indicating if the item is currently selected to choose the icon style.
+ * @return A composable that displays the appropriate icon.
+ */
 @Composable
 fun getColor(selected: Boolean): Color {
     return if (selected) {
