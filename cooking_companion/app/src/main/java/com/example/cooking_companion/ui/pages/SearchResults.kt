@@ -55,6 +55,18 @@ import com.example.cooking_companion.ui.components.CollectionOption
 import com.example.cooking_companion.ui.components.RecipeCard
 import com.example.cooking_companion.ui.components.SavedFiltersSheet
 
+/**
+ * Displays search results based on a given query and allows filtering across different categories: Recipes, Collections, and Ingredients.
+ *
+ * This function dynamically displays search results depending on the search query and selected category.
+ * It includes a search bar for refining the query and tabs for switching between different types of results.
+ * Users can also access a filter modal to sort results.
+ *
+ * @param navController The navigation controller for handling navigation events.
+ * @param tab The currently selected category tab ("Recipes", "Collections", "Ingredient").
+ * @param query The current search query input by the user.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchResults(navController: NavHostController, tab:String, query:String, modifier: Modifier = Modifier) {
@@ -210,6 +222,15 @@ fun SearchResults(navController: NavHostController, tab:String, query:String, mo
         }
     }
 }
+
+/**
+ * Selectable tab for categorizing search results, with a orange underline on selection.
+ *
+ * @param text The text to be displayed on the tab.
+ * @param isSelected Indicates whether the tab is currently selected.
+ * @param onSelected A callback invoked when the tab is selected.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun ResultsTab(
     text : String,
@@ -238,6 +259,16 @@ fun ResultsTab(
         }
     }
 }
+
+/**
+ * Displays items in a grid layout, chunking them into rows. Displays an empty state if no items are found.
+ *
+ * This generic composable function can handle any type of content and arranges it into a grid.
+ * If there are no items to display, it shows a placeholder message and icon.
+ *
+ * @param items A list of items to display in the grid.
+ * @param content A composable function that defines how each item should be displayed.
+ */
 @Composable
 fun <T> DisplayGrid(
     items: List<T>,

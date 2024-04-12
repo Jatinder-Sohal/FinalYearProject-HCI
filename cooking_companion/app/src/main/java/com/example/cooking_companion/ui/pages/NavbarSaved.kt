@@ -25,7 +25,15 @@ import com.example.cooking_companion.data.DataSource
 import com.example.cooking_companion.ui.components.AddNewCollection
 import com.example.cooking_companion.ui.components.CollectionOption
 
-
+/**
+ * Displays a navigational view for saved collections of recipes, allowing users to view and manage collections.
+ *
+ * This page includes a list of saved collections presented in a LazyColumn, where each collection
+ * can be viewed or edited. It also provides an option to add a new collection directly from this page.
+ *
+ * @param navController The navigation controller for handling navigation events, facilitating movement between UI components.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun NavbarSaved(navController: NavHostController, modifier: Modifier = Modifier) {
     val collections = DataSource.collections

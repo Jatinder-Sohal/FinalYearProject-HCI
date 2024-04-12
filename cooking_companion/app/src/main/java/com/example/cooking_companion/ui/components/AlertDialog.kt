@@ -22,7 +22,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 /**
- * testest
+ * Composable function that displays a dialog with a single text input field.
+ * It allows users to input a new item's name and confirm or dismiss the dialog.
+ *
+ * @param title The title of the dialog.
+ * @param boxTitle The label for the input field.
+ * @param showDialog Controls the visibility of the dialog.
+ * @param onDismiss Function to execute when the dialog is dismissed.
+ * @param onConfirm Function to execute with the input text when confirmed.
+ * @param modifier Modifier for styling the components within the dialog.
  */
 @Composable
 fun OneInputDialog(
@@ -70,6 +78,18 @@ fun OneInputDialog(
         )
     }
 }
+/**
+ * Composable function that displays a dialog with multiple text input fields for editing titles.
+ * Used for changing the titles of lists and dropdown options.
+ *
+ * @param showDialog Controls the visibility of the dialog.
+ * @param onDismiss Function to execute when the dialog is dismissed.
+ * @param onConfirm Function to execute with the new titles when confirmed.
+ * @param originalTitle Default value for the main title input field.
+ * @param originalDropDownOne Default value for the first dropdown title input field.
+ * @param originalDropDownTwo Default value for the second dropdown title input field.
+ * @param modifier Modifier for styling the components within the dialog.
+ */
 @Composable
 fun ChangeTitles(
     showDialog: Boolean,
@@ -133,6 +153,16 @@ fun ChangeTitles(
     }
 }
 
+/**
+ * Composable function that displays a warning dialog for confirming item deletion.
+ * Used to prevent any errors from users.
+ *
+ * @param text The text displayed inside the dialog to warn the user about the deletion.
+ * @param showDialog Controls the visibility of the dialog.
+ * @param onDismiss Function to execute when the dialog is dismissed without confirmation.
+ * @param onConfirm Function to execute when the deletion is confirmed.
+ * @param modifier Modifier for styling the components within the dialog.
+ */
 @Composable
 fun DeleteItemsDialog(
     text: String,

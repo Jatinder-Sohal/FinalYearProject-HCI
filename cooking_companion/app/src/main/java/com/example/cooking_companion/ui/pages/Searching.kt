@@ -35,7 +35,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.DataSource.recommendations
 
-
+/**
+ * Provides a dynamic search interface with options for direct search input, recent searches, and popular searches.
+ *
+ * This screen features a search bar that allows users to type and submit queries. Below the search bar,
+ * depending on the user input, it displays either a list of recommendations based on the typed query,
+ * or lists of recent and popular searches when the search field is empty. Users can select any of the terms to perform a search.
+ *
+ * @param navController The navigation controller for handling navigation events, facilitating movement between UI components.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun Searching(navController: NavHostController, modifier: Modifier = Modifier) {
     var searchQuery by remember { mutableStateOf("") }

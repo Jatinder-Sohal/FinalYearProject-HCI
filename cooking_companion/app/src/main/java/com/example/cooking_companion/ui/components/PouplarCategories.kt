@@ -2,7 +2,6 @@ package com.example.cooking_companion.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.DefaultTintColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,6 +27,16 @@ import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Category
 import com.example.cooking_companion.data.DataSource.darkMode
 
+/**
+ * Displays a horizontal category card which can be clicked to navigate to the respective category details.
+ *
+ * This card is designed to display category information in a horizontal format, which includes a textual description
+ * on the left and an image on the right.
+ *
+ * @param navController The navigation controller used for handling navigation events.
+ * @param category The data model representing the category that includes the name and image resource identifier.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun HorizontalCategoryItem(navController: NavHostController, category: Category, modifier: Modifier = Modifier) {
     Card(
@@ -75,6 +83,16 @@ fun HorizontalCategoryItem(navController: NavHostController, category: Category,
         }
     }}
 
+/**
+ * Displays a vertical category card which can be clicked to navigate to the respective category details.
+ *
+ * This card is tailored for vertical presentation of a category, featuring a centered image at the top and
+ * the category name below.
+ *
+ * @param navController The navigation controller used for handling navigation events.
+ * @param category The data model representing the category that includes the name and image resource identifier.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun VerticalCategoryCard(navController: NavHostController, category: Category, modifier : Modifier = Modifier){
     Card(

@@ -33,6 +33,14 @@ import androidx.compose.ui.unit.dp
 import com.example.cooking_companion.R
 import kotlinx.coroutines.launch
 
+/**
+ * Horizontally scrollable list of images.
+ *
+ * Users cam swipe through images or use navigation arrows to move between them.
+ * It includes dynamic indicators to show the current position in the carousel.
+ *
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun RecipeCarousel(modifier : Modifier = Modifier) {
@@ -102,6 +110,14 @@ fun RecipeCarousel(modifier : Modifier = Modifier) {
     }
 }
 
+/**
+ * Displays an indicator for the carousel, highlighting if the current image is selected.
+ *
+ * This component renders a larger indicator for the selected image and a smaller one for others.
+ *
+ * @param isSelected Boolean indicating whether the current indicator is for the selected image.
+ * @param modifier Modifier for customizing the indicator's appearance and padding.
+ */
 @Composable
 fun CarouselIndicator(isSelected: Boolean, modifier : Modifier = Modifier) {
     if (isSelected)

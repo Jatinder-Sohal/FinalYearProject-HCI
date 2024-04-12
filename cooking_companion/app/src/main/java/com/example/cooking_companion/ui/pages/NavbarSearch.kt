@@ -26,7 +26,15 @@ import com.example.cooking_companion.ui.components.RecipeCarousel
 import com.example.cooking_companion.ui.components.SearchPageBar
 import com.example.cooking_companion.ui.components.VerticalCategoryCard
 
-
+/**
+ * Provides a search interface with a bottom sheet that displays categories, recent recipes, and a search bar.
+ *
+ * This page is the main search interface for the application, allowing users to quickly search for recipes
+ * and view categories and recent recipes. The bottom sheet provides a clean way to view top categories which can be expanded.
+ *
+ * @param navController The navigation controller for handling navigation events.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavbarSearch(navController: NavHostController, modifier: Modifier = Modifier) {

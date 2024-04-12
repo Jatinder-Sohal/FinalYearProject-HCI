@@ -55,9 +55,11 @@ enum class CompanionScreen(val route: String){
     Settings("settings")
 }
 
-
 /**
- * teset
+ * Main composable function for the Cooking Companion app's navigation and layout.
+ *
+ * Sets up the navigation for the entire app using a bottom navigation bar
+ * to switch between different screens like Home, Search, Saved, Lists, and Settings.
  */
 @Composable
 fun CompanionApp() {
@@ -105,8 +107,7 @@ fun CompanionApp() {
                 )
             ) { backStackEntry ->
                 val recipeName = backStackEntry.arguments?.getString("recipeName") ?: ""
-                val listName = backStackEntry.arguments?.getString("listName") ?: ""
-                val recipe = when (listName){
+                val recipe = when (backStackEntry.arguments?.getString("listName") ?: ""){
                     "recipesList" -> recipesList.first { it.name == recipeName }
                     "veganRecipes" -> veganRecipes.first { it.name == recipeName }
                     "tomatoIngredient" -> tomatoIngredient.first{it.name == recipeName}
@@ -120,10 +121,10 @@ fun CompanionApp() {
 }
 
 /**
- * Represents a navigation bar at the bottom of the screen.
+ * Constructs the bottom navigation bar for the app.
  *
- * @param navController The controller for navigation.
- * @param currentRoute The current route to be highlighted.
+ * @param navController The navigation controller managing app navigation.
+ * @param currentRoute The current route string to manage active states of navigation items.
  */
 @Composable
 fun BottomNavbar(navController: NavHostController, currentRoute: String) {
@@ -167,6 +168,13 @@ fun BottomNavbar(navController: NavHostController, currentRoute: String) {
         }
     }
 }
+
+/**
+ * Provides the appropriate icon colour for each navigation item.
+ *
+ * @param selected Boolean indicating if the item is currently selected to choose the icon style.
+ * @return A composable that displays the appropriate icon.
+ */
 @Composable
 fun getColor(selected: Boolean): Color {
     return if (selected) {

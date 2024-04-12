@@ -55,7 +55,16 @@ import com.example.cooking_companion.ui.components.OneInputDialog
 import com.example.cooking_companion.ui.components.SavedFiltersSheet
 import kotlinx.coroutines.launch
 
-
+/**
+ * Individual collection of recipes in vertical list.
+ *
+ * This page includes functionality to sort recipes, navigate back, edit the collection's title,
+ * and delete the entire collection. It also supports undo functionality via a snackbar after removing a recipe.
+ *
+ * @param navController The navigation controller for handling navigation events.
+ * @param collectionPosts String identifier for the collection, used to fetch recipes.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Collection(navController: NavHostController, collectionPosts: String, modifier: Modifier = Modifier) {
@@ -224,7 +233,7 @@ fun Collection(navController: NavHostController, collectionPosts: String, modifi
                             CollectionItem(
                                 bookmark,
                                 onBookmarkClick = {
-                                    onBookmarkClick(bookmark);
+                                    onBookmarkClick(bookmark)
                                     scope.launch {
                                         val result = snackbarHostState
                                             .showSnackbar(
@@ -251,6 +260,13 @@ fun Collection(navController: NavHostController, collectionPosts: String, modifi
         }
     }
 }
+/**
+ * Small function to apply a filter to a list of recipes based on specified criteria.
+ *
+ * @param filterOption The selected filter option ("A to Z", "Difficulty", "Quickest", "Slowest").
+ * @param recipes List of recipes to filter.
+ * @return A list of recipes sorted according to the specified filter.
+ */
 fun filterRecipes(filterOption: String, recipes: List<Bookmark>): List<Bookmark> {
     val difficultyOrder = listOf("Easy", "Moderate", "Hard")
     return when (filterOption) {

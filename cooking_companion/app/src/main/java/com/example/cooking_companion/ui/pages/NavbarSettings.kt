@@ -37,11 +37,19 @@ import com.example.cooking_companion.data.DataSource.darkMode
 import com.example.cooking_companion.data.DataSource.headerFont
 import com.example.cooking_companion.data.DataSource.settingFont
 
+/**
+ * A settings screen that offers customization options for notifications, themes, text sizes, and diet preferences.
+ *
+ * This screen enables users to adjust various settings such as enabling dark mode, managing notification settings,
+ * toggling enlarged text for better readability, and setting dietary preferences through a dropdown menu.
+ *
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun NavbarSettings(modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     val notificationsEnabled = remember { mutableStateOf(true) }
-    var darkThemeEnabled = remember { mutableStateOf(darkMode.value) }
+    val darkThemeEnabled = remember { mutableStateOf(darkMode.value) }
     val contrastEnabled = remember { mutableStateOf(false) }
     val enlargeTextEnabled = remember { mutableStateOf(false) }
     val hText = remember { mutableIntStateOf(headerFont.intValue) }

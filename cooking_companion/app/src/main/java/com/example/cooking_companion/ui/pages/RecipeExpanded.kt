@@ -61,6 +61,15 @@ import androidx.navigation.NavHostController
 import com.example.cooking_companion.R
 import com.example.cooking_companion.data.Recipe
 
+/**
+ * Displays an expanded view of a specific recipe, offering detailed information such as ingredients, steps, and interactive features like bookmarking, liking, and sharing.
+ *
+ * This composable function presents a detailed view of a recipe including an image, description, interactive icons for liking and bookmarking, and dynamically adjusting servings. It also supports audio playback for recipe steps and allows sharing the recipe.
+ *
+ * @param recipe The recipe data object containing details like name, ingredients, and cooking steps.
+ * @param navController The navigation controller for managing navigation events.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecipeExpanded(recipe: Recipe, navController: NavHostController, modifier: Modifier = Modifier) {
@@ -411,6 +420,17 @@ fun RecipeExpanded(recipe: Recipe, navController: NavHostController, modifier: M
         )
     }
 }
+/**
+ * Displays a single review entry with the reviewer's initial, name, and comment.
+ *
+ * This composable function creates a visual representation of a review, including a circular initial icon
+ * and a column of text for the reviewer's name and their comment. It's designed to be reusable and configurable
+ * for displaying various user reviews.
+ *
+ * @param name The name of the reviewer.
+ * @param comment The content of the review provided by the reviewer.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun Review(name: String, comment:String, modifier: Modifier = Modifier){
     Row (

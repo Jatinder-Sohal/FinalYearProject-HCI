@@ -23,7 +23,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Recipe
 
-
+/**
+ * Displays a card view of a recipe that users can tap to navigate to the detailed recipe page.
+ *
+ * This composable function creates a card view with an image on top and the recipe's name below. The card
+ * can be tapped to navigate to a detailed view of the recipe specified by `recipe.name`.
+ *
+ * @param navController The navigation controller used for handling navigation events.
+ * @param recipe The recipe data to display, which includes the name and image resource.
+ * @param modifier The modifier to be applied to the card layout.
+ */
 @Composable
 fun DisplayCard(navController: NavHostController, recipe: Recipe, modifier: Modifier = Modifier) {
     val darkTheme = isSystemInDarkTheme()

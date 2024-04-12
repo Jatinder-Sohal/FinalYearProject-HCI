@@ -21,6 +21,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
+/**
+ * Displays a list of selectable options for lists.
+ * This sheet allows the user to select one of the predefined lists or add a new one.
+ *
+ * @param onListSelected Function that handles the event when a list is selected.
+ * @param onAddList Function that handles the event when the 'Add New List' button is clicked.
+ */
 @Composable
 fun SelectListsSheet(onListSelected: (String) -> Unit, onAddList: () -> Unit) {
     val items = listOf("List 1", "List 2", "List 3")
@@ -57,6 +64,14 @@ fun SelectListsSheet(onListSelected: (String) -> Unit, onAddList: () -> Unit) {
         }
     }
 }
+/**
+ * Displays a list of selectable options for collections.
+ *
+ * This sheet allows the user to select one of the predefined collections.
+ * Used to manage user-defined collections of recipes or data.
+ *
+ * @param onCollectionSelected Function that handles the event when a collection is selected.
+ */
 @Composable
 fun SelectCollectionSheet(onCollectionSelected: () -> Unit) {
     val items = listOf("Collection one", "16/12/23", "List 5")
@@ -85,6 +100,18 @@ fun SelectCollectionSheet(onCollectionSelected: () -> Unit) {
         Spacer(modifier = Modifier.height(16.dp))
     }
 }
+/**
+ * Displays a sheet with selectable filters for saved items.
+ *
+ * Users can filter saved content based on the provided options.
+ * Each filter option is represented by a radio button.
+ *
+ * @param title The title of the filter sheet.
+ * @param filterOptions List of filter options available.
+ * @param currentFilter The currently selected filter option.
+ * @param onFilterSelected Function that handles the event when a filter is selected.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun SavedFiltersSheet(title:String, filterOptions: List<String>, currentFilter: String, onFilterSelected: (String) -> Unit, modifier: Modifier = Modifier) {
     Column (

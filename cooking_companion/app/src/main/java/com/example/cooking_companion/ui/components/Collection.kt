@@ -39,6 +39,13 @@ import androidx.navigation.NavHostController
 import com.example.cooking_companion.data.Bookmark
 import com.example.cooking_companion.data.Collection
 
+/**
+ * Displays a collection card that can be tapped to navigate to a list of recipes inside collection.
+ *
+ * @param collection The collection data to display.
+ * @param navController The navigation controller for handling navigation events.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun CollectionOption(collection : Collection, navController: NavHostController, modifier : Modifier = Modifier){
     Card(
@@ -145,6 +152,15 @@ fun CollectionOption(collection : Collection, navController: NavHostController, 
         }
     }
 }
+/**
+ * Displays an interactive card for adding a new collection.
+ *
+ * This card includes an icon button that, when clicked, will invoke the provided onClick function.
+ * Used to open a dialog or another interface to add a new collection.
+ *
+ * @param onClick The function to be called when the user decides to add a new collection.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun AddNewCollection(onClick: () -> Unit, modifier: Modifier = Modifier){
     Card(
@@ -181,6 +197,16 @@ fun AddNewCollection(onClick: () -> Unit, modifier: Modifier = Modifier){
         }
     }
 }
+/**
+ * Bookmarked item in collection that contains relevant information and can be removed.
+ *
+ * This card includes a bookmark icon that, when clicked, will remove the recipe from the collection.
+ * It also displays details about the bookmarked item such as title, cooking time, and difficulty.
+ *
+ * @param bookmark The bookmark data to display.
+ * @param onBookmarkClick The function to be called when the bookmark icon is clicked.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun CollectionItem(bookmark: Bookmark,onBookmarkClick: () -> Unit, modifier: Modifier = Modifier) {
     val darkTheme = isSystemInDarkTheme()

@@ -9,11 +9,14 @@ My second interface project_planning has the same folder structure. The src howe
 
 The third interface is cooking_companion and its directory looks a lot different due to it being a Jetpack Compose project. The src files are located in app/src/main. There are pages and components inside there, similar to the finance_tracker.
 
-Sketches contain all my prototypes for my interfaces. There were created before my implementations and contain screenshots of both Canva and Figma.
+My final Report is named as Jatinder.Final.pdf and can be found in the root directory as a seperate pdf.
 
-The documentation folder contains React doc and  for my applications. I have hoisted these files outside so they are easier to access.
+There are two text files also in the root. One is the full diary and the other contains a link to a youtube video which shows the functionality of my interfaces.
 
-The final user testing folder contains my last iteration of user testing and the results from that.
+The last item in the root folder is Documents. This contains 3 more folders inside 1)Sketches - my prototypes 2) Documentation of all my code 3) User testing for the final week of my project.
+
+
+
 
 
 

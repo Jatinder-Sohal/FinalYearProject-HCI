@@ -46,6 +46,15 @@ import com.example.cooking_companion.ui.components.OneInputDialog
 import com.example.cooking_companion.ui.components.SelectListsSheet
 import kotlinx.coroutines.launch
 
+/**
+ * Displays a dynamic list management interface allowing users to edit, delete, and add new lists.
+ *
+ * Component offers functionalities such as editing the title of lists, adding new items,
+ * moving items between two lists, and providing interactive options like deletion with undo support via a snackbar.
+ * It incorporates modal bottom sheets for list interactions and floating action buttons for adding new items.
+ *
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavbarLists(modifier: Modifier = Modifier) {

@@ -32,6 +32,14 @@ import com.example.cooking_companion.ui.components.DisplayCard
 import com.example.cooking_companion.ui.components.HorizontalCategoryItem
 import com.example.cooking_companion.ui.components.TopSearchBar
 
+/**
+ * A main navigation homepage featuring a search bar, category highlights, and recipe suggestions.
+ *
+ * Provides quick access to popular categories and featured recipes.
+ *
+ * @param navController The navigation controller for handling navigation events.
+ * @param modifier Modifier for customizing the layout's appearance and padding.
+ */
 @Composable
 fun NavbarHome(navController: NavHostController, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
@@ -101,7 +109,12 @@ fun NavbarHome(navController: NavHostController, modifier: Modifier = Modifier) 
         RecipesGrid(navController, recipesList)
     }
 }
-
+/**
+ * Displays a horizontal scrollable list of categories.
+ *
+ * @param navController The navigation controller for navigating to specific category details.
+ * @param categories The list of categories to be displayed.
+ */
 @Composable
 fun CategoryList(navController: NavHostController, categories: List<Category>) {
     val subsetOfRecipes = categories.slice(0..4)
@@ -114,6 +127,15 @@ fun CategoryList(navController: NavHostController, categories: List<Category>) {
     }
 }
 
+/**
+ * Displays a grid layout of recipe cards.
+ *
+ * This component organizes recipes into rows, each containing up to two recipe cards,
+ * providing an overview of available dishes to users.
+ *
+ * @param navController The navigation controller for handling navigation events.
+ * @param recipes The list of recipes to be displayed.
+ */
 @Composable
 fun RecipesGrid(navController: NavHostController, recipes: List<Recipe>) {
     val chunkedRecipes = recipes.chunked(2)
