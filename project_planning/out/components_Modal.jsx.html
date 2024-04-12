@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Modal.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Modal.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import '../css/Modal.css'
+import { useState, useEffect } from 'react';
+import Cancel from '../images/cancel-svgrepo-com.png';
+import MoveLeft from '../images/left-arrow.png'
+import MoveRight from '../images/right-arrow.png'
+import Bin from '../images/bin-black.png'
+import Share from '../images/share.png'
+import Copy from '../images/copy.png'
+
+/**
+ * Modal component to display and manage details of a specific card.
+ * Allows editing of card details such as description and checklist, and provides card management actions like move, copy, share, and delete.
+ *
+ * @param {Object} props - Props passed to the component.
+ * @param {Object} props.card - The card object containing details like title and id.
+ * @param {Function} props.onClose - Function to close the modal.
+ * @param {string} props.listTitle - Title of the list containing the card.
+ * @param {Function} props.deleteCard - Function to delete the card from its list.
+ * @returns {JSX.Element} Rendered component
+ */
+const Modal = ({ card, onClose, listTitle, deleteCard }) => {
+  const [checklistItems, setChecklistItems] = useState([
+    { id: 1, label: 'Task 1', checked: true },
+    { id: 2, label: 'Task 2', checked: false },
+    { id: 3, label: 'Task 3', checked: false },
+  ]);
+  const [checkedItems, updateCheckedItem] = useState(33.3)
+  /**
+   * Updates the progress bar based on completed tasks in the checklist.
+   */
+  function updateProgressBar(){
+    const totalItems = checklistItems.length;
+    const completedItems = checklistItems.filter(item => item.checked).length;
+    updateCheckedItem((completedItems / totalItems) * 100);
+  }
+  useEffect(() => {
+    updateProgressBar(); 
+  }, [checklistItems]);
+
+  var id = 4;
+  const [isAddItemOpen, setIsAddItemOpen] = useState(false);
+  const [newItem, setNewItem] = useState('');
+  
+  /**
+   * Toggles the visibility of the add item input box.
+   */
+  const toggleAdd = () => {
+    setIsAddItemOpen(!isAddItemOpen);
+  };
+  /**
+   * Handles adding a new item to the checklist.
+   * Adds the item only if the input is not empty.
+   */
+  function handleAddItem(){
+    if (newItem.trim() !== '') {
+      setChecklistItems([...checklistItems, { id: id, label: newItem, checked: false }]);
+      setNewItem(''); 
+      setIsAddItemOpen(false);
+      id++;
+    }else{
+      alert("Please enter a checkbox value")
+    }
+  };
+  /**
+   * Removes an item from the checklist based on its ID.
+   * @param {number} id - The ID of the item to be removed.
+   */
+  function handleDeleteItem(id){
+    setChecklistItems(checklistItems.filter(item => item.id !== id));
+  }
+  /**
+   * Toggles the checked state of a checklist item.
+   * @param {number} id - The ID of the item whose checked state will be toggled.
+   */
+  function handleCheckboxClick(id){
+    setChecklistItems(checklistItems.map(item => {
+      if (item.id === id) {
+        return {...item,checked: !item.checked };
+      }
+      return item;
+    }));
+  }
+
+  return (
+    &lt;div className="modal-backdrop">
+      &lt;div className="modal-content">
+        &lt;div style={{ display: 'flex'}}>
+          &lt;h2 className='modal-title'>{card.title}&lt;/h2>
+          &lt;img src={Cancel} className="modal-close"onClick={onClose}  alt="Close Modal" />
+        &lt;/div>
+        &lt;div style={{ display: 'flex'}}>
+          &lt;div>
+            &lt;h2 className='modal-listFrom'>In list: {listTitle}&lt;/h2>
+            &lt;h3 className='title-description'>Description&lt;/h3>
+            &lt;textarea className="modal-description"  placeholder="Enter a description for this card..." >&lt;/textarea>
+            
+            &lt;h3 className='title-description'>Checklist&lt;/h3>
+            &lt;div className="progress-bar-container">
+              &lt;div className="progress-bar" style={{ width: `${checkedItems}%` }}>&lt;/div>
+            &lt;/div>
+            &lt;div className='checkbox-container'>
+              {checklistItems.map(item => (
+                &lt;div className="checkbox-row" key={item.id}>
+                  &lt;label className="checkbox-label">
+                    &lt;input type="checkbox" className='checkbox' checked={item.checked} onClick={() => handleCheckboxClick(item.id)} />
+                    {item.label}
+                  &lt;/label>
+                  &lt;img src={Bin} className="checkbox-delete" alt="Delete checkbox row" onClick={() => handleDeleteItem(item.id)} />
+                &lt;/div>
+              ))}
+              {isAddItemOpen ? (
+                &lt;div>
+                  &lt;input className='checkbox-add-input' placeholder='Add an item' value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
+                  &lt;div style={{ display: 'flex', marginTop:'7px', alignItems: 'center'}}>
+                      &lt;button className="checkbox-add-confirm" onClick={handleAddItem}>Add&lt;/button>
+                      &lt;img src={Cancel} className="cancel-card-button" alt="Cancel card" onClick={() => setIsAddItemOpen(false)} />
+                  &lt;/div>
+                &lt;/div>
+              ) : (
+                &lt;button className='checkbox-add-button' onClick={toggleAdd}>Add an item&lt;/button>
+              )}
+            &lt;/div>
+            
+          &lt;/div>
+          &lt;div style={{marginLeft:"22px", marginTop:"25px"}}>
+              &lt;h4 className='modal-subtitle'>Card actions&lt;/h4>
+              &lt;button className="modal-Button" >
+                  &lt;img src={MoveLeft} className="modal-icon" alt="Move to left list" />
+                  &lt;span className="modal-Button-Text">Move Left&lt;/span>
+              &lt;/button>
+              &lt;button className="modal-Button" >
+                  &lt;img src={MoveRight} className="modal-icon" alt="Move to right list" />
+                  &lt;span className="modal-Button-Text">Move Right&lt;/span>
+              &lt;/button>
+              &lt;button className="modal-Button" >
+                  &lt;img src={Copy} className="modal-icon" alt="Duplicate Card" />
+                  &lt;span className="modal-Button-Text">Copy&lt;/span>
+              &lt;/button>
+              &lt;button className="modal-Button" >
+                  &lt;img src={Share} className="modal-icon" alt="Share card" />
+                  &lt;span className="modal-Button-Text">Share&lt;/span>
+              &lt;/button>
+              &lt;button className="modal-Button" onClick={() => deleteCard(card.id, listTitle)} >
+                  &lt;img src={Bin} className="modal-icon" alt="Delete Card" />
+                  &lt;span className="modal-Button-Text">Delete&lt;/span>
+              &lt;/button>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  );
+};
+
+  export default Modal;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Cards">Cards</a></li><li><a href="global.html#List">List</a></li><li><a href="global.html#Modal">Modal</a></li><li><a href="global.html#NewList">NewList</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#Toolbar">Toolbar</a></li><li><a href="global.html#Topbar">Topbar</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Apr 12 2024 04:41:23 GMT+0100 (British Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

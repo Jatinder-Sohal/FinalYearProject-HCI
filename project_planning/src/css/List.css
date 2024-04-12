@@ -1,0 +1,167 @@
+.list {
+    border-radius: 18px;
+    width: 270px;
+    margin: 0 8px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    margin-top: 85px;
+}
+.list-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    justify-content: space-between;
+}
+.list-header h2 {
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding-left: 18px;
+    padding-top: 10px;
+}
+.list-title-input{
+    font-family: sans-serif;
+    font-size: 15px;
+    padding-left: 12px;
+    height: 30px;
+    width: 210px;
+    margin-top: 13px;
+    margin-left: 5px;
+    margin-bottom: 4px;
+}
+.plus-icon{
+    font-size: 26px;
+    margin-right: 9px;
+    margin-left: 5px;
+    font-weight: lighter;
+    color:rgba(0, 0, 0, 0.695);
+}
+.list-action {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    padding-right: 13px;
+}
+.dropdown {
+    position:fixed;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    width: 275px; 
+    height: 260px;
+    margin-top: 100px;
+    margin-left: 15px;
+    z-index: 999; 
+    display: flex;
+    flex-direction: column;
+}
+.dropdown-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin-top: 10px;
+}
+.dropdown-title {
+    margin: 0;
+    font-family: sans-serif;
+}
+.dropdown-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+.dropdown-section:hover{
+    background-color: gainsboro;
+}
+.dropdown-icon{
+    height: 28px;
+    width: 28px;
+    margin-right: 5px;
+}
+.close-dropdown{
+    position: absolute; 
+    top: 3px; 
+    right: 12px;
+    width: 22px;
+    height: 22px;
+}
+
+.add-card-btn {
+    background-color: #97f0ff;
+    color:rgba(0, 0, 0, 0.811);
+    cursor: pointer;
+    padding: 4px 8px;
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 0.90rem;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.add-card-btn:hover {
+    background-color: #f4f5f7;
+    border-radius: 10px;
+}
+.card {
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    font-family: sans-serif;
+    font-size: 0.88rem;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding-inline: 14px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+  }
+.new-card-input{
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    padding: 10px;
+    padding-bottom: 13px;
+    padding-inline: 14px;
+    margin-bottom: 5px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    line-height: 1.5;
+    font-family: sans-serif;
+    resize: none; 
+}
+.new-card-input:focus{
+    border: none;
+    outline: none;
+}
+
+.cancel-card-button{
+    width: 22px;
+    height: 22px;
+    background-color: transparent;
+    margin-left: 8px;
+}
+
+.confirm-card-button{
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    height: 35px;
+    width: 81px;
+    border-radius: 5px;
+    border: none;
+    background-color: #006874;
+    margin-left: 8px;
+    color: white;
+}
+.confirm-card-button:hover{
+    background-color: #b1cbd0;
+}

@@ -1,0 +1,100 @@
+import '../css/Toolbar.css'
+import { useState } from 'react';
+import Delete from '../images/bin.png';
+import Undo from '../images/undo.png';
+import Redo from '../images/redo.png';
+import Sort from '../images/sort.png';
+import Filter from '../images/filter.png';
+import StarFilled from '../images/star.png';
+import StarBorder from '../images/filled-star.png';
+import Cancel from '../images/cancel-svgrepo-com.png';
+
+/**
+ * Toolbar component providing interaction tools like starring, deleting, sorting, and filtering items.
+ *
+ * @param {Object} props - The properties passed to the component.
+ * @param {Function} props.starBoard - Function to toggle the favourite status of the board.
+ * @param {Function} props.deleteCards - Function to delete all cards from the board.
+ * @param {Function} props.sortLists - Function to sort the list of items.
+ * @returns {JSX.Element} The rendered toolbar with interactive icons.
+ */
+function Toolbar({starBoard, deleteCards, sortLists}){
+    const [star, setStar] = useState(StarBorder);
+    /**
+     * Toggles the star state of the board and updates the star icon accordingly.
+     */
+    function starClick(){
+        if (star == StarFilled){
+            starBoard("unstar")
+            setStar(StarBorder)
+        }else{
+            starBoard("star")
+            setStar(StarFilled)
+        }
+    }
+    /**
+     * Confirms and handles the deletion of all cards.
+     */
+    function handleDelete(){
+        if (window.confirm("WARNING - all cards will be removed") == true) {
+            deleteCards()
+        } else {}  
+    }
+
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    /**
+     * Toggles opening/closing of filter dropdown
+     */
+    const toggleFilter = () => {
+        setIsFilterOpen(!isFilterOpen);
+    };
+    const [isSortOpen, setIsSortOpen] = useState(false);
+    /**
+     * Toggles opening/closing of sort dropdown
+     */
+    const toggleSort = () => {
+        setIsSortOpen(!isSortOpen);
+    };
+    return(
+        <div className='Toolbar'>
+            {isSortOpen && (
+                <div className="sort-dropdown">
+                    <div>
+                        <h3 className='toolbar-dropdown-title'>Sort By:</h3>
+                        <img src={Cancel} className="close-dropdown close-toolbar-dropdown" onClick={toggleSort}  alt="Close dropdown" />
+                    </div>
+                    <ul className='toolbar-dropdown-list'>
+                        <h3 className='toolbar-dropdown-item' onClick={() => sortLists("ID")}>First added</h3>
+                        <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("AZ")}>A - Z</h3>
+                        <h3 className='toolbar-dropdown-item'  onClick={() => sortLists("ZA")}>Z - A</h3>
+                    </ul>
+                </div>
+            )}
+            {isFilterOpen && (
+                <div className="filter-dropdown">
+                    <div>
+                        <h3 className='toolbar-dropdown-title'>Filter by:</h3>
+                        <img src={Cancel} className="close-dropdown close-toolbar-dropdown" onClick={toggleFilter}  alt="Close dropdown" />
+                    </div>
+                    <ul className='toolbar-dropdown-list'>
+                        <h3 className='toolbar-dropdown-item'>All</h3>
+                        <h3 className='toolbar-dropdown-item'>Original</h3>
+                        <h3 className='toolbar-dropdown-item'>Newly added</h3>
+                    </ul>
+                </div>
+            )}
+            <div className='Main-Toolbar'>
+                <img src={star} className="toolbar-star Item-Toolbar" onClick={starClick} alt="Favourite Board" />
+                <img src={Undo} className="Item-Toolbar" alt="Undo last actions" />
+                <img src={Redo} className="Item-Toolbar" alt="Redo last actions" />
+                <img src={Sort} onClick={toggleSort} className="Item-Toolbar" alt="Sort cards" />
+                <img src={Filter} onClick={toggleFilter} className="Item-Toolbar" alt="Filter cards" />
+                </div>
+            <div className='Single-Toolbar'>
+                <img src={Delete} onClick={()=>handleDelete()} className="Item-Toolbar" alt="Delete all cards" />
+            </div>
+        </div>
+    );
+}
+
+export default Toolbar;

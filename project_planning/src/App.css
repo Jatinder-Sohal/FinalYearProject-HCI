@@ -1,0 +1,10 @@
+body {
+    background-color:rgb(255, 255, 255)
+}
+
+.Content {
+  display: flex;
+  height:98lvh;
+  overflow-x:auto; 
+  overflow-y: hidden;
+}

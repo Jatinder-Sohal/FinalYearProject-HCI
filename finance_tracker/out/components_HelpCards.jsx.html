@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/HelpCards.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/HelpCards.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+/**
+ * Helps cards and help page search bar
+ * @returns HelpCards and search bar as a div
+ */
+function HelpCards() {
+    /**
+     * Controls if live chat box open
+     */
+    const [isChatOpen, setChatOpen] = useState(false);
+    /**
+     * Setting up messages in live chat with 2nd element controlling colour of messages
+     */
+    const [messages, setMessagesAndColour] = useState([
+        { text: "Hi! I'm your financial tracker virtual assistant.", sender: "received" }
+    ]);
+    /**
+     * Setting users message to null for now, allows for update later
+     */
+    const [newMessage, setNewMessageText] = useState("")
+    /**
+     * Opens chat on live chat button press
+     */
+    const openChat = () => setChatOpen(true);
+    /**
+     * Closes chat on x button press
+     */
+    const closeChat = () => setChatOpen(false);
+
+    /**
+     * Takes user input and attaches to messages as new message
+     * Then sends a responce after a certain time
+     */
+    const handleSendMessage = () => {
+        //Updating messages with user input one
+        const updatedMessages = [...messages, { text: newMessage, sender: "sent" }];
+        setMessagesAndColour(updatedMessages);
+        //Resetting to null, to accept more messages
+        setNewMessageText("");  
+        //Sending response after time limit
+        setTimeout(() => {
+            setMessagesAndColour([...updatedMessages, { text: "Got it! We'll get back to you on this", sender: "received" }]);
+        }, 1000);      
+    };
+
+    return (
+        &lt;div className="page2-header">
+            {/* Opens chat if live chat button pressed  */}
+            {isChatOpen &amp;&amp; (
+                &lt;div className="chat-box">
+                    &lt;div className="chat-header">
+                        &lt;span className="chat-title">Customer Support&lt;/span>
+                        &lt;button onClick={closeChat} className="close-chat">X&lt;/button>
+                    &lt;/div>
+                    &lt;div className="chat-content">
+                        {/* Converts message array to outputting element
+                        Uses sent or recieved as className to change colour of message */}
+                        {messages.map((message, index) => (
+                            &lt;div key={index} className={`message ${message.sender}`}>
+                                &lt;p>{message.text}&lt;/p>
+                            &lt;/div>
+                        ))}
+                    &lt;/div>
+                    {/* User input box */}
+                    &lt;div className="chat-footer">
+                        &lt;input type="text"  placeholder="Type a message here..." className="chat-input" value={newMessage} onChange={(e) => setNewMessageText(e.target.value)}/>
+                        &lt;button onClick={handleSendMessage} className="send-button">Send&lt;/button>
+                    &lt;/div>
+                &lt;/div>
+            )}
+            {/* Title of page */}
+            &lt;h1 className="page2-h1">Hi! how can we help?&lt;/h1>
+            {/* Search bar  */}
+            &lt;input className="search" placeholder="Enter a frequently asked question here!" aria-label="Search bar to look for forum posts"/>  
+            {/* Search icon */}
+            &lt;svg className="search-button" viewBox="0 0 16 16" height="32" width="32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" fill="#000000">&lt;g id="SVGRepo_bgCarrier" strokeWidth="0">&lt;/g>&lt;g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round">&lt;/g>&lt;g id="SVGRepo_iconCarrier"> &lt;rect width="16" height="16" id="icon-bound" fill="none">&lt;/rect> &lt;path d="M15.708,13.587l-3.675-3.675C12.646,8.92,13,7.751,13,6.5C13,2.91,10.09,0,6.5,0S0,2.91,0,6.5S2.91,13,6.5,13 c1.251,0,2.42-0.354,3.412-0.967l3.675,3.675c0.389,0.389,1.025,0.389,1.414,0l0.707-0.707 C16.097,14.612,16.097,13.976,15.708,13.587z M3.318,9.682C2.468,8.832,2,7.702,2,6.5s0.468-2.332,1.318-3.182S5.298,2,6.5,2 s2.332,0.468,3.182,1.318C10.532,4.168,11,5.298,11,6.5s-0.468,2.332-1.318,3.182C8.832,10.532,7.702,11,6.5,11 S4.168,10.532,3.318,9.682z">&lt;/path> &lt;/g>&lt;/svg>
+
+            {/* Cards of information */}
+            &lt;div className="page2-row">
+                &lt;div className="col-sm-4" style={{ maxWidth: "25rem", padding: "0 10px" }}>
+                    &lt;div className="card page2-card">
+                        &lt;div className="card-body page2-body">
+                            &lt;h2 className="card-title page2-title">Start a live chat&lt;/h2>
+                            &lt;p className="card-text page2-text">Our assistants on board are able to deal efficiently with any problems.&lt;/p>
+                            &lt;button onClick={openChat} className="btn btn-secondary page2-button">Live chat&lt;/button>    
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div className="col-sm-4" style={{ maxWidth: "25rem", padding: "0 10px" }}>
+                    &lt;div className="card page2-card">
+                        &lt;div className="card-body page2-body">
+                            &lt;h2 className="card-title page2-title">General questions&lt;/h2>
+                            &lt;p className="card-text page2-text">Before contacting us, check if your inquiry has been answered here&lt;/p>
+                            &lt;a href="#" className="btn btn-secondary page2-button">FAQ&lt;/a>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div className="col-sm-4" style={{ maxWidth: "25rem", padding: "0 10px" }}>
+                    &lt;div className="card page2-card">
+                        &lt;div className="card-body page2-body">
+                            &lt;h2 className="card-title page2-title">Try something new&lt;/h2>
+                            &lt;p className="card-text page2-text">There may be a solution for you inside the settings, please take a look&lt;/p>
+                            &lt;a href="#" className="btn btn-secondary page2-button">Settings&lt;/a>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+            {/* Contact information at the bottom of document */}
+            &lt;div className="contact">
+                &lt;h3 className="page2-h3">Contact Information&lt;/h3>
+                &lt;p>Email: FinancialTrackerhelp@gmail.com&lt;/p>
+                &lt;p>Phone: +44988436078&lt;/p>
+                &lt;p>Twitter @FinancialServicesUK&lt;/p>
+                &lt;p>Facebook @FinancialServicesUK&lt;/p>
+            &lt;/div>
+        &lt;/div>
+    );
+}
+
+export default HelpCards</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Carousel">Carousel</a></li><li><a href="global.html#DisplayData">DisplayData</a></li><li><a href="global.html#EnterData">EnterData</a></li><li><a href="global.html#ExpenseTable">ExpenseTable</a></li><li><a href="global.html#GetStarted">GetStarted</a></li><li><a href="global.html#HelpCards">HelpCards</a></li><li><a href="global.html#HelpPage">HelpPage</a></li><li><a href="global.html#InfoCards">InfoCards</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#SettingsMenu">SettingsMenu</a></li><li><a href="global.html#SheetHeading">SheetHeading</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#router">router</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Dec 08 2023 00:51:47 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Navbar.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Navbar.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { useLocation } from "react-router-dom";
+
+import SettingsMenu from './SettingsMenu';
+
+/**
+ * Navbar with consistent elements throughout application, but with varying styling
+ * depending on what page the application is on
+ * @returns the navbar as a single div
+ */
+function Navbar(){
+  /**
+   * Getting site location, to switch css variables
+   */
+  const location = useLocation();
+
+  /**
+   * Setting css variables to home page elements
+   */
+  let navbarClass = "navbar navbar-expand-lg navbar-custom";
+  let buttonClass = "btn btn-outline-info"; 
+  let homeLink = "nav-link";
+  let enterLink = "nav-link";
+  let displayLink = "dropdown-item";
+
+  /**
+   * If loop which changes css variables to specific names depending on site location
+   * homeLink var turns navbar text white to show which page
+   */
+  if (location.pathname === "/") {
+    navbarClass = "navbar navbar-expand-lg navbar-home";
+    buttonClass = "btn btn-outline-info custom-home"; 
+    homeLink = "nav-link active";
+  } else if (location.pathname === "/Help") {
+    navbarClass = "navbar navbar-expand-lg navbar-help";
+    buttonClass = "btn btn-outline-info custom-helps";
+  } else if (location.pathname === "/Enter") {
+    navbarClass = "navbar navbar-expand-lg navbar-enter";
+    buttonClass = "btn btn-outline-info custom-enter"; 
+    enterLink = "nav-link active";
+  } else if (location.pathname === "/Display") {
+    navbarClass = "navbar navbar-expand-lg navbar-display";
+    buttonClass = "btn btn-outline-info custom-display"; 
+    displayLink ="dropdown-item active"
+  }
+   return (
+    /**
+     * Main navbar structure
+     */
+    &lt;nav className={navbarClass} data-bs-theme="dark">
+    &lt;div className="container-fluid">
+      {/* Financial tracker logo at start  */}
+      &lt;a className="navbar-brand" href="/">Financial Tracker&lt;/a>
+      {/* Created in case of the page being minimized */}
+      &lt;button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        &lt;span className="navbar-toggler-icon">&lt;/span>
+      &lt;/button>
+      &lt;div className="collapse navbar-collapse" id="navbarSupportedContent">
+        &lt;ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          {/* Home button */}
+          &lt;li className="nav-item">
+            &lt;a className={homeLink} aria-current="page" href="/">Home&lt;/a>
+          &lt;/li>
+          {/* Enter data button */}
+          &lt;li className="nav-item">
+            &lt;a className={enterLink} href="Enter">Enter data&lt;/a>
+          &lt;/li>
+          {/* Dropdown for selecting output of data */}
+          &lt;li className="nav-item dropdown">
+            &lt;a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Select Output
+            &lt;/a>
+            &lt;ul className="dropdown-menu">
+              &lt;li>&lt;a className={displayLink} href="Display">Pie chart&lt;/a>&lt;/li>
+              &lt;li>&lt;hr className="dropdown-divider" />&lt;/li>
+              &lt;li>&lt;a className={displayLink} href="Display">Line graph&lt;/a>&lt;/li>
+              &lt;li>&lt;hr className="dropdown-divider" />&lt;/li>
+              &lt;li>&lt;a className={displayLink} href="Display">Bar graph&lt;/a>&lt;/li>
+            &lt;/ul>
+          &lt;/li>       
+        &lt;/ul> 
+        {/* Span which stores items on the right of navbar */}
+        &lt;span className="help-text">
+          {/* Settings icon */}
+          &lt;SettingsMenu /> 
+          &lt;a href="Help" type="button" className={buttonClass}>Need help?&lt;/a>        
+        &lt;/span>    
+      &lt;/div>
+    &lt;/div>
+    &lt;/nav>
+    );
+}
+
+export default Navbar;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Carousel">Carousel</a></li><li><a href="global.html#DisplayData">DisplayData</a></li><li><a href="global.html#EnterData">EnterData</a></li><li><a href="global.html#ExpenseTable">ExpenseTable</a></li><li><a href="global.html#GetStarted">GetStarted</a></li><li><a href="global.html#HelpCards">HelpCards</a></li><li><a href="global.html#HelpPage">HelpPage</a></li><li><a href="global.html#InfoCards">InfoCards</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#SettingsMenu">SettingsMenu</a></li><li><a href="global.html#SheetHeading">SheetHeading</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#router">router</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Dec 08 2023 00:51:47 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

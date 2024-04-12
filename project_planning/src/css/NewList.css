@@ -1,0 +1,49 @@
+.NewList{
+    display: flex;
+    flex-direction: column;
+    background-color: #b5f4ff;
+    border-radius: 18px;
+    width: 270px;
+    height: 90px;
+    margin: 0 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    margin-top: 85px;
+}
+.NewList-add{
+    background-color: #97efff7d;
+    border-radius: 10px;
+    width: 270px;
+    margin: 0 8px;
+    margin-top: 85px;
+    color:rgba(0, 0, 0, 0.577);
+    cursor: pointer;
+    font-size: 0.90rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 8px 8px;
+    padding-inline-start: 15px;
+}
+.NewList-add:hover {
+    background-color: #97f0ff;
+    border-radius: 10px;
+}
+
+.new-list-input{
+    margin-top: 8px;
+    margin-bottom: 10px;
+    margin-left: 1px;
+    margin-right: 1px;
+    border-radius: 5px;
+    padding-top: 8px;
+    padding-inline-start: 15px;
+    height: 26px;
+    font-size: 0.94rem;
+    color: black;
+    border: none;
+    outline: none;
+    font-family: sans-serif;
+    resize: none; 
+}

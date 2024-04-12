@@ -1,33 +1,33 @@
 Week 2 (2/10/23)
 Completed:	-first draft of Project plan and have sent to supervisor to get his opinion on my plan.
 		-In this plan discussed some technologies like JavaFX, Django, spring boot, react 
-	-Have completed some basic HCI reading for my abstract description learning about why usability is so important and some basic rules.           
+		-Have completed some basic HCI reading for my abstract description learning about why usability is so important and some basic rules.           
 
 Problems: 	-Tough to cover such a massive subject and convert this into a few paragraphs
--Many types of technology that have their own advantages and my knowledge is especially great for any of them
-
-Future: 	-do more research to cut down technologies to what I am actually going to use for the interfaces
+		-Many types of technology that have their own advantages and my knowledge is especially great for any of them
+	
+Future:	 	-do more research to cut down technologies to what I am actually going to use for the interfaces
 		-Continue reading about HCI and add to paragraphs for final draft
 
 Week 2 (06/10/23)
-Completed:	-Good foundation reading of HCI learning about the balance of functionality and usability, accessibility issues, basic colour theory and a few HCI principals.
--Researched and decided the technologies I will be using: Javafx, bootsrap and Springboot
+Completed:	-Good foundation reading of HCI learning about the balance of functionality and usability, accessibility issues, basic colour theory and a few HCI principles.
+		-Researched and decided the technologies I will be using: Javafx, bootsrap and Springboot
 
 Problems	-It was tough to decide the technologies and I still might have to change them if I can't learn or adapt to using them fast enough
--Had to add more to nearly all aspects to my report due to feedback from supervisor
+		-Had to add more to nearly all aspects to my report due to feedback from supervisor
 
-Future:	-Begin setting up the html to run a page - will use visual studio live coding extension
+Future:		-Begin setting up the html to run a page - will use visual studio live coding extension
 		-Start adding in libraries that will allow me to create elements
 
 Week 3 (11/10/23)
 Completed:	-Created home page for first UI adding navigation bar, background image, fitting colour schemes, buttons and text to direct the user
--Set up framework spring boot to add some basic functionality to the website and allow it to communicate with the database
+		-Set up framework spring boot to add some basic functionality to the website and allow it to communicate with the database
 
 Problems 	-Haven't adapted elements for minimizing yet and so some remain fixed while others move.	
--Tough to create a design that looks good for everyone after getting feedback. Some like one design and others prefer another.
+		-Tough to create a design that looks good for everyone after getting feedback. Some like one design and others prefer another.
 
 Future:		-Get feedback from supervisor at next meeting
--Add some functionality to home page and begin working on another page for the first user interface
+		-Add some functionality to home page and begin working on another page for the first user interface
 		-Read up on accessibility from books and articles online
 
 Week 3 (15/10/23)
@@ -35,29 +35,29 @@ Completed:  	-Nearly finished fixing elements for the bug discussed in problems.
 		-Fixed indentation of css and jsp file
 		-Completed sketch of enter data page using canva
 
-Problems	-Discovered bug in home page where minimizing doesn’t affect all elements the same and some are off screen. 
--Sketched elements will be tough to create, for example a pie chart that updates when entering data - may need to redo sketch 
+Problems:	-Discovered bug in home page where minimizing doesn’t affect all elements the same and some are off screen. 
+		-Sketched elements will be tough to create, for example a pie chart that updates when entering data - may need to redo sketch 
 
 Future: 	-Set up enterData page and begin coding. Need to add table, colour scheme, title, navbar again.
 		-Add navigation link from home page to enter data page
 
 Week 4 (18/10/23)
 Completed:	-Nearly finished enter data page adding features which were described last week
--Read some basic features about accessibility e.g Image annotations, logos, page readers etc
+		-Read some basic features about accessibility e.g Image annotations, logos, page readers etc
 
 Problems:	-Couldn't add a good title to the page, spent a lot of time experimenting with different fonts and sizes - looks very amateurish 
--Not sure if I need to do tdd or create a uml as it says one thing on Moodle but other people are saying we don’t.
+		-Not sure if I need to do tdd or create a uml as it says one thing on Moodle but other people are saying we don’t.
 
 Future:	 	-Add some basic functionality to enter data page
-		-Being working on other pages
--Implement researched accessibility if I have time and also carry on research on different rules.
+		-Begin working on other pages
+		-Implement researched accessibility if I have time and also carry on research on different rules.
 
 Week 4 (22/10/23)
 Completed:	-Refactored design of enter data page as I wasn't happy with the design, especially the bootstrap items and so redid the code using vanilla html and css.
--Added extra features like sidebar content, more buttons for the table and improve colour scheme.
+		-Added extra features like sidebar content, more buttons for the table and improve colour scheme.
 
 Problems:	-Pushed back implementation of accessibility even more and development of other pages
--Haven't added functionality to the page as will be quite time consuming and just added dummy data to the table - not sure if I will be penalised for this.
+		-Haven't added functionality to the page as will be quite time consuming and just added dummy data to the table - not sure if I will be penalised for this.
 
 Future:		-Finally begin other pages and finishing up with this application
 		-Start a bit of the write up about this implementation and how I used HCI rules
@@ -65,13 +65,12 @@ Future:		-Finally begin other pages and finishing up with this application
 
 Week 5 (25/10/23)
 Completed:  	-Finished help page and started display data page
--Found how to use WAVE accessibility tool and have been planning on how to organise pages to include more hci principals
-
+		-Found how to use WAVE accessibility tool and have been planning on how to organise pages to include more hci principles
 Problems:	-My friend got feedback from his meeting, in which he was reprimanded for using html which is what I have used.
 		-Falling behind in schedule and need to start report
 
 Future:		-Learn react
--Need to convert all my html code to react code, so that I am able to get all available marks for complexity
+		-Need to convert all my html code to react code, so that I am able to get all available marks for complexity
 		-Need to finish last page of application
 		-Start report
 
@@ -99,7 +98,6 @@ Future:		-Start development of lists and cards
 		-Need to add text boxes and icons
 		-Research what HCI from notes can be applied to interface
 
-
 Week 6 (5/11/23)
 Completed:	-Added lists to main and set up css so that it doesn’t overlap title boxes
 		-Add styling to all elements
@@ -108,23 +106,18 @@ Completed:	-Added lists to main and set up css so that it doesn’t overlap titl
 Problems:	-Trying to get list to not overlap the title of boxes was difficult
 		-Struggling to make a usable design following prototype using javafx
 
-Future		-Continue development adding help tips and icons to icon box
+Future:		-Continue development adding help tips and icons to icon box
 		-Start working out how interaction will happen and how to add cards
-
-
-
 
 Week 7 (9/11/23)
 Completed: 	-Decided to switch language to tkinter as javafx was very inflexible and I didn’t like the look of my UI
 		-Added several elements: Navbar, lists, 2 cards and buttons to move between lists
 
 Problems:	-Had to learn tkinter while implementing this UI
--A lot of problems where height and width were being controlled by another variable 
+		-A lot of problems where height and width were being controlled by another variable 
 
 Future:		-Add way to track visibility of system status
-		-Add options to add cards, undo and redo and being testing
-
-
+		-Add options to add cards, undo and redo and begin testing
 Week 7 (12/11/23)
 Completed:	-Added checkboxes and progress bar to the cards
 		-Added some extra menu options and icons to these
@@ -138,70 +131,334 @@ Future: 		-Go to supervisor meeting and show uis and report
 
 		
 Week 8 (16/11/23)
-Completed	-Started adding a lot of functionality to my ui as advised from my supervisor.
--Added moving between lists, adding new card, and options to manually control checkboxes
+Completed:	-Started adding a lot of functionality to my ui as advised from my supervisor.
+		-Added moving between lists, adding new card, and options to manually control checkboxes
 
-Problems	-Have to spend a large amount of time on UI's
+Problems:	-Have to spend a large amount of time on UI's
 		-Tests are going to have to be redone
 
-Future		-Continue adding functionality.
-		-Go back to old ui and add functionality to that as well and test it
+Future:		-Continue adding functionality.
+		-Go back to old user interface and add functionality to that as well and test it
 		-Keep writing report
-
-
 Week 8 (18/11/23)
-Completed	-Added a scrollbar to each list so that multiple cars can be viewed
-		-Refeactored code using oop principles
+Completed:	-Added a scrollbar to each list so that multiple cars can be viewed
+		-Refactored code using oop principles
 		-Changed design of code
 
 
-Problems	-Struggling making scrollbar, had to use internet to create code - has been referenced
+Problems:	-Struggling making scrollbar, had to use internet to create code - has been referenced
 		-Could not decide on colour scheme
 
-Future		-Refactor classes into their own files
-		-Test this UI throughly before moving onto old one
+Future:		-Refactor classes into their own files
+		-Test this UI thoroughly before moving onto old one
 		-Finish report to send to supervisor late next week
 
 Week 9 (22/11/23)
-Completed  	-Added delete button to card, realised it was missing
+Completed:  	-Added delete button to card, realised it was missing
 		-Changed colour scheme again
 		-Fixed old tests
 
-Problems 	-Had to change structure of tests a lot due to putting navbar into its own class
+Problems: 	-Had to change structure of tests a lot due to putting navbar into its own class
 		-Unable to change some hover colours
 		-Still got some sections of report to do
 
-Future 		-Keep testing
+Future: 		-Keep testing
 		-Send report to supervisor on friday
 		-Test all the extra functionality I added
 
 
 Week 9 (25/11/23)
-Completed	-Refactored the main classes into their own files using oop principles
+Completed:	-Refactored the main classes into their own files using oop principles
 		-And some tests for the layout of the ui
 		-Sent report to supervisor
 
-Problems:	-Took a lot of work to refactor requiring a lot of varaible name changes and errors
+Problems:	-Took a lot of work to refactor requiring a lot of variable name changes and errors
 		-Testing also required me to change what methods to return
 
 Future:		-Work on feedback from supervisor early next week
-		-Start powerpoint
+		-Start PowerPoint
 		-Finish testing and change buttons of move right and left
 
 Week 10 (28/11/23)
-Completed 	-Throughly tested all classes for interface 2
+Completed: 	-Thoroughly tested all classes for interface 2
 		-Add extra functionality like undo, redo and help window when button pressed
 		-Refactored old tests that broke with new changes
 
 Problems:	-Had a lot with tests, required a lot of refactoring and change of return values
 		-Undo and redo took a lot of effort to get working - bugs with undo doing redo job
-		-Subtasks where moving checkboxs around when long text added
+		-Subtasks where moving checkboxes around when long text added
 
 Future:		-Comment all my code 
 		-Move on to interface 1 - extra functionality and testing
-		-Write up powerpoint
-		-Add imporovments to report which were suggested by my supervisor today
+		-Write up PowerPoint
+		-Add improvements to report which were suggested by my supervisor today
+
+Week 10 (03/12/23)
+Completed: 	-Submitted PowerPoint and recorded videos of both my interface for it
+		-Commented my 2nd interface
+		-Added a lot of functionality to my 1st (now gone back to it after finishing with 2nd)
+
+Problems:	-I have an intermediate level in react, so tough to add some complex functionality and had to fake parts
+		-Had a lot of spacing problems causing scrollbars to appear - used overflow in css to fix
+		-Need to fix report mistakes still and sent to supervisor asap
+
+Future: 	-Start testing 1st ui
+		-Tag releases
+		-Send report to supervisor asap and revise ppt for presentations on Wednesday
+
+Week 11 (07/12/23)
+Completed: 	-Tested all UIs
+		-Sent report to supervisor 4 days ago 
+		-Filmed video for report and done presentation
+
+Problems:	-Had a lot of speaking errors when filming video 
+		-Components were frustrating to debug when testing
+		-Couldn't add 100% support for colour blindness
+
+Future:		-Complete documentation
+		-Tag last release
+		-Add more references to report
 
 
+TERM 2
+
+Week 1 (19/01/24)
+Completed: 	-Over the holidays learnt how to code in kotlin/Jetpack compose to build android application
+		-Developed early sketches of the home page and search page
+		-Had supervisor meeting discussing interim submission and future work
+
+Problems:	-Found some aspects tough to learn in jetpack compose such as: Naviagtion, adapting for different screens and unit testing
+		-Designs are quite time consuming to make and tough to balance different HCI elements
+
+Future:		-Countinue designing interface aspects such as saved recipies, searching, settings and lists
+		-Start coding home screen 
+		-Set up routing routes through navigation bar
 
 
+Week 1 (21/01/24)
+Completed: 	-Created new Andriod project and seperate pages for each screen
+		-Set up bottom navigation bar allowing access between pages through it
+		-Added icons that light up orange to indicate which page is selected
+
+Problems:	-Had a big problem with indicating on navbar - as had variable before navhost - required mutable variable
+		-There was a standard blue effect when selecting an option on navbar - Not much info about it
+
+Future:		-Now begin development of elements on home screen: Search, Pictures, Titles
+		-Think about what other pages design could look like
+		-Modularize code for future development
+
+
+Week 2 (24/01/24)
+Completed:	-Home screen mostly finished (only static elements for now)
+		-Added elements like: Blue background with title, search bar, horizontal and vertically scrolling cards
+		-Created an organized file structure allowing easy access and addition like adding photos
+
+Problems:	-After adding photos, app became quite laggy. Had to download smaller file versions for each file
+		-Tested on emulator and phone which showed my app didnt scale well
+		-Documentation is very bad - Takes a long time to research elements
+
+Future:		-Add button that allows viewing of all recommended dishes
+		-Begin designing search screen elements
+		-Link search bar on home to search function 	
+
+
+Week 2 (27/01/24)
+Completed:	-Added multiple search screen elements: Carousel, Search bar and search title
+		-Carousel of images can be scrolled and indicators update accordingly 
+		-Created Datasource file to keep track of data items
+
+Problems:	-Had problems with sizes of images - All were different so didn't fit one size
+		-Material 3 Carousel still being developed for jetpack compose, had to reasearch to find out about pager
+		-Some of my code is being duplicated - why I created datasource to share data files between classes
+
+Future:		-Use figma to design other pages and make changes to home and search
+		-Finish implementation of search page with vertical columns and improve look
+		-Start implementing next pages (saved, lists)
+
+Week 3 (01/02/24)
+Completed:	-Created Sketches of other pages: Saved, Lists and settings
+		-Made changes to search design and experimented implementing them e.g segregating blocks of code with white blocks
+		-Start planning professional issues part of report
+
+Problems:	-Lists page design was too similar to settings page - changed input options
+		-Dark mode is still not functioning and pages are not usable/visible
+		-The segregation blocks appear differently on phone and emulator not quite sure how to make a uniform design
+
+Future:		-Leave search page for now and code other pages
+		-Find out how to fix colour issues in dark mode and choose colour scheme
+		-Change search bar to blend more with the page
+
+
+Week 3 (04/02/24)
+Completed:	-Implemented Saved page with scrolling list of recipies that allows any singular item to be removed
+		-Cards contain colour coded difficulty
+		-Added material 3 colour scheme that adapts for dark mode and light
+		
+
+Problems:	-Theme.kt was having no effect - had to use dynamic theming
+		-Some of the datasource is duplicated - Same recipies with more attributes
+		-Unsure of how to code dropdown for filtering items
+
+Future:		-Code Lists page with several elements: Top navbar, list items and add row
+		-Start coding settings page
+		-Add dropdown to filter saved page recipies and maybe add collections
+
+Week 4 (7/02/24)
+Completed: 	-Coded several elements on Lists page page
+		-Added error prevention through alert dialouges checking if user confirms action
+		-Implemented dropdowns to store the items in the two lists
+
+Problems: 	-Had a lot of problems using topbar – a lot of sources online are out of data and documentation is not detailed
+		-Style of list page is not very good and cannot size icons how I want them
+		-Collection page is very unorganised with just saved recipes being shown
+
+Future:		-Completed list page by adding option to view different lists 
+		-Add option to change title of list
+		-Go back and fix collections
+Week 4 (10/02/24)
+Completed:	-Implemented method to change both list title and dropdown names
+		-Create prototype of page that goes before the collection page I have right now
+		-Added filter function for collection page that sorts them by difficulty, A-Z etc
+
+Problems:	-Had big problem with images on saved page, where they were all different sizes
+		-Takes a long time to prototype and then implemented, haven’t started some pages yet
+Future:		-Implement the planned saved collections page
+		-Add different collections page depending on item selected
+		-Fix design of collection recipes so they look more aesthetic
+
+Week 5 (13/02/23)
+Completed:	-Created add new collection card that adjust for uneven chunk
+		-Figured out how to pass arguments from one route to another so I can filter datasource depending on collection
+		-Card design shows if less than 3 recipes through photos
+
+Problems: 	-Had a big issue with uneven chunk sizes and getting the spacing right with add collection card
+		-Changing route names to include arguments created a few bugs
+
+Future: 		-Change collection design to remove search bar with a top bar
+		-Start adding function to search bars on other pages
+		-Implement settings page design
+
+Week 5 (18/02/23)
+Completed: 	-Added top bar to collections page with several functional icons
+		-Moved mutabledata items to datasource file for global access and editing
+		-Started designing search page with a similar textfield
+
+Problems:	-Functionality of top bar was quite time consuming
+		-Only found out now mutable items can be stored in Object- limited progress for a while 
+
+Future: 	-Finish search page with some suggestions and recent searches
+		-Draw sigma prototype of results page and a result when clicked
+		-Start coding results page for search results
+
+Week 6 (21/02/24)
+Completed: 	-Added recent searches and pouplar
+		-Added a auto fill functionality for usability purposes
+		-Started coding results page that displays search query
+
+Problems: 	-Unsure on final design of results page- what to name subheadings and how cards should look
+		-Searchbar not appearing quite right on dofferent emulators
+
+Future:		-Created results card that shows results, likes, save and like button 
+		-Create a tab to view recipies and maybe categories
+		-Start linking other components to results page
+
+Week 6 (25/02/24)
+Completed: 	-Created 3 different sections on results page which adjusts to user input
+		-Shows an error message for unrecognised input
+		-Started redesigning original search page 
+	
+Problems: 	-Had a big problem styling error message - would not centre vertically
+		-Spent long time trying to create persistent bottom sheet but could not do
+		-Not sure how to fake for so many search results
+
+Future: 		-Implement design of a single recipe with all kinds of information like all ingredients, comments etc
+		-Start implementing setting page
+		-Link up all components on home and search page
+
+Week 7 (29/02/24)
+Completed:	-Fixed problem with bottom sheet which allowed me to finish search page and link all elements up
+		-Start design actual recipe screen with picture, description and ingredients
+		-Add increase and decrease icons for servings
+
+Problems:	-Had problem with back arrow on recipe screen - when moving down could not get its background to change but now it is laggy
+		-Unsure of which elements to add to recipe screen as many different ideas e.g rating stars, reviews, save bottom sheet, author image
+		-Servings is quite unrealistic, but unsure how to set up for different recipies
+
+Future:		-Finish recipe screen with some of these elements: Reviews, Pictures, Suggestions
+		-Start coding settings page
+		-Pick a number of different settings to implemented and use switches and checkboxes
+Week 7 (3/03/24)
+Completed:	-Finished recipe screen and added reviews section
+		-Created functioning dark mode on settings page
+		-Added some fake settings
+
+Problems:	-Was not able to add review section expanded, due to time constraints
+		-No accessibility settings are added for this recipe section and unsure what to add to make up for it
+		-A lot of code is being duplicated and class names becoming confusing 	
+Future:		-Implement some more settings like contrast mode and enlarged text
+		-Add drag and drop to python project
+		-Improve looks of python project using colour and other elements
+
+Week  8 (8/3/24)
+Completed: 	-Created React project to re implement my second interfaces
+		-Added fake settings each with switch to enable and disable
+		-Implemented basic lists using CSS
+
+Problems:	-Tried to implement drag and drop but became too complicated in python project
+		-Unsure of how to implement drag and drop in React now that I have switched
+		-Settings have not been implemented correctly in Android application
+Future:		-Implement drag and drop in React application
+		-Add top navigation bar to application
+		-Add accessibility and other HCI elements
+
+Week 8(12/3/24)
+Completed:	-Using React beautiful added drag and drop to application
+		-Created a modal window that launches when card clicked
+		-Add several elements including topbar, sidebar and toolbar
+
+Problems:	-Unsure of what to put on topbar, moved undo and redo away as looks unappealing
+		-Tried to implement undo and redo functionality but did not work
+		-Modal window does not look right with text boxes not fitting well
+
+Future:		-Add some elements to topbar now that undo has been moved
+		-Create way to switch between different boards
+		-Implement … button on lists
+
+Week 9 (15/3/24)
+Completed: 	-Split topbar into 3 different sections, information on left, title middle and buttons on right
+		-Implemented new list option allowing a 4th list to be added
+		-Implemented functionality on Modal Window – mainly making checklist functional
+
+Problems: 	-Randomly scrollbar is appearing – first it was because new list added but now vertical one is appearing
+		-Svgs are not appearing correctly even within same folder – have to import them
+
+Future:		-Implement progress bar to checklist items that dynamically updates
+		-Work out way to add multiple lists not just one extra
+		-Add accessibility and other settings
+		
+Week 9 (19/3/24)
+Completed:	-Made titles editable, and when changed updates in sidebar
+		-Created option to add 2 lists, that now start empty instead of copying 3rd list
+		-Added hover effects to buttons
+
+Problems:	-Unsure how to create separate boards without database or a huge amount of refactoring
+		-Having big problems with placement of three dots dropdown
+		-Still have not implemented functionality for large amount of buttons
+
+Future:		-Add content to sidebar with functionality
+		-Made modal look better and add progress bar
+		-Make option for settings and help
+
+Week 10 (23/3/24)
+Completed: 	-Went back to android application and add screen reader and enlarge text functionality
+		-Add alerts to deletion of items that allow undo in android application
+		-Added functioning progress bar to project planning application
+		-Creating settings dropdown with some fake settings
+
+Problems:	-Snackbar documentation was quite basic, had to use external sources to see examples
+		-Settings are not functional in project planning and will require quite a bit of work
+		-None of the UIs have been tested yet
+
+Future:		-Test both UI’s
+		-Conduct final round of user testing
+		-Finish all development and send report to supervisor once completed
