@@ -5,17 +5,37 @@ import Settings from '../images/settings.png';
 import Share from '../images/share.png';
 import Search from '../images/search.png'
 
+/**
+ * Top navigation bar component that provides user interaction for title editing, searching, and accessibility settings.
+ * 
+ * @param {Object} props - The properties passed to the component.
+ * @param {string} props.title - The current title of the board.
+ * @param {Function} props.updateTitle - Function to update the board title.
+ * @param {string} props.contentColour - Current color of the content area used for settings.
+ * @param {Function} props.setContentColour - Function to update the content color.
+ * @returns {JSX.Element} Rendered top bar with interactive elements.
+ */
 function Topbar({title, updateTitle, contentColour, setContentColour}){
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [currentTitle, setCurrentTitle] = useState(title);
+    /**
+     * Enables the title editing mode.
+     */
     function titleClick(){
         setIsEditingTitle(true);
     };
+    /**
+     * Handles title change on blur or Enter key press.
+     */
     function handleInput(){
         setIsEditingTitle(false);
         updateTitle(currentTitle);
     };
 
+    /**
+     * Handles changes to the content color from the color picker in settings.
+     * @param {Object} event - The event triggered by changing the color picker.
+     */
     const handleContentColorChange = (event) => {
         setContentColour(event.target.value);
     };

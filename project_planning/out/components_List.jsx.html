@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/List.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/List.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { useState } from 'react';
+import '../css/List.css'; 
+import CardList from './Cards';
+import Cancel from '../images/cancel-svgrepo-com.png';
+import Delete from '../images/bin-black.png'
+import Sort from '../images/sort.png';
+import Filter from '../images/filter.png';
+import Copy from '../images/copy.png'
+
+/**
+ * A component representing a single list in a Kanban-style board.
+ * Allows for interactions such as adding new cards, editing the title, and accessing a dropdown menu with additional actions.
+ *
+ * @param {Object} props - Component props.
+ * @param {string} props.contentColour - Background color for the list header and add card button.
+ * @param {string} props.title - Current title of the list.
+ * @param {string} props.listTitle - The unique identifier for the list, used as a droppableId for draggable elements.
+ * @param {Array} props.cardList - Array of card objects to be rendered in this list.
+ * @param {Function} props.onAddButton - Function to call when adding a new card to the list.
+ * @param {Function} props.cardClick - Function to handle clicks on individual cards.
+ * @param {Function} props.updateTitle - Function to update the list title.
+ * @returns {JSX.Element} - Rendered list component for the Kanban board.
+ */
+const List = ({ contentColour, title, listTitle, cardList, onAddButton, cardClick, updateTitle }) => {
+    const [isEditingTitle, setIsEditingTitle] = useState(false);
+    const [currentTitle, setCurrentTitle] = useState(title);
+    /**
+     * Enables editing mode for the list title.
+     */
+    function titleClick(){
+        setIsEditingTitle(true);
+    };
+    /**
+     * Disables editing mode and updates the list title to the current input when input finished.
+     */
+    function handleInput(){
+        setIsEditingTitle(false);
+        updateTitle(currentTitle);
+    };
+
+    /**
+     * Hook to control the visibility of the card addition input.
+     */
+    const [isAddingCard, setIsAddingCard] = useState(false);
+    /**
+     * Hook to store and update the title of a new card being added.
+     */
+    const [newCardTitle, setNewCardTitle] = useState('');
+  
+    /**
+     * Handles adding a new card to the list after confirm new input is pressed.
+     */
+    const handleAddCard = () => {
+      if (newCardTitle) {
+        onAddButton(newCardTitle, listTitle);
+        setNewCardTitle('');
+        setIsAddingCard(false);
+      }
+    };
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    /**
+     * Toggles the visibility of the dropdown menu for additional list actions.
+     */
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+    return (
+        &lt;div>
+        {isDropdownOpen &amp;&amp; (
+                &lt;div className="dropdown">
+                    &lt;div className='dropdown-header'>
+                        &lt;h3 className='dropdown-title'>List actions&lt;/h3>
+                        &lt;img src={Cancel} className="close-dropdown" onClick={toggleDropdown}  alt="Close dropdown" />
+                    &lt;/div>
+                    &lt;div style={{padding: '16px'}}>
+                        &lt;div className='dropdown-section'>
+                            Duplicate List
+                            &lt;img className='dropdown-icon' src={Copy} />
+                        &lt;/div>
+                        &lt;div className='dropdown-section'>
+                            Filter by...
+                            &lt;img className='dropdown-icon' src={Filter} />
+                        &lt;/div>
+                        &lt;div className='dropdown-section'>
+                            Sort by...
+                            &lt;img className='dropdown-icon' src={Sort} />
+                        &lt;/div>
+                        &lt;div className='dropdown-section'>
+                            Delete List
+                            &lt;img className='dropdown-icon' src={Delete} />
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            )}
+            &lt;div className="list" style={{ backgroundColor: contentColour }}>
+                &lt;header className="list-header">
+                    {isEditingTitle ? (
+                    &lt;input 
+                        className="list-title-input" 
+                        style={{ backgroundColor: contentColour }}
+                        type="text" 
+                        value={currentTitle} 
+                        onChange={(e) => setCurrentTitle(e.target.value)}
+                        onBlur={handleInput}
+                        onKeyDown={(e) => { if (e.key === 'Enter') { handleInput() } }}
+                        autoFocus 
+                        />
+                    ) : (
+                        &lt;h2 onClick={titleClick}>{currentTitle}&lt;/h2>
+                    )}
+                    &lt;button className="list-action"  onClick={toggleDropdown}>...&lt;/button>
+                &lt;/header>
+                
+                &lt;CardList cards={cardList} title={title} listTitle={listTitle} cardClick={cardClick}/>
+                {isAddingCard ? (
+                    &lt;>
+                    &lt;textarea className="new-card-input" onChange={(e) => setNewCardTitle(e.target.value)} placeholder="Enter a title for this card...">&lt;/textarea>
+                    &lt;div style={{ display: 'flex', marginTop:'2px', alignItems: 'center'}}>
+                        &lt;button className="btn btn-primary confirm-card-button" onClick={handleAddCard}>Add Card&lt;/button>
+                        &lt;img src={Cancel} className="cancel-card-button" onClick={() => setIsAddingCard(false)}  alt="Cancel card" />
+                    &lt;/div>
+                    &lt;/>
+                ) : (
+                    &lt;button className="add-card-btn" style={{ backgroundColor: contentColour }} onClick={() => setIsAddingCard(true)}>
+                        &lt;span className="plus-icon">+&lt;/span>
+                        &lt;span className="add-card-btn-text">Add a card&lt;/span>
+                    &lt;/button>
+                )}
+            &lt;/div>
+            
+        &lt;/div>
+    );
+};
+
+export default List;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Cards">Cards</a></li><li><a href="global.html#List">List</a></li><li><a href="global.html#Modal">Modal</a></li><li><a href="global.html#NewList">NewList</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#Toolbar">Toolbar</a></li><li><a href="global.html#Topbar">Topbar</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Apr 12 2024 04:41:23 GMT+0100 (British Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

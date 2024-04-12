@@ -9,8 +9,20 @@ import StarFilled from '../images/star.png';
 import StarBorder from '../images/filled-star.png';
 import Cancel from '../images/cancel-svgrepo-com.png';
 
+/**
+ * Toolbar component providing interaction tools like starring, deleting, sorting, and filtering items.
+ *
+ * @param {Object} props - The properties passed to the component.
+ * @param {Function} props.starBoard - Function to toggle the favourite status of the board.
+ * @param {Function} props.deleteCards - Function to delete all cards from the board.
+ * @param {Function} props.sortLists - Function to sort the list of items.
+ * @returns {JSX.Element} The rendered toolbar with interactive icons.
+ */
 function Toolbar({starBoard, deleteCards, sortLists}){
     const [star, setStar] = useState(StarBorder);
+    /**
+     * Toggles the star state of the board and updates the star icon accordingly.
+     */
     function starClick(){
         if (star == StarFilled){
             starBoard("unstar")
@@ -20,6 +32,9 @@ function Toolbar({starBoard, deleteCards, sortLists}){
             setStar(StarFilled)
         }
     }
+    /**
+     * Confirms and handles the deletion of all cards.
+     */
     function handleDelete(){
         if (window.confirm("WARNING - all cards will be removed") == true) {
             deleteCards()
@@ -27,10 +42,16 @@ function Toolbar({starBoard, deleteCards, sortLists}){
     }
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+    /**
+     * Toggles opening/closing of filter dropdown
+     */
     const toggleFilter = () => {
         setIsFilterOpen(!isFilterOpen);
     };
     const [isSortOpen, setIsSortOpen] = useState(false);
+    /**
+     * Toggles opening/closing of sort dropdown
+     */
     const toggleSort = () => {
         setIsSortOpen(!isSortOpen);
     };

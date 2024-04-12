@@ -1,4 +1,32 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: App.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: App.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
 import List from "./components/List"; 
 import { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
@@ -220,10 +248,10 @@ function App() {
   */
   function toggle(listName) {
     listShown++;
-    if (listShown === 4){
+    if (listShown == 4){
       setListFourName(listName)
       setIsFourOpen((isFourOpen) => !isFourOpen);
-    }else if (listShown === 5) {
+    }else if (listShown == 5) {
       setListFiveName(listName)
       setIsFiveOpen((isFiveOpen) => !isFiveOpen);
     }else{
@@ -267,7 +295,7 @@ function App() {
    * @param {string} action - Either star to favourite the board or any other value to unstar it.
   */
   function starBoard(action){
-    if (action === "star"){
+    if (action == "star"){
       setFavoriteBoards(['Board 2', boardTitle]);
     }else{
       setFavoriteBoards(['Board 2']);
@@ -289,11 +317,11 @@ function App() {
     var sortedListOne = []
     var sortedListTwo = []
     var sortedListThree =[]
-    if (sortBy === "ID"){
+    if (sortBy == "ID"){
       sortedListOne = [...listOne].sort((a, b) => a.id - b.id);
       sortedListTwo= [...listTwo].sort((a, b) => a.id - b.id);
       sortedListThree = [...listThree].sort((a, b) => a.id - b.id);
-    }else if (sortBy === "AZ"){
+    }else if (sortBy == "AZ"){
       sortedListOne = [...listOne].sort((a, b) => a.title.localeCompare(b.title));
       sortedListTwo = [...listTwo].sort((a, b) => a.title.localeCompare(b.title));
       sortedListThree = [...listThree].sort((a, b) => a.title.localeCompare(b.title));
@@ -323,33 +351,55 @@ function App() {
     closeModal();
   }
   return (
-    <div className="Root">
-      <Topbar title={boardTitle} updateTitle={updateSidebar} contentColour={contentColour} setContentColour={setContentColour}/>
-      <div className="Content">
-        <Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards} sidebarItemClick={sidebarItemClick} addNewBoard={addNewBoard} boardTitle={boardTitle}/>
-        <div style={{ display: 'flex'}}>
-          <Toolbar starBoard={starBoard} deleteCards={deleteCards} sortLists={sortLists}/>
-          <DragDropContext onDragEnd={onDragEnd}>
-            <div style={{ display: 'flex', alignItems: "flex-start"}}>
-              <List contentColour={contentColour} title={listOneName} listTitle="listOne" cardList={listOne} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListOneName}/>
-              <List contentColour={contentColour} title={listTwoName} listTitle="listTwo" cardList={listTwo} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListTwoName}/>
-              <List contentColour={contentColour} title={listThreeName} listTitle="listThree" cardList={listThree} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListThreeName}/>
-              {isFourOpen && 
-              <List contentColour={contentColour} title={listFourName} listTitle="listFour" cardList={listFour} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListFourName}/>
+    &lt;div className="Root">
+      &lt;Topbar title={boardTitle} updateTitle={updateSidebar} contentColour={contentColour} setContentColour={setContentColour}/>
+      &lt;div className="Content">
+        &lt;Sidebar favoriteBoards={favoriteBoards} setFavoriteBoards={setFavoriteBoards} allBoards={allBoards} setAllBoards={setAllBoards} sidebarItemClick={sidebarItemClick} addNewBoard={addNewBoard} boardTitle={boardTitle}/>
+        &lt;div style={{ display: 'flex'}}>
+          &lt;Toolbar starBoard={starBoard} deleteCards={deleteCards} sortLists={sortLists}/>
+          &lt;DragDropContext onDragEnd={onDragEnd}>
+            &lt;div style={{ display: 'flex', alignItems: "flex-start"}}>
+              &lt;List contentColour={contentColour} title={listOneName} listTitle="listOne" cardList={listOne} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListOneName}/>
+              &lt;List contentColour={contentColour} title={listTwoName} listTitle="listTwo" cardList={listTwo} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListTwoName}/>
+              &lt;List contentColour={contentColour} title={listThreeName} listTitle="listThree" cardList={listThree} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListThreeName}/>
+              {isFourOpen &amp;&amp; 
+              &lt;List contentColour={contentColour} title={listFourName} listTitle="listFour" cardList={listFour} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListFourName}/>
               }
-              {isFiveOpen && 
-              <List contentColour={contentColour} title={listFiveName} listTitle="listFive" cardList={listFive} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListFiveName}/>
+              {isFiveOpen &amp;&amp; 
+              &lt;List contentColour={contentColour} title={listFiveName} listTitle="listFive" cardList={listFive} onAddButton={addCard} cardClick ={handleCardClick} updateTitle={setListFiveName}/>
               }
-            </div>
-          </DragDropContext>
-          <NewList addList={toggle} />
-        </div>
-        {isModalOpen && (
-          <Modal card={selectedCard} onClose={closeModal} listTitle={listWithCard} listName deleteCard={deleteCard}/>
+            &lt;/div>
+          &lt;/DragDropContext>
+          &lt;NewList addList={toggle} />
+        &lt;/div>
+        {isModalOpen &amp;&amp; (
+          &lt;Modal card={selectedCard} onClose={closeModal} listTitle={listWithCard} listName deleteCard={deleteCard}/>
         )}
-      </div>
-    </div>
+      &lt;/div>
+    &lt;/div>
   );
 }
 
-export default App;
+export default App;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Cards">Cards</a></li><li><a href="global.html#List">List</a></li><li><a href="global.html#Modal">Modal</a></li><li><a href="global.html#NewList">NewList</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#Toolbar">Toolbar</a></li><li><a href="global.html#Topbar">Topbar</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Apr 12 2024 04:41:23 GMT+0100 (British Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

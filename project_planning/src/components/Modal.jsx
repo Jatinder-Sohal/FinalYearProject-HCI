@@ -7,6 +7,17 @@ import Bin from '../images/bin-black.png'
 import Share from '../images/share.png'
 import Copy from '../images/copy.png'
 
+/**
+ * Modal component to display and manage details of a specific card.
+ * Allows editing of card details such as description and checklist, and provides card management actions like move, copy, share, and delete.
+ *
+ * @param {Object} props - Props passed to the component.
+ * @param {Object} props.card - The card object containing details like title and id.
+ * @param {Function} props.onClose - Function to close the modal.
+ * @param {string} props.listTitle - Title of the list containing the card.
+ * @param {Function} props.deleteCard - Function to delete the card from its list.
+ * @returns {JSX.Element} Rendered component
+ */
 const Modal = ({ card, onClose, listTitle, deleteCard }) => {
   const [checklistItems, setChecklistItems] = useState([
     { id: 1, label: 'Task 1', checked: true },
@@ -14,6 +25,9 @@ const Modal = ({ card, onClose, listTitle, deleteCard }) => {
     { id: 3, label: 'Task 3', checked: false },
   ]);
   const [checkedItems, updateCheckedItem] = useState(33.3)
+  /**
+   * Updates the progress bar based on completed tasks in the checklist.
+   */
   function updateProgressBar(){
     const totalItems = checklistItems.length;
     const completedItems = checklistItems.filter(item => item.checked).length;
@@ -27,9 +41,16 @@ const Modal = ({ card, onClose, listTitle, deleteCard }) => {
   const [isAddItemOpen, setIsAddItemOpen] = useState(false);
   const [newItem, setNewItem] = useState('');
   
+  /**
+   * Toggles the visibility of the add item input box.
+   */
   const toggleAdd = () => {
     setIsAddItemOpen(!isAddItemOpen);
   };
+  /**
+   * Handles adding a new item to the checklist.
+   * Adds the item only if the input is not empty.
+   */
   function handleAddItem(){
     if (newItem.trim() !== '') {
       setChecklistItems([...checklistItems, { id: id, label: newItem, checked: false }]);
@@ -40,9 +61,17 @@ const Modal = ({ card, onClose, listTitle, deleteCard }) => {
       alert("Please enter a checkbox value")
     }
   };
+  /**
+   * Removes an item from the checklist based on its ID.
+   * @param {number} id - The ID of the item to be removed.
+   */
   function handleDeleteItem(id){
     setChecklistItems(checklistItems.filter(item => item.id !== id));
   }
+  /**
+   * Toggles the checked state of a checklist item.
+   * @param {number} id - The ID of the item whose checked state will be toggled.
+   */
   function handleCheckboxClick(id){
     setChecklistItems(checklistItems.map(item => {
       if (item.id === id) {

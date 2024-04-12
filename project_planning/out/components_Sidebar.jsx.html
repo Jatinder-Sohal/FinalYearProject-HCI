@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Sidebar.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Sidebar.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react';
+import '../css/Sidebar.css';
+import DropdownUp from '../images/dropdown-up.png';
+import DropdownDown from '../images/dropdown-down.png';
+import StarFilled from '../images/star.png'
+import Star from '../images/filled-star.png'
+import StarBorder from '../images/star-border.png'
+import BinBlack from '../images/bin-black.png'
+
+/**
+ * Sidebar component for displaying and managing favorite and all boards.
+ *
+ * @param {Object} props - Component props.
+ * @param {Array} props.favoriteBoards - List of favorite board names.
+ * @param {Array} props.allBoards - List of all board names.
+ * @param {Function} props.setFavoriteBoards - Function to update the list of favorite boards.
+ * @param {Function} props.setAllBoards - Function to update the list of all boards.
+ * @param {Function} props.sidebarItemClick - Function called when a board name is clicked.
+ * @param {Function} props.addNewBoard - Function to add a new board.
+ * @param {string} props.boardTitle - Currently active board title.
+ * @returns {JSX.Element} Rendered Sidebar component.
+ */
+function Sidebar({favoriteBoards, allBoards, setFavoriteBoards, setAllBoards, sidebarItemClick, addNewBoard, boardTitle}){
+    /**
+     * Handles the action when a board name in the sidebar is clicked.
+     * Confirms with the user before loading the board.
+     * 
+     * @param {string} name - The name of the board to be loaded.
+     */
+    function handleSidebarClick(name){
+        if (window.confirm(name + " will be loaded") == true) {
+            sidebarItemClick(name)
+        } else {}
+    }
+
+    const [isAllOpen, setIsAllOpen] = useState(true);
+    const [isFavoriteOpen, setIsFavOpen] = useState(true);
+    const [favImage, setFavImage] = useState(DropdownUp);
+    const [allImage, setAllImage] = useState(DropdownUp);
+
+    /**
+     * Toggles the visibility of the all boards section and updates the dropdown icon.
+     */
+    const toggleAllSection = () => {
+        setIsAllOpen(!isAllOpen);
+        if (allImage == DropdownDown){
+            setAllImage(DropdownUp)
+        }else{
+            setAllImage(DropdownDown)
+        }
+    };
+    /**
+     * Toggles the visibility of the favorite boards section and updates the dropdown icon.
+     */
+    const toggleFavSection = () => {
+        setIsFavOpen(!isFavoriteOpen);
+        if (favImage == DropdownDown){
+            setFavImage(DropdownUp)
+        }else{
+            setFavImage(DropdownDown)
+        }
+    };
+    /**
+     * Removes a board from the favorite boards list.
+     *
+     * @param {Object} event - The click event to prevent propagation.
+     * @param {string} clickedBoard - The name of the board to remove from favorites.
+     */
+    function removeFavorite(event, clickedBoard){
+        event.stopPropagation();
+        setFavoriteBoards(prevBoards => prevBoards.filter(board => board !== clickedBoard));
+    }
+    /**
+     * Removes a board from the all boards list after confirmation.
+     *
+     * @param {Object} event - The click event to prevent propagation.
+     * @param {string} clickedBoard - The name of the board to be deleted.
+     */
+    function removeAll(event, clickedBoard){
+        event.stopPropagation();
+        if (window.confirm("This will DELETE " + clickedBoard) == true) {
+            if(boardTitle == clickedBoard){
+                alert("Error -  You cannot delete an open board!")
+            }else{
+                setAllBoards(prevBoards => prevBoards.filter(board => board !== clickedBoard));
+            }
+        }
+    }
+        
+
+    return (
+        &lt;div className="sidebar">
+            &lt;div>
+                &lt;div className="add-board" onClick={() => addNewBoard()}> 
+                    &lt;h3 style={{fontWeight:"normal"}}>Add New Board&lt;/h3>
+                &lt;/div>
+                &lt;div className="fav-section">
+                    &lt;div className="fav-section-header" onClick={toggleFavSection}>
+                        &lt;img className="dropdown-images" src={favImage}/>
+                        {"Favorite Boards"}
+                    &lt;/div>
+                    {isFavoriteOpen &amp;&amp;
+                        &lt;ul className='lists'>
+                            {favoriteBoards.map(board => (
+                                &lt;div onClick={()=>handleSidebarClick(board)} className="section-item" key={board}>
+                                    {board}
+                                    &lt;img className="sidebar-star dropdown-item-images" onClick={(event)=> removeFavorite(event, board)} src={StarFilled}/>
+                                &lt;/div>
+                            ))}
+                        &lt;/ul>
+                    }                    
+                &lt;/div>   
+                &lt;div className="all-section">
+                    &lt;div className="all-section-header" onClick={toggleAllSection}>
+                        &lt;img className="dropdown-images" src={allImage}/>
+                        {"All Boards"}
+                    &lt;/div>
+                    {isAllOpen &amp;&amp;
+                        &lt;ul className='lists'>
+                            {allBoards.map(board => (
+                                &lt;div onClick={()=>handleSidebarClick(board)} className="section-item" key={board}>
+                                    {board}
+                                    &lt;img className="checkbox-delete dropdown-item-images" onClick={(event)=> removeAll(event, board)} src={BinBlack}/>
+                                &lt;/div>
+                                
+                            ))}
+                        &lt;/ul>
+                    }                    
+                &lt;/div> 
+            &lt;/div>
+        &lt;/div>
+    );
+};
+
+export default Sidebar;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Cards">Cards</a></li><li><a href="global.html#List">List</a></li><li><a href="global.html#Modal">Modal</a></li><li><a href="global.html#NewList">NewList</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#Toolbar">Toolbar</a></li><li><a href="global.html#Topbar">Topbar</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Apr 12 2024 04:41:23 GMT+0100 (British Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
