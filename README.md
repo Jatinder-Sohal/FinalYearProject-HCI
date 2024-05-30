@@ -1,22 +1,23 @@
-Folder Structure
-This Readme will explain the folders in this final submission. To find out how to deploy my projects please read the Installation Manual in my report - Section 9.1.
+This project repository contains 3 interfaces. The first 2 are concept web interfaces and my last, an Android application is more complex.
 
-In this folder there are 3 interfaces. Due to React's requirments these folders are written in lowercase. Following this standard I named my Android application in a similar fashion.
-
-The first interface is finance_tracker, which is a React project that contains package files, src, public and documentation files. The src contains the main files for the project, with public just containing boilerplate for launching the project.
+The first interface is finance_tracker, which is a simple React project that contains package files, src, public and documentation files. The src contains the main files for the project, with public just containing boilerplate for launching the project.
 
 My second interface project_planning has the same folder structure. The src however does not contain any pages folder due to it being a single page application.
 
-The third interface is cooking_companion and its directory looks a lot different due to it being a Jetpack Compose project. The src files are located in app/src/main. There are pages and components inside there, similar to the finance_tracker.
+To run these React projects, you need to have npm installed. This is installed by downloading Node.js. The installer for this can be found at:
+https://nodejs.org/en/download
+Once npm is installed, clone the Gitlab repository to your local device using git clone link. 
+Then after opening your terminal or an appropriate substitute cd inside the directory of the project you want to access. 
+Here the command npm i will need to be run to install any required libraries.
+The command npm start will then launch the website.
 
-My final Report is named as Jatinder.Final.pdf and can be found in the root directory as a seperate pdf.
+The third interface is cooking_companion and its directory looks a lot different due to it being a Jetpack Compose and Kotlin project. The src files are located in app/src/main. There are pages and components inside there, similar to the finance_tracker.
 
-There are two text files also in the root. One is the full diary and the other contains a link to a youtube video which shows the functionality of my interfaces.
+The running of this application is a bit more complicated. 
 
-The last item in the root folder is Documents. This contains 3 more folders inside 1)Sketches - my prototypes 2) Documentation of all my code 3) User testing for the final week of my project.
-
-
-
-
-
-
+You will need to install the ide Android Studio Code at the link:
+https://developer.android.com/
+Once this has been installed, open the ide and navigate to file -> open and then open the directory cooking_companion. This will install all libraries that may have been deleted or were not installed on your computer.
+From here you will need to connect an Android device or install an emulator. This can be done by navigating to device manager on the right navbar (highlighted option on the right image).
+Then click the add device button and follow the intsturctions on screen to install a device of your choice.
+Once this is done, you can click start at the top on the App configuration which will start your emulator, install the application and open it.
